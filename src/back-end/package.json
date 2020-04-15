@@ -5,15 +5,16 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-		"server": "nodemon app.js",
-		"client": "npm run start --prefix ../front-end",
-		"dev": "concurrently \"npm run server\" \"npm run client\""
+    "server": "nodemon app.js",
+    "client": "npm run start --prefix ../front-end",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Максим Хоцевич <xozewitc@yandex.ru>",
   "license": "ISC",
   "dependencies": {
     "config": "^3.3.1",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "firebase-admin": "^8.10.0"
   },
   "devDependencies": {
     "concurrently": "^5.1.0",

@@ -6,7 +6,7 @@
 
 ## Сайт проекта:
 
-pd-2020.std-927.ist.mospolytech.ru
+[pd-2020.std-927.ist.mospolytech.ru](http://pd-2020.std-927.ist.mospolytech.ru)
 
 ## Цель:
 - Помочь людям вести здоровый образ жизни

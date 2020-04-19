@@ -1,0 +1,9 @@
+platform :ios, '13.0'
+
+target 'ami' do
+  use_frameworks!
+
+  # Official pods
+  pod 'SwiftLint'
+
+end

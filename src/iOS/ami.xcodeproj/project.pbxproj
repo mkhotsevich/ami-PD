@@ -11,6 +11,7 @@
 		5779BF6D24A3F181005113D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BF6C24A3F181005113D4 /* SceneDelegate.swift */; };
 		5779BF7424A3F182005113D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5779BF7324A3F182005113D4 /* Assets.xcassets */; };
 		5779BF7724A3F182005113D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5779BF7524A3F182005113D4 /* LaunchScreen.storyboard */; };
+		918FA3E3B7791CC5B93DD00B /* Pods_ami.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CAE71BDCF19FC0AF4B02191 /* Pods_ami.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,9 @@
 		5779BF7324A3F182005113D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5779BF7624A3F182005113D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5779BF7824A3F182005113D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6CAE71BDCF19FC0AF4B02191 /* Pods_ami.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ami.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CEB5783DCEE3C33D5270756 /* Pods-ami.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ami.debug.xcconfig"; path = "Target Support Files/Pods-ami/Pods-ami.debug.xcconfig"; sourceTree = "<group>"; };
+		8FF9E999D9F13EA8D7F8FC2C /* Pods-ami.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ami.release.xcconfig"; path = "Target Support Files/Pods-ami/Pods-ami.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				918FA3E3B7791CC5B93DD00B /* Pods_ami.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +43,8 @@
 			children = (
 				5779BF6924A3F181005113D4 /* ami */,
 				5779BF6824A3F181005113D4 /* Products */,
+				6CD28E9852C9EAFC02AF92EE /* Pods */,
+				AC4C9430DDB1307CEB9CA838 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,6 +68,24 @@
 			path = ami;
 			sourceTree = "<group>";
 		};
+		6CD28E9852C9EAFC02AF92EE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7CEB5783DCEE3C33D5270756 /* Pods-ami.debug.xcconfig */,
+				8FF9E999D9F13EA8D7F8FC2C /* Pods-ami.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		AC4C9430DDB1307CEB9CA838 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6CAE71BDCF19FC0AF4B02191 /* Pods_ami.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -68,9 +93,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5779BF7B24A3F182005113D4 /* Build configuration list for PBXNativeTarget "ami" */;
 			buildPhases = (
+				CC00B823484ACB3ACED0F920 /* [CP] Check Pods Manifest.lock */,
 				5779BF6324A3F181005113D4 /* Sources */,
 				5779BF6424A3F181005113D4 /* Frameworks */,
 				5779BF6524A3F181005113D4 /* Resources */,
+				5779BF7E24A3F9A0005113D4 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -125,6 +152,49 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5779BF7E24A3F9A0005113D4 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		CC00B823484ACB3ACED0F920 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ami-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5779BF6324A3F181005113D4 /* Sources */ = {
@@ -200,7 +270,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -254,7 +324,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -266,11 +336,13 @@
 		};
 		5779BF7C24A3F182005113D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7CEB5783DCEE3C33D5270756 /* Pods-ami.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YX6VKW92JQ;
 				INFOPLIST_FILE = ami/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -284,11 +356,13 @@
 		};
 		5779BF7D24A3F182005113D4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8FF9E999D9F13EA8D7F8FC2C /* Pods-ami.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YX6VKW92JQ;
 				INFOPLIST_FILE = ami/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -1,6 +1,11 @@
 .vscode
 node_modules
 
+# IOS
+
+# R.Swift
+*.generated.swift
+
 # Xcode
 
 *.DS_Store
@@ -19,7 +24,6 @@ DerivedData/
 *.perspectivev3
 !default.perspectivev3
 xcuserdata/
-*.generated.swift
 
 ## Other
 *.moved-aside

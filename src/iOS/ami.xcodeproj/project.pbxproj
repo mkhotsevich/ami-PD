@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,7 @@
 		5779BF6D24A3F181005113D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BF6C24A3F181005113D4 /* SceneDelegate.swift */; };
 		5779BF7424A3F182005113D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5779BF7324A3F182005113D4 /* Assets.xcassets */; };
 		5779BF7724A3F182005113D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5779BF7524A3F182005113D4 /* LaunchScreen.storyboard */; };
+		5779BF8124A4016A005113D4 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BF8024A4016A005113D4 /* R.generated.swift */; };
 		918FA3E3B7791CC5B93DD00B /* Pods_ami.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CAE71BDCF19FC0AF4B02191 /* Pods_ami.framework */; };
 /* End PBXBuildFile section */
 
@@ -21,6 +22,7 @@
 		5779BF7324A3F182005113D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5779BF7624A3F182005113D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5779BF7824A3F182005113D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5779BF8024A4016A005113D4 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		6CAE71BDCF19FC0AF4B02191 /* Pods_ami.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ami.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CEB5783DCEE3C33D5270756 /* Pods-ami.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ami.debug.xcconfig"; path = "Target Support Files/Pods-ami/Pods-ami.debug.xcconfig"; sourceTree = "<group>"; };
 		8FF9E999D9F13EA8D7F8FC2C /* Pods-ami.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ami.release.xcconfig"; path = "Target Support Files/Pods-ami/Pods-ami.release.xcconfig"; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 		5779BF6924A3F181005113D4 /* ami */ = {
 			isa = PBXGroup;
 			children = (
+				5779BF8024A4016A005113D4 /* R.generated.swift */,
 				5779BF6A24A3F181005113D4 /* AppDelegate.swift */,
 				5779BF6C24A3F181005113D4 /* SceneDelegate.swift */,
 				5779BF7324A3F182005113D4 /* Assets.xcassets */,
@@ -74,7 +77,6 @@
 				7CEB5783DCEE3C33D5270756 /* Pods-ami.debug.xcconfig */,
 				8FF9E999D9F13EA8D7F8FC2C /* Pods-ami.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -94,10 +96,12 @@
 			buildConfigurationList = 5779BF7B24A3F182005113D4 /* Build configuration list for PBXNativeTarget "ami" */;
 			buildPhases = (
 				CC00B823484ACB3ACED0F920 /* [CP] Check Pods Manifest.lock */,
+				5779BF7F24A40052005113D4 /* R.Swift */,
 				5779BF6324A3F181005113D4 /* Sources */,
 				5779BF6424A3F181005113D4 /* Frameworks */,
 				5779BF6524A3F181005113D4 /* Resources */,
 				5779BF7E24A3F9A0005113D4 /* SwiftLint */,
+				04E900158E6CF057BBC17D20 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -154,6 +158,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		04E900158E6CF057BBC17D20 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ami/Pods-ami-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ami/Pods-ami-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ami/Pods-ami-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		5779BF7E24A3F9A0005113D4 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -171,6 +192,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		5779BF7F24A40052005113D4 /* R.Swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			name = R.Swift;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
 		};
 		CC00B823484ACB3ACED0F920 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -203,6 +244,7 @@
 			files = (
 				5779BF6B24A3F181005113D4 /* AppDelegate.swift in Sources */,
 				5779BF6D24A3F181005113D4 /* SceneDelegate.swift in Sources */,
+				5779BF8124A4016A005113D4 /* R.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

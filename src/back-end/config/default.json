@@ -1,13 +1,4 @@
 {
 	"PORT": 5000,
-	"firebaseConfig": {
-		"apiKey": "AIzaSyDzLt5lBYayita-t_YosCtORBmYLqsWBmo",
-		"authDomain": "ami-pd-7536e.firebaseapp.com",
-		"databaseURL": "https://ami-pd-7536e.firebaseio.com",
-		"projectId": "ami-pd-7536e",
-		"storageBucket": "ami-pd-7536e.appspot.com",
-		"messagingSenderId": "512688960055",
-		"appId": "1:512688960055:web:86cc383ccdca58608805b2",
-		"measurementId": "G-VH1CC6X5XL"
-	}
+	"mongoURI": "mongodb+srv://MaximKhotsevich:1PV0KWIsfXqgy2ow@cluster0-yyaxs.mongodb.net/amidb"
 }

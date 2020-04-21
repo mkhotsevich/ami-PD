@@ -4,13 +4,17 @@
   "description": "Back-end приложения для здорового образа жизни ",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "server": "nodemon app.js",
+    "client": "npm run start --prefix ../front-end",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Максим Хоцевич <xozewitc@yandex.ru>",
   "license": "ISC",
   "dependencies": {
     "config": "^3.3.1",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.9.10"
   },
   "devDependencies": {
     "concurrently": "^5.1.0",

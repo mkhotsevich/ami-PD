@@ -1,0 +1,4 @@
+{
+	"PORT": 5000,
+	"mongoURI": "mongodb+srv://MaximKhotsevich:1PV0KWIsfXqgy2ow@cluster0-yyaxs.mongodb.net/amidb"
+}

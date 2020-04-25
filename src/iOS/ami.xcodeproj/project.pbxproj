@@ -12,8 +12,24 @@
 		5779BF7424A3F182005113D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5779BF7324A3F182005113D4 /* Assets.xcassets */; };
 		5779BF7724A3F182005113D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5779BF7524A3F182005113D4 /* LaunchScreen.storyboard */; };
 		5779BF8124A4016A005113D4 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BF8024A4016A005113D4 /* R.generated.swift */; };
+		5779BFBE24A4057C005113D4 /* UIViewKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5779BFBD24A4057C005113D4 /* UIViewKit.framework */; };
+		5779BFBF24A4057C005113D4 /* UIViewKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5779BFBD24A4057C005113D4 /* UIViewKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		918FA3E3B7791CC5B93DD00B /* Pods_ami.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CAE71BDCF19FC0AF4B02191 /* Pods_ami.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5779BFC024A4057C005113D4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5779BFBF24A4057C005113D4 /* UIViewKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5779BF6724A3F181005113D4 /* ami.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ami.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -23,6 +39,7 @@
 		5779BF7624A3F182005113D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5779BF7824A3F182005113D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5779BF8024A4016A005113D4 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		5779BFBD24A4057C005113D4 /* UIViewKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UIViewKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CAE71BDCF19FC0AF4B02191 /* Pods_ami.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ami.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CEB5783DCEE3C33D5270756 /* Pods-ami.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ami.debug.xcconfig"; path = "Target Support Files/Pods-ami/Pods-ami.debug.xcconfig"; sourceTree = "<group>"; };
 		8FF9E999D9F13EA8D7F8FC2C /* Pods-ami.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ami.release.xcconfig"; path = "Target Support Files/Pods-ami/Pods-ami.release.xcconfig"; sourceTree = "<group>"; };
@@ -33,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5779BFBE24A4057C005113D4 /* UIViewKit.framework in Frameworks */,
 				918FA3E3B7791CC5B93DD00B /* Pods_ami.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -61,12 +79,12 @@
 		5779BF6924A3F181005113D4 /* ami */ = {
 			isa = PBXGroup;
 			children = (
-				5779BF8024A4016A005113D4 /* R.generated.swift */,
 				5779BF6A24A3F181005113D4 /* AppDelegate.swift */,
 				5779BF6C24A3F181005113D4 /* SceneDelegate.swift */,
 				5779BF7324A3F182005113D4 /* Assets.xcassets */,
 				5779BF7524A3F182005113D4 /* LaunchScreen.storyboard */,
 				5779BF7824A3F182005113D4 /* Info.plist */,
+				5779BF8024A4016A005113D4 /* R.generated.swift */,
 			);
 			path = ami;
 			sourceTree = "<group>";
@@ -83,6 +101,7 @@
 		AC4C9430DDB1307CEB9CA838 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5779BFBD24A4057C005113D4 /* UIViewKit.framework */,
 				6CAE71BDCF19FC0AF4B02191 /* Pods_ami.framework */,
 			);
 			name = Frameworks;
@@ -102,6 +121,7 @@
 				5779BF6524A3F181005113D4 /* Resources */,
 				5779BF7E24A3F9A0005113D4 /* SwiftLint */,
 				04E900158E6CF057BBC17D20 /* [CP] Embed Pods Frameworks */,
+				5779BFC024A4057C005113D4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

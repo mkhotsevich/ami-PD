@@ -7,13 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5779BFC224A40657005113D4 /* start.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BFC124A40657005113D4 /* start.swift */; };
+		5779BFC524A407E6005113D4 /* UITableView+ReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BFC424A407E6005113D4 /* UITableView+ReusableCell.swift */; };
+		5779BFC724A40809005113D4 /* ReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BFC624A40809005113D4 /* ReusableCell.swift */; };
+		5779BFC924A40841005113D4 /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BFC824A40841005113D4 /* ConfigurableCell.swift */; };
+		5779BFCB24A40874005113D4 /* TableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BFCA24A40874005113D4 /* TableViewAdapter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5779BFB024A40503005113D4 /* UIViewKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIViewKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5779BFB424A40503005113D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5779BFC124A40657005113D4 /* start.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = start.swift; sourceTree = "<group>"; };
+		5779BFC424A407E6005113D4 /* UITableView+ReusableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+ReusableCell.swift"; sourceTree = "<group>"; };
+		5779BFC624A40809005113D4 /* ReusableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCell.swift; sourceTree = "<group>"; };
+		5779BFC824A40841005113D4 /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
+		5779BFCA24A40874005113D4 /* TableViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,10 +52,21 @@
 		5779BFB224A40503005113D4 /* UIViewKit */ = {
 			isa = PBXGroup;
 			children = (
+				5779BFC324A407AC005113D4 /* TableViewAdapter */,
 				5779BFB424A40503005113D4 /* Info.plist */,
-				5779BFC124A40657005113D4 /* start.swift */,
 			);
 			path = UIViewKit;
+			sourceTree = "<group>";
+		};
+		5779BFC324A407AC005113D4 /* TableViewAdapter */ = {
+			isa = PBXGroup;
+			children = (
+				5779BFC424A407E6005113D4 /* UITableView+ReusableCell.swift */,
+				5779BFC624A40809005113D4 /* ReusableCell.swift */,
+				5779BFC824A40841005113D4 /* ConfigurableCell.swift */,
+				5779BFCA24A40874005113D4 /* TableViewAdapter.swift */,
+			);
+			path = TableViewAdapter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,7 +148,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5779BFC224A40657005113D4 /* start.swift in Sources */,
+				5779BFC924A40841005113D4 /* ConfigurableCell.swift in Sources */,
+				5779BFCB24A40874005113D4 /* TableViewAdapter.swift in Sources */,
+				5779BFC724A40809005113D4 /* ReusableCell.swift in Sources */,
+				5779BFC524A407E6005113D4 /* UITableView+ReusableCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

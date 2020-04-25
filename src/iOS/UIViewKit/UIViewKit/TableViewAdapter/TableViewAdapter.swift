@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class TableViewAdapter<Model, Cell: UITableViewCell>: NSObject,
+public class TableViewAdapter<Model, Cell>: NSObject,
     UITableViewDelegate,
     UITableViewDataSource
     where Cell: ConfigurableCell, Model == Cell.ViewModel {

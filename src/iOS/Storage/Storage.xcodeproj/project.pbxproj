@@ -6,9 +6,14 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5779BFE524A40E95005113D4 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BFE424A40E95005113D4 /* CoreDataStack.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		5779BFD624A40D13005113D4 /* Storage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Storage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5779BFDA24A40D13005113D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5779BFE424A40E95005113D4 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +47,7 @@
 			isa = PBXGroup;
 			children = (
 				5779BFDA24A40D13005113D4 /* Info.plist */,
+				5779BFE424A40E95005113D4 /* CoreDataStack.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -88,6 +94,7 @@
 				TargetAttributes = {
 					5779BFD524A40D13005113D4 = {
 						CreatedOnToolsVersion = 11.5;
+						LastSwiftMigration = 1150;
 					};
 				};
 			};
@@ -124,6 +131,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5779BFE524A40E95005113D4 /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +261,7 @@
 		5779BFDF24A40D13005113D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = YX6VKW92JQ;
@@ -269,6 +278,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = artemkufaev.Storage;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -277,6 +287,7 @@
 		5779BFE024A40D13005113D4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = YX6VKW92JQ;

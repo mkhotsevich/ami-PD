@@ -8,14 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		5779BFE524A40E95005113D4 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BFE424A40E95005113D4 /* CoreDataStack.swift */; };
-		5779BFE724A40F02005113D4 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BFE624A40F02005113D4 /* Storage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5779BFD624A40D13005113D4 /* Storage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Storage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5779BFDA24A40D13005113D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5779BFE424A40E95005113D4 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		5779BFE624A40F02005113D4 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +48,6 @@
 			children = (
 				5779BFDA24A40D13005113D4 /* Info.plist */,
 				5779BFE424A40E95005113D4 /* CoreDataStack.swift */,
-				5779BFE624A40F02005113D4 /* Storage.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -135,7 +132,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5779BFE524A40E95005113D4 /* CoreDataStack.swift in Sources */,
-				5779BFE724A40F02005113D4 /* Storage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,57 +8,39 @@
 
 import CoreData
 
-final class CoreDataStack {
+public final class CoreDataStack {
     
     private let modelName: String
     private let storeIsReady = DispatchGroup()
     
     // MARK: - Init
     
-    init(modelName: String) {
+    public init(modelName: String) {
         self.modelName = modelName
         registerStore()
     }
     
     // MARK: - Public
     
-    lazy var mainContext: NSManagedObjectContext = {
+    public lazy var mainContext: NSManagedObjectContext = {
         storeIsReady.wait()
         return persistentContainer.viewContext
     }()
     
-    func makePrivateContext() -> NSManagedObjectContext {
+    public func makePrivateContext() -> NSManagedObjectContext {
         storeIsReady.wait()
         return persistentContainer.newBackgroundContext()
     }
     
-    func saveToStore() {
-        saveContext(mainContext)
-    }
-    
-    func saveContext(_ context: NSManagedObjectContext) {
+    public func performForegroundTask(_ block: @escaping (NSManagedObjectContext) -> Void) {
         storeIsReady.wait()
-        
-        guard context.hasChanges else {
-            debugPrint("Data has not changes")
-            return
-        }
-        do {
-            try context.save()
-            debugPrint("Data succesfully saved to store")
-        } catch {
-            debugPrint("Data not saved to store with error \(error)")
-        }
-    }
-    
-    func performForegroundTask(_ block: @escaping (NSManagedObjectContext) -> Void) {
         mainContext.perform {
             block(self.mainContext)
         }
     }
     
-    //#5
-    func performBackgroundTask(_ block: @escaping (NSManagedObjectContext) -> Void) {
+    public func performBackgroundTask(_ block: @escaping (NSManagedObjectContext) -> Void) {
+        storeIsReady.wait()
         persistentContainer.performBackgroundTask(block)
     }
     

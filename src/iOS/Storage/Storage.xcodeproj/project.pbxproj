@@ -8,12 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		5779BFE524A40E95005113D4 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BFE424A40E95005113D4 /* CoreDataStack.swift */; };
+		5779BFF624A41232005113D4 /* CoreDataWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BFF224A41232005113D4 /* CoreDataWorker.swift */; };
+		5779BFF724A41232005113D4 /* CoreDataWorkerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BFF324A41232005113D4 /* CoreDataWorkerProtocol.swift */; };
+		5779BFF824A41232005113D4 /* CoreDataWorkerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BFF424A41232005113D4 /* CoreDataWorkerError.swift */; };
+		5779BFF924A41232005113D4 /* ManagedObjectConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BFF524A41232005113D4 /* ManagedObjectConvertible.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5779BFD624A40D13005113D4 /* Storage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Storage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5779BFDA24A40D13005113D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5779BFE424A40E95005113D4 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		5779BFF224A41232005113D4 /* CoreDataWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataWorker.swift; sourceTree = "<group>"; };
+		5779BFF324A41232005113D4 /* CoreDataWorkerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataWorkerProtocol.swift; sourceTree = "<group>"; };
+		5779BFF424A41232005113D4 /* CoreDataWorkerError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataWorkerError.swift; sourceTree = "<group>"; };
+		5779BFF524A41232005113D4 /* ManagedObjectConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectConvertible.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,10 +54,22 @@
 		5779BFD824A40D13005113D4 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				5779BFF124A41232005113D4 /* CoreDataWorker */,
+				5779BFF524A41232005113D4 /* ManagedObjectConvertible.swift */,
 				5779BFDA24A40D13005113D4 /* Info.plist */,
 				5779BFE424A40E95005113D4 /* CoreDataStack.swift */,
 			);
 			path = Storage;
+			sourceTree = "<group>";
+		};
+		5779BFF124A41232005113D4 /* CoreDataWorker */ = {
+			isa = PBXGroup;
+			children = (
+				5779BFF224A41232005113D4 /* CoreDataWorker.swift */,
+				5779BFF324A41232005113D4 /* CoreDataWorkerProtocol.swift */,
+				5779BFF424A41232005113D4 /* CoreDataWorkerError.swift */,
+			);
+			path = CoreDataWorker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,7 +151,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5779BFF624A41232005113D4 /* CoreDataWorker.swift in Sources */,
+				5779BFF724A41232005113D4 /* CoreDataWorkerProtocol.swift in Sources */,
 				5779BFE524A40E95005113D4 /* CoreDataStack.swift in Sources */,
+				5779BFF924A41232005113D4 /* ManagedObjectConvertible.swift in Sources */,
+				5779BFF824A41232005113D4 /* CoreDataWorkerError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

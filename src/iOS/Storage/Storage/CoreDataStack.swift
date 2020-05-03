@@ -24,18 +24,12 @@ final class CoreDataStack {
     
     lazy var mainContext: NSManagedObjectContext = {
         storeIsReady.wait()
-            
-        let context = self.persistentContainer.viewContext
-        
-        return context
+        return persistentContainer.viewContext
     }()
     
     func makePrivateContext() -> NSManagedObjectContext {
         storeIsReady.wait()
-
-        let context = self.persistentContainer.newBackgroundContext()
-        
-        return context
+        return persistentContainer.newBackgroundContext()
     }
     
     func saveToStore() {
@@ -55,6 +49,17 @@ final class CoreDataStack {
         } catch {
             debugPrint("Data not saved to store with error \(error)")
         }
+    }
+    
+    func performForegroundTask(_ block: @escaping (NSManagedObjectContext) -> Void) {
+        mainContext.perform {
+            block(self.mainContext)
+        }
+    }
+    
+    //#5
+    func performBackgroundTask(_ block: @escaping (NSManagedObjectContext) -> Void) {
+        persistentContainer.performBackgroundTask(block)
     }
     
     // MARK: - Private

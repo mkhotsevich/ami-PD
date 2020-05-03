@@ -12,6 +12,7 @@
 		5779BFF724A41232005113D4 /* CoreDataWorkerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BFF324A41232005113D4 /* CoreDataWorkerProtocol.swift */; };
 		5779BFF824A41232005113D4 /* CoreDataWorkerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BFF424A41232005113D4 /* CoreDataWorkerError.swift */; };
 		5779BFF924A41232005113D4 /* ManagedObjectConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BFF524A41232005113D4 /* ManagedObjectConvertible.swift */; };
+		5779BFFB24A41294005113D4 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BFFA24A41294005113D4 /* Storage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		5779BFF324A41232005113D4 /* CoreDataWorkerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataWorkerProtocol.swift; sourceTree = "<group>"; };
 		5779BFF424A41232005113D4 /* CoreDataWorkerError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataWorkerError.swift; sourceTree = "<group>"; };
 		5779BFF524A41232005113D4 /* ManagedObjectConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectConvertible.swift; sourceTree = "<group>"; };
+		5779BFFA24A41294005113D4 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 				5779BFF524A41232005113D4 /* ManagedObjectConvertible.swift */,
 				5779BFDA24A40D13005113D4 /* Info.plist */,
 				5779BFE424A40E95005113D4 /* CoreDataStack.swift */,
+				5779BFFA24A41294005113D4 /* Storage.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 				5779BFE524A40E95005113D4 /* CoreDataStack.swift in Sources */,
 				5779BFF924A41232005113D4 /* ManagedObjectConvertible.swift in Sources */,
 				5779BFF824A41232005113D4 /* CoreDataWorkerError.swift in Sources */,
+				5779BFFB24A41294005113D4 /* Storage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

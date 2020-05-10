@@ -14,6 +14,8 @@
 		5779C03F24A4193F005113D4 /* ParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779C03E24A4193F005113D4 /* ParameterEncoder.swift */; };
 		5779C04124A41A4B005113D4 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779C04024A41A4B005113D4 /* RequestBuilder.swift */; };
 		5779C04324A41A67005113D4 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779C04224A41A67005113D4 /* NetworkError.swift */; };
+		5779C04524A41ABA005113D4 /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779C04424A41ABA005113D4 /* NetworkAPI.swift */; };
+		5779C04724A41AC4005113D4 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779C04624A41AC4005113D4 /* Provider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		5779C03E24A4193F005113D4 /* ParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoder.swift; sourceTree = "<group>"; };
 		5779C04024A41A4B005113D4 /* RequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
 		5779C04224A41A67005113D4 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		5779C04424A41ABA005113D4 /* NetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
+		5779C04624A41AC4005113D4 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,8 @@
 				5779C03E24A4193F005113D4 /* ParameterEncoder.swift */,
 				5779C04024A41A4B005113D4 /* RequestBuilder.swift */,
 				5779C04224A41A67005113D4 /* NetworkError.swift */,
+				5779C04424A41ABA005113D4 /* NetworkAPI.swift */,
+				5779C04624A41AC4005113D4 /* Provider.swift */,
 			);
 			path = NetCore;
 			sourceTree = "<group>";
@@ -161,9 +167,11 @@
 				5779C04324A41A67005113D4 /* NetworkError.swift in Sources */,
 				5779C03724A4179F005113D4 /* NetworkSchema.swift in Sources */,
 				5779C03A24A4179F005113D4 /* EndPoint.swift in Sources */,
+				5779C04724A41AC4005113D4 /* Provider.swift in Sources */,
 				5779C04124A41A4B005113D4 /* RequestBuilder.swift in Sources */,
 				5779C03F24A4193F005113D4 /* ParameterEncoder.swift in Sources */,
 				5779C03924A4179F005113D4 /* HTTPMethod.swift in Sources */,
+				5779C04524A41ABA005113D4 /* NetworkAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

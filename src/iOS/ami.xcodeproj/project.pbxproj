@@ -16,6 +16,8 @@
 		5779BFBF24A4057C005113D4 /* UIViewKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5779BFBD24A4057C005113D4 /* UIViewKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5779BFE224A40D3B005113D4 /* Storage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5779BFE124A40D3B005113D4 /* Storage.framework */; };
 		5779BFE324A40D3B005113D4 /* Storage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5779BFE124A40D3B005113D4 /* Storage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5779C03C24A417C6005113D4 /* NetCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5779C03B24A417C6005113D4 /* NetCore.framework */; };
+		5779C03D24A417C6005113D4 /* NetCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5779C03B24A417C6005113D4 /* NetCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		918FA3E3B7791CC5B93DD00B /* Pods_ami.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CAE71BDCF19FC0AF4B02191 /* Pods_ami.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +30,7 @@
 			files = (
 				5779BFE324A40D3B005113D4 /* Storage.framework in Embed Frameworks */,
 				5779BFBF24A4057C005113D4 /* UIViewKit.framework in Embed Frameworks */,
+				5779C03D24A417C6005113D4 /* NetCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -44,6 +47,7 @@
 		5779BF8024A4016A005113D4 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		5779BFBD24A4057C005113D4 /* UIViewKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UIViewKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5779BFE124A40D3B005113D4 /* Storage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Storage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5779C03B24A417C6005113D4 /* NetCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NetCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CAE71BDCF19FC0AF4B02191 /* Pods_ami.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ami.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CEB5783DCEE3C33D5270756 /* Pods-ami.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ami.debug.xcconfig"; path = "Target Support Files/Pods-ami/Pods-ami.debug.xcconfig"; sourceTree = "<group>"; };
 		8FF9E999D9F13EA8D7F8FC2C /* Pods-ami.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ami.release.xcconfig"; path = "Target Support Files/Pods-ami/Pods-ami.release.xcconfig"; sourceTree = "<group>"; };
@@ -55,6 +59,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5779BFBE24A4057C005113D4 /* UIViewKit.framework in Frameworks */,
+				5779C03C24A417C6005113D4 /* NetCore.framework in Frameworks */,
 				918FA3E3B7791CC5B93DD00B /* Pods_ami.framework in Frameworks */,
 				5779BFE224A40D3B005113D4 /* Storage.framework in Frameworks */,
 			);
@@ -106,6 +111,7 @@
 		AC4C9430DDB1307CEB9CA838 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5779C03B24A417C6005113D4 /* NetCore.framework */,
 				5779BFE124A40D3B005113D4 /* Storage.framework */,
 				5779BFBD24A4057C005113D4 /* UIViewKit.framework */,
 				6CAE71BDCF19FC0AF4B02191 /* Pods_ami.framework */,

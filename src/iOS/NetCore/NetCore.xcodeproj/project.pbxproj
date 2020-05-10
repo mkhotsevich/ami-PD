@@ -11,6 +11,7 @@
 		5779C03824A4179F005113D4 /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779C03424A4179F005113D4 /* HTTPTask.swift */; };
 		5779C03924A4179F005113D4 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779C03524A4179F005113D4 /* HTTPMethod.swift */; };
 		5779C03A24A4179F005113D4 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779C03624A4179F005113D4 /* EndPoint.swift */; };
+		5779C03F24A4193F005113D4 /* ParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779C03E24A4193F005113D4 /* ParameterEncoder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		5779C03424A4179F005113D4 /* HTTPTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
 		5779C03524A4179F005113D4 /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		5779C03624A4179F005113D4 /* EndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		5779C03E24A4193F005113D4 /* ParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 				5779C03624A4179F005113D4 /* EndPoint.swift */,
 				5779C03224A4179F005113D4 /* RequestElements */,
 				5779C02B24A4177C005113D4 /* Info.plist */,
+				5779C03E24A4193F005113D4 /* ParameterEncoder.swift */,
 			);
 			path = NetCore;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 				5779C03824A4179F005113D4 /* HTTPTask.swift in Sources */,
 				5779C03724A4179F005113D4 /* NetworkSchema.swift in Sources */,
 				5779C03A24A4179F005113D4 /* EndPoint.swift in Sources */,
+				5779C03F24A4193F005113D4 /* ParameterEncoder.swift in Sources */,
 				5779C03924A4179F005113D4 /* HTTPMethod.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

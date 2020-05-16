@@ -8,10 +8,18 @@
 
 import UIKit
 
+<<<<<<< HEAD
 public class TableViewAdapter<Model, Cell>: NSObject,
     UITableViewDelegate,
     UITableViewDataSource
     where Cell: ConfigurableCell, Model == Cell.ViewModel {
+=======
+public class TableViewAdapter<Cell: UITableViewCell & ConfigurableCell>: NSObject,
+    UITableViewDelegate,
+    UITableViewDataSource {
+    
+    public typealias Model = Cell.ViewModel
+>>>>>>> ios/feature/uiviewkit
     
     private(set) weak var tableView: UITableView!
     private(set) var viewModels: [Model] = [] {

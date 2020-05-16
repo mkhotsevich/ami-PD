@@ -8,7 +8,11 @@
 
 import UIKit
 
+<<<<<<< HEAD
 public protocol ReusableCell: UITableViewCell {
+=======
+public protocol ReusableCell {
+>>>>>>> ios/feature/uiviewkit
     static var reuseIdentifier: String { get }
 }
 

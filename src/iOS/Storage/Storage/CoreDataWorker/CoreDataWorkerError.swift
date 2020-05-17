@@ -8,8 +8,22 @@
 
 import Foundation
 
-public enum CoreDataWorkerError: Error {
-    case cannotFetch(String)
-    case cannotSave(String)
-    case cannotConvertion(String)
+public enum CoreDataWorkerError: Error, LocalizedError {
+    case cannotFetch(Error)
+    case cannotSave(Error)
+    case cannotConvertion
+    case cannotDelete(Error)
+    
+    public var localizedDescription: String {
+        switch self {
+        case .cannotFetch(let error):
+            return "Cannot fetch error: \(error))"
+        case .cannotConvertion:
+            return "Cannot convert object"
+        case .cannotDelete(let error):
+            return "Cannot delete object error: \(error)"
+        case .cannotSave(let error):
+            return "Cannot save object error: \(error)"
+        }
+    }
 }

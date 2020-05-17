@@ -8,11 +8,11 @@
 
 import Foundation
 
-class Storage<Entity> where Entity: ManagedObjectConvertible {
+public class Storage<Entity> where Entity: ManagedObjectConvertible {
     
-    let worker: CoreDataWorker
+    private let worker: CoreDataWorker
     
-    init(modelName: String) {
+    public init(modelName: String) {
         let stack = CoreDataStack(modelName: modelName)
         worker = CoreDataWorker(coreData: stack)
     }
@@ -23,7 +23,7 @@ class Storage<Entity> where Entity: ManagedObjectConvertible {
             case .success(let entities):
                 completion(entities)
             case .failure(let error):
-                print(error)
+            self.handleError(error)
                 completion([])
             }
         }
@@ -39,34 +39,31 @@ class Storage<Entity> where Entity: ManagedObjectConvertible {
                 let entity = entities.first
                 completion(entity)
             case .failure(let error):
-                print(error)
+                self.handleError(error)
                 completion(nil)
             }
         }
     }
-    
+
     public func write(_ entity: Entity) {
-        worker.upsert(entity) { error in
-            if let error = error {
-                print(error)
-            }
-        }
+        worker.upsert(entity) { self.handleError($0) }
     }
     
     public func write(_ entities: [Entity]) {
-        entities.forEach { write($0) }
+        worker.upsert(entities) { self.handleError($0) }
     }
     
     public func delete(_ entity: Entity) {
-        worker.remove(entity) { error in
-           if let error = error {
-               print(error)
-           }
-       }
+        worker.remove(entity) { self.handleError($0) }
     }
     
     public func delete(_ entities: [Entity]) {
-        entities.forEach { delete($0) }
+        worker.remove(entities) { self.handleError($0) }
+    }
+    
+    private func handleError(_ error: CoreDataWorkerError?) {
+        guard let error = error else { return }
+        print(error.localizedDescription)
     }
     
 }

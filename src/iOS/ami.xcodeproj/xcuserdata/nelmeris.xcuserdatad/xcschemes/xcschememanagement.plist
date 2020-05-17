@@ -7,11 +7,7 @@
 		<key>ami.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-<<<<<<< HEAD
 			<integer>7</integer>
-=======
-			<integer>5</integer>
->>>>>>> ios/feature/uiviewkit
 		</dict>
 	</dict>
 </dict>

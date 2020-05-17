@@ -8,16 +8,16 @@
 
 import Foundation
 
-public class Storage<Entity> where Entity: ManagedObjectConvertible {
-    
+open class Storage<Entity> where Entity: ManagedObjectConvertible {
+
     private let worker: CoreDataWorker
-    
-    public init(modelName: String) {
-        let stack = CoreDataStack(modelName: modelName)
+
+    public init(modelName: String, bundle: Bundle) {
+        let stack = CoreDataStack.build(modelName: modelName, bundle: bundle)
         worker = CoreDataWorker(coreData: stack)
     }
     
-    public func readAll(completion: @escaping ([Entity]) -> Void) {
+    open func readAll(completion: @escaping ([Entity]) -> Void) {
         worker.get { (result: Result<[Entity], CoreDataWorkerError>) in
             switch result {
             case .success(let entities):
@@ -28,12 +28,11 @@ public class Storage<Entity> where Entity: ManagedObjectConvertible {
             }
         }
     }
-    
-    public func read(id: String, completion: @escaping (Entity?) -> Void) {
-        worker.get(with: NSPredicate(format: "id == %@", id),
+
+    open func read(identifier: String, completion: @escaping (Entity?) -> Void) {
+        worker.get(with: NSPredicate(format: "id == %@", identifier),
                    sortDescriptors: nil,
-                   fetchLimit: nil)
-        { (result: Result<[Entity], CoreDataWorkerError>) in
+                   fetchLimit: nil) { (result: Result<[Entity], CoreDataWorkerError>) in
             switch result {
             case .success(let entities):
                 let entity = entities.first
@@ -45,25 +44,25 @@ public class Storage<Entity> where Entity: ManagedObjectConvertible {
         }
     }
 
-    public func write(_ entity: Entity) {
+    open func write(_ entity: Entity) {
         worker.upsert(entity) { self.handleError($0) }
     }
-    
-    public func write(_ entities: [Entity]) {
+
+    open func write(_ entities: [Entity]) {
         worker.upsert(entities) { self.handleError($0) }
     }
-    
-    public func delete(_ entity: Entity) {
+
+    open func delete(_ entity: Entity) {
         worker.remove(entity) { self.handleError($0) }
     }
-    
-    public func delete(_ entities: [Entity]) {
+
+    open func delete(_ entities: [Entity]) {
         worker.remove(entities) { self.handleError($0) }
     }
-    
+
     private func handleError(_ error: CoreDataWorkerError?) {
         guard let error = error else { return }
         print(error.localizedDescription)
     }
-    
+
 }

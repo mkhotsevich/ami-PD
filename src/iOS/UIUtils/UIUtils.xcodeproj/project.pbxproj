@@ -14,7 +14,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5779BFB024A40503005113D4 /* UIViewKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIViewKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5779BFB024A40503005113D4 /* UIUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5779BFB424A40503005113D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5779BFC424A407E6005113D4 /* UITableView+ReusableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+ReusableCell.swift"; sourceTree = "<group>"; };
 		5779BFC624A40809005113D4 /* ReusableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCell.swift; sourceTree = "<group>"; };
@@ -36,7 +36,7 @@
 		5779BFA624A40503005113D4 = {
 			isa = PBXGroup;
 			children = (
-				5779BFB224A40503005113D4 /* UIViewKit */,
+				5779BFB224A40503005113D4 /* UIUtils */,
 				5779BFB124A40503005113D4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -44,18 +44,18 @@
 		5779BFB124A40503005113D4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5779BFB024A40503005113D4 /* UIViewKit.framework */,
+				5779BFB024A40503005113D4 /* UIUtils.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5779BFB224A40503005113D4 /* UIViewKit */ = {
+		5779BFB224A40503005113D4 /* UIUtils */ = {
 			isa = PBXGroup;
 			children = (
 				5779BFC324A407AC005113D4 /* TableViewAdapter */,
 				5779BFB424A40503005113D4 /* Info.plist */,
 			);
-			path = UIViewKit;
+			path = UIUtils;
 			sourceTree = "<group>";
 		};
 		5779BFC324A407AC005113D4 /* TableViewAdapter */ = {
@@ -82,9 +82,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		5779BFAF24A40503005113D4 /* UIViewKit */ = {
+		5779BFAF24A40503005113D4 /* UIUtils */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5779BFB824A40503005113D4 /* Build configuration list for PBXNativeTarget "UIViewKit" */;
+			buildConfigurationList = 5779BFB824A40503005113D4 /* Build configuration list for PBXNativeTarget "UIUtils" */;
 			buildPhases = (
 				5779BFAB24A40503005113D4 /* Headers */,
 				5779BFAC24A40503005113D4 /* Sources */,
@@ -95,9 +95,9 @@
 			);
 			dependencies = (
 			);
-			name = UIViewKit;
+			name = UIUtils;
 			productName = UIViewKit;
-			productReference = 5779BFB024A40503005113D4 /* UIViewKit.framework */;
+			productReference = 5779BFB024A40503005113D4 /* UIUtils.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -115,7 +115,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5779BFAA24A40503005113D4 /* Build configuration list for PBXProject "UIViewKit" */;
+			buildConfigurationList = 5779BFAA24A40503005113D4 /* Build configuration list for PBXProject "UIUtils" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -128,7 +128,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5779BFAF24A40503005113D4 /* UIViewKit */,
+				5779BFAF24A40503005113D4 /* UIUtils */,
 			);
 		};
 /* End PBXProject section */
@@ -288,14 +288,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = UIViewKit/Info.plist;
+				INFOPLIST_FILE = UIUtils/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = artemkufaev.UIViewKit;
+				PRODUCT_BUNDLE_IDENTIFIER = artemkufaev.UIUtils;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -314,14 +314,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = UIViewKit/Info.plist;
+				INFOPLIST_FILE = UIUtils/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = artemkufaev.UIViewKit;
+				PRODUCT_BUNDLE_IDENTIFIER = artemkufaev.UIUtils;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -332,7 +332,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5779BFAA24A40503005113D4 /* Build configuration list for PBXProject "UIViewKit" */ = {
+		5779BFAA24A40503005113D4 /* Build configuration list for PBXProject "UIUtils" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5779BFB624A40503005113D4 /* Debug */,
@@ -341,7 +341,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5779BFB824A40503005113D4 /* Build configuration list for PBXNativeTarget "UIViewKit" */ = {
+		5779BFB824A40503005113D4 /* Build configuration list for PBXNativeTarget "UIUtils" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5779BFB924A40503005113D4 /* Debug */,

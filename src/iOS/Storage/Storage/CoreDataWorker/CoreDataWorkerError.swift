@@ -13,7 +13,7 @@ public enum CoreDataWorkerError: Error, LocalizedError {
     case cannotSave(Error)
     case cannotConvertion
     case cannotDelete(Error)
-    
+
     public var localizedDescription: String {
         switch self {
         case .cannotFetch(let error):

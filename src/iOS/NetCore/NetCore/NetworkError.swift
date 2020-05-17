@@ -6,9 +6,20 @@
 //  Copyright © 2020 Artem Kufaev. All rights reserved.
 //
 
-public enum NetworkError: String, Error {
-    case parametersNil = "Parameters were nil"
-    case encodingFailed = "Parameter encoding failed"
-    case missingURL = "URL is nil"
-    case decodingFailed = "Decoding data failed"
+import Foundation
+
+public enum NetworkError: Error, LocalizedError {
+    case parametersNil
+    case encodingFailed
+    case missingURL
+    case decodingFailed(Error)
+    
+    public var localizedDescription: String {
+        switch self {
+        case .parametersNil: return "Parameters were nil"
+        case .encodingFailed: return "Parameter encoding failed"
+        case .missingURL: return "URL is nil"
+        case .decodingFailed(let error): return "Decoding data failed, error: \(error)"
+        }
+    }
 }

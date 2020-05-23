@@ -6,9 +6,31 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5713DC0E24A4E1A600C9518A /* NetCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5713DC0D24A4E1A600C9518A /* NetCore.framework */; };
+		5713DC0F24A4E1A600C9518A /* NetCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5713DC0D24A4E1A600C9518A /* NetCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5713DC1224A4E3D400C9518A /* IDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713DC1124A4E3D400C9518A /* IDataManager.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5713DC1024A4E1A600C9518A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5713DC0F24A4E1A600C9518A /* NetCore.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		5713DBFC24A4DC3400C9518A /* DataManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DataManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5713DC0024A4DC3400C9518A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5713DC0D24A4E1A600C9518A /* NetCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NetCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5713DC1124A4E3D400C9518A /* IDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -16,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5713DC0E24A4E1A600C9518A /* NetCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -27,6 +50,7 @@
 			children = (
 				5713DBFE24A4DC3400C9518A /* DataManager */,
 				5713DBFD24A4DC3400C9518A /* Products */,
+				5713DC0C24A4E1A600C9518A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -42,8 +66,17 @@
 			isa = PBXGroup;
 			children = (
 				5713DC0024A4DC3400C9518A /* Info.plist */,
+				5713DC1124A4E3D400C9518A /* IDataManager.swift */,
 			);
 			path = DataManager;
+			sourceTree = "<group>";
+		};
+		5713DC0C24A4E1A600C9518A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5713DC0D24A4E1A600C9518A /* NetCore.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -67,6 +100,7 @@
 				5713DBF824A4DC3400C9518A /* Sources */,
 				5713DBF924A4DC3400C9518A /* Frameworks */,
 				5713DBFA24A4DC3400C9518A /* Resources */,
+				5713DC1024A4E1A600C9518A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -88,6 +122,7 @@
 				TargetAttributes = {
 					5713DBFB24A4DC3400C9518A = {
 						CreatedOnToolsVersion = 11.5;
+						LastSwiftMigration = 1150;
 					};
 				};
 			};
@@ -124,6 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5713DC1224A4E3D400C9518A /* IDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +289,7 @@
 		5713DC0524A4DC3400C9518A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = YX6VKW92JQ;
@@ -269,6 +306,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = artemkufaev.DataManager;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -277,6 +315,7 @@
 		5713DC0624A4DC3400C9518A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = YX6VKW92JQ;

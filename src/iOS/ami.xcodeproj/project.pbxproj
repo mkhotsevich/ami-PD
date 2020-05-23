@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5713DC0824A4DC4E00C9518A /* DataManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5713DC0724A4DC4E00C9518A /* DataManager.framework */; };
+		5713DC0924A4DC4E00C9518A /* DataManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5713DC0724A4DC4E00C9518A /* DataManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5779BF6B24A3F181005113D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BF6A24A3F181005113D4 /* AppDelegate.swift */; };
 		5779BF6D24A3F181005113D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BF6C24A3F181005113D4 /* SceneDelegate.swift */; };
 		5779BF7424A3F182005113D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5779BF7324A3F182005113D4 /* Assets.xcassets */; };
@@ -30,6 +32,7 @@
 			files = (
 				5779C04A24A4244A005113D4 /* UIUtils.framework in Embed Frameworks */,
 				5779BFE324A40D3B005113D4 /* Storage.framework in Embed Frameworks */,
+				5713DC0924A4DC4E00C9518A /* DataManager.framework in Embed Frameworks */,
 				5779C05324A4252F005113D4 /* NetCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -38,6 +41,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5713DC0724A4DC4E00C9518A /* DataManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DataManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5779BF6724A3F181005113D4 /* ami.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ami.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5779BF6A24A3F181005113D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5779BF6C24A3F181005113D4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5713DC0824A4DC4E00C9518A /* DataManager.framework in Frameworks */,
 				5779C04924A4244A005113D4 /* UIUtils.framework in Frameworks */,
 				5779C05224A4252F005113D4 /* NetCore.framework in Frameworks */,
 				918FA3E3B7791CC5B93DD00B /* Pods_ami.framework in Frameworks */,
@@ -112,6 +117,7 @@
 		AC4C9430DDB1307CEB9CA838 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5713DC0724A4DC4E00C9518A /* DataManager.framework */,
 				5779C05124A4252F005113D4 /* NetCore.framework */,
 				5779C04824A4244A005113D4 /* UIUtils.framework */,
 				5779BFE124A40D3B005113D4 /* Storage.framework */,

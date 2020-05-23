@@ -12,6 +12,9 @@
 		5713DC1224A4E3D400C9518A /* IDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713DC1124A4E3D400C9518A /* IDataManager.swift */; };
 		5713DC4824A538D000C9518A /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713DC4724A538D000C9518A /* NetworkAPI.swift */; };
 		5713DC4C24A53AE200C9518A /* Storage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5713DC4A24A53AE200C9518A /* Storage.xcdatamodeld */; };
+		5713DC7224A53B5300C9518A /* ArticleCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713DC5F24A53B5300C9518A /* ArticleCD+CoreDataProperties.swift */; };
+		5713DC7324A53B5300C9518A /* ArticleCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713DC6024A53B5300C9518A /* ArticleCD+CoreDataClass.swift */; };
+		5713DC7424A53B5300C9518A /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713DC6124A53B5300C9518A /* Article.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +38,9 @@
 		5713DC1124A4E3D400C9518A /* IDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDataManager.swift; sourceTree = "<group>"; };
 		5713DC4724A538D000C9518A /* NetworkAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
 		5713DC4B24A53AE200C9518A /* Storage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Storage.xcdatamodel; sourceTree = "<group>"; };
+		5713DC5F24A53B5300C9518A /* ArticleCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ArticleCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5713DC6024A53B5300C9518A /* ArticleCD+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ArticleCD+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5713DC6124A53B5300C9518A /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +75,7 @@
 		5713DBFE24A4DC3400C9518A /* DataManager */ = {
 			isa = PBXGroup;
 			children = (
+				5713DC4D24A53B5300C9518A /* Entities */,
 				5713DC4924A53AE200C9518A /* CoreData */,
 				5713DC4724A538D000C9518A /* NetworkAPI.swift */,
 				5713DC0024A4DC3400C9518A /* Info.plist */,
@@ -91,6 +98,24 @@
 				5713DC4A24A53AE200C9518A /* Storage.xcdatamodeld */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		5713DC4D24A53B5300C9518A /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				5713DC5E24A53B5300C9518A /* Article */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		5713DC5E24A53B5300C9518A /* Article */ = {
+			isa = PBXGroup;
+			children = (
+				5713DC6124A53B5300C9518A /* Article.swift */,
+				5713DC5F24A53B5300C9518A /* ArticleCD+CoreDataProperties.swift */,
+				5713DC6024A53B5300C9518A /* ArticleCD+CoreDataClass.swift */,
+			);
+			path = Article;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,8 +199,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5713DC1224A4E3D400C9518A /* IDataManager.swift in Sources */,
+				5713DC7424A53B5300C9518A /* Article.swift in Sources */,
 				5713DC4C24A53AE200C9518A /* Storage.xcdatamodeld in Sources */,
 				5713DC4824A538D000C9518A /* NetworkAPI.swift in Sources */,
+				5713DC7324A53B5300C9518A /* ArticleCD+CoreDataClass.swift in Sources */,
+				5713DC7224A53B5300C9518A /* ArticleCD+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

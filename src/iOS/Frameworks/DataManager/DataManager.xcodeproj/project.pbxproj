@@ -18,6 +18,9 @@
 		5713DC7C24A53C0F00C9518A /* SleepInfoCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713DC7924A53C0F00C9518A /* SleepInfoCD+CoreDataProperties.swift */; };
 		5713DC7D24A53C0F00C9518A /* SleepInfoCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713DC7A24A53C0F00C9518A /* SleepInfoCD+CoreDataClass.swift */; };
 		5713DC7E24A53C0F00C9518A /* SleepInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713DC7B24A53C0F00C9518A /* SleepInfo.swift */; };
+		5713DC8324A53C6F00C9518A /* UserCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713DC8024A53C6F00C9518A /* UserCD+CoreDataProperties.swift */; };
+		5713DC8424A53C6F00C9518A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713DC8124A53C6F00C9518A /* User.swift */; };
+		5713DC8524A53C6F00C9518A /* UserCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713DC8224A53C6F00C9518A /* UserCD+CoreDataClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,6 +50,9 @@
 		5713DC7924A53C0F00C9518A /* SleepInfoCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SleepInfoCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5713DC7A24A53C0F00C9518A /* SleepInfoCD+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SleepInfoCD+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5713DC7B24A53C0F00C9518A /* SleepInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SleepInfo.swift; sourceTree = "<group>"; };
+		5713DC8024A53C6F00C9518A /* UserCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5713DC8124A53C6F00C9518A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5713DC8224A53C6F00C9518A /* UserCD+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserCD+CoreDataClass.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +117,7 @@
 			children = (
 				5713DC5E24A53B5300C9518A /* Article */,
 				5713DC7824A53C0F00C9518A /* SleepInfo */,
+				5713DC7F24A53C6F00C9518A /* User */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -119,8 +126,8 @@
 			isa = PBXGroup;
 			children = (
 				5713DC6124A53B5300C9518A /* Article.swift */,
-				5713DC5F24A53B5300C9518A /* ArticleCD+CoreDataProperties.swift */,
 				5713DC6024A53B5300C9518A /* ArticleCD+CoreDataClass.swift */,
+				5713DC5F24A53B5300C9518A /* ArticleCD+CoreDataProperties.swift */,
 			);
 			path = Article;
 			sourceTree = "<group>";
@@ -129,10 +136,20 @@
 			isa = PBXGroup;
 			children = (
 				5713DC7B24A53C0F00C9518A /* SleepInfo.swift */,
-				5713DC7924A53C0F00C9518A /* SleepInfoCD+CoreDataProperties.swift */,
 				5713DC7A24A53C0F00C9518A /* SleepInfoCD+CoreDataClass.swift */,
+				5713DC7924A53C0F00C9518A /* SleepInfoCD+CoreDataProperties.swift */,
 			);
 			path = SleepInfo;
+			sourceTree = "<group>";
+		};
+		5713DC7F24A53C6F00C9518A /* User */ = {
+			isa = PBXGroup;
+			children = (
+				5713DC8124A53C6F00C9518A /* User.swift */,
+				5713DC8224A53C6F00C9518A /* UserCD+CoreDataClass.swift */,
+				5713DC8024A53C6F00C9518A /* UserCD+CoreDataProperties.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,12 +235,15 @@
 				5713DC1224A4E3D400C9518A /* IDataManager.swift in Sources */,
 				5713DC7424A53B5300C9518A /* Article.swift in Sources */,
 				5713DC7D24A53C0F00C9518A /* SleepInfoCD+CoreDataClass.swift in Sources */,
+				5713DC8324A53C6F00C9518A /* UserCD+CoreDataProperties.swift in Sources */,
 				5713DC7C24A53C0F00C9518A /* SleepInfoCD+CoreDataProperties.swift in Sources */,
 				5713DC4C24A53AE200C9518A /* Storage.xcdatamodeld in Sources */,
 				5713DC4824A538D000C9518A /* NetworkAPI.swift in Sources */,
 				5713DC7324A53B5300C9518A /* ArticleCD+CoreDataClass.swift in Sources */,
 				5713DC7224A53B5300C9518A /* ArticleCD+CoreDataProperties.swift in Sources */,
 				5713DC7E24A53C0F00C9518A /* SleepInfo.swift in Sources */,
+				5713DC8424A53C6F00C9518A /* User.swift in Sources */,
+				5713DC8524A53C6F00C9518A /* UserCD+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

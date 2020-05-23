@@ -21,6 +21,9 @@
 		5713DC8324A53C6F00C9518A /* UserCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713DC8024A53C6F00C9518A /* UserCD+CoreDataProperties.swift */; };
 		5713DC8424A53C6F00C9518A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713DC8124A53C6F00C9518A /* User.swift */; };
 		5713DC8524A53C6F00C9518A /* UserCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713DC8224A53C6F00C9518A /* UserCD+CoreDataClass.swift */; };
+		5713DC8A24A53CF400C9518A /* WeightInfoCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713DC8724A53CF400C9518A /* WeightInfoCD+CoreDataProperties.swift */; };
+		5713DC8B24A53CF400C9518A /* WeightInfoCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713DC8824A53CF400C9518A /* WeightInfoCD+CoreDataClass.swift */; };
+		5713DC8C24A53CF400C9518A /* WeightInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713DC8924A53CF400C9518A /* WeightInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,6 +56,9 @@
 		5713DC8024A53C6F00C9518A /* UserCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5713DC8124A53C6F00C9518A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5713DC8224A53C6F00C9518A /* UserCD+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserCD+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5713DC8724A53CF400C9518A /* WeightInfoCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WeightInfoCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5713DC8824A53CF400C9518A /* WeightInfoCD+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WeightInfoCD+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5713DC8924A53CF400C9518A /* WeightInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +124,7 @@
 				5713DC5E24A53B5300C9518A /* Article */,
 				5713DC7824A53C0F00C9518A /* SleepInfo */,
 				5713DC7F24A53C6F00C9518A /* User */,
+				5713DC8624A53CF400C9518A /* WeightInfo */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -150,6 +157,16 @@
 				5713DC8024A53C6F00C9518A /* UserCD+CoreDataProperties.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		5713DC8624A53CF400C9518A /* WeightInfo */ = {
+			isa = PBXGroup;
+			children = (
+				5713DC8924A53CF400C9518A /* WeightInfo.swift */,
+				5713DC8824A53CF400C9518A /* WeightInfoCD+CoreDataClass.swift */,
+				5713DC8724A53CF400C9518A /* WeightInfoCD+CoreDataProperties.swift */,
+			);
+			path = WeightInfo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,11 +249,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5713DC8B24A53CF400C9518A /* WeightInfoCD+CoreDataClass.swift in Sources */,
 				5713DC1224A4E3D400C9518A /* IDataManager.swift in Sources */,
+				5713DC8C24A53CF400C9518A /* WeightInfo.swift in Sources */,
 				5713DC7424A53B5300C9518A /* Article.swift in Sources */,
 				5713DC7D24A53C0F00C9518A /* SleepInfoCD+CoreDataClass.swift in Sources */,
 				5713DC8324A53C6F00C9518A /* UserCD+CoreDataProperties.swift in Sources */,
 				5713DC7C24A53C0F00C9518A /* SleepInfoCD+CoreDataProperties.swift in Sources */,
+				5713DC8A24A53CF400C9518A /* WeightInfoCD+CoreDataProperties.swift in Sources */,
 				5713DC4C24A53AE200C9518A /* Storage.xcdatamodeld in Sources */,
 				5713DC4824A538D000C9518A /* NetworkAPI.swift in Sources */,
 				5713DC7324A53B5300C9518A /* ArticleCD+CoreDataClass.swift in Sources */,

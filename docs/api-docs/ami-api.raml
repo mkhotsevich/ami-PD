@@ -4,39 +4,439 @@ baseUri: https://pacific-peak-31437.herokuapp.com/api/
 version: v1
 
 /auth:
+  description: "Методы авторизации"
   /register:
     post:
+      description: "Регистрация нового пользователя"
+      body:
+        application/x-www-form-urlencoded:
+          properties:
+            email:
+              required: true
+              type: string
+            password:
+              description: "Хэш пароля алгоритма MD5"
+              required: true
+              type: string
+            name:
+              required: true
+              type: string
+            surname:
+              required: true
+              type: string
+            birthday:
+              description: "Дата рождения (timestamp)"
+              required: true
+              type: number
+            weight:
+              description: "Последний вес пользователя"
+              required: true
+              type: number
+            height:
+              description: "Рост пользователя"
+              required: true
+              type: number
+            appleId:
+              description: "ID пользователя авторизации через Apple ID"
+              required: false
+              type: string
+            vkId:
+              description: "ID пользователя авторизации через VK"
+              required: false
+              type: number
+      responses:
+        200:
+          body:
+            application/json:
+              properties:
+                user:
+                  type: object
+                  required: true
+                accessToken:
+                  type: string
+                  required: true
+              example: |
+                {
+                  "user": {
+                    "userId": 1,
+                    "email": "some-email@gmail.com",
+                    "name": "Артем",
+                    "surname": "Куфаев",
+                    "birthdate": 12351243,
+                    "appleId": "123dsafq",
+                    "vkId": 12351
+                  },
+                  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZWY0YmJjMmQxZGE0MmQ1Y2I0M2RiNzYiLCJpYXQiOjE1OTMxMTg5NjQsImV4cCI6MTU5NTcxMDk2NH0.mdeN9m-F24cYHHV3To0RLjHFN8tBwQf4TPY0Z_WCi3Y"
+                }
   /login:
     post:
+      description: "Авторизация пользователя"
+      body:
+        application/x-www-form-urlencoded:
+          properties:
+            email:
+              required: true
+              type: string
+            password:
+              description: "Хэш пароля алгоритма MD5"
+              required: true
+              type: string
+      responses:
+        200:
+          body:
+            application/json:
+              properties:
+                user:
+                  type: object
+                  required: true
+                accessToken:
+                  type: string
+                  required: true
+              example: |
+                {
+                  "user": {
+                    "userId": 1,
+                    "email": "some-email@gmail.com",
+                    "name": "Артем",
+                    "surname": "Куфаев",
+                    "birthdate": 12351243,
+                    "appleId": "123dsafq",
+                    "vkId": 12351
+                  },
+                  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZWY0YmJjMmQxZGE0MmQ1Y2I0M2RiNzYiLCJpYXQiOjE1OTMxMTg5NjQsImV4cCI6MTU5NTcxMDk2NH0.mdeN9m-F24cYHHV3To0RLjHFN8tBwQf4TPY0Z_WCi3Y"
+                }
+
   /restorePassword:
     post:
-  /updateToken:
+      description: "Восстановление пароля пользователя"
+      body:
+        application/x-www-form-urlencoded:
+          properties:
+            email:
+              required: true
+              type: string
+      responses:
+        200:
+          body:
+            application/json:
+              properties:
+                message:
+                  type: string
+                  required: true
+              example: |
+                {
+                  "message": "Ссылка на восстановление пароля была отправлена на почтовый ящик"
+                }
+/token:
+  /refresh:
     post:
+      description: "Обновление времени действия токена доступа"
+      body:
+        application/x-www-form-urlencoded:
+          properties:
+            accessToken:
+              required: true
+              type: string
+      responses:
+        200:
+          body:
+            application/json:
+              properties:
+                accessToken: string
+              example: |
+                {
+                  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZWY0YmJjMmQxZGE0MmQ1Y2I0M2RiNzYiLCJpYXQiOjE1OTMxMTg5NjQsImV4cCI6MTU5NTcxMDk2NH0.mdeN9m-F24cYHHV3To0RLjHFN8tBwQf4TPY0Z_WCi3Y"
+                }
 /users:
+  description: "Коллекция пользователей ami"
   /{userId}:
+    description: "Модель пользователя"
     get:
+      description: "Получение подробной информации о пользователе"
+      headers:
+        AccessToken: string
+      responses:
+        200:
+          body:
+            application/json:
+              properties:
+                userId: string
+                email: string
+                name: string
+                surname: string
+                birthdate: number
+              example: |
+                {
+                  "userId": "23-141",
+                  "email": "some-email@gmail.com",
+                  "name": "Artem",
+                  "surname": "Kufaev",
+                  "birthdate": 916099200
+                }
+        404:
+          body:
+            application/json:
+              properties:
+                message: string
+              example: |
+                {
+                  "message": "Пользователь не найден"
+                }
     put:
-
+      description: "Обновление данных пользователя"
 /history:
   /water:
     get:
+      description: "Получение истории выпитой воды"
+      headers:
+        AccessToken: string
+      responses:
+        200:
+          body:
+            application/json:
+              properties:
+                id: string
+                amount: number
+                drinkedAt: number
+              example: |
+                [
+                  {
+                    "id": 1,
+                    "amount": 40,
+                    "drinkedAt": 1234123
+                  },
+                  {
+                    "id": 2,
+                    "amount": 55,
+                    "drinkedAt": 1213134
+                  }
+                ]
     post:
+      description: "Добавление информации о выпитой воде"
+      headers:
+        AccessToken: string
+      body:
+        application/x-www-form-urlencoded:
+          properties:
+            amount:
+              required: true
+              type: number
+            drinkedAt:
+              required: true
+              type: number
+      responses:
+        200:
+          body:
+            application/json:
+              properties:
+                id: string
+                amount: number
+                drinkedAt: number
+              example: |
+                {
+                  "id": 1,
+                  "amount": 40,
+                  "drinkedAt": 1234123
+                }
     delete:
 
   /weight:
     get:
+      description: "Получение истории взвешиваний"
+      headers:
+        AccessToken: string
+      responses:
+        200:
+          body:
+            application/json:
+              properties:
+                id: string
+                amount: number
+                drinkedAt: number
+              example: |
+                [
+                  {
+                    "id": 1,
+                    "amount": 64.3,
+                    "weighedAt": 1234123
+                  },
+                  {
+                    "id": 2,
+                    "amount": 66.5,
+                    "weighedAt": 1213134
+                  }
+                ]
     post:
+      description: "Добавление информации о новом взвешивании"
+      headers:
+        AccessToken: string
+      body:
+        application/x-www-form-urlencoded:
+          properties:
+            amount:
+              required: true
+              type: number
+            weighedAt:
+              required: true
+              type: number
+      responses:
+        200:
+          body:
+            application/json:
+              properties:
+                id: string
+                amount: number
+                weighedAt: number
+              example: |
+                {
+                  "id": 1,
+                  "amount": 64.3,
+                  "weighedAt": 1234123
+                }
     delete:
 
   /sleep:
     get:
+      description: "Получение истории сна"
+      headers:
+        AccessToken: string
+      responses:
+        200:
+          body:
+            application/json:
+              properties:
+                id: string
+                endAt: number
+                riseAt: number
+              example: |
+                [
+                  {
+                    "id": 1,
+                    "endAt": 1234123,
+                    "riseAt": 1234123
+                  },
+                  {
+                    "id": 2,
+                    "endAt": 1234123,
+                    "riseAt": 1213134
+                  }
+                ]
     post:
+      description: "Добавление информации о прошедшем сне"
+      headers:
+        AccessToken: string
+      body:
+        application/x-www-form-urlencoded:
+          properties:
+            endAt:
+              required: true
+              type: number
+            riseAt:
+              required: true
+              type: number
+      responses:
+        200:
+          body:
+            application/json:
+              properties:
+                id: string
+                endAt: number
+                riseAt: number
+              example: |
+                {
+                  "id": 1,
+                  "endAt": 1234123,
+                  "riseAt": 1234123
+                }
     delete:
 
   /tasks:
     get:
+      description: "Получение истории сна"
+      headers:
+        AccessToken: string
+      responses:
+        200:
+          body:
+            application/json:
+              properties:
+                id: string
+                title: string
+                notifyAt: number
+                createdAt: number
+              example: |
+                [
+                  {
+                    "id": 1,
+                    "title": "Some title",
+                    "notifyAt": 1234123,
+                    "createdAt": 1234123
+                  },
+                  {
+                    "id": 2,
+                    "title": "Some title 2",
+                    "notifyAt": 3213333,
+                    "createdAt": 3213333
+                  }
+                ]
     post:
+      description: "Добавление информации о новой задаче"
+      headers:
+        AccessToken: string
+      body:
+        application/x-www-form-urlencoded:
+          properties:
+            title:
+              required: true
+              type: string
+            notifyAt:
+              required: false
+              type: number
+            createdAt:
+              required: true
+              type: number
+      responses:
+        200:
+          body:
+            application/json:
+              properties:
+                id: string
+                title: string
+                notifyAt: number
+                createdAt: number
+              example: |
+                {
+                  "id": 2,
+                  "title": "Some title 2",
+                  "notifyAt": 3213333,
+                  "createdAt": 3213333
+                }
     delete:
 
 /articles:
   get:
+    description: "Получение списка статей"
+    responses:
+      200:
+        body:
+          application/json:
+            properties:
+              id: string
+              title: string
+              content: string
+              createdAt: number
+            example: |
+              [
+                {
+                  "id": 1,
+                  "title": "Some title",
+                  "content": "Bla-bla-bla",
+                  "createdAt": 1234123
+                },
+                {
+                  "id": 2,
+                  "title": "Some title 2",
+                  "content": "Bla-bla-bla",
+                  "createdAt": 3213333
+                }
+              ]

@@ -43,6 +43,7 @@ extension DataManager {
         manager.loadFromNetworkSingle(api: .getUserData(userId: userId, token: accessToken)) { (result) in
             switch result {
             case .success(let user):
+                manager.saveToDB([user])
                 completion(.success(user) )
             case .failure(let error):
                 completion(.failure(error))
@@ -63,6 +64,7 @@ extension DataManager {
         manager.loadFromNetwork(api: .getWaterHistory(userId: userId, token: accessToken)) { (result) in
             switch result {
             case .success(let waterHistory):
+                manager.saveToDB(waterHistory)
                 completion(.success(waterHistory) )
             case .failure(let error):
                 completion(.failure(error))
@@ -79,6 +81,7 @@ extension DataManager {
         manager.loadFromNetworkSingle(api: api) { (result) in
             switch result {
             case .success(let waterInfo):
+                manager.saveToDB([waterInfo])
                 completion(.success(waterInfo))
             case .failure(let error):
                 completion(.failure(error))
@@ -94,6 +97,7 @@ extension DataManager {
         manager.loadFromNetwork(api: .getSleepHistory(userId: userId, token: accessToken)) { (result) in
             switch result {
             case .success(let sleepHistory):
+                manager.saveToDB(sleepHistory)
                 completion(.success(sleepHistory) )
             case .failure(let error):
                 completion(.failure(error))
@@ -106,6 +110,7 @@ extension DataManager {
         manager.loadFromNetworkSingle(api: .sendSleepInfo(userId: userId, token: accessToken, endDate: endDate, riseDate: riseDate)) { (result) in
             switch result {
             case .success(let sleepInfo):
+                manager.saveToDB([sleepInfo])
                 completion(.success(sleepInfo))
             case .failure(let error):
                 completion(.failure(error))
@@ -121,6 +126,7 @@ extension DataManager {
         manager.loadFromNetwork(api: .getTaskHistory(userId: userId, token: accessToken)) { (result) in
             switch result {
             case .success(let taskHistory):
+                manager.saveToDB(taskHistory)
                 completion(.success(taskHistory) )
             case .failure(let error):
                 completion(.failure(error))
@@ -141,6 +147,7 @@ extension DataManager {
         manager.loadFromNetworkSingle(api: api) { (result) in
             switch result {
             case .success(let sleepInfo):
+                manager.saveToDB([sleepInfo])
                 completion(.success(sleepInfo))
             case .failure(let error):
                 completion(.failure(error))
@@ -156,6 +163,7 @@ extension DataManager {
         manager.loadFromNetwork(api: .getWeightHistory(userId: userId, token: accessToken)) { (result) in
             switch result {
             case .success(let weightHistory):
+                manager.saveToDB(weightHistory)
                 completion(.success(weightHistory) )
             case .failure(let error):
                 completion(.failure(error))
@@ -168,6 +176,7 @@ extension DataManager {
         manager.loadFromNetworkSingle(api: .sendWeightInfo(userId: userId, token: accessToken, amount: amount)) { (result) in
             switch result {
             case .success(let weightInfo):
+                manager.saveToDB([weightInfo])
                 completion(.success(weightInfo))
             case .failure(let error):
                 completion(.failure(error))
@@ -186,6 +195,7 @@ extension DataManager {
         manager.loadFromNetwork(api: .getArticles) { (result) in
             switch result {
             case .success(let articles):
+                manager.saveToDB(articles)
                 completion(.success(articles) )
             case .failure(let error):
                 completion(.failure(error))

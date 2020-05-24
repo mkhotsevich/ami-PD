@@ -11,7 +11,7 @@ import Foundation
 import CoreData
 import Storage
 
-@objc(TaskInfoCD)
+@objc(UserCD)
 public class UserCD: NSManagedObject {
     public class func getOrCreateSingle(with id: Int, from context: NSManagedObjectContext) -> UserCD? {
         let entityName = String(describing: Self.self)
@@ -30,6 +30,14 @@ extension UserCD: ManagedObjectProtocol {
             let name = name,
             let surname = surname,
             let birthdate = birthdate else { return nil }
-        return User(id: Int(id), email: email, name: name, surname: surname, birthdate: birthdate, weight: weight, height: height, appleId: appleId, vkId: Int(vkId))
+        return User(id: Int(id),
+                    email: email,
+                    name: name,
+                    surname: surname,
+                    birthdate: birthdate,
+                    weight: weight,
+                    height: height,
+                    appleId: appleId,
+                    vkId: Int(vkId))
     }
 }

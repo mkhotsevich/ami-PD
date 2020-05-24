@@ -10,7 +10,6 @@
 import Foundation
 import CoreData
 
-
 extension ArticleCD {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<ArticleCD> {

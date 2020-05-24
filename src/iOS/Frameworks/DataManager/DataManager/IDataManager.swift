@@ -30,7 +30,6 @@ internal class IDataManager<NetworkAPI: INetworkAPI, Model: Decodable & ManagedO
         provider.load(api) { (result: NetworkResult<Model>) in
             switch result {
             case .success(let data):
-                self.saveToDB([data])
                 completion(.success(data))
             case .failure(let error):
                 completion(.failure(error))
@@ -42,7 +41,6 @@ internal class IDataManager<NetworkAPI: INetworkAPI, Model: Decodable & ManagedO
         provider.load(api) { (result: NetworkResult<[Model]>) in
             switch result {
             case .success(let data):
-                self.saveToDB(data)
                 completion(.success(data))
             case .failure(let error):
                 completion(.failure(error))

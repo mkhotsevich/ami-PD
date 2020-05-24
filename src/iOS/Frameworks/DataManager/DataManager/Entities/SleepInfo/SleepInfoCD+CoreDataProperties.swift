@@ -10,7 +10,6 @@
 import Foundation
 import CoreData
 
-
 extension SleepInfoCD {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<SleepInfoCD> {

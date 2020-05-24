@@ -10,7 +10,6 @@
 import Foundation
 import CoreData
 
-
 extension TaskInfoCD {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<TaskInfoCD> {

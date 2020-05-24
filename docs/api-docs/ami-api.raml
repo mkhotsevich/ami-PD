@@ -1,0 +1,42 @@
+#%RAML 1.0
+title: ami
+baseUri: https://pacific-peak-31437.herokuapp.com/api/
+version: v1
+
+/auth:
+  /register:
+    post:
+  /login:
+    post:
+  /restorePassword:
+    post:
+  /updateToken:
+    post:
+/users:
+  /{userId}:
+    get:
+    put:
+
+/history:
+  /water:
+    get:
+    post:
+    delete:
+
+  /weight:
+    get:
+    post:
+    delete:
+
+  /sleep:
+    get:
+    post:
+    delete:
+
+  /tasks:
+    get:
+    post:
+    delete:
+
+/articles:
+  get:

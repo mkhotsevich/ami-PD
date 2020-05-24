@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5713DC0E24A4E1A600C9518A /* NetCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5713DC0D24A4E1A600C9518A /* NetCore.framework */; };
-		5713DC0F24A4E1A600C9518A /* NetCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5713DC0D24A4E1A600C9518A /* NetCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5713DC1224A4E3D400C9518A /* IDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713DC1124A4E3D400C9518A /* IDataManager.swift */; };
 		5713DC4824A538D000C9518A /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713DC4724A538D000C9518A /* NetworkAPI.swift */; };
 		5713DC4C24A53AE200C9518A /* Storage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5713DC4A24A53AE200C9518A /* Storage.xcdatamodeld */; };
@@ -30,21 +28,8 @@
 		5713DC9824A53DBA00C9518A /* TaskInfoCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713DC9524A53DBA00C9518A /* TaskInfoCD+CoreDataProperties.swift */; };
 		5713DC9924A53DBA00C9518A /* TaskInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713DC9624A53DBA00C9518A /* TaskInfo.swift */; };
 		5713DC9A24A53DBA00C9518A /* TaskInfoCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713DC9724A53DBA00C9518A /* TaskInfoCD+CoreDataClass.swift */; };
+		5713DC9C24A53E3F00C9518A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5713DC9B24A53E3F00C9518A /* DataManager.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		5713DC1024A4E1A600C9518A /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				5713DC0F24A4E1A600C9518A /* NetCore.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5713DBFC24A4DC3400C9518A /* DataManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DataManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +56,7 @@
 		5713DC9524A53DBA00C9518A /* TaskInfoCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TaskInfoCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5713DC9624A53DBA00C9518A /* TaskInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskInfo.swift; sourceTree = "<group>"; };
 		5713DC9724A53DBA00C9518A /* TaskInfoCD+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TaskInfoCD+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5713DC9B24A53E3F00C9518A /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +64,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5713DC0E24A4E1A600C9518A /* NetCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +90,7 @@
 		5713DBFE24A4DC3400C9518A /* DataManager */ = {
 			isa = PBXGroup;
 			children = (
+				5713DC9B24A53E3F00C9518A /* DataManager.swift */,
 				5713DC4D24A53B5300C9518A /* Entities */,
 				5713DC4924A53AE200C9518A /* CoreData */,
 				5713DC4724A538D000C9518A /* NetworkAPI.swift */,
@@ -224,7 +210,6 @@
 				5713DBF824A4DC3400C9518A /* Sources */,
 				5713DBF924A4DC3400C9518A /* Frameworks */,
 				5713DBFA24A4DC3400C9518A /* Resources */,
-				5713DC1024A4E1A600C9518A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -302,6 +287,7 @@
 				5713DC7224A53B5300C9518A /* ArticleCD+CoreDataProperties.swift in Sources */,
 				5713DC9824A53DBA00C9518A /* TaskInfoCD+CoreDataProperties.swift in Sources */,
 				5713DC7E24A53C0F00C9518A /* SleepInfo.swift in Sources */,
+				5713DC9C24A53E3F00C9518A /* DataManager.swift in Sources */,
 				5713DC8424A53C6F00C9518A /* User.swift in Sources */,
 				5713DC8524A53C6F00C9518A /* UserCD+CoreDataClass.swift in Sources */,
 			);

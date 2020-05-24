@@ -35,7 +35,7 @@ class RequestBuilder {
                                                urlParameters: Parameters?,
                                                request: inout URLRequest) throws {
         if let bodyParameters = bodyParameters {
-            try URLParameterEncoder.encode(urlRequest: &request, with: bodyParameters)
+            try JSONParameterEncoder.encode(urlRequest: &request, with: bodyParameters)
         }
         if let urlParameters = urlParameters {
             try URLParameterEncoder.encode(urlRequest: &request, with: urlParameters)

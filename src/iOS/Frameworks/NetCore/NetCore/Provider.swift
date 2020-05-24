@@ -40,7 +40,7 @@ open class Provider<API: INetworkAPI>: ProviderProtocol {
                     let parsedData = try JSONDecoder().decode(Model.self, from: data)
                     completion(.success(parsedData))
                 } catch {
-                    completion(.failure(.decodingFailed(error)))
+                    completion(.failure(.decodingFailed(error, data)))
                 }
             }
             self.task?.resume()

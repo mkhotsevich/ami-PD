@@ -12,14 +12,20 @@ public enum NetworkError: Error, LocalizedError {
     case parametersNil
     case encodingFailed
     case missingURL
-    case decodingFailed(Error)
+    case decodingFailed(Error, Data)
     
     public var localizedDescription: String {
         switch self {
         case .parametersNil: return "Parameters were nil"
         case .encodingFailed: return "Parameter encoding failed"
         case .missingURL: return "URL is nil"
-        case .decodingFailed(let error): return "Decoding data failed, error: \(error)"
+        case .decodingFailed(let error, let data):
+            let msg = "Decoding data failed, error: \(error)"
+            if let data = String(data: data, encoding: .utf8) {
+                return msg + "\n" + data
+            } else {
+                return msg
+            }
         }
     }
 }

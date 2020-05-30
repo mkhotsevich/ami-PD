@@ -1,19 +1,38 @@
 #%RAML 1.0 Library
 types:
 
-  UserResponse200:
+  User:
+    type: object
     properties:
-      userId: string
-      email: string
-      name: string
-      surname: string
-      birthdate: number
-    example: !include ami-include-users-single.json
+      id:
+        required: true
+        type: string
+      email:
+        required: true
+        type: string
+      name:
+        required: true
+        type: string
+      surname:
+        required: true
+        type: string
+      birthdate:
+        required: true
+        type: number
+      height:
+        required: true
+        type: number
+      appleId:
+        required: false
+        type: string
+      vkId:
+        required: false
+        type: number
+    example: !include ami-include-user-item.json
 
-  UserResponse404:
+  UserNotFound:
     properties:
-      message: string
-    example: |
-      {
-        "message": "Пользователь не найден"
-      }
+      message:
+        required: true
+        type: string
+    example: !include ami-include-user-not-found.json

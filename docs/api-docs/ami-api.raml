@@ -1,11 +1,13 @@
 #%RAML 1.0
 title: ami
-baseUri: https://pacific-peak-31437.herokuapp.com/api/
-version: v1
+version: v1.0
+# TODO Адрес не поменяется?
+baseUri: https://pacific-peak-31437.herokuapp.com/api/{version}/
 mediaType: [ application/json ]
 protocols: [ HTTPS ]
 
 uses:
+  lib: ami-library.raml
   auth-lib: auth/ami-library-auth.raml
   articles-lib: articles/ami-library-articles.raml
   token-lib: token/ami-library-token.raml
@@ -14,6 +16,63 @@ uses:
   weight-lib: history/weight/ami-library-history-weight.raml
   sleep-lib: history/sleep/ami-library-history-sleep.raml
   tasks-lib: history/tasks/ami-library-history-tasks.raml
+
+resourceTypes:
+  history:
+    description: "История <<collectionName>>"
+    get:
+      description: "Получение истории <<collectionName>>"
+      headers:
+        Authorization:
+          description: "Токен доступа, полученный через авторизацию"
+          type: string
+          example: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZWY0YmJjMmQxZGE0MmQ1Y2I0M2RiNzYiLCJpYXQiOjE1OTMxMTg5NjQsImV4cCI6MTU5NTcxMDk2NH0.mdeN9m-F24cYHHV3To0RLjHFN8tBwQf4TPY0Z_WCi3Y"
+      responses:
+        200:
+          body:
+            type: <<getHistoryExample>>
+    post:
+      description: "Добавление информации о <<collectionName>> в историю"
+      headers:
+        Authorization:
+          description: "Токен доступа, полученный через авторизацию"
+          type: string
+          example: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZWY0YmJjMmQxZGE0MmQ1Y2I0M2RiNzYiLCJpYXQiOjE1OTMxMTg5NjQsImV4cCI6MTU5NTcxMDk2NH0.mdeN9m-F24cYHHV3To0RLjHFN8tBwQf4TPY0Z_WCi3Y"
+      body:
+        application/x-www-form-urlencoded:
+          type: <<postHistoryItemRequestBody>>
+      responses:
+        201:
+          body:
+            type: <<postHistoryItem201Example>>
+  history-item:
+    put:
+      description: "Обновление информации о <<collectionName>>"
+      headers:
+        Authorization:
+          description: "Токен доступа, полученный через авторизацию"
+          type: string
+          example: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZWY0YmJjMmQxZGE0MmQ1Y2I0M2RiNzYiLCJpYXQiOjE1OTMxMTg5NjQsImV4cCI6MTU5NTcxMDk2NH0.mdeN9m-F24cYHHV3To0RLjHFN8tBwQf4TPY0Z_WCi3Y"
+      body:
+        application/x-www-form-urlencoded:
+          type: <<putHistoryItemRequestBody>>
+      responses:
+        200:
+          body: <<putHistoryItem200Example>>
+        404:
+          body: lib.NotFoundMessage
+    delete:
+      description: "Удаление информации о <<collectionName>>"
+      headers:
+        Authorization:
+          description: "Токен доступа, полученный через авторизацию"
+          type: string
+          example: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZWY0YmJjMmQxZGE0MmQ1Y2I0M2RiNzYiLCJpYXQiOjE1OTMxMTg5NjQsImV4cCI6MTU5NTcxMDk2NH0.mdeN9m-F24cYHHV3To0RLjHFN8tBwQf4TPY0Z_WCi3Y"
+      responses:
+        200:
+          body: lib.SuccessMessage
+        404:
+          body: lib.NotFoundMessage
 
 # Authorization Methods
 /auth:
@@ -25,10 +84,12 @@ uses:
         application/x-www-form-urlencoded:
           type: auth-lib.RegisterRequest
       responses:
-        200:
+        201:
           body:
-            application/json:
-              type: auth-lib.RegisterResponse200
+            type: auth-lib.RegisterOK
+        400:
+          body:
+            type: auth-lib.Register400
   /login:
     post:
       description: "Авторизация пользователя"
@@ -38,8 +99,10 @@ uses:
       responses:
         200:
           body:
-            application/json:
-              type: auth-lib.LoginResponse200
+            type: auth-lib.LoginOK
+        400:
+          body:
+            type: auth-lib.Login400
 
   /restore:
     post:
@@ -50,11 +113,11 @@ uses:
       responses:
         200:
           body:
-            application/json:
-              type: auth-lib.RestoreResponse200
+            type: auth-lib.RestoreOK
 
 # Token Methods
 /token:
+  description: "Работа с токеном доступа"
   /refresh:
     post:
       description: "Обновление времени действия токена доступа"
@@ -64,134 +127,106 @@ uses:
       responses:
         200:
           body:
-            application/json:
-              type: token-lib.RefreshResponse200
+            type: token-lib.RefreshSuccess
 
 # Users Methods
 /users:
-  description: "Коллекция пользователей ami"
-  /{userId}:
+  description: "Коллекция пользователей"
+  /{id}:
     description: "Модель пользователя"
     get:
-      description: "Получение подробной информации о пользователе"
+      description: "Получение подробной информации о пользователе по {id}"
       headers:
-        AccessToken: string
+        Authorization:
+          description: "Токен доступа, полученный через авторизацию"
+          type: string
+          example: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZWY0YmJjMmQxZGE0MmQ1Y2I0M2RiNzYiLCJpYXQiOjE1OTMxMTg5NjQsImV4cCI6MTU5NTcxMDk2NH0.mdeN9m-F24cYHHV3To0RLjHFN8tBwQf4TPY0Z_WCi3Y"
       responses:
         200:
           body:
-            application/json:
-              type: users-lib.UserResponse200
+            type: users-lib.User
         404:
           body:
-            application/json:
-              type: users-lib.UserResponse404
+            type: users-lib.UserNotFound
     put:
       description: "Обновление данных пользователя"
+      headers:
+        Authorization: string
+      body:
+        application/x-www-form-urlencoded:
+          type: users-lib.RegisterRequest # TODO Обновлять данные. Не все
+      responses:
+        200:
+          body:
+            type: users-lib.User # TODO Обновлять данные. Не все
+        404:
+          body:
+            type: users-lib.UserNotFound
 
 # History Methods
 /history:
   /water:
-    get:
-      description: "Получение истории выпитой воды"
-      headers:
-        AccessToken: string
-      responses:
-        200:
-          body:
-            application/json:
-              type: water-lib.GetHistoryResponse200
-    post:
-      description: "Добавление информации о выпитой воде"
-      headers:
-        AccessToken: string
-      body:
-        application/x-www-form-urlencoded:
-          type: water-lib.PostItemRequest
-      responses:
-        200:
-          body:
-            application/json:
-              type: water-lib.PostItemResponse200
-    delete:
+    type:
+      history:
+        postHistoryItemRequestBody: water-lib.WaterRequest
+        postHistoryItem201Example: water-lib.WaterItem
+        collectionName: "выпитой воды"
+        getHistoryExample: water-lib.WaterCollection
+    /{id}:
+      type:
+        history-item:
+          putHistoryItemRequestBody: water-lib.WaterRequest
+          collectionName: "выпитой воды"
+          putHistoryItem200Example: water-lib.WaterItem
 
   /weight:
-    get:
-      description: "Получение истории взвешиваний"
-      headers:
-        AccessToken: string
-      responses:
-        200:
-          body:
-            application/json:
-              type: weight-lib.GetHistoryResponse200
-    post:
-      description: "Добавление информации о новом взвешивании"
-      headers:
-        AccessToken: string
-      body:
-        application/x-www-form-urlencoded:
-          type: weight-lib.PostItemRequest
-      responses:
-        200:
-          body:
-            application/json:
-              type: weight-lib.PostItemResponse200
-    delete:
+    type:
+      history:
+        postHistoryItemRequestBody: weight-lib.WeightRequest
+        postHistoryItem201Example: weight-lib.WeightItem
+        collectionName: "взвешивании"
+        getHistoryExample: weight-lib.WeightCollection
+    /{id}:
+      type:
+        history-item:
+          putHistoryItemRequestBody: weight-lib.WeightRequest
+          collectionName: "взвешивании"
+          putHistoryItem200Example: weight-lib.WeightItem
 
   /sleep:
-    get:
-      description: "Получение истории сна"
-      headers:
-        AccessToken: string
-      responses:
-        200:
-          body:
-            application/json:
-              type: sleep-lib.GetHistoryResponse200
-    post:
-      description: "Добавление информации о прошедшем сне"
-      headers:
-        AccessToken: string
-      body:
-        application/x-www-form-urlencoded:
-          type: sleep-lib.PostItemRequest
-      responses:
-        200:
-          body:
-            application/json:
-              type: sleep-lib.PostItemResponse200
-    delete:
+    type:
+      history:
+        postHistoryItemRequestBody: sleep-lib.SleepRequest
+        postHistoryItem201Example: sleep-lib.SleepItem
+        collectionName: "сне"
+        getHistoryExample: sleep-lib.SleepCollection
+    /{id}:
+      type:
+        history-item:
+          putHistoryItemRequestBody: sleep-lib.SleepRequest
+          collectionName: "сне"
+          putHistoryItem200Example: weight-lib.SleepItem
 
   /tasks:
-    get:
-      description: "Получение истории сна"
-      headers:
-        AccessToken: string
-      responses:
-        200:
-          body:
-            application/json:
-              type: tasks-lib.GetHistoryResponse200
-    post:
-      description: "Добавление информации о новой задаче"
-      headers:
-        AccessToken: string
-      body:
-        application/x-www-form-urlencoded:
-          type: tasks-lib.PostItemRequest
-      responses:
-        200:
-          body:
-            application/json:
-              type: tasks-lib.PostItemResponse200
-    delete:
+    type:
+      history:
+        postHistoryItemRequestBody: tasks-lib.TaskRequest
+        postHistoryItem201Example: tasks-lib.TaskItem
+        collectionName: "задач"
+        getHistoryExample: tasks-lib.TaskCollection
+    /{id}:
+      type:
+        history-item:
+          putHistoryItemRequestBody: tasks-lib.TaskRequest
+          collectionName: "задач"
+          putHistoryItem200Example: tasks-lib.TaskItem
 
 # Articles Methods
 /articles:
+  description: "Коллекция статей"
   get:
     description: "Получение списка статей"
     responses:
       200:
         body:
-          application/json:
-            type: articles-lib.ArticlesResponse200
+          type: articles-lib.ArticleCollection

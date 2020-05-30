@@ -7,7 +7,9 @@ types:
         required: true
         type: string
 
-  RefreshResponse200:
+  RefreshSuccess:
     properties:
-      accessToken: string
-    example: !include ami-include-token-refresh-success.json
+      accessToken:
+        required: true
+        type: string
+    example: !include ami-include-token.json

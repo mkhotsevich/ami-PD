@@ -1,10 +1,11 @@
 {
   "user": {
-    "id": 1,
+    "id": "5ef672a5803baa78471615b8",
     "email": "some-email@gmail.com",
     "name": "Артем",
     "surname": "Куфаев",
     "birthdate": 12351243,
+    "height": 180.0,
     "appleId": "123dsafq",
     "vkId": 12351
   },

@@ -39,7 +39,7 @@ types:
         type: number
         required: false
 
-  RegisterResponse200:
+  RegisterOK:
     properties:
       user:
         type: object
@@ -49,7 +49,18 @@ types:
         required: true
     example: !include ami-include-auth-data.json
 
+  Register400:
+    properties:
+      message:
+        type: string
+        required: true
+    example: |
+      {
+        message: "Пользователь с таким Email уже существует"
+      }
+
   # Login
+
   LoginRequest:
     properties:
       email:
@@ -60,7 +71,7 @@ types:
         required: true
         type: string
 
-  LoginResponse200:
+  LoginOK:
     properties:
       user:
         type: object
@@ -70,14 +81,25 @@ types:
         required: true
     example: !include ami-include-auth-data.json
 
+  Login400:
+    properties:
+      message:
+        type: string
+        required: true
+    example: |
+      {
+        message: "Пользователь с таким Email не найден"
+      }
+
   # Restore
+
   RestoreRequest:
     properties:
       email:
         required: true
         type: string
 
-  RestoreResponse200:
+  RestoreOK:
     properties:
       message:
         type: string

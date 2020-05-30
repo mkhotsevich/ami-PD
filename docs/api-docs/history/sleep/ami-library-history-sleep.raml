@@ -17,13 +17,22 @@ types:
           type: number
     example: !include ami-include-history-sleep-collection.json
 
-  SleepRequest:
+  SleepRequestRequired:
     properties:
       endAt:
         required: true
         type: number
       riseAt:
         required: true
+        type: number
+
+  SleepRequest:
+    properties:
+      endAt:
+        required: false
+        type: number
+      riseAt:
+        required: false
         type: number
 
   Sleep:

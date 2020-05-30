@@ -17,13 +17,22 @@ types:
           type: number
     example: !include ami-include-water-collection.json
 
-  WaterRequest:
+  WaterRequestRequired:
     properties:
       amount:
         required: true
         type: number
       drinkedAt:
         required: true
+        type: number
+
+  WaterRequest:
+    properties:
+      amount:
+        required: false
+        type: number
+      drinkedAt:
+        required: false
         type: number
 
   WaterItem:

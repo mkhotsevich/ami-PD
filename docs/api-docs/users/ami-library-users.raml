@@ -1,6 +1,78 @@
 #%RAML 1.0 Library
 types:
 
+  UserRequestRequired:
+    properties:
+      email:
+        type: string
+        required: true
+      password:
+        description: Хэш пароля алгоритма MD5
+        type: string
+        required: true
+      name:
+        type: string
+        required: true
+      surname:
+        type: string
+        required: true
+      birthday:
+        description: Дата рождения (timestamp)
+        type: number
+        required: true
+      weight:
+        description: Последний вес пользователя
+        type: number
+        required: true
+      height:
+        description: Рост пользователя
+        type: number
+        required: true
+      appleId:
+        description: ID пользователя авторизации через Apple ID
+        type: string
+        required: false
+      vkId:
+        description: ID пользователя авторизации через VK
+        type: number
+        required: false
+
+  UserRequest:
+    properties:
+      email:
+        type: string
+        required: false
+      password:
+        description: Хэш пароля алгоритма MD5
+        type: string
+        required: false
+      name:
+        type: string
+        required: false
+      surname:
+        type: string
+        required: false
+      birthday:
+        description: Дата рождения (timestamp)
+        type: number
+        required: false
+      weight:
+        description: Последний вес пользователя
+        type: number
+        required: false
+      height:
+        description: Рост пользователя
+        type: number
+        required: false
+      appleId:
+        description: ID пользователя авторизации через Apple ID
+        type: string
+        required: false
+      vkId:
+        description: ID пользователя авторизации через VK
+        type: number
+        required: false
+
   User:
     type: object
     properties:

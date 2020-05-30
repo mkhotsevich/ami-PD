@@ -1,6 +1,6 @@
 #%RAML 1.0
 title: ami
-version: v1.0
+version: v0.1
 # TODO Адрес не поменяется?
 baseUri: https://pacific-peak-31437.herokuapp.com/api/{version}/
 mediaType: [ application/json ]
@@ -17,27 +17,27 @@ uses:
   sleep-lib: history/sleep/ami-library-history-sleep.raml
   tasks-lib: history/tasks/ami-library-history-tasks.raml
 
+traits:
+  hasHeaders:
+    headers:
+      Authorization:
+        description: "Токен доступа, полученный через авторизацию"
+        type: string
+        example: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZWY0YmJjMmQxZGE0MmQ1Y2I0M2RiNzYiLCJpYXQiOjE1OTMxMTg5NjQsImV4cCI6MTU5NTcxMDk2NH0.mdeN9m-F24cYHHV3To0RLjHFN8tBwQf4TPY0Z_WCi3Y"
+
 resourceTypes:
   history:
-    description: "История <<collectionName>>"
+    description: "История <<collectionNameR>>"
     get:
-      description: "Получение истории <<collectionName>>"
-      headers:
-        Authorization:
-          description: "Токен доступа, полученный через авторизацию"
-          type: string
-          example: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZWY0YmJjMmQxZGE0MmQ1Y2I0M2RiNzYiLCJpYXQiOjE1OTMxMTg5NjQsImV4cCI6MTU5NTcxMDk2NH0.mdeN9m-F24cYHHV3To0RLjHFN8tBwQf4TPY0Z_WCi3Y"
+      is: ["hasHeaders"]
+      description: "Получение истории <<collectionNameR>>"
       responses:
         200:
           body:
             type: <<getHistoryExample>>
     post:
-      description: "Добавление информации о <<collectionName>> в историю"
-      headers:
-        Authorization:
-          description: "Токен доступа, полученный через авторизацию"
-          type: string
-          example: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZWY0YmJjMmQxZGE0MmQ1Y2I0M2RiNzYiLCJpYXQiOjE1OTMxMTg5NjQsImV4cCI6MTU5NTcxMDk2NH0.mdeN9m-F24cYHHV3To0RLjHFN8tBwQf4TPY0Z_WCi3Y"
+      description: "Добавление информации о <<collectionNameP>> в историю"
+      is: ["hasHeaders"]
       body:
         application/x-www-form-urlencoded:
           type: <<postHistoryItemRequestBody>>
@@ -47,12 +47,8 @@ resourceTypes:
             type: <<postHistoryItem201Example>>
   history-item:
     put:
-      description: "Обновление информации о <<collectionName>>"
-      headers:
-        Authorization:
-          description: "Токен доступа, полученный через авторизацию"
-          type: string
-          example: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZWY0YmJjMmQxZGE0MmQ1Y2I0M2RiNzYiLCJpYXQiOjE1OTMxMTg5NjQsImV4cCI6MTU5NTcxMDk2NH0.mdeN9m-F24cYHHV3To0RLjHFN8tBwQf4TPY0Z_WCi3Y"
+      description: "Обновление информации о <<collectionNameP>>"
+      is: ["hasHeaders"]
       body:
         application/x-www-form-urlencoded:
           type: <<putHistoryItemRequestBody>>
@@ -62,12 +58,8 @@ resourceTypes:
         404:
           body: lib.NotFoundMessage
     delete:
-      description: "Удаление информации о <<collectionName>>"
-      headers:
-        Authorization:
-          description: "Токен доступа, полученный через авторизацию"
-          type: string
-          example: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZWY0YmJjMmQxZGE0MmQ1Y2I0M2RiNzYiLCJpYXQiOjE1OTMxMTg5NjQsImV4cCI6MTU5NTcxMDk2NH0.mdeN9m-F24cYHHV3To0RLjHFN8tBwQf4TPY0Z_WCi3Y"
+      description: "Удаление информации о <<collectionNameP>>"
+      is: ["hasHeaders"]
       responses:
         200:
           body: lib.SuccessMessage
@@ -82,7 +74,7 @@ resourceTypes:
       description: "Регистрация нового пользователя"
       body:
         application/x-www-form-urlencoded:
-          type: auth-lib.RegisterRequest
+          type: users-lib.UserRequestRequired
       responses:
         201:
           body:
@@ -136,11 +128,7 @@ resourceTypes:
     description: "Модель пользователя"
     get:
       description: "Получение подробной информации о пользователе по {id}"
-      headers:
-        Authorization:
-          description: "Токен доступа, полученный через авторизацию"
-          type: string
-          example: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZWY0YmJjMmQxZGE0MmQ1Y2I0M2RiNzYiLCJpYXQiOjE1OTMxMTg5NjQsImV4cCI6MTU5NTcxMDk2NH0.mdeN9m-F24cYHHV3To0RLjHFN8tBwQf4TPY0Z_WCi3Y"
+      is: ["hasHeaders"]
       responses:
         200:
           body:
@@ -150,15 +138,14 @@ resourceTypes:
             type: users-lib.UserNotFound
     put:
       description: "Обновление данных пользователя"
-      headers:
-        Authorization: string
+      is: ["hasHeaders"]
       body:
         application/x-www-form-urlencoded:
-          type: users-lib.RegisterRequest # TODO Обновлять данные. Не все
+          type: users-lib.UserRequest
       responses:
         200:
           body:
-            type: users-lib.User # TODO Обновлять данные. Не все
+            type: users-lib.User
         404:
           body:
             type: users-lib.UserNotFound
@@ -168,57 +155,65 @@ resourceTypes:
   /water:
     type:
       history:
-        postHistoryItemRequestBody: water-lib.WaterRequest
+        postHistoryItemRequestBody: water-lib.WaterRequestRequired
         postHistoryItem201Example: water-lib.WaterItem
-        collectionName: "выпитой воды"
+        collectionNameR: "выпитой воды"
+        collectionNameP: "выпитой воде"
         getHistoryExample: water-lib.WaterCollection
     /{id}:
       type:
         history-item:
           putHistoryItemRequestBody: water-lib.WaterRequest
-          collectionName: "выпитой воды"
+          collectionNameR: "выпитой воды"
+          collectionNameP: "выпитой воде"
           putHistoryItem200Example: water-lib.WaterItem
 
   /weight:
     type:
       history:
-        postHistoryItemRequestBody: weight-lib.WeightRequest
+        postHistoryItemRequestBody: weight-lib.WeightRequestRequired
         postHistoryItem201Example: weight-lib.WeightItem
-        collectionName: "взвешивании"
+        collectionNameR: "взвешивания"
+        collectionNameP: "взвешивании"
         getHistoryExample: weight-lib.WeightCollection
     /{id}:
       type:
         history-item:
           putHistoryItemRequestBody: weight-lib.WeightRequest
-          collectionName: "взвешивании"
+          collectionNameR: "взвешивания"
+          collectionNameP: "взвешивании"
           putHistoryItem200Example: weight-lib.WeightItem
 
   /sleep:
     type:
       history:
-        postHistoryItemRequestBody: sleep-lib.SleepRequest
+        postHistoryItemRequestBody: sleep-lib.SleepRequestRequired
         postHistoryItem201Example: sleep-lib.SleepItem
-        collectionName: "сне"
+        collectionNameR: "сна"
+        collectionNameP: "сне"
         getHistoryExample: sleep-lib.SleepCollection
     /{id}:
       type:
         history-item:
           putHistoryItemRequestBody: sleep-lib.SleepRequest
-          collectionName: "сне"
+          collectionNameR: "сна"
+          collectionNameP: "сне"
           putHistoryItem200Example: weight-lib.SleepItem
 
   /tasks:
     type:
       history:
-        postHistoryItemRequestBody: tasks-lib.TaskRequest
+        postHistoryItemRequestBody: tasks-lib.TaskRequestRequired
         postHistoryItem201Example: tasks-lib.TaskItem
-        collectionName: "задач"
+        collectionNameR: "задач"
+        collectionNameP: "задачах"
         getHistoryExample: tasks-lib.TaskCollection
     /{id}:
       type:
         history-item:
           putHistoryItemRequestBody: tasks-lib.TaskRequest
-          collectionName: "задач"
+          collectionNameR: "задач"
+          collectionNameP: "задачах"
           putHistoryItem200Example: tasks-lib.TaskItem
 
 # Articles Methods

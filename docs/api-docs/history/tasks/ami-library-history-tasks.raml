@@ -20,7 +20,7 @@ types:
           type: number
     example: !include ami-include-task-collection.json
 
-  TaskRequest:
+  TaskRequestRequired:
     properties:
       title:
         required: true
@@ -30,6 +30,18 @@ types:
         type: number
       createdAt:
         required: true
+        type: number
+
+  TaskRequest:
+    properties:
+      title:
+        required: false
+        type: string
+      notifyAt:
+        required: false
+        type: number
+      createdAt:
+        required: false
         type: number
 
   TaskItem:

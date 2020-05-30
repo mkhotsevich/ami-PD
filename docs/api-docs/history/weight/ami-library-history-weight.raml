@@ -14,10 +14,10 @@ types:
           type: number
         weighedAt:
           required: true
-          type: string
+          type: number
     example: !include ami-include-history-weight-collection.json
 
-  WeightRequest:
+  WeightRequestRequied:
     properties:
       amount:
         required: true
@@ -26,9 +26,24 @@ types:
         required: true
         type: number
 
+  WeightRequest:
+    properties:
+      amount:
+        required: false
+        type: number
+      weighedAt:
+        required: false
+        type: number
+
   WeightItem:
     properties:
-      id: string
-      amount: number
-      weighedAt: number
+      id:
+        required: true
+        type: string
+      amount:
+        required: true
+        type: number
+      weighedAt:
+        required: true
+        type: number
     example: !include ami-include-history-weight-item.json

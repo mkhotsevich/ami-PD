@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "amount": 40,
+    "drinkedAt": 1234123
+  },
+  {
+    "id": 2,
+    "amount": 55,
+    "drinkedAt": 1213134
+  }
+]

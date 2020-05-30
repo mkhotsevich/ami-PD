@@ -2,6 +2,11 @@
 title: ami
 baseUri: https://pacific-peak-31437.herokuapp.com/api/
 version: v1
+mediaType: [ application/json ]
+protocols: [ HTTPS ]
+
+uses:
+  library: ami-library-auth.raml
 
 /auth:
   description: "Методы авторизации"
@@ -10,40 +15,7 @@ version: v1
       description: "Регистрация нового пользователя"
       body:
         application/x-www-form-urlencoded:
-          properties:
-            email:
-              required: true
-              type: string
-            password:
-              description: "Хэш пароля алгоритма MD5"
-              required: true
-              type: string
-            name:
-              required: true
-              type: string
-            surname:
-              required: true
-              type: string
-            birthday:
-              description: "Дата рождения (timestamp)"
-              required: true
-              type: number
-            weight:
-              description: "Последний вес пользователя"
-              required: true
-              type: number
-            height:
-              description: "Рост пользователя"
-              required: true
-              type: number
-            appleId:
-              description: "ID пользователя авторизации через Apple ID"
-              required: false
-              type: string
-            vkId:
-              description: "ID пользователя авторизации через VK"
-              required: false
-              type: number
+          type: library.Register
       responses:
         200:
           body:
@@ -55,19 +27,7 @@ version: v1
                 accessToken:
                   type: string
                   required: true
-              example: |
-                {
-                  "user": {
-                    "userId": 1,
-                    "email": "some-email@gmail.com",
-                    "name": "Артем",
-                    "surname": "Куфаев",
-                    "birthdate": 12351243,
-                    "appleId": "123dsafq",
-                    "vkId": 12351
-                  },
-                  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZWY0YmJjMmQxZGE0MmQ1Y2I0M2RiNzYiLCJpYXQiOjE1OTMxMTg5NjQsImV4cCI6MTU5NTcxMDk2NH0.mdeN9m-F24cYHHV3To0RLjHFN8tBwQf4TPY0Z_WCi3Y"
-                }
+              example: !include ami-include-auth-data.json
   /login:
     post:
       description: "Авторизация пользователя"
@@ -92,21 +52,9 @@ version: v1
                 accessToken:
                   type: string
                   required: true
-              example: |
-                {
-                  "user": {
-                    "userId": 1,
-                    "email": "some-email@gmail.com",
-                    "name": "Артем",
-                    "surname": "Куфаев",
-                    "birthdate": 12351243,
-                    "appleId": "123dsafq",
-                    "vkId": 12351
-                  },
-                  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZWY0YmJjMmQxZGE0MmQ1Y2I0M2RiNzYiLCJpYXQiOjE1OTMxMTg5NjQsImV4cCI6MTU5NTcxMDk2NH0.mdeN9m-F24cYHHV3To0RLjHFN8tBwQf4TPY0Z_WCi3Y"
-                }
+              example: !include ami-include-auth-data.json
 
-  /restorePassword:
+  /restore:
     post:
       description: "Восстановление пароля пользователя"
       body:
@@ -123,10 +71,7 @@ version: v1
                 message:
                   type: string
                   required: true
-              example: |
-                {
-                  "message": "Ссылка на восстановление пароля была отправлена на почтовый ящик"
-                }
+              example: !include ami-include-auth-restore-success.json
 /token:
   /refresh:
     post:
@@ -143,10 +88,7 @@ version: v1
             application/json:
               properties:
                 accessToken: string
-              example: |
-                {
-                  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZWY0YmJjMmQxZGE0MmQ1Y2I0M2RiNzYiLCJpYXQiOjE1OTMxMTg5NjQsImV4cCI6MTU5NTcxMDk2NH0.mdeN9m-F24cYHHV3To0RLjHFN8tBwQf4TPY0Z_WCi3Y"
-                }
+              example: !include ami-include-token-refresh-success.json
 /users:
   description: "Коллекция пользователей ami"
   /{userId}:
@@ -165,14 +107,7 @@ version: v1
                 name: string
                 surname: string
                 birthdate: number
-              example: |
-                {
-                  "userId": "23-141",
-                  "email": "some-email@gmail.com",
-                  "name": "Artem",
-                  "surname": "Kufaev",
-                  "birthdate": 916099200
-                }
+              example: !include ami-include-users-single.json
         404:
           body:
             application/json:
@@ -198,19 +133,7 @@ version: v1
                 id: string
                 amount: number
                 drinkedAt: number
-              example: |
-                [
-                  {
-                    "id": 1,
-                    "amount": 40,
-                    "drinkedAt": 1234123
-                  },
-                  {
-                    "id": 2,
-                    "amount": 55,
-                    "drinkedAt": 1213134
-                  }
-                ]
+              example: !include ami-include-history-water-collection.json
     post:
       description: "Добавление информации о выпитой воде"
       headers:
@@ -232,12 +155,7 @@ version: v1
                 id: string
                 amount: number
                 drinkedAt: number
-              example: |
-                {
-                  "id": 1,
-                  "amount": 40,
-                  "drinkedAt": 1234123
-                }
+              example: !include ami-include-history-water-item.json
     delete:
 
   /weight:
@@ -253,19 +171,7 @@ version: v1
                 id: string
                 amount: number
                 drinkedAt: number
-              example: |
-                [
-                  {
-                    "id": 1,
-                    "amount": 64.3,
-                    "weighedAt": 1234123
-                  },
-                  {
-                    "id": 2,
-                    "amount": 66.5,
-                    "weighedAt": 1213134
-                  }
-                ]
+              example: !include ami-include-history-weight-collection.json
     post:
       description: "Добавление информации о новом взвешивании"
       headers:
@@ -287,12 +193,7 @@ version: v1
                 id: string
                 amount: number
                 weighedAt: number
-              example: |
-                {
-                  "id": 1,
-                  "amount": 64.3,
-                  "weighedAt": 1234123
-                }
+              example: !include ami-include-history-weight-item.json
     delete:
 
   /sleep:
@@ -308,19 +209,7 @@ version: v1
                 id: string
                 endAt: number
                 riseAt: number
-              example: |
-                [
-                  {
-                    "id": 1,
-                    "endAt": 1234123,
-                    "riseAt": 1234123
-                  },
-                  {
-                    "id": 2,
-                    "endAt": 1234123,
-                    "riseAt": 1213134
-                  }
-                ]
+              example: !include ami-include-history-sleep-collection.json
     post:
       description: "Добавление информации о прошедшем сне"
       headers:
@@ -342,12 +231,7 @@ version: v1
                 id: string
                 endAt: number
                 riseAt: number
-              example: |
-                {
-                  "id": 1,
-                  "endAt": 1234123,
-                  "riseAt": 1234123
-                }
+              example: !include ami-include-history-sleep-item.json
     delete:
 
   /tasks:
@@ -364,21 +248,7 @@ version: v1
                 title: string
                 notifyAt: number
                 createdAt: number
-              example: |
-                [
-                  {
-                    "id": 1,
-                    "title": "Some title",
-                    "notifyAt": 1234123,
-                    "createdAt": 1234123
-                  },
-                  {
-                    "id": 2,
-                    "title": "Some title 2",
-                    "notifyAt": 3213333,
-                    "createdAt": 3213333
-                  }
-                ]
+              example: !include ami-include-history-task-collection.json
     post:
       description: "Добавление информации о новой задаче"
       headers:
@@ -404,13 +274,7 @@ version: v1
                 title: string
                 notifyAt: number
                 createdAt: number
-              example: |
-                {
-                  "id": 2,
-                  "title": "Some title 2",
-                  "notifyAt": 3213333,
-                  "createdAt": 3213333
-                }
+              example: !include ami-include-history-task-item.json
     delete:
 
 /articles:
@@ -425,18 +289,4 @@ version: v1
               title: string
               content: string
               createdAt: number
-            example: |
-              [
-                {
-                  "id": 1,
-                  "title": "Some title",
-                  "content": "Bla-bla-bla",
-                  "createdAt": 1234123
-                },
-                {
-                  "id": 2,
-                  "title": "Some title 2",
-                  "content": "Bla-bla-bla",
-                  "createdAt": 3213333
-                }
-              ]
+            example: !include ami-include-articles-collection.json

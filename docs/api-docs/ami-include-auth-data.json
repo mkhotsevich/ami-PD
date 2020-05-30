@@ -1,0 +1,12 @@
+{
+  "user": {
+    "id": 1,
+    "email": "some-email@gmail.com",
+    "name": "Артем",
+    "surname": "Куфаев",
+    "birthdate": 12351243,
+    "appleId": "123dsafq",
+    "vkId": 12351
+  },
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZWY0YmJjMmQxZGE0MmQ1Y2I0M2RiNzYiLCJpYXQiOjE1OTMxMTg5NjQsImV4cCI6MTU5NTcxMDk2NH0.mdeN9m-F24cYHHV3To0RLjHFN8tBwQf4TPY0Z_WCi3Y"
+}

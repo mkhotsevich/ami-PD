@@ -6,8 +6,16 @@ mediaType: [ application/json ]
 protocols: [ HTTPS ]
 
 uses:
-  library: ami-library-auth.raml
+  auth-lib: auth/ami-library-auth.raml
+  articles-lib: articles/ami-library-articles.raml
+  token-lib: token/ami-library-token.raml
+  users-lib: users/ami-library-users.raml
+  water-lib: history/water/ami-library-history-water.raml
+  weight-lib: history/weight/ami-library-history-weight.raml
+  sleep-lib: history/sleep/ami-library-history-sleep.raml
+  tasks-lib: history/tasks/ami-library-history-tasks.raml
 
+# Authorization Methods
 /auth:
   description: "Методы авторизации"
   /register:
@@ -15,80 +23,51 @@ uses:
       description: "Регистрация нового пользователя"
       body:
         application/x-www-form-urlencoded:
-          type: library.Register
+          type: auth-lib.RegisterRequest
       responses:
         200:
           body:
             application/json:
-              properties:
-                user:
-                  type: object
-                  required: true
-                accessToken:
-                  type: string
-                  required: true
-              example: !include ami-include-auth-data.json
+              type: auth-lib.RegisterResponse200
   /login:
     post:
       description: "Авторизация пользователя"
       body:
         application/x-www-form-urlencoded:
-          properties:
-            email:
-              required: true
-              type: string
-            password:
-              description: "Хэш пароля алгоритма MD5"
-              required: true
-              type: string
+          type: auth-lib.LoginRequest
       responses:
         200:
           body:
             application/json:
-              properties:
-                user:
-                  type: object
-                  required: true
-                accessToken:
-                  type: string
-                  required: true
-              example: !include ami-include-auth-data.json
+              type: auth-lib.LoginResponse200
 
   /restore:
     post:
       description: "Восстановление пароля пользователя"
       body:
         application/x-www-form-urlencoded:
-          properties:
-            email:
-              required: true
-              type: string
+          type: auth-lib.RestoreRequest
       responses:
         200:
           body:
             application/json:
-              properties:
-                message:
-                  type: string
-                  required: true
-              example: !include ami-include-auth-restore-success.json
+              type: auth-lib.RestoreResponse200
+
+# Token Methods
 /token:
   /refresh:
     post:
       description: "Обновление времени действия токена доступа"
       body:
         application/x-www-form-urlencoded:
-          properties:
-            accessToken:
-              required: true
-              type: string
+          type: token-lib.Token
       responses:
         200:
           body:
             application/json:
-              properties:
-                accessToken: string
-              example: !include ami-include-token-refresh-success.json
+              type: token-lib.RefreshResponse200
+
+# Users Methods
 /users:
   description: "Коллекция пользователей ami"
   /{userId}:
@@ -101,24 +80,15 @@ uses:
         200:
           body:
             application/json:
-              properties:
-                userId: string
-                email: string
-                name: string
-                surname: string
-                birthdate: number
-              example: !include ami-include-users-single.json
+              type: users-lib.UserResponse200
         404:
           body:
             application/json:
-              properties:
-                message: string
-              example: |
-                {
-                  "message": "Пользователь не найден"
-                }
+              type: users-lib.UserResponse404
     put:
       description: "Обновление данных пользователя"
+
+# History Methods
 /history:
   /water:
     get:
@@ -129,33 +99,19 @@ uses:
         200:
           body:
             application/json:
-              properties:
-                id: string
-                amount: number
-                drinkedAt: number
-              example: !include ami-include-history-water-collection.json
+              type: water-lib.GetHistoryResponse200
     post:
       description: "Добавление информации о выпитой воде"
       headers:
         AccessToken: string
       body:
         application/x-www-form-urlencoded:
-          properties:
-            amount:
-              required: true
-              type: number
-            drinkedAt:
-              required: true
-              type: number
+          type: water-lib.PostItemRequest
       responses:
         200:
           body:
             application/json:
-              properties:
-                id: string
-                amount: number
-                drinkedAt: number
-              example: !include ami-include-history-water-item.json
+              type: water-lib.PostItemResponse200
     delete:
 
   /weight:
@@ -167,33 +123,19 @@ uses:
         200:
           body:
             application/json:
-              properties:
-                id: string
-                amount: number
-                drinkedAt: number
-              example: !include ami-include-history-weight-collection.json
+              type: weight-lib.GetHistoryResponse200
     post:
       description: "Добавление информации о новом взвешивании"
       headers:
         AccessToken: string
       body:
         application/x-www-form-urlencoded:
-          properties:
-            amount:
-              required: true
-              type: number
-            weighedAt:
-              required: true
-              type: number
+          type: weight-lib.PostItemRequest
       responses:
         200:
           body:
             application/json:
-              properties:
-                id: string
-                amount: number
-                weighedAt: number
-              example: !include ami-include-history-weight-item.json
+              type: weight-lib.PostItemResponse200
     delete:
 
   /sleep:
@@ -205,33 +147,19 @@ uses:
         200:
           body:
             application/json:
-              properties:
-                id: string
-                endAt: number
-                riseAt: number
-              example: !include ami-include-history-sleep-collection.json
+              type: sleep-lib.GetHistoryResponse200
     post:
       description: "Добавление информации о прошедшем сне"
       headers:
         AccessToken: string
       body:
         application/x-www-form-urlencoded:
-          properties:
-            endAt:
-              required: true
-              type: number
-            riseAt:
-              required: true
-              type: number
+          type: sleep-lib.PostItemRequest
       responses:
         200:
           body:
             application/json:
-              properties:
-                id: string
-                endAt: number
-                riseAt: number
-              example: !include ami-include-history-sleep-item.json
+              type: sleep-lib.PostItemResponse200
     delete:
 
   /tasks:
@@ -243,40 +171,22 @@ uses:
         200:
           body:
             application/json:
-              properties:
-                id: string
-                title: string
-                notifyAt: number
-                createdAt: number
-              example: !include ami-include-history-task-collection.json
+              type: tasks-lib.GetHistoryResponse200
     post:
       description: "Добавление информации о новой задаче"
       headers:
         AccessToken: string
       body:
         application/x-www-form-urlencoded:
-          properties:
-            title:
-              required: true
-              type: string
-            notifyAt:
-              required: false
-              type: number
-            createdAt:
-              required: true
-              type: number
+          type: tasks-lib.PostItemRequest
       responses:
         200:
           body:
             application/json:
-              properties:
-                id: string
-                title: string
-                notifyAt: number
-                createdAt: number
-              example: !include ami-include-history-task-item.json
+              type: tasks-lib.PostItemResponse200
     delete:
 
+# Articles Methods
 /articles:
   get:
     description: "Получение списка статей"
@@ -284,9 +194,4 @@ uses:
       200:
         body:
           application/json:
-            properties:
-              id: string
-              title: string
-              content: string
-              createdAt: number
-            example: !include ami-include-articles-collection.json
+            type: articles-lib.ArticlesResponse200

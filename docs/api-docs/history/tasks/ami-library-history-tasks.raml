@@ -1,0 +1,30 @@
+#%RAML 1.0 Library
+types:
+
+  GetHistoryResponse200:
+    properties:
+      id: string
+      title: string
+      notifyAt: number
+      createdAt: number
+    example: !include ami-include-history-task-collection.json
+
+  PostItemRequest:
+    properties:
+      title:
+        required: true
+        type: string
+      notifyAt:
+        required: false
+        type: number
+      createdAt:
+        required: true
+        type: number
+
+  PostItemResponse200:
+    properties:
+      id: string
+      title: string
+      notifyAt: number
+      createdAt: number
+    example: !include ami-include-history-task-item.json

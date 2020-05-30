@@ -1,0 +1,25 @@
+#%RAML 1.0 Library
+types:
+
+  GetHistoryResponse200:
+    properties:
+      id: string
+      amount: number
+      weighedAt: number
+    example: !include ami-include-history-weight-collection.json
+
+  PostItemRequest:
+    properties:
+      amount:
+        required: true
+        type: number
+      weighedAt:
+        required: true
+        type: number
+
+  PostItemResponse200:
+    properties:
+      id: string
+      amount: number
+      weighedAt: number
+    example: !include ami-include-history-weight-item.json

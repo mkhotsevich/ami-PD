@@ -1,0 +1,25 @@
+#%RAML 1.0 Library
+types:
+
+  GetHistoryResponse200:
+    properties:
+      id: string
+      endAt: number
+      riseAt: number
+    example: !include ami-include-history-sleep-collection.json
+
+  PostItemRequest:
+    properties:
+      endAt:
+        required: true
+        type: number
+      riseAt:
+        required: true
+        type: number
+
+  PostItemResponse200:
+    properties:
+      id: string
+      endAt: number
+      riseAt: number
+    example: !include ami-include-history-sleep-item.json

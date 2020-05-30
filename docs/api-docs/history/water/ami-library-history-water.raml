@@ -1,0 +1,25 @@
+#%RAML 1.0 Library
+types:
+
+  GetHistoryResponse200:
+    properties:
+      id: string
+      amount: number
+      drinkedAt: number
+    example: !include ami-include-history-water-collection.json
+
+  PostItemRequest:
+    properties:
+      amount:
+        required: true
+        type: number
+      drinkedAt:
+        required: true
+        type: number
+
+  PostItemResponse200:
+    properties:
+      id: string
+      amount: number
+      drinkedAt: number
+    example: !include ami-include-history-water-item.json

@@ -1,7 +1,9 @@
 #%RAML 1.0 Library
 types:
-  Register:
-    type: object
+
+  # Register
+
+  RegisterRequest:
     properties:
       email:
         type: string
@@ -36,8 +38,19 @@ types:
         description: ID пользователя авторизации через VK
         type: number
         required: false
-  Login:
-    type: object
+
+  RegisterResponse200:
+    properties:
+      user:
+        type: object
+        required: true
+      accessToken:
+        type: string
+        required: true
+    example: !include ami-include-auth-data.json
+
+  # Login
+  LoginRequest:
     properties:
       email:
         required: true
@@ -46,9 +59,27 @@ types:
         description: "Хэш пароля алгоритма MD5"
         required: true
         type: string
-  Restore:
-    type: object
+
+  LoginResponse200:
+    properties:
+      user:
+        type: object
+        required: true
+      accessToken:
+        type: string
+        required: true
+    example: !include ami-include-auth-data.json
+
+  # Restore
+  RestoreRequest:
     properties:
       email:
         required: true
         type: string
+
+  RestoreResponse200:
+    properties:
+      message:
+        type: string
+        required: true
+    example: !include ami-include-auth-restore-success.json

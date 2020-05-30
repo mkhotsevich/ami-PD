@@ -1,0 +1,19 @@
+#%RAML 1.0 Library
+types:
+
+  UserResponse200:
+    properties:
+      userId: string
+      email: string
+      name: string
+      surname: string
+      birthdate: number
+    example: !include ami-include-users-single.json
+
+  UserResponse404:
+    properties:
+      message: string
+    example: |
+      {
+        "message": "Пользователь не найден"
+      }

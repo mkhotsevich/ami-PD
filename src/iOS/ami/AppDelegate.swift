@@ -8,7 +8,7 @@
 
 import UIKit
 
-import NetCore
+import NetworkCore
 import Storage
 import UIUtils
 

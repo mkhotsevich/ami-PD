@@ -13,6 +13,9 @@ public enum NetworkError: Error, LocalizedError {
     case encodingFailed
     case missingURL
     case decodingFailed(Error, Data)
+    case serverFailed(code: Int, msg: String?)
+    case noData
+    case error(Error)
     
     public var localizedDescription: String {
         switch self {
@@ -26,6 +29,16 @@ public enum NetworkError: Error, LocalizedError {
             } else {
                 return msg
             }
+        case .serverFailed(let code, let msg):
+            var rtn = "The server returned an error with the code \(code)"
+            if let msg = msg {
+                rtn += " and message: \(msg)"
+            }
+            return rtn
+        case .noData:
+            return "No data"
+        case .error(let error):
+            return error.localizedDescription
         }
     }
 }

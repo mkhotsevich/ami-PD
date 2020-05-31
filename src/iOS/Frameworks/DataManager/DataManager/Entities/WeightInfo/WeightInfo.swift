@@ -11,7 +11,7 @@ import Storage
 import CoreData
 
 public struct WeightInfo: Decodable {
-    public let id: Int
+    public let id: String
     public let amount: Double
     public let weighedAt: Date
 }
@@ -21,7 +21,7 @@ extension WeightInfo: ManagedObjectConvertible {
     
     public func toManagedObject(in context: NSManagedObjectContext) -> ManagedObject? {
         guard let obj = WeightInfoCD.getOrCreateSingle(with: id, from: context) else { return nil }
-        obj.id = Int32(id)
+        obj.id = id
         obj.amount = amount
         obj.weighedAt = weighedAt
         return obj

@@ -13,10 +13,10 @@ import Storage
 
 @objc(ArticleCD)
 public class ArticleCD: NSManagedObject {
-    public class func getOrCreateSingle(with id: Int, from context: NSManagedObjectContext) -> ArticleCD? {
+    public class func getOrCreateSingle(with id: String, from context: NSManagedObjectContext) -> ArticleCD? {
         let entityName = String(describing: Self.self)
         let request = NSFetchRequest<ArticleCD>(entityName: entityName)
-        request.predicate = NSPredicate(format: "id == %d", id)
+        request.predicate = NSPredicate(format: "id == %@", id)
         guard let result = try? context.fetch(request) else { return nil }
         return result.first ?? ArticleCD(context: context)
     }
@@ -26,9 +26,10 @@ extension ArticleCD: ManagedObjectProtocol {
     public typealias Entity = Article
 
     public func toEntity() -> ArticleCD.Entity? {
-        guard let title = title,
+        guard let id = id,
+            let title = title,
             let content = content,
             let createdAt = createdAt else { return nil }
-        return Article(id: Int(id), title: title, content: content, createdAt: createdAt)
+        return Article(id: id, title: title, content: content, createdAt: createdAt)
     }
 }

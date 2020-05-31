@@ -16,7 +16,7 @@ extension WeightInfoCD {
         return NSFetchRequest<WeightInfoCD>(entityName: "WeightInfoCD")
     }
 
-    @NSManaged public var id: Int32
+    @NSManaged public var id: String?
     @NSManaged public var amount: Double
     @NSManaged public var weighedAt: Date?
 

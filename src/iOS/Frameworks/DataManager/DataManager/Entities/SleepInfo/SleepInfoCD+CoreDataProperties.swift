@@ -16,7 +16,7 @@ extension SleepInfoCD {
         return NSFetchRequest<SleepInfoCD>(entityName: "SleepInfoCD")
     }
 
-    @NSManaged public var id: Int32
+    @NSManaged public var id: String?
     @NSManaged public var endAt: Date?
     @NSManaged public var riseAt: Date?
 

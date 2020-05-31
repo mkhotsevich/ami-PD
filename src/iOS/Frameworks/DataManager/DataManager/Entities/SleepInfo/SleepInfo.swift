@@ -11,7 +11,7 @@ import Storage
 import CoreData
 
 public struct SleepInfo: Decodable {
-    public let id: Int
+    public let id: String
     public let endAt: Date
     public let riseAt: Date
 }
@@ -21,7 +21,7 @@ extension SleepInfo: ManagedObjectConvertible {
     
     public func toManagedObject(in context: NSManagedObjectContext) -> ManagedObject? {
         guard let obj = SleepInfoCD.getOrCreateSingle(with: id, from: context) else { return nil }
-        obj.id = Int32(id)
+        obj.id = id
         obj.endAt = endAt
         obj.riseAt = riseAt
         return obj

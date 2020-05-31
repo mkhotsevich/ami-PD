@@ -16,7 +16,7 @@ extension TaskInfoCD {
         return NSFetchRequest<TaskInfoCD>(entityName: "TaskInfoCD")
     }
 
-    @NSManaged public var id: Int32
+    @NSManaged public var id: String?
     @NSManaged public var title: String?
     @NSManaged public var notifyAt: Date?
     @NSManaged public var createdAt: Date?

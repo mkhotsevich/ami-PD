@@ -11,7 +11,7 @@ import Storage
 import CoreData
 
 public struct WaterInfo: Decodable {
-    public let id: Int
+    public let id: String
     public let amount: Int
     public let drinkedAt: Date
 }
@@ -21,7 +21,7 @@ extension WaterInfo: ManagedObjectConvertible {
     
     public func toManagedObject(in context: NSManagedObjectContext) -> ManagedObject? {
         guard let obj = WaterInfoCD.getOrCreateSingle(with: id, from: context) else { return nil }
-        obj.id = Int32(id)
+        obj.id = id
         obj.amount = Int32(amount)
         obj.drinkedAt = drinkedAt
         return obj

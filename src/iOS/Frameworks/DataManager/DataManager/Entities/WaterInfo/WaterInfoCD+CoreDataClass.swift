@@ -13,10 +13,10 @@ import Storage
 
 @objc(WaterInfoCD)
 public class WaterInfoCD: NSManagedObject {
-    public class func getOrCreateSingle(with id: Int, from context: NSManagedObjectContext) -> WaterInfoCD? {
+    public class func getOrCreateSingle(with id: String, from context: NSManagedObjectContext) -> WaterInfoCD? {
         let entityName = String(describing: Self.self)
         let request = NSFetchRequest<WaterInfoCD>(entityName: entityName)
-        request.predicate = NSPredicate(format: "id == %d", id)
+        request.predicate = NSPredicate(format: "id == %@", id)
         guard let result = try? context.fetch(request) else { return nil }
         return result.first ?? WaterInfoCD(context: context)
     }
@@ -26,7 +26,8 @@ extension WaterInfoCD: ManagedObjectProtocol {
     public typealias Entity = WaterInfo
     
     public func toEntity() -> Entity? {
-        guard let drinkedAt = drinkedAt else { return nil }
-        return WaterInfo(id: Int(id), amount: Int(amount), drinkedAt: drinkedAt)
+        guard let id = id,
+            let drinkedAt = drinkedAt else { return nil }
+        return WaterInfo(id: id, amount: Int(amount), drinkedAt: drinkedAt)
     }
 }

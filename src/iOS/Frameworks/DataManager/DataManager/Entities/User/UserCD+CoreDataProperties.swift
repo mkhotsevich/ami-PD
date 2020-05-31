@@ -20,10 +20,9 @@ extension UserCD {
     @NSManaged public var birthdate: Date?
     @NSManaged public var email: String?
     @NSManaged public var height: Double
-    @NSManaged public var id: Int32
+    @NSManaged public var id: String?
     @NSManaged public var name: String?
     @NSManaged public var surname: String?
     @NSManaged public var vkId: Int32
-    @NSManaged public var weight: Double
 
 }

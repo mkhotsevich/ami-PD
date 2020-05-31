@@ -13,10 +13,10 @@ import Storage
 
 @objc(TaskInfoCD)
 public class TaskInfoCD: NSManagedObject {
-    public class func getOrCreateSingle(with id: Int, from context: NSManagedObjectContext) -> TaskInfoCD? {
+    public class func getOrCreateSingle(with id: String, from context: NSManagedObjectContext) -> TaskInfoCD? {
         let entityName = String(describing: Self.self)
         let request = NSFetchRequest<TaskInfoCD>(entityName: entityName)
-        request.predicate = NSPredicate(format: "id == %d", id)
+        request.predicate = NSPredicate(format: "id == %@", id)
         guard let result = try? context.fetch(request) else { return nil }
         return result.first ?? TaskInfoCD(context: context)
     }
@@ -26,9 +26,10 @@ extension TaskInfoCD: ManagedObjectProtocol {
     public typealias Entity = TaskInfo
     
     public func toEntity() -> Entity? {
-        guard let title = title,
+        guard let id = id,
+            let title = title,
             let notifyAt = notifyAt,
             let createdAt = createdAt else { return nil }
-        return TaskInfo(id: Int(id), title: title, notifyAt: notifyAt, createdAt: createdAt)
+        return TaskInfo(id: id, title: title, notifyAt: notifyAt, createdAt: createdAt)
     }
 }

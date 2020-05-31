@@ -13,10 +13,10 @@ import Storage
 
 @objc(UserCD)
 public class UserCD: NSManagedObject {
-    public class func getOrCreateSingle(with id: Int, from context: NSManagedObjectContext) -> UserCD? {
+    public class func getOrCreateSingle(with id: String, from context: NSManagedObjectContext) -> UserCD? {
         let entityName = String(describing: Self.self)
         let request = NSFetchRequest<UserCD>(entityName: entityName)
-        request.predicate = NSPredicate(format: "id == %d", id)
+        request.predicate = NSPredicate(format: "id == %@", id)
         guard let result = try? context.fetch(request) else { return nil }
         return result.first ?? UserCD(context: context)
     }
@@ -26,16 +26,16 @@ extension UserCD: ManagedObjectProtocol {
     public typealias Entity = User
     
     public func toEntity() -> Entity? {
-        guard let email = email,
+        guard let id = id,
+            let email = email,
             let name = name,
             let surname = surname,
             let birthdate = birthdate else { return nil }
-        return User(id: Int(id),
+        return User(id: id,
                     email: email,
                     name: name,
                     surname: surname,
                     birthdate: birthdate,
-                    weight: weight,
                     height: height,
                     appleId: appleId,
                     vkId: Int(vkId))

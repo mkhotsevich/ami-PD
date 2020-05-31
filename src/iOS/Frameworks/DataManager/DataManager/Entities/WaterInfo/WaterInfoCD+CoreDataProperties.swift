@@ -16,7 +16,7 @@ extension WaterInfoCD {
         return NSFetchRequest<WaterInfoCD>(entityName: "WaterInfoCD")
     }
 
-    @NSManaged public var id: Int32
+    @NSManaged public var id: String?
     @NSManaged public var amount: Int32
     @NSManaged public var drinkedAt: Date?
 

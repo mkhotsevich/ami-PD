@@ -11,7 +11,7 @@ import CoreData
 import Storage
 
 public struct Article: Decodable {
-    public let id: Int
+    public let id: String
     public let title: String
     public let content: String
     public let createdAt: Date
@@ -22,7 +22,7 @@ extension Article: ManagedObjectConvertible {
     
     public func toManagedObject(in context: NSManagedObjectContext) -> ManagedObject? {
         guard let obj = ArticleCD.getOrCreateSingle(with: id, from: context) else { return nil }
-        obj.id = Int32(id)
+        obj.id = id
         obj.title = title
         obj.content = content
         obj.createdAt = createdAt

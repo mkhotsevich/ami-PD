@@ -1,6 +1,9 @@
 const express = require('express')
 const config = require('config')
 const mongoose = require('mongoose')
+const session = require('express-session')
+const flash = require('connect-flash')
+
 const authRoutes = require('./routes/auth')
 
 const PORT = config.get('PORT') || process.env.PORT
@@ -8,6 +11,14 @@ const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
+
+app.use(session({
+	secret: config.get('SECRET'),
+	resave: false,
+	saveUninitialized: false
+}))
+
+app.use(flash())
 
 app.use('/api/auth', authRoutes)
 

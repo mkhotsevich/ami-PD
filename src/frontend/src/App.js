@@ -1,11 +1,13 @@
 import React from 'react'
+import useRoutes from './routes'
 
-function App() {
-  return (
-    <div>
-			аывпвап
-    </div>
-  )
+const App = () => {
+	const routes = useRoutes(false, false)
+	return (
+		<div>
+			{routes}
+		</div>
+	)
 }
 
 export default App

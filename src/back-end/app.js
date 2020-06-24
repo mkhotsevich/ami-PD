@@ -1,16 +1,43 @@
 const express = require('express')
-const config = require('config')
 const mongoose = require('mongoose')
- 
+const helmet = require('helmet')
+const compression = require('compression')
+const session = require('express-session')
+const MongoStore = require('connect-mongodb-session')(session)
+
+const keys = require('./keys/index')
+const authRoutes = require('./routes/auth')
+
+const PORT = process.env.PORT || 5000
+
 const app = express()
 
-const PORT = config.get('PORT') || process.env.PORT
+const store = new MongoStore({
+	collection: 'sessions',
+	uri: keys.MONGODB_URI
+})
+
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+
+app.use(session({
+	secret: keys.SECRET,
+	resave: false,
+	saveUninitialized: false,
+	store
+}))
+
+app.use(helmet())
+app.use(compression())
+
+app.use('/api/auth', authRoutes)
+
 
 async function start() {
 	try {
-		await mongoose.connect(
-			config.get('MONGO_URI'), {
-			useNewUrlParser: true
+		await mongoose.connect(keys.MONGODB_URI, {
+			useNewUrlParser: true,
+			useUnifiedTopology: true
 		})
 		app.listen(PORT, () => console.log(`Server has been started on PORT ${PORT}...`))
 	} catch (e) {

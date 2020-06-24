@@ -1,5 +1,0 @@
-{
-	"PORT": 5000,
-	"MONGO_URI": "mongodb+srv://MaximKhotsevich:yFwyHA4dcjVDrV3g@cluster0-yyaxs.mongodb.net/amidb",
-	"SENDGRID_API_KEY": "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"
-}

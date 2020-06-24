@@ -1,0 +1,9 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "./fonts/bloggersans/bloggersans.css";
+
+* {
+	font-family: "Blogger Sans" !important;
+}
+body {
+	background-color: #e5e5e5;
+}

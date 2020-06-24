@@ -1,16 +1,22 @@
 const express = require('express')
 const config = require('config')
 const mongoose = require('mongoose')
- 
-const app = express()
+const authRoutes = require('./routes/auth')
 
 const PORT = config.get('PORT') || process.env.PORT
+const app = express()
+
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+
+app.use('/api/auth', authRoutes)
+
 
 async function start() {
 	try {
-		await mongoose.connect(
-			config.get('MONGO_URI'), {
-			useNewUrlParser: true
+		await mongoose.connect(config.get('MONGODB_URI'), {
+			useNewUrlParser: true,
+			useUnifiedTopology: true
 		})
 		app.listen(PORT, () => console.log(`Server has been started on PORT ${PORT}...`))
 	} catch (e) {

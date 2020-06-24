@@ -1,9 +1,9 @@
 process.env.NODE_ENV = 'test'
 
-const mongoose = require("mongoose")
 const chai = require('chai')
 const chaiHttp = require('chai-http')
 const bcrypt = require('bcryptjs')
+const { after, describe } = require("mocha")
 
 const User = require('../models/User')
 const app = require('../app')
@@ -12,14 +12,14 @@ const should = chai.should()
 
 chai.use(chaiHttp)
 
-describe('Auth', () => {
+describe('Регистрация', () => {
 	beforeEach((done) => {
 		User.deleteOne({}, (err) => {
 			done()
 		})
 	})
 	describe('/POST auth/register', () => {
-		it('Должна пройти регистрация с корректными данными', (done) => {
+		it('Корректные данные', (done) => {
 			const user = {
 				email: 'xozewitc@yandex.ru',
 				password: '12345678',
@@ -36,7 +36,7 @@ describe('Auth', () => {
 		})
 	})
 	describe('/POST auth/register', () => {
-		it('Должна быть ошибка при некорректном email', (done) => {
+		it('Неверный email', (done) => {
 			const user = {
 				email: 'xozewitcyandex.ru',
 				password: '12345678',
@@ -53,7 +53,7 @@ describe('Auth', () => {
 		})
 	})
 	describe('/POST auth/register', () => {
-		it('Должна быть ошибка при несовпадении паролей', (done) => {
+		it('Несовпадении паролей', (done) => {
 			const user = {
 				email: 'xozewitc@yandex.ru',
 				password: '1235678',
@@ -70,7 +70,7 @@ describe('Auth', () => {
 		})
 	})
 	describe('/POST auth/register', () => {
-		it('Должна быть ошибка при некорректном пароле', (done) => {
+		it('Некорректный пароль', (done) => {
 			const user = {
 				email: 'xozewitc@yandex.ru',
 				password: '123',
@@ -87,7 +87,7 @@ describe('Auth', () => {
 		})
 	})
 	describe('/POST auth/register', () => {
-		it('Должна быть ошибка при занятом email', (done) => {
+		it('Занятый email', (done) => {
 			const user1 = new User({
 				email: 'xozewitc@yandex.ru',
 				password: '12345678',
@@ -110,8 +110,16 @@ describe('Auth', () => {
 			})
 		})
 	})
+})
+
+describe('Вход', () => {
+	beforeEach((done) => {
+		User.deleteOne({}, (err) => {
+			done()
+		})
+	})
 	describe('/POST auth/login', () => {
-		it('Должен произойти вход с корректными данными', (done) => {
+		it('Корректные данные', (done) => {
 			const user2 = {
 				email: 'maxim@yandex.ru',
 				password: '12345678'
@@ -133,7 +141,7 @@ describe('Auth', () => {
 		})
 	})
 	describe('/POST auth/login', () => {
-		it('Должен произойти ошибка при входе с неверным паролем', (done) => {
+		it('Неверный пароль', (done) => {
 			const user1 = new User({
 				email: 'maxim@yandex.ru',
 				password: bcrypt.hashSync('1234567', 10)
@@ -155,7 +163,7 @@ describe('Auth', () => {
 		})
 	})
 	describe('/POST auth/login', () => {
-		it('Должен произойти ошибка при входе с неверным email', (done) => {
+		it('Неверный email', (done) => {
 			const user1 = new User({
 				email: 'maxim@yandex.ru',
 				password: bcrypt.hashSync('12345678', 10)

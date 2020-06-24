@@ -4,7 +4,7 @@ import useRoutes from './routes'
 const App = () => {
 	const routes = useRoutes(false, false)
 	return (
-		<div>
+		<div className={'container h-100'}>
 			{routes}
 		</div>
 	)

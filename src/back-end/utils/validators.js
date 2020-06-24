@@ -15,7 +15,7 @@ exports.registerValidators = [
 			}
 		})
 		.normalizeEmail(),
-	body('password', '/ПРИДУМАТЬ СООБЩЕНИЕ/')
+	body('password', 'Некорректный пароль')
 		.isLength({ min: 6, max: 64 })
 		.isAlphanumeric()
 		.trim(),

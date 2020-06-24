@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const helmet = require('helmet')
 const compression = require('compression')
 const session = require('express-session')
+const morgan = require('morgan')
 const MongoStore = require('connect-mongodb-session')(session)
 
 const keys = require('./keys/index')
@@ -18,7 +19,9 @@ const store = new MongoStore({
 })
 
 app.use(express.json())
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }))
+app.use(express.text())
+app.use(express.json({ type: 'application/json' }))
 
 app.use(session({
 	secret: keys.SECRET,
@@ -32,6 +35,9 @@ app.use(compression())
 
 app.use('/api/auth', authRoutes)
 
+if (process.env.NODE_ENV !== 'test') {
+	app.use(morgan('combined'));
+}
 
 async function start() {
 	try {
@@ -47,3 +53,5 @@ async function start() {
 }
 
 start()
+
+module.exports = app

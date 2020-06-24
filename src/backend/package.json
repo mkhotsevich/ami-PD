@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node app.js",
     "backend": "nodemon app.js",
-    "frontend": "",
-    "dev": "",
+    "frontend": "npm run start --prefix ../frontend",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\" ",
     "test": "mocha --timeout 10000"
   },
   "author": "Максим Хоцевич <xozewitc@yandex.ru>",

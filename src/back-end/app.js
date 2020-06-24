@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const session = require('express-session')
 const MongoStore = require('connect-mongodb-session')(session)
 
-const keys = require('./keys')
+const keys = require('./keys/index')
 const authRoutes = require('./routes/auth')
 
 const PORT = process.env.PORT || 5000
@@ -12,7 +12,7 @@ const app = express()
 
 const store = new MongoStore({
 	collection: 'sessions',
-	uri: config.get('MONGODB_URI')
+	uri: keys.MONGODB_URI
 })
 
 app.use(express.json())

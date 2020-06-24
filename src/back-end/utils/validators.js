@@ -1,11 +1,15 @@
 const { body } = require('express-validator')
+const User = require('../models/User')
 
 exports.registerValidators = [
 	body('email', 'Некорректный email')
 		.isEmail()
 		.custom(async (value, {req}) => {
 			try {
-				// Проверка на существующий email
+				const user = await User.findOne({ email: value })
+				if (user) {
+					return Promise.reject('Email занят')
+				}
 			} catch (e) {
 				console.log(e)
 			}

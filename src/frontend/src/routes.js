@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import Login from './containers/Login'
-import Register from './containers/Register'
+import Login from './containers/Login/Login'
+import Register from './containers/Register/Register'
 
 const useRoutes = (isAuthenticated, isAdmin) => {
 	if (isAuthenticated) {

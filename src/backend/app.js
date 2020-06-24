@@ -53,5 +53,5 @@ async function start() {
 }
 
 start()
-ваыаыа
+
 module.exports = app

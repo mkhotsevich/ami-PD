@@ -1,5 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const helmet = require('helmet')
+const compression = require('compression')
 const session = require('express-session')
 const MongoStore = require('connect-mongodb-session')(session)
 
@@ -25,6 +27,8 @@ app.use(session({
 	store
 }))
 
+app.use(helmet())
+app.use(compression())
 
 app.use('/api/auth', authRoutes)
 

@@ -2,23 +2,26 @@ const express = require('express')
 const config = require('config')
 const mongoose = require('mongoose')
 const session = require('express-session')
-const flash = require('connect-flash')
+const MongoStore = require('connect-mongodb-session')(session)
 
 const authRoutes = require('./routes/auth')
 
 const PORT = config.get('PORT') || process.env.PORT
 const app = express()
-
+const store = new MongoStore({
+	collection: 'sessions',
+	uri: config.get('MONGODB_URI')
+})
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 app.use(session({
 	secret: config.get('SECRET'),
 	resave: false,
-	saveUninitialized: false
+	saveUninitialized: false,
+	store
 }))
 
-app.use(flash())
 
 app.use('/api/auth', authRoutes)
 

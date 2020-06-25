@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken')
 const { registerValidators } = require('../utils/validators')
 const User = require('../models/User')
 const keys = require('../keys')
+const { HASH_SALT } = require('../keys/keys.dev')
 
 const router = Router()
 
@@ -24,7 +25,8 @@ router.post('/login', async (req, res) => {
 				)
 				return res.status(200).json({
 					message: 'Успешно',
-					token
+					token,
+					userId: candidate._id
 				})
 			} else {
 				return res.status(400).json({
@@ -56,14 +58,22 @@ router.post('/register', registerValidators, async (req, res) => {
 				message: errors.array()[0].msg
 			})
 		}
-		const hashedPassword = await bcrypt.hash(password, 10)
+		const hashedPassword = await bcrypt.hash(password, HASH_SALT)
 		const user = new User({
 			email,
 			password: hashedPassword
 		})
 		await user.save()
-		return res.status(200).json({
-			message: 'Успешно'
+		const newUser = await User.findOne({ email })
+		const token = jwt.sign(
+			{ userId: newUser._id },
+			keys.SECRET,
+			{ expiresIn: '30d' }
+		)
+		return res.status(201).json({
+			message: 'Вы справились!',
+			token,
+			userI: newUser._id
 		})
 	} catch (e) {
 		console.log(e)
@@ -75,7 +85,7 @@ router.post('/register', registerValidators, async (req, res) => {
 
 // /api/auth/logout
 router.post('/logout', async (req, res) => {
-	
+
 })
 
 

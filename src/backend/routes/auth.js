@@ -73,7 +73,7 @@ router.post('/register', registerValidators, async (req, res) => {
 		return res.status(201).json({
 			message: 'Вы справились!',
 			token,
-			userI: newUser._id
+			userId: newUser._id
 		})
 	} catch (e) {
 		console.log(e)

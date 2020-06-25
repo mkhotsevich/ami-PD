@@ -2,6 +2,7 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import Login from './containers/Login/Login'
 import Register from './containers/Register/Register'
+import Main from './containers/Main/Main'
 
 const useRoutes = (isAuthenticated, isAdmin) => {
 	if (isAuthenticated) {
@@ -12,11 +13,11 @@ const useRoutes = (isAuthenticated, isAdmin) => {
 			// 	</Switch>
 			// )
 		}
-		// return (
-		// 	<Switch>
-		// 		<Route path={'/'} component={} />
-		// 	</Switch>
-		// )
+		return (
+			<Switch>
+				<Route path={'/'} component={Main} />
+			</Switch>
+		)
 	}
 	return (
 		<Switch>

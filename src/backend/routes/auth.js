@@ -49,7 +49,7 @@ router.get('/login', (req, res) => {
 // /api/auth/register
 router.post('/register', registerValidators, async (req, res) => {
 	try {
-		const { email, password } = req.bodyи
+		const { email, password } = req.body
 		const errors = validationResult(req)
 		if (!errors.isEmpty()) {
 			return res.status(400).json({

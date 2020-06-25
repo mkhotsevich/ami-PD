@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import classes from './Register.module.css'
 import Input from '../../components/UI/Input/Input'
@@ -8,6 +8,7 @@ import google from '../../images/google.svg'
 import facebook from '../../images/facebook.svg'
 import vk from '../../images/vk.svg'
 import useHttp from '../../hooks/http.hook'
+import AuthContext from '../../context/AuthContext'
 
 const Register = () => {
 	const [form, setForm] = useState({
@@ -15,7 +16,7 @@ const Register = () => {
 		password: '',
 		confirm: ''
 	})
-
+	const auth = useContext(AuthContext)
 	const { loading, request, clearError, error } = useHttp()
 
 	const changeHandler = event => {
@@ -28,8 +29,8 @@ const Register = () => {
 	const registerHandler = async () => {
 		try {
 			const data = await request('/api/auth/register', 'POST', { ...form })
+			auth.login(data.token, data.userId)
 			clearError()
-			console.log(data)
 		} catch (e) { }
 	}
 

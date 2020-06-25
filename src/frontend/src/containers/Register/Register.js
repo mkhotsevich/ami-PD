@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import classes from './Register.module.css'
 import Input from '../../components/UI/Input/Input'
-import Button from '../../components/UI/Input/Button/Button'
+import Button from '../../components/UI/Button/Button'
 import logo from '../../images/logo.svg'
 import google from '../../images/google.svg'
 import facebook from '../../images/facebook.svg'
@@ -34,7 +34,7 @@ const Register = () => {
 						<Button
 							type={'primary'}
 						>
-							Зарегестрироваться
+							Далее
 							</Button>
 						<hr />
 						<Button

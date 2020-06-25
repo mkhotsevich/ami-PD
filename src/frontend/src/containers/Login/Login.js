@@ -1,9 +1,82 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
+import { Link } from 'react-router-dom'
+import classes from './Login.module.css'
+import Input from '../../components/UI/Input/Input'
+import Button from '../../components/UI/Button/Button'
+import logo from '../../images/logo.svg'
+import google from '../../images/google.svg'
+import facebook from '../../images/facebook.svg'
+import vk from '../../images/vk.svg'
+import useHttp from '../../hooks/http'
 
 const Login = () => {
+	const [form, setForm] = useState({
+		email: '',
+		password: '',
+		confirm: ''
+	})
+
+	const { loading, request, clearError, error } = useHttp()
+
+	const changeHandler = event => {
+		setForm({
+			...form,
+			[event.target.name]: event.target.value
+		})
+	}
+
+	const loginHandler = () => {
+
+	}
+
 	return (
 		<Fragment>
-			<h1>Login</h1>
+			<div className={`row h-100`}>
+				<div className={'col-12 col-sm-10 col-md-8 col-lg-5 mx-auto d-flex flex-column justify-content-center h-100'}>
+					<div className={`${classes.Login} d-flex flex-column px-5 py-3 justify-content-between`}>
+						<div>
+							<div className={`text-center ${classes.logo}`} ><img src={logo} alt={'logo'} /></div>
+							<h1 className={'text-center'}>Вход</h1>
+							<Input
+								type={'text'}
+								placeholder={'Email'}
+								onChange={changeHandler}
+								id={'email'}
+								name={'email'}
+							/>
+							<Input
+								type={'password'}
+								placeholder={'Пароль'}
+								onChange={changeHandler}
+								id={'password'}
+								name={'password'}
+							/>
+							{error && <p className={`text-center ${classes.error}`}>{error}</p>}
+						</div>
+						<div>
+							<Button
+								type={'primary'}
+								onClick={loginHandler}
+							>
+								Войти
+							</Button>
+							<hr />
+							<Link to={'/register'}>
+								<Button
+									type={'success'}
+								>
+									Еще нет аккаунта? Зарегистрируйтесь!
+							</Button>
+							</Link>
+							<div className={`d-flex justify-content-around ${classes.social}`}>
+								<img src={google} alt={'google'} />
+								<img src={facebook} alt={'facebook'} />
+								<img src={vk} alt={'vk'} />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</Fragment>
 	)
 }

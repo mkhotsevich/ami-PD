@@ -83,10 +83,4 @@ router.post('/register', registerValidators, async (req, res) => {
 	}
 })
 
-// /api/auth/logout
-router.post('/logout', async (req, res) => {
-
-})
-
-
 module.exports = router

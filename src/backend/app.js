@@ -6,6 +6,7 @@ const morgan = require('morgan')
 
 const keys = require('./keys/index')
 const authRoutes = require('./routes/auth')
+const usersRoutes = require('./routes/users')
 
 const PORT = process.env.PORT || 5000
 
@@ -21,6 +22,7 @@ app.use(helmet())
 app.use(compression())
 
 app.use('/api/auth', authRoutes)
+app.use('/api/users', usersRoutes)
 
 if (process.env.NODE_ENV !== 'test') {
 	app.use(morgan('combined'));

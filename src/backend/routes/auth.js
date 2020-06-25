@@ -39,7 +39,6 @@ router.post('/login', async (req, res) => {
 			})
 		}
 	} catch (e) {
-		console.log(e)
 		return res.status(500).json({
 			message: 'Server error'
 		})
@@ -76,7 +75,6 @@ router.post('/register', registerValidators, async (req, res) => {
 			userId: newUser._id
 		})
 	} catch (e) {
-		console.log(e)
 		return res.status(500).json({
 			message: 'Server error'
 		})

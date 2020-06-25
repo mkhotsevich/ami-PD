@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import classes from './Login.module.css'
 import Input from '../../components/UI/Input/Input'
@@ -8,13 +8,14 @@ import google from '../../images/google.svg'
 import facebook from '../../images/facebook.svg'
 import vk from '../../images/vk.svg'
 import useHttp from '../../hooks/http.hook'
+import AuthContext from '../../context/AuthContext'
 
 const Login = () => {
 	const [form, setForm] = useState({
 		email: '',
 		password: '',
 	})
-
+	const auth = useContext(AuthContext)
 	const { loading, request, clearError, error } = useHttp()
 
 	const changeHandler = event => {
@@ -24,8 +25,10 @@ const Login = () => {
 		})
 	}
 
-	const loginHandler = () => {
-
+	const loginHandler = async () => {
+		const data = await request('/api/auth/login', 'POST', { ...form })
+		auth.login(data.token, data.userId)
+		clearError()
 	}
 
 	return (

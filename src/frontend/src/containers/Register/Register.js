@@ -7,7 +7,7 @@ import logo from '../../images/logo.svg'
 import google from '../../images/google.svg'
 import facebook from '../../images/facebook.svg'
 import vk from '../../images/vk.svg'
-import useHttp from '../../hooks/http'
+import useHttp from '../../hooks/http.hook'
 
 const Register = () => {
 	const [form, setForm] = useState({

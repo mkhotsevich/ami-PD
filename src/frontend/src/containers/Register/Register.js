@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import classes from './Register.module.css'
 import Input from '../../components/UI/Input/Input'
 import Button from '../../components/UI/Button/Button'
@@ -6,8 +6,32 @@ import logo from '../../images/logo.svg'
 import google from '../../images/google.svg'
 import facebook from '../../images/facebook.svg'
 import vk from '../../images/vk.svg'
+import useHttp from '../../hooks/http'
 
 const Register = () => {
+	const [form, setForm] = useState({
+		email: '',
+		password: '',
+		confirm: ''
+	})
+
+	const { loading, request, clearError, error} = useHttp()
+
+	const changeHandler = event => {
+		setForm({
+			...form,
+			[event.target.name]: event.target.value
+		})
+	}
+
+	const registerHandler =  async () => {
+		try {
+			const data = await request('/api/auth/register', 'POST', { ...form })
+			clearError()
+			console.log(data)
+		} catch (e) {}
+	}
+
 	return (
 		<Fragment>
 			<div className={`row h-100`}>
@@ -18,21 +42,32 @@ const Register = () => {
 						<Input
 							type={'text'}
 							placeholder={'Email'}
+							onChange={changeHandler}
+							id={'email'}
+							name={'email'}
 						/>
 						<Input
 							type={'password'}
 							placeholder={'Пароль'}
+							onChange={changeHandler}
+							id={'password'}
+							name={'password'}
 						/>
 						<Input
 							type={'password'}
 							placeholder={'Повторите пароль'}
+							onChange={changeHandler}
+							id={'confirm'}
+							name={'confirm'}
 						/>
+						{error && <p className={`text-center ${classes.error}`}>{error}</p>}
 						<p className={'text-justify'}>
 							Регистрируясь, вы принимаете наши Условия,
 							Политику использования данных и Политику в отношении файлов cookie.
 						</p>
 						<Button
 							type={'primary'}
+							onClick={registerHandler}
 						>
 							Далее
 							</Button>

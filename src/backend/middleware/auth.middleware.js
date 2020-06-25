@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 const keys = require('../keys/index')
 
 module.exports = (req, res, next) => {
-	if (req.method == 'OPTIONS') {
+	if (req.method === 'OPTIONS') {
 		next()
 	}
 	try {
@@ -12,6 +12,7 @@ module.exports = (req, res, next) => {
 			return res.status(401).json({message: 'Нет авторизации'})
 		}
 		const decoded = jwt.verify(token, keys.SECRET)
+		
 		req.user = decoded
 		next()
 	} catch (e) {

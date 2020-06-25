@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 const { registerValidators } = require('../utils/validators')
 const User = require('../models/User')
 const keys = require('../keys')
-const { HASH_SALT } = require('../keys/keys.dev')
+const { HASH_SALT } = require('../keys/index')
 
 const router = Router()
 

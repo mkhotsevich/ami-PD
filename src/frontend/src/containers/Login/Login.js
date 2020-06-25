@@ -9,6 +9,7 @@ import facebook from '../../images/facebook.svg'
 import vk from '../../images/vk.svg'
 import useHttp from '../../hooks/http.hook'
 import AuthContext from '../../context/AuthContext'
+import Loader from '../../components/UI/Loader/Loader'
 
 const Login = () => {
 	const [form, setForm] = useState({
@@ -26,13 +27,16 @@ const Login = () => {
 	}
 
 	const loginHandler = async () => {
-		const data = await request('/api/auth/login', 'POST', { ...form })
-		auth.login(data.token, data.userId)
-		clearError()
+		try {
+			const data = await request('/api/auth/login', 'POST', { ...form })
+			auth.login(data.token, data.userId)
+			clearError()
+		} catch (e) { }
 	}
 
 	return (
 		<Fragment>
+			{loading && <Loader />}
 			<div className={`row h-100`}>
 				<div className={'col-12 col-sm-10 col-md-8 col-lg-5 mx-auto d-flex flex-column justify-content-center h-100'}>
 					<div className={`${classes.Login} d-flex flex-column px-5 py-3 justify-content-between`}>

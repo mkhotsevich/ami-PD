@@ -9,6 +9,7 @@ import facebook from '../../images/facebook.svg'
 import vk from '../../images/vk.svg'
 import useHttp from '../../hooks/http.hook'
 import AuthContext from '../../context/AuthContext'
+import Loader from '../../components/UI/Loader/Loader'
 
 const Register = () => {
 	const [form, setForm] = useState({
@@ -36,6 +37,7 @@ const Register = () => {
 
 	return (
 		<Fragment>
+			{loading && <Loader />}
 			<div className={`row h-100`}>
 				<div className={'col-12 col-sm-10 col-md-8 col-lg-5 mx-auto d-flex flex-column justify-content-center h-100'}>
 					<div className={`${classes.Register} d-flex flex-column px-5 py-3 justify-content-between`}>

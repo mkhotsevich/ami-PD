@@ -36,13 +36,13 @@ const Navbar = () => {
 			</div>
 			<div className={'row'}>
 				<div className={'col-4 text-center'}>
-					<NavLink to={'/health'}>Здоровье</NavLink>
+					<NavLink to={'/health'} activeClassName={classes.active}>Здоровье</NavLink>
 				</div>
 				<div className={'col-4 text-center'}>
-					<NavLink to={'/'} exact>Статьи</NavLink>
+					<NavLink to={'/'} exact activeClassName={classes.active}>Статьи</NavLink>
 				</div>
 				<div className={'col-4 text-center'}>
-					<NavLink to={'/profile'}>Личная информация</NavLink>
+					<NavLink to={'/profile'} activeClassName={classes.active}>Личная информация</NavLink>
 				</div>
 			</div>
 		</div>

@@ -1,6 +1,7 @@
 const { body } = require('express-validator')
 const User = require('../models/User')
 
+// TODO: Сделать валидаторы для регистрации
 exports.registerValidators = [
 	body('email', 'Некорректный email')
 		.isEmail()
@@ -15,16 +16,4 @@ exports.registerValidators = [
 			}
 		})
 		.normalizeEmail(),
-	body('password', 'Некорректный пароль')
-		.isLength({ min: 6, max: 64 })
-		.isAlphanumeric()
-		.trim(),
-	body('confirm')
-		.custom((value, { req }) => {
-			if (value !== req.body.password) {
-				throw new Error('Пароли не совпадают')
-			}
-			return true
-		})
-		.trim()
 ]

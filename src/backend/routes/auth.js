@@ -2,49 +2,34 @@ const { Router } = require('express')
 const { validationResult } = require('express-validator')
 const jwt = require('jsonwebtoken')
 
+
 const { registerValidators } = require('../utils/validators')
 const User = require('../models/User')
 const keys = require('../keys')
 
 const router = Router()
 
-// /api/auth/login
+// api/auth/login
 router.post('/login', async (req, res) => {
 	try {
 		const { email, password } = req.body
 		const candidate = await User.findOne({ email })
 
 		if (candidate) {
-			const areSame = await bcrypt.compare(password, candidate.password)
+			// FIXME: сделать сравнеение локоничнее
+			const areSame = password === candidate.password ? true : false
 			if (areSame) {
-				const token = jwt.sign(
-					{ userId: candidate._id },
-					keys.SECRET,
-					{ expiresIn: '30d' }
-				)
-				return res.status(200).json({
-					message: 'Успешно',
-					token,
-					userId: candidate._id
-				})
+				const accessToken = jwt.sign({ userId: candidate._id }, keys.SECRET, { expiresIn: '30d' })
+				return res.status(200).json({ accessToken, user: candidate })
 			} else {
-				return res.status(400).json({
-					message: 'Неверный пароль'
-				})
+				return res.status(400).json({ message: 'Неверный пароль' })
 			}
 		} else {
-			return res.status(400).json({
-				message: 'Пользователь не найден'
-			})
+			return res.status(400).json({ message: 'Пользователь не найден' })
 		}
 	} catch (e) {
-		return res.status(500).json({
-			message: 'Server error'
-		})
+		return res.status(500).json({ message: 'Что-то пошло не так, попробуйте позже' })
 	}
-})
-router.get('/login', (req, res) => {
-	res.send(JSON.stringify(req.session))
 })
 
 // api/auth/register
@@ -55,13 +40,13 @@ router.post('/register', registerValidators, async (req, res) => {
 
 		const { email, password, name, surname, birthday, weight, height, appleId, vkId } = req.body
 
-		const user = new User({email, password, name, surname, birthday, weight, height, appleId, vkId})
+		const user = new User({ email, password, name, surname, birthday, weight, height, appleId, vkId })
 		await user.save()
 
 		const newUser = await User.findOne({ email })
 		const accessToken = jwt.sign({ userId: newUser._id }, keys.SECRET, { expiresIn: '30d' })
 
-		return res.status(201).json({ message: 'Вы справились!', accessToken, user: newUser })
+		return res.status(201).json({ accessToken, user: newUser })
 	} catch (e) {
 		return res.status(500).json({ message: 'Что-то пошло не так, попробуйте позже' })
 	}

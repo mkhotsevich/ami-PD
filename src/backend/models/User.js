@@ -30,7 +30,7 @@ const userSchema = new Schema({
 		type: String
 	},
 	vkId: {
-		type: String
+		type: Number
 	}
 })
 

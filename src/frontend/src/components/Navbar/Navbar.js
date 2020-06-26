@@ -36,7 +36,7 @@ const Navbar = () => {
 			</div>
 			<div className={'row'}>
 				<div className={'col-4 text-center'}>
-					<NavLink to={'/health'} activeClassName={classes.active}>Здоровье</NavLink>
+					<NavLink to={'/health?type=water'} activeClassName={classes.active}>Здоровье</NavLink>
 				</div>
 				<div className={'col-4 text-center'}>
 					<NavLink to={'/'} exact activeClassName={classes.active}>Статьи</NavLink>

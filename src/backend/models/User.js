@@ -12,12 +12,25 @@ const userSchema = new Schema({
 	},
 	name: {
 		type: String,
+		required: true
 	},
 	surname: {
 		type: String,
+		required: true
 	},
-	birthdate: {
+	birthday: {
 		type: Number,
+		required: true
+	},
+	weigth: {
+		type: Number,
+		required: true
+	},
+	appleId: {
+		type: String
+	},
+	vkId: {
+		type: String
 	}
 })
 

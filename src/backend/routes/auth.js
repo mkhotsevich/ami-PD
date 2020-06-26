@@ -1,11 +1,10 @@
 const { Router } = require('express')
 const { validationResult } = require('express-validator')
-const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+
 const { registerValidators } = require('../utils/validators')
 const User = require('../models/User')
 const keys = require('../keys')
-const { HASH_SALT } = require('../keys/index')
 
 const router = Router()
 
@@ -47,37 +46,24 @@ router.post('/login', async (req, res) => {
 router.get('/login', (req, res) => {
 	res.send(JSON.stringify(req.session))
 })
-// /api/auth/register
+
+// api/auth/register
 router.post('/register', registerValidators, async (req, res) => {
 	try {
-		const { email, password } = req.body
 		const errors = validationResult(req)
-		if (!errors.isEmpty()) {
-			return res.status(400).json({
-				message: errors.array()[0].msg
-			})
-		}
-		const hashedPassword = await bcrypt.hash(password, HASH_SALT)
-		const user = new User({
-			email,
-			password: hashedPassword
-		})
+		if (!errors.isEmpty()) return res.status(400).json({ message: errors.array()[0].msg })
+
+		const { email, password, name, surname, birthday, weight, height, appleId, vkId } = req.body
+
+		const user = new User({email, password, name, surname, birthday, weight, height, appleId, vkId})
 		await user.save()
+
 		const newUser = await User.findOne({ email })
-		const token = jwt.sign(
-			{ userId: newUser._id },
-			keys.SECRET,
-			{ expiresIn: '30d' }
-		)
-		return res.status(201).json({
-			message: 'Вы справились!',
-			token,
-			userId: newUser._id
-		})
+		const accessToken = jwt.sign({ userId: newUser._id }, keys.SECRET, { expiresIn: '30d' })
+
+		return res.status(201).json({ message: 'Вы справились!', accessToken, user: newUser })
 	} catch (e) {
-		return res.status(500).json({
-			message: 'Server error'
-		})
+		return res.status(500).json({ message: 'Что-то пошло не так, попробуйте позже' })
 	}
 })
 

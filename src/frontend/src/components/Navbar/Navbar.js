@@ -11,7 +11,7 @@ const Navbar = () => {
 	const logoutHandler = event => {
 		event.preventDefault()
 		auth.logout()
-		history.push('/')
+		history.push('/login')
 	}
 
 	return (
@@ -24,7 +24,11 @@ const Navbar = () => {
 					<span>Здравствуйте, Йцуееккаукук</span>
 				</div>
 				<div className={'col-1 d-flex justify-content-end align-items-center'}>
-					<a href={'/'} onClick={logoutHandler}>Выйти</a>
+					{auth.isAuthenticated ?
+						<a href={'/'} onClick={logoutHandler}>Выйти</a>
+						:
+						<Link to={'/login'}>Войти</Link>
+					}
 				</div>
 			</div>
 			<div className={'row'}>
@@ -32,13 +36,13 @@ const Navbar = () => {
 			</div>
 			<div className={'row'}>
 				<div className={'col-4 text-center'}>
-					<NavLink to={'/'}>Здоровье</NavLink>
+					<NavLink to={'/health'}>Здоровье</NavLink>
 				</div>
 				<div className={'col-4 text-center'}>
-					<NavLink to={'/'}>Статьи</NavLink>
+					<NavLink to={'/'} exact>Статьи</NavLink>
 				</div>
 				<div className={'col-4 text-center'}>
-					<NavLink to={'/'}>Личная информация</NavLink>
+					<NavLink to={'/profile'}>Личная информация</NavLink>
 				</div>
 			</div>
 		</div>

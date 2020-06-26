@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const helmet = require('helmet')
 const compression = require('compression')
 const morgan = require('morgan')
+const path = require('path')
 
 const keys = require('./keys/index')
 const authRoutes = require('./routes/auth')
@@ -25,7 +26,13 @@ app.use('/api/auth', authRoutes)
 app.use('/api/users', usersRoutes)
 
 if (process.env.NODE_ENV !== 'test') {
-	app.use(morgan('combined'));
+	app.use(morgan('combined'))
+}
+if (process.env.NODE_ENV == 'production') {
+	app.use('/', express.static(path.join(__dirname, '..', '/frontend', 'build')))
+	app.get('*', (req, res) => {
+		res.sendFile(path.resolve(__dirname, '..', 'frontend', 'build', 'index.html'))
+	})
 }
 
 async function start() {

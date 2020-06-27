@@ -42,7 +42,7 @@ router.post('/register', registerValidators, async (req, res) => {
 	try {
 		const errors = validationResult(req)
 		if (!errors.isEmpty()) return res.status(400).json({ message: errors.array()[0].msg })
-		
+
 		const { email, password, name, surname, birthdate, weight, height, appleId, vkId } = req.body
 
 		const user = new User({ email, password, name, surname, birthdate, height, appleId, vkId })
@@ -79,7 +79,7 @@ router.post('/restore', (req, res) => {
 				candidate.restoreTokenExp = Date.now() + 3600 * 1000
 				await candidate.save()
 				await transporter.sendMail(restoreEmail(candidate.email, token))
-				res.status(200).json({ message: `Email с ссылкой для восстановления пароля отправлена на ${candidate.email}` })
+				return res.status(200).json({ message: `Ссылка для восстановления пароля была отправлена на ${candidate.email}` })
 			} else {
 				return res.status(400).json({ message: 'Пользователь с таким Email не найден' })
 			}
@@ -93,9 +93,7 @@ router.post('/restore', (req, res) => {
 // api/auth/restore/:token
 router.get('/restore/:token', async (req, res) => {
 	try {
-		if (!req.params.token) {
-			return res.status(400).json({ message: 'Нет доступа', redirect: true })
-		}
+		if (!req.params.token) return res.status(400).json()
 
 		const user = await User.findOne({
 			restoreToken: req.params.token,
@@ -103,16 +101,13 @@ router.get('/restore/:token', async (req, res) => {
 		})
 
 		if (!user) {
-			return res.status(400).json({ message: 'Нет доступа', redirect: true })
+			return res.status(400).json()
 		} else {
 			return res.status(200).json({
-				message: 'Доступ есть',
-				redirect: false,
 				userId: user._id.toString(),
 				token: req.params.token
 			})
 		}
-
 	} catch (e) {
 		console.log(e)
 		return res.status(500).json({ message: 'Что-то пошло не так, попробуйте позже' })
@@ -120,10 +115,10 @@ router.get('/restore/:token', async (req, res) => {
 })
 
 // api/auth/restore/:token
-router.post('/restore/password', async (req, res) => {
+router.post('/restore/:token', async (req, res) => {
 	try {
 		const user = await User.findOne({
-			_id: req.body.userId,
+			_id: req.body.userId.toString(),
 			restoreToken: req.body.token,
 			restoreTokenExp: {$gt: Date.now()}
 		})
@@ -134,7 +129,7 @@ router.post('/restore/password', async (req, res) => {
 			user.restoreTokenExp = undefined
 			await user.save()
 
-			return res.status(200).json({ message: 'Готово' })
+			return res.status(200).json({ message: 'Пароль изменен' })
 		} else {
 			return res.status(400).json({ message: 'Время жизни токена истекло, попробуйте еще раз' })
 		}

@@ -10,7 +10,7 @@ const weightHistorySchema = new Schema({
 		type: Number,
 		required: true
 	},
-	weightingDate: {
+	weighedAt: {
 		type: Number,
 		default: Date.now(),
 		required: true

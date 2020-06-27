@@ -31,7 +31,9 @@ const userSchema = new Schema({
 	},
 	vkId: {
 		type: Number
-	}
+	},
+	restoreToken: String,
+	restoreTokenExp: Date
 })
 
 module.exports = model('User', userSchema)

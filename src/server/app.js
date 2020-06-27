@@ -9,7 +9,7 @@ const keys = require('./keys/index')
 const authRoutes = require('./routes/auth')
 const usersRoutes = require('./routes/users')
 
-const PORT = process.env.PORT || 5000
+const PORT = keys.PORT
 
 const app = express()
 

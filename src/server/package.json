@@ -1,15 +1,15 @@
 {
   "name": "ami",
   "version": "0.0.1",
-  "description": "Back-end приложения для здорового образа жизни ",
+  "description": "Приложения для здорового образа жизни",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "backend": "nodemon app.js",
-    "frontend": "npm run start --prefix ../frontend",
-    "frontend:install": "npm install --prefix ../frontend",
-    "frontend:build": "npm run build --prefix ../frontend",
-    "dev": "cross-env NODE_ENV=development concurrently \"npm run backend\" \"npm run frontend\" ",
+    "start": "cross-env NODE_ENV=production node app.js",
+    "server": "nodemon app.js",
+    "client": "npm run start --prefix client",
+    "client:install": "npm install --prefix client",
+    "client:build": "npm run build --prefix client",
+    "dev": "cross-env NODE_ENV=development concurrently \"npm run server\" \"npm run client\" ",
     "test": "cross-env NODE_ENV=test mocha --timeout 10000"
   },
   "author": "Максим Хоцевич <xozewitc@yandex.ru>",

@@ -28,10 +28,10 @@ app.use('/api/users', usersRoutes)
 if (process.env.NODE_ENV !== 'test') {
 	app.use(morgan('combined'))
 }
-if (process.env.NODE_ENV == 'production') {
-	app.use('/', express.static(path.join(__dirname, '..', '/frontend', 'build')))
-	app.get('*', (req,  res) => {
-		res.sendFile(path.resolve(__dirname, '..', 'frontend', 'build', 'index.html'))
+if (process.env.NODE_ENV === 'production') {
+	app.use('/', express.static(path.join(__dirname, 'client', 'build')))
+	app.get('*', (req, res) => {
+		res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
 	})
 }
 

@@ -9,7 +9,7 @@ exports.registerValidators = [
 			try {
 				const user = await User.findOne({ email: value })
 				if (user) {
-					return Promise.reject('Email занят')
+					return Promise.reject('Пользователь с таким Email уже существует')
 				}
 			} catch (e) {
 				console.log(e)

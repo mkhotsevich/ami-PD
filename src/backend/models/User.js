@@ -18,11 +18,11 @@ const userSchema = new Schema({
 		type: String,
 		required: true
 	},
-	birthday: {
+	birthdate: {
 		type: Number,
 		required: true
 	},
-	weigth: {
+	height: {
 		type: Number,
 		required: true
 	},

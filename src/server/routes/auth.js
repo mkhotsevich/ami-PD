@@ -42,7 +42,7 @@ router.post('/register', registerValidators, async (req, res) => {
 	try {
 		const errors = validationResult(req)
 		if (!errors.isEmpty()) return res.status(400).json({ message: errors.array()[0].msg })
-
+		
 		const { email, password, name, surname, birthdate, weight, height, appleId, vkId } = req.body
 
 		const user = new User({ email, password, name, surname, birthdate, height, appleId, vkId })

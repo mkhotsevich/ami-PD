@@ -5,7 +5,7 @@ const User = require('../models/User')
 exports.registerValidators = [
 	body('email', 'Некорректный email')
 		.isEmail()
-		.custom(async (value, {req}) => {
+		.custom(async (value, { req }) => {
 			try {
 				const user = await User.findOne({ email: value })
 				if (user) {

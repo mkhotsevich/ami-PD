@@ -50,6 +50,7 @@ router.post('/register', registerValidators, async (req, res) => {
 
 		const newUser = await User.findOne({ email })
 		const weigthHistory = new WeigthHistory({ userId: newUser._id, amount: weight })
+		await weigthHistory.save()
 
 		const accessToken = jwt.sign({ userId: newUser._id }, config.get('JWT_SECRET'), { expiresIn: '30d' })
 

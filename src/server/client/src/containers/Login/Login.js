@@ -57,6 +57,7 @@ const Login = () => {
 								id={'password'}
 								name={'password'}
 							/>
+							<div className={'text-center'}><Link to={'/restore'}>Забыли пароль?</Link></div>
 							{error && <p className={`text-center ${classes.error}`}>{error}</p>}
 						</div>
 						<div>

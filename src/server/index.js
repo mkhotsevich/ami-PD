@@ -15,13 +15,9 @@ const app = express()
 const HTTP_PORT = config.get('HTTP_PORT')
 const HTTPS_PORT = config.get('HTTPS_PORT')
 
-const httpsOptions = { key: fs.readFileSync("server.key"), cert: fs.readFileSync("server.crt") }
+const httpsOptions = { key: fs.readFileSync('server.key'), cert: fs.readFileSync('server.crt') }
 
-httpApp.set('port', HTTP_PORT || 80)
-httpApp.get("*", (req, res) => { res.redirect("https://" + req.headers.host + req.path) })
-
-app.set('port', HTTPS_PORT || 443)
-app.enable('trust proxy')
+httpApp.get('*', (req, res) => res.redirect(`https://${req.headers.host}${req.path}`))
 
 app.use(express.json({ extended: true, type: 'application/json' }))
 app.use(express.urlencoded({ extended: true }));
@@ -56,14 +52,8 @@ async function start() {
 			useCreateIndex: true
 		})
 
-		http.createServer(httpApp).listen(httpApp.get('port'), function () {
-			console.log('Express HTTP server listening on port ' + httpApp.get('port'));
-		});
-
-		https.createServer(httpsOptions, app).listen(app.get('port'), function () {
-			console.log('Express HTTPS server listening on port ' + app.get('port'));
-		});
-		// https.createServer(httpsOptions, app).listen(PORT, () => console.log(`Server has been started on PORT ${PORT}...`))
+		http.createServer(httpApp).listen(HTTP_PORT, () => console.log(`HTTP server has been started on PORT ${HTTP_PORT}`))
+		https.createServer(httpsOptions, app).listen(HTTPS_PORT, () => console.log(`HTTPS server has been started on PORT ${HTTPS_PORT}`))
 	} catch (e) {
 		console.log('Неизвестная ошибка', e.message)
 		process.exit(1)

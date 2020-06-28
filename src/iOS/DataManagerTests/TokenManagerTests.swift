@@ -9,9 +9,9 @@
 import XCTest
 @testable import DataManager
 
-class TokenManagerTests: XCTestCase {
+//class TokenManagerTests: XCTestCase {
     
-    lazy var manager: TokenManager = TokenManager()
+//    lazy var manager: TokenManager = TokenManager()
     
 //    func testRefreshing() {
 //        let exp = self.expectation(description: "Loading from server")
@@ -27,4 +27,4 @@ class TokenManagerTests: XCTestCase {
 //        waitForExpectations(timeout: 10, handler: nil)
 //    }
 
-}
+//}

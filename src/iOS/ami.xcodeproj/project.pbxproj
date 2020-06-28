@@ -159,7 +159,7 @@
 
 /* Begin PBXFileReference section */
 		5713DC0724A4DC4E00C9518A /* DataManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DataManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5764E51924A91E3300E6BFDC /* DataManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5764E51924A91E3300E6BFDC /* APIMethodsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = APIMethodsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5764E51B24A91E3300E6BFDC /* AuthManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManagerTests.swift; sourceTree = "<group>"; };
 		5764E51D24A91E3300E6BFDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5764E52824A932B600E6BFDC /* UserManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerTests.swift; sourceTree = "<group>"; };
@@ -352,7 +352,7 @@
 				57CDF73A24A8C2330053300A /* Storage.framework */,
 				57CDF74B24A8C2680053300A /* UIUtils.framework */,
 				57CDF75C24A8C2750053300A /* NetworkCore.framework */,
-				5764E51924A91E3300E6BFDC /* DataManagerTests.xctest */,
+				5764E51924A91E3300E6BFDC /* APIMethodsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -669,9 +669,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		5764E51824A91E3300E6BFDC /* DataManagerTests */ = {
+		5764E51824A91E3300E6BFDC /* APIMethodsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5764E52324A91E3300E6BFDC /* Build configuration list for PBXNativeTarget "DataManagerTests" */;
+			buildConfigurationList = 5764E52324A91E3300E6BFDC /* Build configuration list for PBXNativeTarget "APIMethodsTests" */;
 			buildPhases = (
 				5764E51524A91E3300E6BFDC /* Sources */,
 				5764E51624A91E3300E6BFDC /* Frameworks */,
@@ -683,9 +683,9 @@
 				5764E52024A91E3300E6BFDC /* PBXTargetDependency */,
 				5764E52524A91F8400E6BFDC /* PBXTargetDependency */,
 			);
-			name = DataManagerTests;
+			name = APIMethodsTests;
 			productName = DataManagerTests;
-			productReference = 5764E51924A91E3300E6BFDC /* DataManagerTests.xctest */;
+			productReference = 5764E51924A91E3300E6BFDC /* APIMethodsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		5779BF6624A3F181005113D4 /* ami */ = {
@@ -839,7 +839,7 @@
 				57CDF73924A8C2330053300A /* Storage */,
 				57CDF74A24A8C2680053300A /* UIUtils */,
 				57CDF75B24A8C2750053300A /* NetworkCore */,
-				5764E51824A91E3300E6BFDC /* DataManagerTests */,
+				5764E51824A91E3300E6BFDC /* APIMethodsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1613,7 +1613,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5764E52324A91E3300E6BFDC /* Build configuration list for PBXNativeTarget "DataManagerTests" */ = {
+		5764E52324A91E3300E6BFDC /* Build configuration list for PBXNativeTarget "APIMethodsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5764E52124A91E3300E6BFDC /* Debug */,

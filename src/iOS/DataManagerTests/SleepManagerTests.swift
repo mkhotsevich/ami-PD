@@ -53,20 +53,11 @@ class SleepManagerTests: XCTestCase {
     
     func testUpdating() {
         let exp = self.expectation(description: "Loading from server")
-        var count = 0
-        manager.get { (result) in
+        manager.save(endAt: Date(timeIntervalSinceNow: -36000),
+                     riseAt: Date()) { (result) in
             switch result {
             case .success(let data):
-                count += 1
-                if count != 2 {
-                    return
-                }
-                guard let element = data.first else {
-                    XCTFail("Элемент для теста отсутствует")
-                    exp.fulfill()
-                    return
-                }
-                self.manager.update(id: element.id,
+                self.manager.update(id: data.id,
                                     endAt: Date(timeIntervalSinceNow: -41539),
                                     riseAt: Date(timeIntervalSinceNow: -10213)) { (result) in
                     switch result {
@@ -87,34 +78,25 @@ class SleepManagerTests: XCTestCase {
     
     func testDeleting() {
         let exp = self.expectation(description: "Loading from server")
-        var count = 0
-        manager.get { (result) in
+        manager.save(endAt: Date(timeIntervalSinceNow: -36000),
+                     riseAt: Date()) { (result) in
             switch result {
             case .success(let data):
-                count += 1
-                if count != 2 {
-                    return
-                }
-                guard let element = data.first else {
-                    exp.fulfill()
-                    XCTFail("Элемент для теста отсутствует")
-                    return
-                }
-                self.manager.delete(id: element.id) { (result) in
+                self.manager.delete(id: data.id) { (result) in
                     switch result {
                     case .success:
                         dump("OK")
                     case .failure(let error):
                         XCTFail(error.localizedDescription)
                     }
-                    exp.fulfill()
                 }
+                exp.fulfill()
             case .failure(let error):
                 XCTFail(error.localizedDescription)
                 exp.fulfill()
             }
         }
-        waitForExpectations(timeout: 30, handler: nil)
+        waitForExpectations(timeout: 20, handler: nil)
     }
 
 }

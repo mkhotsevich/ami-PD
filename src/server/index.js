@@ -12,7 +12,14 @@ const fs = require("fs");
 const app = express()
 const PORT = config.get('PORT')
 
-
+app.enable('trust proxy');
+app.use(function (req, res, next) {
+	if (req.secure) {
+		next();
+	} else {
+		res.redirect('https://' + req.headers.host + req.url);
+	}
+});
 
 app.use(express.json({ extended: true, type: 'application/json' }))
 app.use(express.urlencoded({ extended: true }));
@@ -22,13 +29,6 @@ app.use(express.text());
 
 app.use(helmet())
 app.use(compression())
-
-app.use(function (req, res, next) {
-	if ((req.get('X-Forwarded-Proto') !== 'https')) {
-		res.redirect('https://' + req.get('Host') + req.url)
-	} else
-		next()
-})
 
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/users', require('./routes/users'))

@@ -27,15 +27,13 @@ app.use(express.text());
 app.use(helmet())
 app.use(compression())
 
-app.use('/api/auth', require('./routes/auth'))
-app.use('/api/users', require('./routes/users'))
-app.use('/api/history/water', require('./routes/water'))
-app.use('/api/history/sleep', require('./routes/sleep'))
-app.use('/api/history/weight', require('./routes/weight'))
-app.use('/api/history/tasks', require('./routes/tasks'))
-app.use('/api/articles', require('./routes/articles'))
-// app.use('/api/token', require('./routes/token'))
-//
+app.use('/api/v1/auth', require('./routes/auth'))
+app.use('/api/v1/user', require('./routes/user'))
+app.use('/api/v1/history/water', require('./routes/water'))
+app.use('/api/v1/history/sleep', require('./routes/sleep'))
+app.use('/api/v1/history/weight', require('./routes/weight'))
+app.use('/api/v1/history/tasks', require('./routes/tasks'))
+app.use('/api/v1/articles', require('./routes/articles'))
 
 
 if (process.env.NODE_ENV !== 'test') app.use(morgan('combined'))

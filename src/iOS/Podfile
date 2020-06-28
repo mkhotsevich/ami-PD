@@ -8,3 +8,11 @@ target 'ami' do
   pod 'R.swift'
 
 end
+
+target 'DataManager' do
+  use_frameworks!
+
+  pod 'CryptoSwift'
+  pod 'Keychain'
+
+end 

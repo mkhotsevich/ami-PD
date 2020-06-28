@@ -106,19 +106,19 @@ resourceTypes:
           body:
             type: auth-lib.RestoreOK
 
-# Token Methods
-/token:
-  description: "Работа с токеном доступа"
-  /refresh:
-    post:
-      description: "Обновление времени действия токена доступа"
-      body:
-        application/x-www-form-urlencoded:
-          type: token-lib.Token
-      responses:
-        200:
-          body:
-            type: token-lib.RefreshSuccess
+# # Token Methods
+# /token:
+#   description: "Работа с токеном доступа"
+#   /refresh:
+#     post:
+#       description: "Обновление времени действия токена доступа"
+#       body:
+#         application/x-www-form-urlencoded:
+#           type: token-lib.Token
+#       responses:
+#         200:
+#           body:
+#             type: token-lib.RefreshSuccess
 
 # Users Methods
 /user:
@@ -195,7 +195,7 @@ resourceTypes:
           putHistoryItemRequestBody: sleep-lib.SleepRequest
           collectionNameR: "сна"
           collectionNameP: "сне"
-          putHistoryItem200Example: weight-lib.SleepItem
+          putHistoryItem200Example: sleep-lib.SleepItem
 
   /tasks:
     type:

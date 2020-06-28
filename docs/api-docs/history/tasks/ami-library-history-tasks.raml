@@ -1,0 +1,61 @@
+#%RAML 1.0 Library
+types:
+
+  TaskCollection:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          required: true
+          type: string
+        title:
+          required: true
+          type: string
+        notifyAt:
+          required: false
+          type: number
+        createdAt:
+          required: true
+          type: number
+    example: !include ami-include-task-collection.json
+
+  TaskRequestRequired:
+    properties:
+      title:
+        required: true
+        type: string
+      notifyAt:
+        required: false
+        type: number
+      createdAt:
+        required: true
+        type: number
+
+  TaskRequest:
+    properties:
+      title:
+        required: false
+        type: string
+      notifyAt:
+        required: false
+        type: number
+      createdAt:
+        required: false
+        type: number
+
+  TaskItem:
+    properties:
+      id:
+        required: true
+        type: string
+      title:
+        required: true
+        type: string
+      notifyAt:
+        required: false
+        type: number
+      createdAt:
+        required: true
+        type: number
+    example: !include ami-include-task-item.json

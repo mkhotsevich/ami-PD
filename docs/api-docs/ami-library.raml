@@ -1,0 +1,16 @@
+#%RAML 1.0 Library
+types:
+
+  SuccessMessage:
+    properties:
+      message:
+        type: string
+        required: true
+    example: !include ami-include-success-message.json
+
+  NotFoundMessage:
+    properties:
+      message:
+        type: string
+        required: true
+    example: !include ami-include-not-found.json

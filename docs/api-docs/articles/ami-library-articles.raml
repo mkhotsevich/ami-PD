@@ -1,0 +1,21 @@
+#%RAML 1.0 Library
+types:
+
+  ArticleCollection:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: string
+          required: true
+        title:
+          type: string
+          required: true
+        content:
+          type: string
+          required: true
+        createdAt:
+          type: number
+          required: true
+    example: !include ami-include-articles-collection.json

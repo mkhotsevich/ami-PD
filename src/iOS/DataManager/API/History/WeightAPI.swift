@@ -48,18 +48,16 @@ extension WeightAPI: INetworkAPI {
         case .delete: return .request
             
         case .save(let amount, let weighedAt):
-            return .requestParameters(bodyParameters: nil,
-                                      urlParameters: [
-                                        "amount": amount,
-                                        "weighedAt": weighedAt
-            ])
+            return .requestParameters(bodyParameters: [
+                "amount": amount,
+                "weighedAt": weighedAt],
+                                      urlParameters: nil)
             
         case .update(_, let amount, let weighedAt):
-            return .requestParameters(bodyParameters: nil,
-                                      urlParameters: [
-                                      "amount": amount,
-                                      "weighedAt": weighedAt
-            ])
+            return .requestParameters(bodyParameters: [
+                "amount": amount,
+                "weighedAt": weighedAt],
+                                  urlParameters: nil)
         }
     }
     

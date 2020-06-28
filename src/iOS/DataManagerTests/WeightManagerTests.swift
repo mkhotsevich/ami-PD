@@ -1,5 +1,5 @@
 //
-//  WaterManagerTests.swift
+//  WeightManagerTests.swift
 //  DataManager
 //
 //  Created by Artem Kufaev on 29.06.2020.
@@ -9,14 +9,14 @@
 import XCTest
 @testable import DataManager
 
-class WaterManagerTests: XCTestCase {
+class WeightManagerTests: XCTestCase {
     
-    lazy var manager: WaterManager = WaterManager()
+    lazy var manager: WeightManager = WeightManager()
     
     func testCreating() {
         let exp = self.expectation(description: "Loading from server")
-        manager.save(amount: Int.random(in: 50...1000),
-                     drinkedAt: Date()) { (result) in
+        manager.save(amount: Double.random(in: 1.0...300.0),
+                     weighedAt: Date()) { (result) in
             switch result {
             case .success(let data):
                 dump(data)
@@ -56,8 +56,8 @@ class WaterManagerTests: XCTestCase {
                     return
                 }
                 self.manager.update(id: element.id,
-                               amount: Int.random(in: 50...1000),
-                               drinkedAt: Date()) { (result) in
+                                    amount: Double.random(in: 1.0...300.0),
+                                    weighedAt: Date()) { (result) in
                     switch result {
                     case .success(let data):
                         dump(data)

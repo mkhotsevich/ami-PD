@@ -26,10 +26,10 @@ public class WaterManager: IDataManager<WaterAPI, WaterInfo> {
     }
     
     public func save(amount: Int,
-                     drinkedAt: Int,
+                     drinkedAt: Date,
                      completion: @escaping (NetworkResultWithModel<WaterInfo>) -> Void) {
         let api: WaterAPI = .save(amount: amount,
-                                  drinkedAt: drinkedAt)
+                                  drinkedAt: Int(drinkedAt.timeIntervalSince1970))
         provider.load(api) { (result: NetworkResultWithModel<WaterInfo>) in
             switch result {
             case .success(let waterInfo):

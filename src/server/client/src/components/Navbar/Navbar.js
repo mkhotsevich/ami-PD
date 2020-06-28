@@ -13,7 +13,7 @@ const Navbar = () => {
 		auth.logout()
 		history.push('/login')
 	}
-
+	
 	return (
 		<div className={classes.Navbar}>
 			<div className={'row'}>
@@ -21,9 +21,9 @@ const Navbar = () => {
 					<img src={logo} alt={'logo'} />
 				</div>
 				<div className={'col-3 d-flex justify-content-end align-items-center'}>
-					<span>Здравствуйте, Йцуееккаукук</span>
+					{auth.isAuthenticated && <span>Здравствуйте, Йцуееккаукук</span>}
 				</div>
-				<div className={'col-1 d-flex justify-content-end align-items-center'}>
+				<div className={`col-12 col-sm-1 d-flex justify-content-center justify-content-sm-end align-items-center mt-4 mt-sm-0`}>
 					{auth.isAuthenticated ?
 						<a href={'/'} onClick={logoutHandler}>Выйти</a>
 						:
@@ -35,13 +35,13 @@ const Navbar = () => {
 				<hr />
 			</div>
 			<div className={'row'}>
-				<div className={'col-4 text-center'}>
+				<div className={'col-12 col-sm-4 text-center'}>
 					<NavLink to={'/health?type=water'} activeClassName={classes.active}>Здоровье</NavLink>
 				</div>
-				<div className={'col-4 text-center'}>
+				<div className={'col-12 col-sm-4 text-center'}>
 					<NavLink to={'/'} exact activeClassName={classes.active}>Статьи</NavLink>
 				</div>
-				<div className={'col-4 text-center'}>
+				<div className={'col-12 col-sm-4 text-center'}>
 					<NavLink to={'/profile'} activeClassName={classes.active}>Личная информация</NavLink>
 				</div>
 			</div>

@@ -14,6 +14,6 @@ const userStateSchema = new Schema({
 		type: Number,
 		required: true
 	}
-})
+}, { versionKey: false })
 
 module.exports = model('UserState', userStateSchema)

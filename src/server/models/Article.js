@@ -14,6 +14,6 @@ const articleSchema = new Schema({
 		default: Date.now(),
 		required: true
 	}
-})
+}, { versionKey: false })
 
 module.exports = model('Article', articleSchema)

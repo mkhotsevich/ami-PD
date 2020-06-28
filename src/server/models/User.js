@@ -33,7 +33,7 @@ const userSchema = new Schema({
 		type: Number
 	},
 	restoreToken: String,
-	restoreTokenExp: Date
-})
+	restoreTokenExp: Date,
+}, {versionKey: false})
 
 module.exports = model('User', userSchema)

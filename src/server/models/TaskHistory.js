@@ -19,6 +19,6 @@ const taskHistorySchema = new Schema({
 		default: Date.now(),
 		required: true
 	}
-})
+}, { versionKey: false })
 
 module.exports = model('TaskHistory', taskHistorySchema)

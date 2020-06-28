@@ -10,11 +10,11 @@ const waterHistorySchema = new Schema({
 		type: Number,
 		required: true
 	},
-	drinkingAt: {
+	drinkedAt: {
 		type: Number,
 		default: Date.now(),
 		required: true
 	}
-})
+}, { versionKey: false })
 
 module.exports = model('WaterHistory', waterHistorySchema)

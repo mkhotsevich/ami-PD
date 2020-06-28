@@ -14,6 +14,6 @@ const sleepHistorySchema = new Schema({
 		type: Number,
 		required: true
 	}
-})
+}, { versionKey: false })
 
 module.exports = model('SleepHistory', sleepHistorySchema)

@@ -15,6 +15,6 @@ const weightHistorySchema = new Schema({
 		default: Date.now(),
 		required: true
 	}
-})
+}, { versionKey: false })
 
 module.exports = model('WeightHistory', weightHistorySchema)

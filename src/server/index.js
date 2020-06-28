@@ -1,4 +1,3 @@
-var redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
 const compression = require('compression')
 const mongoose = require('mongoose')
 const express = require('express')
@@ -13,7 +12,15 @@ const fs = require("fs");
 const app = express()
 const PORT = config.get('PORT')
 
-app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
+app.use((req, res, next) => {
+	if (process.env.NODE_ENV === 'production') {
+		if (req.headers['x-forwarded-proto'] !== 'https')
+			return res.redirect('https://' + req.headers.host + req.url);
+		else
+			return next()
+	} else
+		return next()
+})
 app.use(express.json({ extended: true, type: 'application/json' }))
 app.use(express.urlencoded({ extended: true }));
 app.use(express.text());

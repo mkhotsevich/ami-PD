@@ -25,7 +25,7 @@ public enum UserAPI {
 
 extension UserAPI: INetworkAPI {
     
-    public var path: String { return "users/" }
+    public var path: String { return "user/" }
     
     public var headers: HTTPHeaders? {
         return ["Authorization": "Bearer " + accessToken]

@@ -1160,6 +1160,7 @@
 		5764E52124A91E3300E6BFDC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YX6VKW92JQ;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1181,6 +1182,7 @@
 		5764E52224A91E3300E6BFDC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YX6VKW92JQ;
 				GCC_NO_COMMON_BLOCKS = YES;

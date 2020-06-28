@@ -1,6 +1,5 @@
 const WaterHistory = require('../models/WaterHistory')
 const auth = require('../middleware/auth.middleware')
-const User = require('../models/User')
 const { Router } = require('express')
 
 const router = Router()
@@ -30,9 +29,7 @@ router.post('/', auth, async (req, res) => {
 		await waterHistory.save()
 
 		res.status(201).json({
-			id: waterHistory._id,
-			amount: waterHistory.amount,
-			drinkedAt: waterHistory.drinkedAt
+			waterHistory
 		})
 
 	} catch (e) {

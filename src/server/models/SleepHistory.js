@@ -6,11 +6,11 @@ const sleepHistorySchema = new Schema({
 		ref: 'User',
 		required: true
 	},
-	endTime: {
+	endAt: {
 		type: Number,
 		required: true
 	},
-	riseTime: {
+	riseAt: {
 		type: Number,
 		required: true
 	}

@@ -5,6 +5,8 @@ const helmet = require('helmet')
 const morgan = require('morgan')
 const config = require('config')
 const path = require('path')
+const https = require("https")
+const fs = require("fs");
 
 
 const app = express()
@@ -41,7 +43,11 @@ async function start() {
 			useUnifiedTopology: true,
 			useCreateIndex: true
 		})
-		app.listen(PORT, () => console.log(`Server has been started on PORT ${PORT}...`))
+		const httpsOptions = {
+			key: fs.readFileSync("server.key"), // путь к ключу
+			cert: fs.readFileSync("server.crt") // путь к сертификату
+		}
+		https.createServer(httpsOptions, app).listen(PORT, () => console.log(`Server has been started on PORT ${PORT}...`))
 	} catch (e) {
 		console.log('Неизвестная ошибка', e.message)
 		process.exit(1)

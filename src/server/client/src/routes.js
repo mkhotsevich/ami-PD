@@ -7,6 +7,7 @@ import Health from './containers/Health/Health'
 import Profile from './containers/Profile/Profile'
 import RestorePassword from './containers/Restore/Restore.password'
 import RestoreEmail from './containers/Restore/Restore.email'
+import Article from './containers/Article/Article'
 
 const useRoutes = (isAuthenticated, isAdmin) => {
 	if (isAuthenticated) {
@@ -21,6 +22,7 @@ const useRoutes = (isAuthenticated, isAdmin) => {
 			<Switch>
 				<Route path={'/health'} component={Health} />
 				<Route path={'/profile'} component={Profile} />
+				<Route path={'/articles/:id'} component={Article} />
 				<Route path={'/'} exact component={Main} />
 				<Redirect to={'/'} />
 			</Switch>
@@ -32,6 +34,7 @@ const useRoutes = (isAuthenticated, isAdmin) => {
 			<Route path={'/register'} component={Register} />
 			<Route path={'/restore/:token'} component={RestorePassword} />
 			<Route path={'/restore'} component={RestoreEmail} />
+			<Route path={'/articles/:id'} component={Article} />
 			<Route path={'/'} exact component={Main} />
 			<Redirect to={'/'} />
 		</Switch>

@@ -49,14 +49,23 @@ class TaskManagerTests: XCTestCase {
     
     func testUpdating() {
         let exp = self.expectation(description: "Loading from server")
+        var count = 0
         manager.get { (result) in
             switch result {
             case .success(let data):
-                guard let element = data.first else {
-                    XCTFail("Элемент для теста отсутствует")
+                count += 1
+                if count != 2 {
                     return
                 }
-                self.manager.update(id: element.id, title: TestUtils.randomString(length: 15), notifyAt: Date(timeIntervalSinceNow: 31451), createdAt: Date()) { (result) in
+                guard let element = data.first else {
+                    XCTFail("Элемент для теста отсутствует")
+                    exp.fulfill()
+                    return
+                }
+                self.manager.update(id: element.id,
+                                    title: TestUtils.randomString(length: 15),
+                                    notifyAt: Date(timeIntervalSinceNow: 31451),
+                                    createdAt: Date()) { (result) in
                     switch result {
                     case .success(let data):
                         dump(data)
@@ -67,6 +76,7 @@ class TaskManagerTests: XCTestCase {
                 }
             case .failure(let error):
                 XCTFail(error.localizedDescription)
+                exp.fulfill()
             }
         }
         waitForExpectations(timeout: 20, handler: nil)
@@ -74,11 +84,17 @@ class TaskManagerTests: XCTestCase {
     
     func testDeleting() {
         let exp = self.expectation(description: "Loading from server")
+        var count = 0
         manager.get { (result) in
             switch result {
             case .success(let data):
+                count += 1
+                if count != 2 {
+                    return
+                }
                 guard let element = data.first else {
                     XCTFail("Элемент для теста отсутствует")
+                    exp.fulfill()
                     return
                 }
                 self.manager.delete(id: element.id) { (result) in
@@ -92,6 +108,7 @@ class TaskManagerTests: XCTestCase {
                 }
             case .failure(let error):
                 XCTFail(error.localizedDescription)
+                exp.fulfill()
             }
         }
         waitForExpectations(timeout: 20, handler: nil)

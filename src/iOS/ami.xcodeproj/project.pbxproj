@@ -18,6 +18,7 @@
 		5764E53624A9442D00E6BFDC /* WeightManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5764E53424A943F200E6BFDC /* WeightManagerTests.swift */; };
 		5764E53924A945DE00E6BFDC /* SleepManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5764E53724A945B300E6BFDC /* SleepManagerTests.swift */; };
 		5764E53D24A9479000E6BFDC /* TaskManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5764E53C24A9479000E6BFDC /* TaskManagerTests.swift */; };
+		5764E54024A9491500E6BFDC /* TokenManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5764E53E24A9491300E6BFDC /* TokenManagerTests.swift */; };
 		5779BF6B24A3F181005113D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BF6A24A3F181005113D4 /* AppDelegate.swift */; };
 		5779BF6D24A3F181005113D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BF6C24A3F181005113D4 /* SceneDelegate.swift */; };
 		5779BF7424A3F182005113D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5779BF7324A3F182005113D4 /* Assets.xcassets */; };
@@ -168,6 +169,7 @@
 		5764E53424A943F200E6BFDC /* WeightManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightManagerTests.swift; sourceTree = "<group>"; };
 		5764E53724A945B300E6BFDC /* SleepManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepManagerTests.swift; sourceTree = "<group>"; };
 		5764E53C24A9479000E6BFDC /* TaskManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagerTests.swift; sourceTree = "<group>"; };
+		5764E53E24A9491300E6BFDC /* TokenManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManagerTests.swift; sourceTree = "<group>"; };
 		5779BF6724A3F181005113D4 /* ami.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ami.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5779BF6A24A3F181005113D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5779BF6C24A3F181005113D4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 				5764E53424A943F200E6BFDC /* WeightManagerTests.swift */,
 				5764E53724A945B300E6BFDC /* SleepManagerTests.swift */,
 				5764E53C24A9479000E6BFDC /* TaskManagerTests.swift */,
+				5764E53E24A9491300E6BFDC /* TokenManagerTests.swift */,
 			);
 			path = DataManagerTests;
 			sourceTree = SOURCE_ROOT;
@@ -1003,6 +1006,7 @@
 				5764E52C24A933F900E6BFDC /* TestUtils.swift in Sources */,
 				5764E53024A93C1100E6BFDC /* ActicleManagerTests.swift in Sources */,
 				5764E53624A9442D00E6BFDC /* WeightManagerTests.swift in Sources */,
+				5764E54024A9491500E6BFDC /* TokenManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

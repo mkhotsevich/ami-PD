@@ -19,6 +19,7 @@ public class UserManager: IDataManager<UserAPI, User> {
             if let user = users.first {
                 completion(.success(user))
             }
+            self.storage.delete(users)
         }
         provider.load(api) { (result: NetworkResultWithModel<User>) in
             switch result {

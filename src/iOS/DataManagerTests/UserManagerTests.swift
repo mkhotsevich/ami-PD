@@ -28,6 +28,7 @@ class UserManagerTests: XCTestCase {
                 dump(data)
             case .failure(let error):
                 XCTFail(error.localizedDescription)
+                exp.fulfill()
             }
             if count == 2 {
                 exp.fulfill()

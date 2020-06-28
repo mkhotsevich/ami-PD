@@ -13,8 +13,11 @@ import Storage
 public class WaterManager: IDataManager<WaterAPI, WaterInfo> {
     
     public func get(completion: @escaping (NetworkResultWithModel<[WaterInfo]>) -> Void) {
+        storage.readAll {
+            completion(.success($0))
+            self.storage.delete($0)
+        }
         let api: WaterAPI = .getCollection
-        storage.readAll { completion(.success($0)) }
         provider.load(api) { (result: NetworkResultWithModel<[WaterInfo]>) in
             switch result {
             case .success(let waterHistory):

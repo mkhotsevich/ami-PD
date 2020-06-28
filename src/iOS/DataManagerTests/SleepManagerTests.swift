@@ -13,6 +13,11 @@ class SleepManagerTests: XCTestCase {
     
     lazy var manager: SleepManager = SleepManager()
     
+    override func setUp() {
+        super.setUp()
+        continueAfterFailure = true
+    }
+    
     func testCreating() {
         let exp = self.expectation(description: "Loading from server")
         manager.save(endAt: Date(timeIntervalSinceNow: -36000),
@@ -48,11 +53,17 @@ class SleepManagerTests: XCTestCase {
     
     func testUpdating() {
         let exp = self.expectation(description: "Loading from server")
+        var count = 0
         manager.get { (result) in
             switch result {
             case .success(let data):
+                count += 1
+                if count != 2 {
+                    return
+                }
                 guard let element = data.first else {
                     XCTFail("Элемент для теста отсутствует")
+                    exp.fulfill()
                     return
                 }
                 self.manager.update(id: element.id,
@@ -68,6 +79,7 @@ class SleepManagerTests: XCTestCase {
                 }
             case .failure(let error):
                 XCTFail(error.localizedDescription)
+                exp.fulfill()
             }
         }
         waitForExpectations(timeout: 20, handler: nil)
@@ -75,10 +87,16 @@ class SleepManagerTests: XCTestCase {
     
     func testDeleting() {
         let exp = self.expectation(description: "Loading from server")
+        var count = 0
         manager.get { (result) in
             switch result {
             case .success(let data):
+                count += 1
+                if count != 2 {
+                    return
+                }
                 guard let element = data.first else {
+                    exp.fulfill()
                     XCTFail("Элемент для теста отсутствует")
                     return
                 }
@@ -93,9 +111,10 @@ class SleepManagerTests: XCTestCase {
                 }
             case .failure(let error):
                 XCTFail(error.localizedDescription)
+                exp.fulfill()
             }
         }
-        waitForExpectations(timeout: 20, handler: nil)
+        waitForExpectations(timeout: 30, handler: nil)
     }
 
 }

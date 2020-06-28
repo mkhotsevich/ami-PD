@@ -26,7 +26,7 @@ class TestUtils {
     }
     
     static func randomEmail() -> String {
-        return randomString(length: 8) + "@" + randomString(length: 6) + "." + randomString(length: 3)
+        return randomString(length: 8) + "@gmail.com"
     }
     
 }

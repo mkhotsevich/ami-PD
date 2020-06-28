@@ -12,7 +12,6 @@ const taskHistorySchema = new Schema({
 	},
 	notifyAt: {
 		type: Number,
-		required: true
 	},
 	createdAt: {
 		type: Number,

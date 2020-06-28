@@ -13,6 +13,7 @@ import Storage
 public class SleepManager: IDataManager<SleepAPI, SleepInfo> {
     
     public func get(completion: @escaping (NetworkResultWithModel<[SleepInfo]>) -> Void) {
+        storage.readAll { completion(.success($0)) }
         let api: SleepAPI = .getCollection
         provider.load(api) { (result: NetworkResultWithModel<[SleepInfo]>) in
             switch result {

@@ -14,6 +14,7 @@
 		5764E52C24A933F900E6BFDC /* TestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5764E52A24A933C900E6BFDC /* TestUtils.swift */; };
 		5764E52D24A9353700E6BFDC /* UserManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5764E52824A932B600E6BFDC /* UserManagerTests.swift */; };
 		5764E53024A93C1100E6BFDC /* ActicleManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5764E52E24A93BFA00E6BFDC /* ActicleManagerTests.swift */; };
+		5764E53324A93CC400E6BFDC /* WaterManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5764E53124A93CB200E6BFDC /* WaterManagerTests.swift */; };
 		5779BF6B24A3F181005113D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BF6A24A3F181005113D4 /* AppDelegate.swift */; };
 		5779BF6D24A3F181005113D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BF6C24A3F181005113D4 /* SceneDelegate.swift */; };
 		5779BF7424A3F182005113D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5779BF7324A3F182005113D4 /* Assets.xcassets */; };
@@ -160,6 +161,7 @@
 		5764E52824A932B600E6BFDC /* UserManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerTests.swift; sourceTree = "<group>"; };
 		5764E52A24A933C900E6BFDC /* TestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtils.swift; sourceTree = "<group>"; };
 		5764E52E24A93BFA00E6BFDC /* ActicleManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActicleManagerTests.swift; sourceTree = "<group>"; };
+		5764E53124A93CB200E6BFDC /* WaterManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterManagerTests.swift; sourceTree = "<group>"; };
 		5779BF6724A3F181005113D4 /* ami.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ami.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5779BF6A24A3F181005113D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5779BF6C24A3F181005113D4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 				5764E52824A932B600E6BFDC /* UserManagerTests.swift */,
 				5764E52A24A933C900E6BFDC /* TestUtils.swift */,
 				5764E52E24A93BFA00E6BFDC /* ActicleManagerTests.swift */,
+				5764E53124A93CB200E6BFDC /* WaterManagerTests.swift */,
 			);
 			path = DataManagerTests;
 			sourceTree = SOURCE_ROOT;
@@ -459,9 +462,9 @@
 		57CDF78224A8C2E20053300A /* WeightInfo */ = {
 			isa = PBXGroup;
 			children = (
+				57CDF78524A8C2E20053300A /* WeightInfo.swift */,
 				57CDF78324A8C2E20053300A /* WeightInfoCD+CoreDataProperties.swift */,
 				57CDF78424A8C2E20053300A /* WeightInfoCD+CoreDataClass.swift */,
-				57CDF78524A8C2E20053300A /* WeightInfo.swift */,
 			);
 			path = WeightInfo;
 			sourceTree = "<group>";
@@ -479,9 +482,9 @@
 		57CDF78A24A8C2E20053300A /* WaterInfo */ = {
 			isa = PBXGroup;
 			children = (
+				57CDF78D24A8C2E20053300A /* WaterInfo.swift */,
 				57CDF78B24A8C2E20053300A /* WaterInfoCD+CoreDataClass.swift */,
 				57CDF78C24A8C2E20053300A /* WaterInfoCD+CoreDataProperties.swift */,
-				57CDF78D24A8C2E20053300A /* WaterInfo.swift */,
 			);
 			path = WaterInfo;
 			sourceTree = "<group>";
@@ -489,8 +492,8 @@
 		57CDF78F24A8C2E20053300A /* TaskInfo */ = {
 			isa = PBXGroup;
 			children = (
-				57CDF79024A8C2E20053300A /* TaskInfoCD+CoreDataProperties.swift */,
 				57CDF79124A8C2E20053300A /* TaskInfo.swift */,
+				57CDF79024A8C2E20053300A /* TaskInfoCD+CoreDataProperties.swift */,
 				57CDF79224A8C2E20053300A /* TaskInfoCD+CoreDataClass.swift */,
 			);
 			path = TaskInfo;
@@ -499,9 +502,9 @@
 		57CDF79324A8C2E20053300A /* Article */ = {
 			isa = PBXGroup;
 			children = (
+				57CDF79624A8C2E20053300A /* Article.swift */,
 				57CDF79424A8C2E20053300A /* ArticleCD+CoreDataProperties.swift */,
 				57CDF79524A8C2E20053300A /* ArticleCD+CoreDataClass.swift */,
-				57CDF79624A8C2E20053300A /* Article.swift */,
 			);
 			path = Article;
 			sourceTree = "<group>";
@@ -509,9 +512,9 @@
 		57CDF79724A8C2E20053300A /* SleepInfo */ = {
 			isa = PBXGroup;
 			children = (
+				57CDF79A24A8C2E20053300A /* SleepInfo.swift */,
 				57CDF79824A8C2E20053300A /* SleepInfoCD+CoreDataProperties.swift */,
 				57CDF79924A8C2E20053300A /* SleepInfoCD+CoreDataClass.swift */,
-				57CDF79A24A8C2E20053300A /* SleepInfo.swift */,
 			);
 			path = SleepInfo;
 			sourceTree = "<group>";
@@ -985,6 +988,7 @@
 			files = (
 				5764E52D24A9353700E6BFDC /* UserManagerTests.swift in Sources */,
 				5764E51C24A91E3300E6BFDC /* AuthManagerTests.swift in Sources */,
+				5764E53324A93CC400E6BFDC /* WaterManagerTests.swift in Sources */,
 				5764E52C24A933F900E6BFDC /* TestUtils.swift in Sources */,
 				5764E53024A93C1100E6BFDC /* ActicleManagerTests.swift in Sources */,
 			);

@@ -13,6 +13,7 @@ import Storage
 public class ArticleManager: IDataManager<ArticleAPI, Article> {
     
     public func get(completion: @escaping (NetworkResultWithModel<[Article]>) -> Void) {
+        storage.readAll { completion(.success($0)) }
         let api: ArticleAPI = .getCollection
         self.storage.readAll { completion(.success($0)) }
         provider.load(api) { (result: NetworkResultWithModel<[Article]>) in

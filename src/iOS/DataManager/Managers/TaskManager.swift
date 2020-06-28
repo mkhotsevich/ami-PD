@@ -13,6 +13,7 @@ import Storage
 public class TaskManager: IDataManager<TaskAPI, TaskInfo> {
     
     public func get(completion: @escaping (NetworkResultWithModel<[TaskInfo]>) -> Void) {
+        storage.readAll { completion(.success($0)) }
         let api: TaskAPI = .getCollection
         provider.load(api) { (result: NetworkResultWithModel<[TaskInfo]>) in
             switch result {

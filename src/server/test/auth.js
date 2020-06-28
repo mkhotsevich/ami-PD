@@ -1,12 +1,9 @@
-process.env.NODE_ENV = 'test'
-
 const chai = require('chai')
 const chaiHttp = require('chai-http')
-const bcrypt = require('bcryptjs')
 const { after, describe } = require("mocha")
 
 const User = require('../models/User')
-const app = require('../app')
+const app = require('../index')
 
 const should = chai.should()
 
@@ -23,14 +20,26 @@ describe('Регистрация', () => {
 			const user = {
 				email: 'xozewitc@yandex.ru',
 				password: '12345678',
-				confirm: '12345678'
+				name: 'Максим',
+				surname: 'Хоцевич',
+				birthdate: '959385600',
+				weight: '65',
+				height: '180'
 			}
 			chai.request(app)
 				.post('/api/auth/register')
 				.send(user)
 				.end((err, res) => {
-					res.should.have.status(200);
-					res.body.should.have.property('message').eql('Успешно')
+					res.should.have.status(201);
+					res.body.should.have.property('user')
+					res.body.should.have.property('accessToken')
+					res.body.user.should.have.property('_id')
+					res.body.user.should.have.property('email')
+					res.body.user.should.have.property('password')
+					res.body.user.should.have.property('name')
+					res.body.user.should.have.property('surname')
+					res.body.user.should.have.property('birthdate')
+					res.body.user.should.have.property('height')
 					done()
 				})
 		})
@@ -40,7 +49,11 @@ describe('Регистрация', () => {
 			const user = {
 				email: 'xozewitcyandex.ru',
 				password: '12345678',
-				confirm: '12345678'
+				name: 'Максим',
+				surname: 'Хоцевич',
+				birthdate: '959385600',
+				weight: '65',
+				height: '180'
 			}
 			chai.request(app)
 				.post('/api/auth/register')
@@ -53,50 +66,24 @@ describe('Регистрация', () => {
 		})
 	})
 	describe('/POST auth/register', () => {
-		it('Несовпадении паролей', (done) => {
-			const user = {
-				email: 'xozewitc@yandex.ru',
-				password: '1235678',
-				confirm: '12345678'
-			}
-			chai.request(app)
-				.post('/api/auth/register')
-				.send(user)
-				.end((err, res) => {
-					res.should.have.status(400)
-					res.body.should.have.property('message').eql('Пароли не совпадают')
-					done()
-				})
-		})
-	})
-	describe('/POST auth/register', () => {
-		it('Некорректный пароль', (done) => {
-			const user = {
-				email: 'xozewitc@yandex.ru',
-				password: '123',
-				confirm: '123'
-			}
-			chai.request(app)
-				.post('/api/auth/register')
-				.send(user)
-				.end((err, res) => {
-					res.should.have.status(400)
-					res.body.should.have.property('message').eql('Некорректный пароль')
-					done()
-				})
-		})
-	})
-	describe('/POST auth/register', () => {
 		it('Занятый email', (done) => {
 			const user1 = new User({
 				email: 'xozewitc@yandex.ru',
 				password: '12345678',
-				confirm: '12345678'
+				name: 'Максим',
+				surname: 'Хоцевич',
+				birthdate: '959385600',
+				weight: '65',
+				height: '180'
 			})
 			const user2 = {
 				email: 'xozewitc@yandex.ru',
-				password: '87654321',
-				confirm: '87654321'
+				password: '1234567890',
+				name: 'Maxim',
+				surname: 'Khotsevich',
+				birthdate: '959385600',
+				weight: '70',
+				height: '170'
 			}
 			user1.save(() => {
 				chai.request(app)
@@ -104,7 +91,7 @@ describe('Регистрация', () => {
 					.send(user2)
 					.end((err, res) => {
 						res.should.have.status(400)
-						res.body.should.have.property('message').eql('Email занят')
+						res.body.should.have.property('message').eql('Пользователь с таким Email уже существует')
 						done()
 					})
 			})

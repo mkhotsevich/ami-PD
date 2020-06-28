@@ -78,7 +78,7 @@ router.post('/register', registerValidators, async (req, res) => {
 
 		const accessToken = jwt.sign({ userId: newUser._id }, config.get('JWT_SECRET'), { expiresIn: '30d' })
 
-		if (process.env.NODE_ENV !== 'test') await transporter.sendMail(registrationEmail(email))
+		await transporter.sendMail(registrationEmail(email))
 
 		res.status(201).json({ accessToken, user: newUser })
 	} catch (e) {

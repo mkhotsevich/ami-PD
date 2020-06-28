@@ -18,19 +18,43 @@ const transporter = nodemailer.createTransport(sendgrid({ auth: { api_key: confi
 // api/auth/login
 router.post('/login', async (req, res) => {
 	try {
-		const { email, password } = req.body
-		const candidate = await User.findOne({ email })
+		const { email, password, appleId, vkId } = req.body
 
-		if (candidate) {
-			if (password === candidate.password) {
+		if (email && password) {
+			const candidate = await User.findOne({ email })
+
+			if (candidate) {
+				if (password === candidate.password) {
+					const accessToken = jwt.sign({ userId: candidate._id }, config.get('JWT_SECRET'), { expiresIn: '30d' })
+					return res.status(200).json({ accessToken, user: candidate })
+				} else {
+					return res.status(400).json({ message: 'Неверный пароль' })
+				}
+			} else {
+				return res.status(400).json({ message: 'Пользователь с таким Email не найден' })
+			}
+		} else if (appleId) {
+			const candidate = await User.findOne({ appleId })
+
+			if (candidate) {
 				const accessToken = jwt.sign({ userId: candidate._id }, config.get('JWT_SECRET'), { expiresIn: '30d' })
 				return res.status(200).json({ accessToken, user: candidate })
 			} else {
-				return res.status(400).json({ message: 'Неверный пароль' })
+				return res.status(400).json({ message: 'Пользователь с таким appleId не найден' })
+			}
+		} else if (vkId) {
+			const candidate = await User.findOne({ vkId })
+
+			if (candidate) {
+				const accessToken = jwt.sign({ userId: candidate._id }, config.get('JWT_SECRET'), { expiresIn: '30d' })
+				return res.status(200).json({ accessToken, user: candidate })
+			} else {
+				return res.status(400).json({ message: 'Пользователь с таким vkId не найден' })
 			}
 		} else {
-			return res.status(400).json({ message: 'Пользователь с таким Email не найден' })
+			return res.status(400).json({ message: 'Данные некорректны' })
 		}
+
 	} catch (e) {
 		console.log(e)
 		return res.status(500).json({ message: 'Что-то пошло не так, попробуйте позже' })
@@ -97,7 +121,7 @@ router.get('/restore/:token', async (req, res) => {
 
 		const user = await User.findOne({
 			restoreToken: req.params.token,
-			restoreTokenExp: {$gt: Date.now()}
+			restoreTokenExp: { $gt: Date.now() }
 		})
 
 		if (!user) {
@@ -120,7 +144,7 @@ router.post('/restore/:token', async (req, res) => {
 		const user = await User.findOne({
 			_id: req.body.userId.toString(),
 			restoreToken: req.body.token,
-			restoreTokenExp: {$gt: Date.now()}
+			restoreTokenExp: { $gt: Date.now() }
 		})
 
 		if (user) {

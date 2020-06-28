@@ -12,15 +12,13 @@ const fs = require("fs");
 const app = express()
 const PORT = config.get('PORT')
 
-app.use((req, res, next) => {
-	if (process.env.NODE_ENV === 'production') {
-		if (req.headers['x-forwarded-proto'] !== 'https')
-			return res.redirect('https://' + req.headers.host + req.url);
-		else
-			return next()
+app.use(function (req, res, next) {
+	if ((req.get('X-Forwarded-Proto') !== 'https')) {
+		res.redirect('https://' + req.get('Host') + req.url)
 	} else
-		return next()
+		next()
 })
+
 app.use(express.json({ extended: true, type: 'application/json' }))
 app.use(express.urlencoded({ extended: true }));
 app.use(express.text());

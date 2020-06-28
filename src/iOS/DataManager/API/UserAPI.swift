@@ -64,8 +64,8 @@ extension UserAPI: INetworkAPI {
             if let vkId = vkId {
                 parameters["vkId"] = vkId
             }
-            return .requestParameters(bodyParameters: nil,
-                                      urlParameters: parameters)
+            return .requestParameters(bodyParameters: parameters,
+                                      urlParameters: nil)
         }
     }
     

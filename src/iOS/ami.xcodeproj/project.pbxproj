@@ -11,6 +11,8 @@
 		18EBCAA12C064D9A169BA461 /* Pods_ami.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CAE71BDCF19FC0AF4B02191 /* Pods_ami.framework */; };
 		5764E51C24A91E3300E6BFDC /* AuthManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5764E51B24A91E3300E6BFDC /* AuthManagerTests.swift */; };
 		5764E51E24A91E3300E6BFDC /* DataManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57CDF72924A8C2030053300A /* DataManager.framework */; platformFilter = ios; };
+		5764E52C24A933F900E6BFDC /* TestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5764E52A24A933C900E6BFDC /* TestUtils.swift */; };
+		5764E52D24A9353700E6BFDC /* UserManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5764E52824A932B600E6BFDC /* UserManagerTests.swift */; };
 		5779BF6B24A3F181005113D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BF6A24A3F181005113D4 /* AppDelegate.swift */; };
 		5779BF6D24A3F181005113D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BF6C24A3F181005113D4 /* SceneDelegate.swift */; };
 		5779BF7424A3F182005113D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5779BF7324A3F182005113D4 /* Assets.xcassets */; };
@@ -154,6 +156,8 @@
 		5764E51924A91E3300E6BFDC /* DataManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5764E51B24A91E3300E6BFDC /* AuthManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManagerTests.swift; sourceTree = "<group>"; };
 		5764E51D24A91E3300E6BFDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5764E52824A932B600E6BFDC /* UserManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerTests.swift; sourceTree = "<group>"; };
+		5764E52A24A933C900E6BFDC /* TestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtils.swift; sourceTree = "<group>"; };
 		5779BF6724A3F181005113D4 /* ami.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ami.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5779BF6A24A3F181005113D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5779BF6C24A3F181005113D4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -302,6 +306,8 @@
 			children = (
 				5764E51B24A91E3300E6BFDC /* AuthManagerTests.swift */,
 				5764E51D24A91E3300E6BFDC /* Info.plist */,
+				5764E52824A932B600E6BFDC /* UserManagerTests.swift */,
+				5764E52A24A933C900E6BFDC /* TestUtils.swift */,
 			);
 			path = DataManagerTests;
 			sourceTree = SOURCE_ROOT;
@@ -974,7 +980,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5764E52D24A9353700E6BFDC /* UserManagerTests.swift in Sources */,
 				5764E51C24A91E3300E6BFDC /* AuthManagerTests.swift in Sources */,
+				5764E52C24A933F900E6BFDC /* TestUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

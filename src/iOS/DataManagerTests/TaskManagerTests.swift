@@ -1,6 +1,6 @@
 //
-//  SleepManagerTests.swift
-//  DataManager
+//  TaskManagerTests.swift
+//  DataManagerTests
 //
 //  Created by Artem Kufaev on 29.06.2020.
 //  Copyright © 2020 Artem Kufaev. All rights reserved.
@@ -9,14 +9,15 @@
 import XCTest
 @testable import DataManager
 
-class SleepManagerTests: XCTestCase {
+class TaskManagerTests: XCTestCase {
     
-    lazy var manager: SleepManager = SleepManager()
+    lazy var manager: TaskManager = TaskManager()
     
     func testCreating() {
         let exp = self.expectation(description: "Loading from server")
-        manager.save(endAt: Date(timeIntervalSinceNow: -36000),
-                     riseAt: Date()) { (result) in
+        manager.save(title: TestUtils.randomString(length: 15),
+                     notifyAt: Date(timeIntervalSinceNow: 10000),
+                     createdAt: Date()) { (result) in
             switch result {
             case .success(let data):
                 dump(data)
@@ -55,9 +56,7 @@ class SleepManagerTests: XCTestCase {
                     XCTFail("Элемент для теста отсутствует")
                     return
                 }
-                self.manager.update(id: element.id,
-                                    endAt: Date(timeIntervalSinceNow: -41539),
-                                    riseAt: Date(timeIntervalSinceNow: -10213)) { (result) in
+                self.manager.update(id: element.id, title: TestUtils.randomString(length: 15), notifyAt: Date(timeIntervalSinceNow: 31451), createdAt: Date()) { (result) in
                     switch result {
                     case .success(let data):
                         dump(data)

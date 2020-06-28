@@ -11,15 +11,12 @@ const App = () => {
 	const routes = useRoutes(isAuthenticated, false)
 
 	if (!ready) {
-		return <Loader/>
+		return <Loader />
 	}
 
 	return (
-		<AuthContext.Provider value={
-			{ login, logout, token, userId, isAuthenticated }
-		}>
+		<AuthContext.Provider value={{ login, logout, token, userId, isAuthenticated }}>
 			<div className={'container h-100'}>
-				{isAuthenticated && <Navbar />}
 				{routes}
 			</div>
 		</AuthContext.Provider>

@@ -38,7 +38,7 @@ router.put('/:id', auth, async (req, res) => {
 		})
 
 		if (!user) return res.status(404).json({ message: "Пользователь не найден" })
-
+		
 		user.email = email || user.email
 		user.name = name || user.name
 		user.surname = surname || user.surname

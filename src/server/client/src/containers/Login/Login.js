@@ -29,7 +29,7 @@ const Login = () => {
 	const loginHandler = async () => {
 		try {
 			const data = await request('/api/auth/login', 'POST', { ...form })
-			auth.login(data.token, data.userId)
+			auth.login(data.accessToken, data.user._id)
 			clearError()
 		} catch (e) { }
 	}
@@ -49,6 +49,7 @@ const Login = () => {
 								onChange={changeHandler}
 								id={'email'}
 								name={'email'}
+								value={form.email}
 							/>
 							<Input
 								type={'password'}
@@ -56,6 +57,7 @@ const Login = () => {
 								onChange={changeHandler}
 								id={'password'}
 								name={'password'}
+								value={form.password}
 							/>
 							<div className={'text-center'}><Link to={'/restore'}>Забыли пароль?</Link></div>
 							{error && <p className={`text-center ${classes.error}`}>{error}</p>}

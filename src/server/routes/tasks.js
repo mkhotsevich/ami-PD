@@ -6,12 +6,9 @@ const router = Router()
 
 router.get('/', auth, async (req, res) => {
 	try {
-		const taskHistory = await TaskHistory.find({ userId: req.user.userId })
+		const taskHistory = await TaskHistory.find({ userId: req.user.userId }).select('title notifyAt createdAt')
 
-		res.status(200).json(
-			taskHistory
-		)
-
+		res.status(200).json(taskHistory)
 	} catch (e) {
 		console.log(e)
 		return res.status(500).json({ message: 'Что-то пошло не так, попробуйте позже' })
@@ -29,10 +26,8 @@ router.post('/', auth, async (req, res) => {
 		})
 		await taskHistory.save()
 
-		res.status(201).json({
-			taskHistory
-		})
-
+		delete taskHistory._doc.userId
+		res.status(201).json(taskHistory)
 	} catch (e) {
 		console.log(e)
 		return res.status(500).json({ message: 'Что-то пошло не так, попробуйте позже' })
@@ -43,9 +38,12 @@ router.put('/:id', auth, async (req, res) => {
 	try {
 		const { title, notifyAt, createdAt } = req.body
 
-		const taskHistory = await TaskHistory.findById(req.params.id, (err) => {
+		const taskHistory = await TaskHistory.findOne({
+			_id: req.params.id,
+			userId: req.user.userId
+		}, (err) => {
 			if (err) return res.status(404).json({ message: 'Объект с данным ID не найден' })
-		})
+		}).select('title notifyAt createdAt')
 
 		taskHistory.title = title || taskHistory.title
 		taskHistory.notifyAt = notifyAt || taskHistory.notifyAt
@@ -53,10 +51,7 @@ router.put('/:id', auth, async (req, res) => {
 
 		await taskHistory.save()
 
-		res.status(200).json({
-			taskHistory
-		})
-
+		res.status(200).json(taskHistory)
 	} catch (e) {
 		console.log(e)
 		return res.status(500).json({ message: 'Что-то пошло не так, попробуйте позже' })
@@ -65,20 +60,18 @@ router.put('/:id', auth, async (req, res) => {
 
 router.delete('/:id', auth, async (req, res) => {
 	try {
-
-		await TaskHistory.deleteOne({ _id: req.params.id }, (err) => {
+		await TaskHistory.deleteOne({
+			_id: req.params.id,
+			userId: req.user.userId
+		}, (err) => {
 			if (err) return res.status(404).json({ message: 'Объект с данным ID не найден' })
 		})
 
-		res.status(200).json({
-			message: "Успешно"
-		})
-
+		res.status(200).json({ message: "Успешно" })
 	} catch (e) {
 		console.log(e)
 		return res.status(500).json({ message: 'Что-то пошло не так, попробуйте позже' })
 	}
 })
-
 
 module.exports = router

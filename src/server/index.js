@@ -19,7 +19,7 @@ app.use(compression())
 
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/users', require('./routes/users'))
-// app.use('/api/history/water', require('./routes/water'))
+app.use('/api/history/water', require('./routes/water'))
 // app.use('/api/history/sleep', require('./routes/sleep'))
 // app.use('/api/history/weight', require('./routes/weight'))
 // app.use('/api/history/tasks', require('./routes/tasks'))

@@ -37,6 +37,7 @@ app.use('/api/history/tasks', require('./routes/tasks'))
 // app.use('/api/token', require('./routes/token'))
 //
 
+
 if (process.env.NODE_ENV !== 'test') app.use(morgan('combined'))
 
 if (process.env.NODE_ENV === 'production') {
@@ -52,8 +53,13 @@ async function start() {
 			useCreateIndex: true
 		})
 
-		http.createServer(httpApp).listen(HTTP_PORT, () => console.log(`HTTP server has been started on PORT ${HTTP_PORT}`))
-		https.createServer(httpsOptions, app).listen(HTTPS_PORT, () => console.log(`HTTPS server has been started on PORT ${HTTPS_PORT}`))
+		if (process.env.NODE_ENV === 'production') {
+			http.createServer(httpApp).listen(HTTP_PORT, () => console.log(`HTTP server has been started on PORT ${HTTP_PORT}`))
+			https.createServer(httpsOptions, app).listen(HTTPS_PORT, () => console.log(`HTTPS server has been started on PORT ${HTTPS_PORT}`))
+		} else {
+			app.listen(HTTP_PORT, () => console.log(`HTTPS server has been started on PORT ${HTTP_PORT}`))
+		}
+		
 	} catch (e) {
 		console.log('Неизвестная ошибка', e.message)
 		process.exit(1)

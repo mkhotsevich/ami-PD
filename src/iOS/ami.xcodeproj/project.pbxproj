@@ -3,12 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1057CABFCB42FCF6ED17CF19 /* Pods_DataManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C46AADC41FAD86B7714E9B /* Pods_DataManager.framework */; };
 		18EBCAA12C064D9A169BA461 /* Pods_ami.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CAE71BDCF19FC0AF4B02191 /* Pods_ami.framework */; };
+		5764E51C24A91E3300E6BFDC /* AuthManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5764E51B24A91E3300E6BFDC /* AuthManagerTests.swift */; };
+		5764E51E24A91E3300E6BFDC /* DataManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57CDF72924A8C2030053300A /* DataManager.framework */; platformFilter = ios; };
 		5779BF6B24A3F181005113D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BF6A24A3F181005113D4 /* AppDelegate.swift */; };
 		5779BF6D24A3F181005113D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BF6C24A3F181005113D4 /* SceneDelegate.swift */; };
 		5779BF7424A3F182005113D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5779BF7324A3F182005113D4 /* Assets.xcassets */; };
@@ -86,6 +88,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5764E51F24A91E3300E6BFDC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5779BF5F24A3F181005113D4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 57CDF72824A8C2030053300A;
+			remoteInfo = DataManager;
+		};
+		5764E52424A91F8400E6BFDC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5779BF5F24A3F181005113D4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5779BF6624A3F181005113D4;
+			remoteInfo = ami;
+		};
 		57CDF75024A8C2680053300A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5779BF5F24A3F181005113D4 /* Project object */;
@@ -135,6 +151,9 @@
 
 /* Begin PBXFileReference section */
 		5713DC0724A4DC4E00C9518A /* DataManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DataManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5764E51924A91E3300E6BFDC /* DataManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5764E51B24A91E3300E6BFDC /* AuthManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManagerTests.swift; sourceTree = "<group>"; };
+		5764E51D24A91E3300E6BFDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5779BF6724A3F181005113D4 /* ami.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ami.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5779BF6A24A3F181005113D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5779BF6C24A3F181005113D4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -226,6 +245,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5764E51624A91E3300E6BFDC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5764E51E24A91E3300E6BFDC /* DataManager.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5779BF6424A3F181005113D4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -270,6 +297,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5764E51A24A91E3300E6BFDC /* DataManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				5764E51B24A91E3300E6BFDC /* AuthManagerTests.swift */,
+				5764E51D24A91E3300E6BFDC /* Info.plist */,
+			);
+			path = DataManagerTests;
+			sourceTree = SOURCE_ROOT;
+		};
 		5779BF5E24A3F181005113D4 = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +328,7 @@
 				57CDF73A24A8C2330053300A /* Storage.framework */,
 				57CDF74B24A8C2680053300A /* UIUtils.framework */,
 				57CDF75C24A8C2750053300A /* NetworkCore.framework */,
+				5764E51924A91E3300E6BFDC /* DataManagerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -319,6 +356,7 @@
 				57CDF78124A8C2E20053300A /* Entities */,
 				57CDF76824A8C2E20053300A /* Managers */,
 				57CDF72C24A8C2030053300A /* Info.plist */,
+				5764E51A24A91E3300E6BFDC /* DataManagerTests */,
 			);
 			path = DataManager;
 			sourceTree = "<group>";
@@ -422,8 +460,8 @@
 		57CDF78624A8C2E20053300A /* User */ = {
 			isa = PBXGroup;
 			children = (
-				57CDF78724A8C2E20053300A /* UserCD+CoreDataProperties.swift */,
 				57CDF78824A8C2E20053300A /* User.swift */,
+				57CDF78724A8C2E20053300A /* UserCD+CoreDataProperties.swift */,
 				57CDF78924A8C2E20053300A /* UserCD+CoreDataClass.swift */,
 			);
 			path = User;
@@ -607,6 +645,25 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		5764E51824A91E3300E6BFDC /* DataManagerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5764E52324A91E3300E6BFDC /* Build configuration list for PBXNativeTarget "DataManagerTests" */;
+			buildPhases = (
+				5764E51524A91E3300E6BFDC /* Sources */,
+				5764E51624A91E3300E6BFDC /* Frameworks */,
+				5764E51724A91E3300E6BFDC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5764E52024A91E3300E6BFDC /* PBXTargetDependency */,
+				5764E52524A91F8400E6BFDC /* PBXTargetDependency */,
+			);
+			name = DataManagerTests;
+			productName = DataManagerTests;
+			productReference = 5764E51924A91E3300E6BFDC /* DataManagerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		5779BF6624A3F181005113D4 /* ami */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5779BF7B24A3F182005113D4 /* Build configuration list for PBXNativeTarget "ami" */;
@@ -716,6 +773,10 @@
 				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = "Artem Kufaev";
 				TargetAttributes = {
+					5764E51824A91E3300E6BFDC = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 5779BF6624A3F181005113D4;
+					};
 					5779BF6624A3F181005113D4 = {
 						CreatedOnToolsVersion = 11.5;
 					};
@@ -754,11 +815,19 @@
 				57CDF73924A8C2330053300A /* Storage */,
 				57CDF74A24A8C2680053300A /* UIUtils */,
 				57CDF75B24A8C2750053300A /* NetworkCore */,
+				5764E51824A91E3300E6BFDC /* DataManagerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5764E51724A91E3300E6BFDC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5779BF6524A3F181005113D4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -901,6 +970,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5764E51524A91E3300E6BFDC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5764E51C24A91E3300E6BFDC /* AuthManagerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5779BF6324A3F181005113D4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1003,6 +1080,17 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5764E52024A91E3300E6BFDC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = 57CDF72824A8C2030053300A /* DataManager */;
+			targetProxy = 5764E51F24A91E3300E6BFDC /* PBXContainerItemProxy */;
+		};
+		5764E52524A91F8400E6BFDC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5779BF6624A3F181005113D4 /* ami */;
+			targetProxy = 5764E52424A91F8400E6BFDC /* PBXContainerItemProxy */;
+		};
 		57CDF75124A8C2680053300A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 57CDF74A24A8C2680053300A /* UIUtils */;
@@ -1037,6 +1125,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5764E52124A91E3300E6BFDC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YX6VKW92JQ;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = DataManagerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = artemkufaev.DataManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ami.app/ami";
+			};
+			name = Debug;
+		};
+		5764E52224A91E3300E6BFDC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YX6VKW92JQ;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = DataManagerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = artemkufaev.DataManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ami.app/ami";
+			};
+			name = Release;
+		};
 		5779BF7924A3F182005113D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1449,6 +1579,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5764E52324A91E3300E6BFDC /* Build configuration list for PBXNativeTarget "DataManagerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5764E52124A91E3300E6BFDC /* Debug */,
+				5764E52224A91E3300E6BFDC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5779BF6224A3F181005113D4 /* Build configuration list for PBXProject "ami" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

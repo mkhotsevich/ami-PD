@@ -11,7 +11,7 @@ import NetworkCore
 
 extension INetworkAPI {
     public var host: String {
-        guard let host = Bundle.main.object(forInfoDictionaryKey: "API Base URL") as? String
+        guard let host = Bundle(for: TokenManager.self).object(forInfoDictionaryKey: "API Base URL") as? String
             else { fatalError("Установите конфигурацию!") }
         return host
     }

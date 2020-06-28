@@ -18,7 +18,7 @@ const HTTPS_PORT = config.get('HTTPS_PORT')
 const httpsOptions = { key: fs.readFileSync("server.key"), cert: fs.readFileSync("server.crt") }
 
 httpApp.set('port', HTTP_PORT || 80)
-httpApp.get("*", (req, res) => { res.redirect("https://" + req.headers.host + "/" + req.path) })
+httpApp.get("*", (req, res) => { res.redirect("https://" + req.headers.host + req.path) })
 
 app.set('port', HTTPS_PORT || 443)
 app.enable('trust proxy')

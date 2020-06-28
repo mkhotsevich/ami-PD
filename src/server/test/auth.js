@@ -107,21 +107,30 @@ describe('Вход', () => {
 	})
 	describe('/POST auth/login', () => {
 		it('Корректные данные', (done) => {
+			const user1 = new User({
+				email: 'xozewitc@yandex.ru',
+				password: '12345678'
+			})
 			const user2 = {
-				email: 'maxim@yandex.ru',
+				email: 'xozewitc@yandex.ru',
 				password: '12345678'
 			}
-			const user = new User({
-				email: 'maxim@yandex.ru',
-				password: bcrypt.hashSync('12345678', 10)
-			})
-			user.save((err, user) => {
+			user1.save((err, user) => {
 				chai.request(app)
 					.post('/api/auth/login')
-					.send(user2)
+					.send(user)
 					.end((err, res) => {
+						console.log(res)
 						res.should.have.status(200);
-						res.body.should.have.property('message').eql('Успешно')
+						res.body.should.have.property('user')
+						res.body.should.have.property('accessToken')
+						res.body.user.should.have.property('_id')
+						res.body.user.should.have.property('email')
+						res.body.user.should.have.property('password')
+						res.body.user.should.have.property('name')
+						res.body.user.should.have.property('surname')
+						res.body.user.should.have.property('birthdate')
+						res.body.user.should.have.property('height')
 						done()
 					})
 			})

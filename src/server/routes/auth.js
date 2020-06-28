@@ -78,7 +78,7 @@ router.post('/register', registerValidators, async (req, res) => {
 
 		const accessToken = jwt.sign({ userId: newUser._id }, config.get('JWT_SECRET'), { expiresIn: '30d' })
 
-		if (process.env.NODE_ENV !== 'test') await transporter.sendMail(registrationEmail(email))
+		await transporter.sendMail(registrationEmail(email))
 
 		res.status(201).json({ accessToken, user: newUser })
 	} catch (e) {
@@ -102,7 +102,7 @@ router.post('/restore', (req, res) => {
 				candidate.restoreToken = token
 				candidate.restoreTokenExp = Date.now() + 3600 * 1000
 				await candidate.save()
-				if (process.env.NODE_ENV !== 'test') await transporter.sendMail(restoreEmail(candidate.email, token))
+				await transporter.sendMail(restoreEmail(candidate.email, token))
 				return res.status(200).json({ message: `Ссылка для восстановления пароля была отправлена на ${candidate.email}` })
 			} else {
 				return res.status(400).json({ message: 'Пользователь с таким Email не найден' })

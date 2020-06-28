@@ -6,25 +6,26 @@ const morgan = require('morgan')
 const config = require('config')
 const path = require('path')
 const https = require("https")
-const fs = require("fs");
+const http = require('http')
+const fs = require("fs")
 
-
+const httpApp = express()
 const app = express()
-const PORT = config.get('PORT')
 
-app.enable('trust proxy');
-app.use(function (req, res, next) {
-	if (req.secure) {
-		next();
-	} else {
-		res.redirect('https://' + req.headers.host + req.url);
-	}
-});
+const HTTP_PORT = config.get('HTTP_PORT')
+const HTTPS_PORT = config.get('HTTPS_PORT')
+
+const httpsOptions = { key: fs.readFileSync("server.key"), cert: fs.readFileSync("server.crt") }
+
+httpApp.set('port', HTTP_PORT || 80)
+httpApp.get("*", (req, res) => { res.redirect("https://" + req.headers.host + "/" + req.path) })
+
+app.set('port', HTTPS_PORT || 443)
+app.enable('trust proxy')
 
 app.use(express.json({ extended: true, type: 'application/json' }))
 app.use(express.urlencoded({ extended: true }));
 app.use(express.text());
-
 
 
 app.use(helmet())
@@ -54,11 +55,15 @@ async function start() {
 			useUnifiedTopology: true,
 			useCreateIndex: true
 		})
-		const httpsOptions = {
-			key: fs.readFileSync("server.key"), // путь к ключу
-			cert: fs.readFileSync("server.crt") // путь к сертификату
-		}
-		https.createServer(httpsOptions, app).listen(PORT, () => console.log(`Server has been started on PORT ${PORT}...`))
+
+		http.createServer(httpApp).listen(httpApp.get('port'), function () {
+			console.log('Express HTTP server listening on port ' + httpApp.get('port'));
+		});
+
+		https.createServer(httpsOptions, app).listen(app.get('port'), function () {
+			console.log('Express HTTPS server listening on port ' + app.get('port'));
+		});
+		// https.createServer(httpsOptions, app).listen(PORT, () => console.log(`Server has been started on PORT ${PORT}...`))
 	} catch (e) {
 		console.log('Неизвестная ошибка', e.message)
 		process.exit(1)

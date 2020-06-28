@@ -64,7 +64,7 @@ router.put('/:id', auth, async (req, res) => {
 router.delete('/:id', auth, async (req, res) => {
 	try {
 
-		await sleepHistory.deleteOne({ _id: req.params.id }, (err) => {
+		await SleepHistory.deleteOne({ _id: req.params.id }, (err) => {
 			if (err) return res.status(404).json({ message: 'Объект с данным ID не найден' })
 		})
 

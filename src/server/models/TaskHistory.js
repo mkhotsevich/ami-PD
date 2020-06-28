@@ -10,7 +10,7 @@ const taskHistorySchema = new Schema({
 		type: String,
 		required: true
 	},
-	notificationTime: {
+	notifyAt: {
 		type: Number,
 		required: true
 	},

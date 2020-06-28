@@ -1,8 +1,7 @@
 #%RAML 1.0
 title: ami
-version: v0.1
-# TODO Адрес не поменяется?
-baseUri: https://pacific-peak-31437.herokuapp.com/api/{version}/
+version: v1
+baseUri: https://amihp.ru/api/{version}/
 mediaType: [ application/json ]
 protocols: [ HTTPS ]
 
@@ -122,33 +121,31 @@ resourceTypes:
             type: token-lib.RefreshSuccess
 
 # Users Methods
-/users:
-  description: "Коллекция пользователей"
-  /{id}:
-    description: "Модель пользователя"
-    get:
-      description: "Получение подробной информации о пользователе по {id}"
-      is: ["hasHeaders"]
-      responses:
-        200:
-          body:
-            type: users-lib.User
-        404:
-          body:
-            type: users-lib.UserNotFound
-    put:
-      description: "Обновление данных пользователя"
-      is: ["hasHeaders"]
-      body:
-        application/x-www-form-urlencoded:
-          type: users-lib.UserRequest
-      responses:
-        200:
-          body:
-            type: users-lib.User
-        404:
-          body:
-            type: users-lib.UserNotFound
+/user:
+  description: "Модель пользователя"
+  get:
+    description: "Получение подробной информации о пользователе"
+    is: ["hasHeaders"]
+    responses:
+      200:
+        body:
+          type: users-lib.User
+      404:
+        body:
+          type: users-lib.UserNotFound
+  put:
+    description: "Обновление данных пользователя"
+    is: ["hasHeaders"]
+    body:
+      application/x-www-form-urlencoded:
+        type: users-lib.UserRequest
+    responses:
+      200:
+        body:
+          type: users-lib.User
+      404:
+        body:
+          type: users-lib.UserNotFound
 
 # History Methods
 /history:

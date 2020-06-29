@@ -3,12 +3,22 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1057CABFCB42FCF6ED17CF19 /* Pods_DataManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C46AADC41FAD86B7714E9B /* Pods_DataManager.framework */; };
 		18EBCAA12C064D9A169BA461 /* Pods_ami.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CAE71BDCF19FC0AF4B02191 /* Pods_ami.framework */; };
+		5764E51C24A91E3300E6BFDC /* AuthManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5764E51B24A91E3300E6BFDC /* AuthManagerTests.swift */; };
+		5764E51E24A91E3300E6BFDC /* DataManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57CDF72924A8C2030053300A /* DataManager.framework */; platformFilter = ios; };
+		5764E52C24A933F900E6BFDC /* TestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5764E52A24A933C900E6BFDC /* TestUtils.swift */; };
+		5764E52D24A9353700E6BFDC /* UserManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5764E52824A932B600E6BFDC /* UserManagerTests.swift */; };
+		5764E53024A93C1100E6BFDC /* ActicleManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5764E52E24A93BFA00E6BFDC /* ActicleManagerTests.swift */; };
+		5764E53324A93CC400E6BFDC /* WaterManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5764E53124A93CB200E6BFDC /* WaterManagerTests.swift */; };
+		5764E53624A9442D00E6BFDC /* WeightManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5764E53424A943F200E6BFDC /* WeightManagerTests.swift */; };
+		5764E53924A945DE00E6BFDC /* SleepManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5764E53724A945B300E6BFDC /* SleepManagerTests.swift */; };
+		5764E53D24A9479000E6BFDC /* TaskManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5764E53C24A9479000E6BFDC /* TaskManagerTests.swift */; };
+		5764E54024A9491500E6BFDC /* TokenManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5764E53E24A9491300E6BFDC /* TokenManagerTests.swift */; };
 		5779BF6B24A3F181005113D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BF6A24A3F181005113D4 /* AppDelegate.swift */; };
 		5779BF6D24A3F181005113D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779BF6C24A3F181005113D4 /* SceneDelegate.swift */; };
 		5779BF7424A3F182005113D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5779BF7324A3F182005113D4 /* Assets.xcassets */; };
@@ -86,6 +96,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5764E51F24A91E3300E6BFDC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5779BF5F24A3F181005113D4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 57CDF72824A8C2030053300A;
+			remoteInfo = DataManager;
+		};
+		5764E52424A91F8400E6BFDC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5779BF5F24A3F181005113D4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5779BF6624A3F181005113D4;
+			remoteInfo = ami;
+		};
 		57CDF75024A8C2680053300A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5779BF5F24A3F181005113D4 /* Project object */;
@@ -135,6 +159,17 @@
 
 /* Begin PBXFileReference section */
 		5713DC0724A4DC4E00C9518A /* DataManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DataManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5764E51924A91E3300E6BFDC /* APIMethodsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = APIMethodsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5764E51B24A91E3300E6BFDC /* AuthManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManagerTests.swift; sourceTree = "<group>"; };
+		5764E51D24A91E3300E6BFDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5764E52824A932B600E6BFDC /* UserManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerTests.swift; sourceTree = "<group>"; };
+		5764E52A24A933C900E6BFDC /* TestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtils.swift; sourceTree = "<group>"; };
+		5764E52E24A93BFA00E6BFDC /* ActicleManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActicleManagerTests.swift; sourceTree = "<group>"; };
+		5764E53124A93CB200E6BFDC /* WaterManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterManagerTests.swift; sourceTree = "<group>"; };
+		5764E53424A943F200E6BFDC /* WeightManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightManagerTests.swift; sourceTree = "<group>"; };
+		5764E53724A945B300E6BFDC /* SleepManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepManagerTests.swift; sourceTree = "<group>"; };
+		5764E53C24A9479000E6BFDC /* TaskManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagerTests.swift; sourceTree = "<group>"; };
+		5764E53E24A9491300E6BFDC /* TokenManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManagerTests.swift; sourceTree = "<group>"; };
 		5779BF6724A3F181005113D4 /* ami.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ami.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5779BF6A24A3F181005113D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5779BF6C24A3F181005113D4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -226,6 +261,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5764E51624A91E3300E6BFDC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5764E51E24A91E3300E6BFDC /* DataManager.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5779BF6424A3F181005113D4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -270,6 +313,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5764E51A24A91E3300E6BFDC /* DataManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				5764E52A24A933C900E6BFDC /* TestUtils.swift */,
+				5764E51D24A91E3300E6BFDC /* Info.plist */,
+				5764E51B24A91E3300E6BFDC /* AuthManagerTests.swift */,
+				5764E52824A932B600E6BFDC /* UserManagerTests.swift */,
+				5764E52E24A93BFA00E6BFDC /* ActicleManagerTests.swift */,
+				5764E53124A93CB200E6BFDC /* WaterManagerTests.swift */,
+				5764E53424A943F200E6BFDC /* WeightManagerTests.swift */,
+				5764E53724A945B300E6BFDC /* SleepManagerTests.swift */,
+				5764E53C24A9479000E6BFDC /* TaskManagerTests.swift */,
+				5764E53E24A9491300E6BFDC /* TokenManagerTests.swift */,
+			);
+			path = DataManagerTests;
+			sourceTree = SOURCE_ROOT;
+		};
 		5779BF5E24A3F181005113D4 = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +352,7 @@
 				57CDF73A24A8C2330053300A /* Storage.framework */,
 				57CDF74B24A8C2680053300A /* UIUtils.framework */,
 				57CDF75C24A8C2750053300A /* NetworkCore.framework */,
+				5764E51924A91E3300E6BFDC /* APIMethodsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -319,6 +380,7 @@
 				57CDF78124A8C2E20053300A /* Entities */,
 				57CDF76824A8C2E20053300A /* Managers */,
 				57CDF72C24A8C2030053300A /* Info.plist */,
+				5764E51A24A91E3300E6BFDC /* DataManagerTests */,
 			);
 			path = DataManager;
 			sourceTree = "<group>";
@@ -412,9 +474,9 @@
 		57CDF78224A8C2E20053300A /* WeightInfo */ = {
 			isa = PBXGroup;
 			children = (
+				57CDF78524A8C2E20053300A /* WeightInfo.swift */,
 				57CDF78324A8C2E20053300A /* WeightInfoCD+CoreDataProperties.swift */,
 				57CDF78424A8C2E20053300A /* WeightInfoCD+CoreDataClass.swift */,
-				57CDF78524A8C2E20053300A /* WeightInfo.swift */,
 			);
 			path = WeightInfo;
 			sourceTree = "<group>";
@@ -422,8 +484,8 @@
 		57CDF78624A8C2E20053300A /* User */ = {
 			isa = PBXGroup;
 			children = (
-				57CDF78724A8C2E20053300A /* UserCD+CoreDataProperties.swift */,
 				57CDF78824A8C2E20053300A /* User.swift */,
+				57CDF78724A8C2E20053300A /* UserCD+CoreDataProperties.swift */,
 				57CDF78924A8C2E20053300A /* UserCD+CoreDataClass.swift */,
 			);
 			path = User;
@@ -432,9 +494,9 @@
 		57CDF78A24A8C2E20053300A /* WaterInfo */ = {
 			isa = PBXGroup;
 			children = (
+				57CDF78D24A8C2E20053300A /* WaterInfo.swift */,
 				57CDF78B24A8C2E20053300A /* WaterInfoCD+CoreDataClass.swift */,
 				57CDF78C24A8C2E20053300A /* WaterInfoCD+CoreDataProperties.swift */,
-				57CDF78D24A8C2E20053300A /* WaterInfo.swift */,
 			);
 			path = WaterInfo;
 			sourceTree = "<group>";
@@ -442,8 +504,8 @@
 		57CDF78F24A8C2E20053300A /* TaskInfo */ = {
 			isa = PBXGroup;
 			children = (
-				57CDF79024A8C2E20053300A /* TaskInfoCD+CoreDataProperties.swift */,
 				57CDF79124A8C2E20053300A /* TaskInfo.swift */,
+				57CDF79024A8C2E20053300A /* TaskInfoCD+CoreDataProperties.swift */,
 				57CDF79224A8C2E20053300A /* TaskInfoCD+CoreDataClass.swift */,
 			);
 			path = TaskInfo;
@@ -452,9 +514,9 @@
 		57CDF79324A8C2E20053300A /* Article */ = {
 			isa = PBXGroup;
 			children = (
+				57CDF79624A8C2E20053300A /* Article.swift */,
 				57CDF79424A8C2E20053300A /* ArticleCD+CoreDataProperties.swift */,
 				57CDF79524A8C2E20053300A /* ArticleCD+CoreDataClass.swift */,
-				57CDF79624A8C2E20053300A /* Article.swift */,
 			);
 			path = Article;
 			sourceTree = "<group>";
@@ -462,9 +524,9 @@
 		57CDF79724A8C2E20053300A /* SleepInfo */ = {
 			isa = PBXGroup;
 			children = (
+				57CDF79A24A8C2E20053300A /* SleepInfo.swift */,
 				57CDF79824A8C2E20053300A /* SleepInfoCD+CoreDataProperties.swift */,
 				57CDF79924A8C2E20053300A /* SleepInfoCD+CoreDataClass.swift */,
-				57CDF79A24A8C2E20053300A /* SleepInfo.swift */,
 			);
 			path = SleepInfo;
 			sourceTree = "<group>";
@@ -607,6 +669,25 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		5764E51824A91E3300E6BFDC /* APIMethodsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5764E52324A91E3300E6BFDC /* Build configuration list for PBXNativeTarget "APIMethodsTests" */;
+			buildPhases = (
+				5764E51524A91E3300E6BFDC /* Sources */,
+				5764E51624A91E3300E6BFDC /* Frameworks */,
+				5764E51724A91E3300E6BFDC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5764E52024A91E3300E6BFDC /* PBXTargetDependency */,
+				5764E52524A91F8400E6BFDC /* PBXTargetDependency */,
+			);
+			name = APIMethodsTests;
+			productName = DataManagerTests;
+			productReference = 5764E51924A91E3300E6BFDC /* APIMethodsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		5779BF6624A3F181005113D4 /* ami */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5779BF7B24A3F182005113D4 /* Build configuration list for PBXNativeTarget "ami" */;
@@ -716,6 +797,10 @@
 				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = "Artem Kufaev";
 				TargetAttributes = {
+					5764E51824A91E3300E6BFDC = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 5779BF6624A3F181005113D4;
+					};
 					5779BF6624A3F181005113D4 = {
 						CreatedOnToolsVersion = 11.5;
 					};
@@ -754,11 +839,19 @@
 				57CDF73924A8C2330053300A /* Storage */,
 				57CDF74A24A8C2680053300A /* UIUtils */,
 				57CDF75B24A8C2750053300A /* NetworkCore */,
+				5764E51824A91E3300E6BFDC /* APIMethodsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5764E51724A91E3300E6BFDC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5779BF6524A3F181005113D4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -901,6 +994,22 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5764E51524A91E3300E6BFDC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5764E53924A945DE00E6BFDC /* SleepManagerTests.swift in Sources */,
+				5764E52D24A9353700E6BFDC /* UserManagerTests.swift in Sources */,
+				5764E53D24A9479000E6BFDC /* TaskManagerTests.swift in Sources */,
+				5764E51C24A91E3300E6BFDC /* AuthManagerTests.swift in Sources */,
+				5764E53324A93CC400E6BFDC /* WaterManagerTests.swift in Sources */,
+				5764E52C24A933F900E6BFDC /* TestUtils.swift in Sources */,
+				5764E53024A93C1100E6BFDC /* ActicleManagerTests.swift in Sources */,
+				5764E53624A9442D00E6BFDC /* WeightManagerTests.swift in Sources */,
+				5764E54024A9491500E6BFDC /* TokenManagerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5779BF6324A3F181005113D4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1003,6 +1112,17 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5764E52024A91E3300E6BFDC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = 57CDF72824A8C2030053300A /* DataManager */;
+			targetProxy = 5764E51F24A91E3300E6BFDC /* PBXContainerItemProxy */;
+		};
+		5764E52524A91F8400E6BFDC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5779BF6624A3F181005113D4 /* ami */;
+			targetProxy = 5764E52424A91F8400E6BFDC /* PBXContainerItemProxy */;
+		};
 		57CDF75124A8C2680053300A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 57CDF74A24A8C2680053300A /* UIUtils */;
@@ -1037,6 +1157,50 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5764E52124A91E3300E6BFDC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YX6VKW92JQ;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = DataManagerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = artemkufaev.DataManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ami.app/ami";
+			};
+			name = Debug;
+		};
+		5764E52224A91E3300E6BFDC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YX6VKW92JQ;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = DataManagerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = artemkufaev.DataManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ami.app/ami";
+			};
+			name = Release;
+		};
 		5779BF7924A3F182005113D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1449,6 +1613,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5764E52324A91E3300E6BFDC /* Build configuration list for PBXNativeTarget "APIMethodsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5764E52124A91E3300E6BFDC /* Debug */,
+				5764E52224A91E3300E6BFDC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5779BF6224A3F181005113D4 /* Build configuration list for PBXProject "ami" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

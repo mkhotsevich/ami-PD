@@ -60,8 +60,8 @@ extension AuthAPI: INetworkAPI {
             if let vkId = vkId {
                 parameters["vkId"] = vkId
             }
-            return .requestParameters(bodyParameters: nil,
-                                      urlParameters: parameters)
+            return .requestParameters(bodyParameters: parameters,
+                                      urlParameters: nil)
             
         case .register(let email,
                        let password,
@@ -87,12 +87,12 @@ extension AuthAPI: INetworkAPI {
             if let vkId = vkId {
                 parameters["vkId"] = vkId
             }
-            return .requestParameters(bodyParameters: nil,
-                                      urlParameters: parameters)
+            return .requestParameters(bodyParameters: parameters,
+                                      urlParameters: nil)
             
         case .restore(let email):
-            return .requestParameters(bodyParameters: nil,
-                                      urlParameters: ["email": email])
+            return .requestParameters(bodyParameters: ["email": email],
+                                      urlParameters: nil)
         }
     }
     

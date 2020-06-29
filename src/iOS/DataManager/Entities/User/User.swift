@@ -11,6 +11,7 @@ import Storage
 import CoreData
 
 public struct User: Decodable {
+    
     public let id: String
     
     public let email: String
@@ -22,6 +23,27 @@ public struct User: Decodable {
     
     public let appleId: String?
     public let vkId: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case email, name, surname, birthdate, height, appleId, vkId
+    }
+    
+}
+
+extension User {
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decode(String.self, forKey: .id)
+        email = try values.decode(String.self, forKey: .email)
+        name = try values.decode(String.self, forKey: .name)
+        surname = try values.decode(String.self, forKey: .surname)
+        let birthTimeInterval = TimeInterval(try values.decode(Int.self, forKey: .birthdate))
+        birthdate = Date(timeIntervalSince1970: birthTimeInterval)
+        height = try values.decode(Double.self, forKey: .height)
+        appleId = try? values.decode(String.self, forKey: .appleId)
+        vkId = try? values.decode(Int.self, forKey: .vkId)
+    }
 }
 
 extension User: ManagedObjectConvertible {

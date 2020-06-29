@@ -48,20 +48,18 @@ extension TaskAPI: INetworkAPI {
         case .delete: return .request
             
         case .save(let title, let notifyAt, let createdAt):
-            return .requestParameters(bodyParameters: nil,
-                                      urlParameters: [
-                                      "title": title,
-                                      "notifyAt": notifyAt,
-                                      "createdAt": createdAt
-            ])
+            return .requestParameters(bodyParameters: [
+                "title": title,
+                "notifyAt": notifyAt,
+                "createdAt": createdAt],
+                                      urlParameters: nil)
             
         case .update(_, let title, let notifyAt, let createdAt):
-            return .requestParameters(bodyParameters: nil,
-                                      urlParameters: [
-                                      "title": title,
-                                      "notifyAt": notifyAt,
-                                      "createdAt": createdAt
-            ])
+            return .requestParameters(bodyParameters: [
+                "title": title,
+                "notifyAt": notifyAt,
+                "createdAt": createdAt],
+                                      urlParameters: nil)
         }
     }
     

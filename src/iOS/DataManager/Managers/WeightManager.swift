@@ -13,6 +13,10 @@ import Storage
 public class WeightManager: IDataManager<WeightAPI, WeightInfo> {
     
     public func get(completion: @escaping (NetworkResultWithModel<[WeightInfo]>) -> Void) {
+        storage.readAll {
+            completion(.success($0))
+            self.storage.delete($0)
+        }
         let api: WeightAPI = .getCollection
         provider.load(api) { (result: NetworkResultWithModel<[WeightInfo]>) in
             switch result {

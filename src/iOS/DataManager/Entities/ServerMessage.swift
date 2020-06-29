@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct ServerMessage: Decodable {
+public struct ServerMessage: Decodable {
     let message: String
 }

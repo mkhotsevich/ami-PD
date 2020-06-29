@@ -25,7 +25,7 @@ public enum UserAPI {
 
 extension UserAPI: INetworkAPI {
     
-    public var path: String { return "users/" }
+    public var path: String { return "user/" }
     
     public var headers: HTTPHeaders? {
         return ["Authorization": "Bearer " + accessToken]
@@ -64,8 +64,8 @@ extension UserAPI: INetworkAPI {
             if let vkId = vkId {
                 parameters["vkId"] = vkId
             }
-            return .requestParameters(bodyParameters: nil,
-                                      urlParameters: parameters)
+            return .requestParameters(bodyParameters: parameters,
+                                      urlParameters: nil)
         }
     }
     

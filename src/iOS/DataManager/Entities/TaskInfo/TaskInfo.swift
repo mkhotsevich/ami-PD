@@ -15,6 +15,24 @@ public struct TaskInfo: Decodable {
     public let title: String
     public let notifyAt: Date
     public let createdAt: Date
+                
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case title, notifyAt, createdAt
+    }
+        
+}
+
+extension TaskInfo {
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decode(String.self, forKey: .id)
+        title = try values.decode(String.self, forKey: .title)
+        var timeInterval = TimeInterval(try values.decode(Int.self, forKey: .notifyAt))
+        notifyAt = Date(timeIntervalSince1970: timeInterval)
+        timeInterval = TimeInterval(try values.decode(Int.self, forKey: .createdAt))
+        createdAt = Date(timeIntervalSince1970: timeInterval)
+    }
 }
 
 extension TaskInfo: ManagedObjectConvertible {

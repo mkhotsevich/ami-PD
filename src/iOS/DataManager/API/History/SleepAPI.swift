@@ -48,18 +48,16 @@ extension SleepAPI: INetworkAPI {
         case .delete: return .request
             
         case .save(let endAt, let riseAt):
-            return .requestParameters(bodyParameters: nil,
-                                      urlParameters: [
-                                        "endAt": endAt,
-                                        "riseAt": riseAt
-            ])
+            return .requestParameters(bodyParameters: [
+                "endAt": endAt,
+                "riseAt": riseAt],
+                                      urlParameters: nil)
             
         case .update(_, let endAt, let riseAt):
-            return .requestParameters(bodyParameters: nil,
-                                      urlParameters: [
-                                      "endAt": endAt,
-                                      "riseAt": riseAt
-            ])
+            return .requestParameters(bodyParameters: [
+                "endAt": endAt,
+                "riseAt": riseAt],
+                                      urlParameters: nil)
         }
     }
     

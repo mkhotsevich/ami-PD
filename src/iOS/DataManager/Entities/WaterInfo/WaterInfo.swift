@@ -14,6 +14,22 @@ public struct WaterInfo: Decodable {
     public let id: String
     public let amount: Int
     public let drinkedAt: Date
+            
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case amount, drinkedAt
+    }
+        
+}
+
+extension WaterInfo {
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decode(String.self, forKey: .id)
+        amount = try values.decode(Int.self, forKey: .amount)
+        let timeInterval = TimeInterval(try values.decode(Int.self, forKey: .drinkedAt))
+        drinkedAt = Date(timeIntervalSince1970: timeInterval)
+    }
 }
 
 extension WaterInfo: ManagedObjectConvertible {

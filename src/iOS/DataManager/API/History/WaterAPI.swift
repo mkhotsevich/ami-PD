@@ -48,18 +48,16 @@ extension WaterAPI: INetworkAPI {
         case .delete: return .request
             
         case .save(let amount, let drinkedAt):
-            return .requestParameters(bodyParameters: nil,
-                                      urlParameters: [
-                                      "amount": amount,
-                                      "drinkedAt": drinkedAt
-            ])
+            return .requestParameters(bodyParameters: [
+                "amount": amount,
+                "drinkedAt": drinkedAt],
+                                      urlParameters: nil)
             
         case .update(_, let amount, let drinkedAt):
-            return .requestParameters(bodyParameters: nil,
-                                      urlParameters: [
-                                      "amount": amount,
-                                      "drinkedAt": drinkedAt
-            ])
+            return .requestParameters(bodyParameters: [
+                "amount": amount,
+                "drinkedAt": drinkedAt],
+                                      urlParameters: nil)
         }
     }
     

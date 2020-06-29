@@ -35,8 +35,8 @@ extension TokenAPI: INetworkAPI {
     public var task: HTTPTask {
         switch self {
         case .refresh(let accessToken):
-            return .requestParameters(bodyParameters: nil,
-                                      urlParameters: ["accessToken": accessToken])
+            return .requestParameters(bodyParameters: ["accessToken": accessToken],
+                                      urlParameters: nil)
         }
     }
     

@@ -7,9 +7,19 @@
 		<key>DataManager.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>9</integer>
+			<integer>8</integer>
+		</dict>
+		<key>DataManagerTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>12</integer>
 		</dict>
 		<key>Network.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
+		<key>NetworkCore.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>11</integer>
@@ -17,7 +27,7 @@
 		<key>Storage.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>8</integer>
+			<integer>10</integer>
 		</dict>
 		<key>Test.xcscheme_^#shared#^_</key>
 		<dict>
@@ -27,7 +37,7 @@
 		<key>UIUtils.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>10</integer>
+			<integer>9</integer>
 		</dict>
 		<key>ami.xcscheme_^#shared#^_</key>
 		<dict>
@@ -37,7 +47,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>5764E51824A91E3300E6BFDC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>5779BF6624A3F181005113D4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>57CDF72824A8C2030053300A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

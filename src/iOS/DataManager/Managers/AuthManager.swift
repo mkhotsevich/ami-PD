@@ -45,7 +45,10 @@ public class AuthManager: IDataManager<AuthAPI, User> {
     
     public func loginWithEmail(_ email: String, password: String,
                                completion: @escaping (NetworkResultWithModel<AuthData>) -> Void) {
-        let api: AuthAPI = .login(email: email, password: password, appleId: nil, vkId: nil)
+        let api: AuthAPI = .login(email: email,
+                                  password: password.md5(),
+                                  appleId: nil,
+                                  vkId: nil)
         provider.load(api) { (result: NetworkResultWithModel<AuthData>) in
             switch result {
             case .success(let response):
@@ -54,6 +57,42 @@ public class AuthManager: IDataManager<AuthAPI, User> {
             default: break
             }
             completion(result)
+        }
+    }
+    
+    public func loginWithAppleId(_ appleId: String, password: String,
+                                 completion: @escaping (NetworkResultWithModel<AuthData>) -> Void) {
+        let api: AuthAPI = .login(email: nil, password: nil, appleId: appleId, vkId: nil)
+        provider.load(api) { (result: NetworkResultWithModel<AuthData>) in
+            switch result {
+            case .success(let response):
+                self.storage.write(response.user)
+                TokenManager.accessToken = response.accessToken
+            default: break
+            }
+            completion(result)
+        }
+    }
+    
+    public func loginWithVkId(_ vkId: Int, password: String,
+                              completion: @escaping (NetworkResultWithModel<AuthData>) -> Void) {
+        let api: AuthAPI = .login(email: nil, password: nil, appleId: nil, vkId: vkId)
+        provider.load(api) { (result: NetworkResultWithModel<AuthData>) in
+            switch result {
+            case .success(let response):
+                self.storage.write(response.user)
+                TokenManager.accessToken = response.accessToken
+            default: break
+            }
+            completion(result)
+        }
+    }
+    
+    public func restore(with email: String,
+                        completion: @escaping (NetworkResultWithModel<ServerMessage>) -> Void) {
+        let api: AuthAPI = .restore(email: email)
+        provider.load(api) {
+            completion($0)
         }
     }
     

@@ -15,6 +15,23 @@ public struct Article: Decodable {
     public let title: String
     public let content: String
     public let createdAt: Date
+                    
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case title, content, createdAt
+    }
+        
+}
+
+extension Article {
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decode(String.self, forKey: .id)
+        title = try values.decode(String.self, forKey: .title)
+        content = try values.decode(String.self, forKey: .content)
+        let timeInterval = TimeInterval(try values.decode(Int.self, forKey: .createdAt))
+        createdAt = Date(timeIntervalSince1970: timeInterval)
+    }
 }
 
 extension Article: ManagedObjectConvertible {

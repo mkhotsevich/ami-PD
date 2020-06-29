@@ -3,12 +3,19 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <array key="Blogger Sans-Medium.otf">
             <string>BloggerSans-Medium</string>
+        </array>
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
         </array>
     </customFonts>
     <objects>
@@ -25,17 +32,113 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Регистрация" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aL1-cP-2X5">
                     <rect key="frame" x="142" y="244" width="130" height="24"/>
                     <fontDescription key="fontDescription" name="BloggerSans-Medium" family="Blogger Sans" pointSize="24"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" name="00BCB4"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите все данные, чтобы продолжить" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7Y-56-Vyb">
+                    <rect key="frame" x="20" y="313" width="374" height="20"/>
+                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
+                    <color key="textColor" name="478BA2"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xcj-Pi-Qgj">
+                    <rect key="frame" x="20" y="373" width="374" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xsq-yE-vxL">
+                    <rect key="frame" x="20" y="442" width="374" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Повторите пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aWW-q9-vcL">
+                    <rect key="frame" x="20" y="511" width="374" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HaS-oP-pBF">
+                    <rect key="frame" x="20" y="792" width="374" height="50"/>
+                    <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="jTu-ds-mzd"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
+                    <state key="normal" title="Продолжить">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SbS-HE-tcp">
+                    <rect key="frame" x="20" y="701" width="374" height="50"/>
+                    <color key="backgroundColor" name="86A845"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="UXr-DT-4OP"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
+                    <state key="normal" title="Уже есть аккаунт? Войти!">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hQf-hP-xGw">
+                    <rect key="frame" x="99.5" y="771" width="215" height="1"/>
+                    <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="215" id="hEh-o9-02Z"/>
+                        <constraint firstAttribute="height" constant="1" id="vSh-Fr-U6n"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
+                <constraint firstItem="xcj-Pi-Qgj" firstAttribute="top" secondItem="c7Y-56-Vyb" secondAttribute="bottom" constant="40" id="3pE-qC-qoV"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="c7Y-56-Vyb" secondAttribute="trailing" constant="20" id="604-o5-Aml"/>
+                <constraint firstItem="HaS-oP-pBF" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="7dZ-oc-sTX"/>
+                <constraint firstItem="hQf-hP-xGw" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="8iI-7A-Bc2"/>
+                <constraint firstItem="xcj-Pi-Qgj" firstAttribute="leading" secondItem="c7Y-56-Vyb" secondAttribute="leading" id="8jq-KC-1BL"/>
+                <constraint firstItem="c7Y-56-Vyb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Api-g1-0vM"/>
+                <constraint firstItem="aWW-q9-vcL" firstAttribute="top" secondItem="xsq-yE-vxL" secondAttribute="bottom" constant="35" id="BAn-5h-P0P"/>
+                <constraint firstItem="xsq-yE-vxL" firstAttribute="top" secondItem="xcj-Pi-Qgj" secondAttribute="bottom" constant="35" id="Bdb-to-TiL"/>
+                <constraint firstItem="xsq-yE-vxL" firstAttribute="leading" secondItem="xcj-Pi-Qgj" secondAttribute="leading" id="Jek-iP-03R"/>
                 <constraint firstItem="aL1-cP-2X5" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Jkv-lh-SI2"/>
+                <constraint firstItem="xsq-yE-vxL" firstAttribute="trailing" secondItem="xcj-Pi-Qgj" secondAttribute="trailing" id="Nxk-sy-31d"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="HaS-oP-pBF" secondAttribute="bottom" constant="20" id="RnJ-P9-1d1"/>
+                <constraint firstItem="HaS-oP-pBF" firstAttribute="trailing" secondItem="SbS-HE-tcp" secondAttribute="trailing" id="S1T-Ip-0wR"/>
+                <constraint firstItem="hQf-hP-xGw" firstAttribute="top" secondItem="SbS-HE-tcp" secondAttribute="bottom" constant="20" id="XuH-uk-qai"/>
+                <constraint firstItem="hQf-hP-xGw" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ayX-9y-ku8"/>
+                <constraint firstItem="aWW-q9-vcL" firstAttribute="trailing" secondItem="xsq-yE-vxL" secondAttribute="trailing" id="bBY-EE-bUX"/>
+                <constraint firstItem="c7Y-56-Vyb" firstAttribute="top" secondItem="aL1-cP-2X5" secondAttribute="bottom" constant="45" id="dRu-Oo-qGS"/>
+                <constraint firstItem="c7Y-56-Vyb" firstAttribute="centerX" secondItem="aL1-cP-2X5" secondAttribute="centerX" id="dhh-W0-cnH"/>
+                <constraint firstItem="HaS-oP-pBF" firstAttribute="leading" secondItem="SbS-HE-tcp" secondAttribute="leading" id="dtd-p5-VvZ"/>
+                <constraint firstItem="SbS-HE-tcp" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ete-QX-hkQ"/>
+                <constraint firstItem="SbS-HE-tcp" firstAttribute="trailing" secondItem="aWW-q9-vcL" secondAttribute="trailing" id="fOB-uv-93z"/>
+                <constraint firstItem="xcj-Pi-Qgj" firstAttribute="trailing" secondItem="c7Y-56-Vyb" secondAttribute="trailing" id="fon-t6-Pdz"/>
+                <constraint firstItem="HaS-oP-pBF" firstAttribute="top" secondItem="hQf-hP-xGw" secondAttribute="bottom" constant="20" id="kBr-js-TlU"/>
+                <constraint firstItem="aWW-q9-vcL" firstAttribute="leading" secondItem="xsq-yE-vxL" secondAttribute="leading" id="lN5-tf-Kkl"/>
                 <constraint firstItem="aL1-cP-2X5" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="200" id="sN9-iG-0WC"/>
+                <constraint firstItem="SbS-HE-tcp" firstAttribute="leading" secondItem="aWW-q9-vcL" secondAttribute="leading" id="tNv-e6-fzD"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="139" y="119"/>
+            <point key="canvasLocation" x="137.68115942028987" y="118.52678571428571"/>
         </view>
     </objects>
+    <resources>
+        <namedColor name="00BCB4">
+            <color red="0.0" green="0.73725490196078436" blue="0.70588235294117652" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="478BA2">
+            <color red="0.27843137254901962" green="0.54509803921568623" blue="0.63529411764705879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="86A845">
+            <color red="0.52549019607843139" green="0.6588235294117647" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

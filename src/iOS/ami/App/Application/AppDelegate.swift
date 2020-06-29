@@ -8,10 +8,6 @@
 
 import UIKit
 
-import NetworkCore
-import Storage
-import UIUtils
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

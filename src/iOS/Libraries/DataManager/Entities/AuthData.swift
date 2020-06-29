@@ -9,6 +9,6 @@
 import Foundation
 
 public struct AuthData: Decodable {
-    let accessToken: String
-    let user: User
+    public let accessToken: String
+    public let user: User
 }

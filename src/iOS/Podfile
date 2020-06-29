@@ -15,4 +15,4 @@ target 'DataManager' do
   pod 'CryptoSwift'
   pod 'Keychain'
 
-end 
+end

@@ -22,6 +22,8 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var continueButton: Button!
     
     var router: RegisterRouter!
+    var authValidator: AuthValidator!
+    
     private weak var selectedField: TextField?
 
     override func viewDidLoad() {
@@ -32,6 +34,7 @@ class RegisterViewController: UIViewController {
         confirmPasswordField.delegate = self
         
         router = RegisterRouter(controller: self)
+        authValidator = AuthValidator()
         view.hideKeyboardWhenTapped()
         validateForm()
         registerForKeyboardNotifications()
@@ -82,6 +85,10 @@ class RegisterViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false
     }
 
+    @IBAction func toLogin(_ sender: Any) {
+        router.toLogin()
+    }
+    
     @IBAction func continueRegister(_ sender: Any) {
         guard let email = emailField.text,
             let password = passwordField.text else { return }
@@ -89,9 +96,9 @@ class RegisterViewController: UIViewController {
     }
     
     private func validateForm() {
-        let isValidEmail = validateEmail(emailField)
-        let isValidPassword = validatePassword(passwordField)
-        let isValidConfirmPassword = validateConfirmPassword(password: passwordField,
+        let isValidEmail = authValidator.validateEmail(emailField)
+        let isValidPassword = authValidator.validatePassword(passwordField)
+        let isValidConfirmPassword = authValidator.validateConfirmPassword(password: passwordField,
                                                              confirmPassword: confirmPasswordField)
         
         continueButton.setEnabled(isValidEmail && isValidPassword && isValidConfirmPassword)
@@ -101,40 +108,12 @@ class RegisterViewController: UIViewController {
 
 extension RegisterViewController: UITextFieldDelegate {
     
-    enum ValidationErrors: String, ValidationError {
-        case emailInvalid = "Email не корректен"
-        case passwordInvalid = "Слабый пароль"
-        case passwordNotConfirm = "Пароли не совпадают"
-        var message: String { return self.rawValue }
-    }
-    
-    private func validateEmail(_ email: UITextField) -> Bool {
-        let rule = ValidationRulePattern(pattern: EmailValidationPattern.standard,
-                                         error: ValidationErrors.emailInvalid)
-        return email.validate(rule: rule).isValid
-    }
-    
-    private func validatePassword(_ password: UITextField) -> Bool {
-        let rule = ValidationRuleLength(min: 5,
-                                        max: 20,
-                                        error: ValidationErrors.passwordInvalid)
-        return password.validate(rule: rule).isValid
-    }
-    
-    private func validateConfirmPassword(password: UITextField,
-                                         confirmPassword: UITextField) -> Bool {
-        let rule = ValidationRuleEquality<String>(dynamicTarget: {
-            return password.text ?? ""
-        }, error: ValidationErrors.passwordNotConfirm)
-        return confirmPassword.validate(rule: rule).isValid
-    }
-    
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let textField = textField as? TextField else { return }
         
-        let isValidEmail = validateEmail(emailField)
-        let isValidPassword = validatePassword(passwordField)
-        let isValidConfirmPassword = validateConfirmPassword(password: passwordField,
+        let isValidEmail = authValidator.validateEmail(emailField)
+        let isValidPassword = authValidator.validatePassword(passwordField)
+        let isValidConfirmPassword = authValidator.validateConfirmPassword(password: passwordField,
                                                              confirmPassword: confirmPasswordField)
         switch textField {
         case emailField:
@@ -153,9 +132,9 @@ extension RegisterViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        let isValidEmail = validateEmail(emailField)
-        let isValidPassword = validatePassword(passwordField)
-        let isValidConfirmPassword = validateConfirmPassword(password: passwordField,
+        let isValidEmail = authValidator.validateEmail(emailField)
+        let isValidPassword = authValidator.validatePassword(passwordField)
+        let isValidConfirmPassword = authValidator.validateConfirmPassword(password: passwordField,
                                                              confirmPassword: confirmPasswordField)
         switch textField {
         case emailField:

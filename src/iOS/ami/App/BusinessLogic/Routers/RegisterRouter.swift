@@ -6,7 +6,7 @@
 //  Copyright © 2020 Artem Kufaev. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class RegisterRouter: BaseRouter {
     
@@ -18,6 +18,13 @@ class RegisterRouter: BaseRouter {
         }
         infoFillVC?.registerData = (email, password)
         push(infoFillVC!, animated: true)
+    }
+    
+    func toLogin() {
+        let loginVC = LoginViewController()
+        var transitionOptions = UIWindow.TransitionOptions.init(direction: .toRight, style: .easeOut)
+        transitionOptions.duration = 0.4
+        setRoot(loginVC, transitionOptions: transitionOptions)
     }
     
 }

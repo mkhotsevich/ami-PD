@@ -6,6 +6,7 @@ target 'ami' do
   # Official pods
   pod 'SwiftLint'
   pod 'R.swift'
+  pod 'Validator'
 
 end
 

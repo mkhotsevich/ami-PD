@@ -8,16 +8,17 @@
 
 import UIKit
 import UIUtils
+import DesignKit
 
 class InfoPlaceholderView: UIView {
     
     @IBOutlet var contentView: UIView!
     
-    @IBOutlet weak var nameField: UITextField!
-    @IBOutlet weak var surnameField: UITextField!
+    @IBOutlet weak var nameField: TextField!
+    @IBOutlet weak var surnameField: TextField!
     @IBOutlet weak var birthdateField: DatePickerField!
-    @IBOutlet weak var heightField: UITextField!
-    @IBOutlet weak var weightField: UITextField!
+    @IBOutlet weak var heightField: TextField!
+    @IBOutlet weak var weightField: TextField!
     
 //    static func loadViewFromNib() -> InfoPlaceholderView {
 //        let bundle = Bundle(for: self)

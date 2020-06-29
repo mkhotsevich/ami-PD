@@ -14,6 +14,7 @@
 		57201F7024AA80700098BA97 /* UIView+KeyboardClosure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573FAC0624AA59C000D7BECA /* UIView+KeyboardClosure.swift */; };
 		57201F7224AA80F20098BA97 /* TextField+DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573FABFD24AA463600D7BECA /* TextField+DatePicker.swift */; };
 		57201F7824AA86430098BA97 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57201F7624AA86390098BA97 /* UIViewController+Alert.swift */; };
+		57201F7B24AA940A0098BA97 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57201F7924AA94040098BA97 /* Button.swift */; };
 		573FABE124AA35BB00D7BECA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573FABDF24AA35BB00D7BECA /* RegisterViewController.swift */; };
 		573FABE224AA35BB00D7BECA /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 573FABE024AA35BB00D7BECA /* RegisterViewController.xib */; };
 		573FABE424AA382800D7BECA /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 573FABE324AA382800D7BECA /* Montserrat-Regular.ttf */; };
@@ -196,6 +197,7 @@
 		5713DC0724A4DC4E00C9518A /* DataManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DataManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57201F6A24AA6F320098BA97 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		57201F7624AA86390098BA97 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		57201F7924AA94040098BA97 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		573FABDF24AA35BB00D7BECA /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		573FABE024AA35BB00D7BECA /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		573FABE324AA382800D7BECA /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
@@ -552,6 +554,7 @@
 				57802B4024AA13AF00CF9C93 /* Info.plist */,
 				573FABEA24AA3CF700D7BECA /* UIView+ExtraProperties.swift */,
 				57201F6A24AA6F320098BA97 /* TextField.swift */,
+				57201F7924AA94040098BA97 /* Button.swift */,
 			);
 			path = DesignKit;
 			sourceTree = "<group>";
@@ -1288,6 +1291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				573FABEC24AA3D1100D7BECA /* UIView+ExtraProperties.swift in Sources */,
+				57201F7B24AA940A0098BA97 /* Button.swift in Sources */,
 				57201F6C24AA70280098BA97 /* TextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,7 +11,7 @@ import UIKit
 @IBDesignable
 open class TextField: UITextField, UITextFieldDelegate {
     
-    enum Style {
+    public enum Style {
         case active
         case writing
         case wrote
@@ -23,7 +23,6 @@ open class TextField: UITextField, UITextFieldDelegate {
     var defaultColor: UIColor? {
        didSet {
            textColor = defaultColor
-           configurePlaceholder()
            configStyle()
        }
    }
@@ -39,14 +38,18 @@ open class TextField: UITextField, UITextFieldDelegate {
     @IBInspectable
     var invalidColor: UIColor? {
        didSet {
-           configurePlaceholder()
            configStyle()
        }
-   }
+    }
     
-    var style: Style = .active {
+    private var style: Style = .active {
         didSet {
-            configurePlaceholder()
+            configStyle()
+        }
+    }
+    
+    public var isValid: Bool? {
+        didSet {
             configStyle()
         }
     }
@@ -100,6 +103,12 @@ open class TextField: UITextField, UITextFieldDelegate {
     
     @objc
     private func configStyle() {
+        if let isValid = isValid, !isValid {
+            borderColor = invalidColor
+            textColor = invalidColor
+            return
+        }
+        textColor = defaultColor
         switch style {
         case .active, .wrote:
             borderColor = secondaryColor

@@ -36,4 +36,15 @@ class BaseRouter: NSObject {
         self.controller.navigationController?.popViewController(animated: animated)
     }
     
+    func setRoot(_ controller: UIViewController, transitionOptions: UIWindow.TransitionOptions? = nil) {
+        guard let window = UIApplication.shared.keyWindow else { return }
+
+        if let transitionOptions = transitionOptions {
+            window.setRootViewController(controller,
+                                         options: transitionOptions)
+        } else {
+            window.setRootViewController(controller)
+        }
+    }
+    
 }

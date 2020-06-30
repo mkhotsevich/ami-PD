@@ -13,16 +13,18 @@ import DataManager
 class RegisterInfoFillViewController: UIViewController {
     
     @IBOutlet weak var infoPlaceholderView: InfoPlaceholderView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var registerData: (email: String, password: String)!
     
     var authManager: AuthManager!
-    @IBOutlet weak var scrollView: UIScrollView!
+    var router: RegisterInfoFillRouter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.hideKeyboardWhenTapped()
         authManager = AuthManager()
+        router = RegisterInfoFillRouter(controller: self)
         registerForKeyboardNotifications()
     }
     
@@ -85,18 +87,16 @@ class RegisterInfoFillViewController: UIViewController {
             switch result {
             case .success(let authData):
                 self.showAlert(alertText: "Успешно!", alertMessage: "Ваш ID в системе: \(authData.user.id)\nТокен доступа: \(authData.accessToken)") {
-                    print()
+                    self.router.toMain()
                 }
             case .failure(let error):
                 switch error {
                 case .serverFailed(let code, let msg):
                     self.showAlert(alertText: "Ошибка сервера \(code)", alertMessage: msg) {
-                        print()
+                        self.router.goBack()
                     }
                 default:
-                    self.showAlert(alertText: "Сетевая ошибка", alertMessage: error.localizedDescription) {
-                        print()
-                    }
+                    self.showAlert(alertText: "Сетевая ошибка", alertMessage: error.localizedDescription) { }
                 }
             }
         }

@@ -17,5 +17,9 @@ class WaterCollectionViewCell: UICollectionViewCell {
         let tintableImage = glassIcon.image?.withRenderingMode(.alwaysTemplate)
         glassIcon.image = tintableImage
     }
+    
+    public func setColor(_ color: UIColor?) {
+        glassIcon.tintColor = color
+    }
 
 }

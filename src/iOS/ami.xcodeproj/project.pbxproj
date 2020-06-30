@@ -75,6 +75,8 @@
 		57CB156824AB236F00B0D22D /* WaterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB156624AB236F00B0D22D /* WaterCollectionViewCell.swift */; };
 		57CB156A24AB33ED00B0D22D /* GraphicHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB156924AB33ED00B0D22D /* GraphicHelper.swift */; };
 		57CB156C24AB3A6000B0D22D /* NumericUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB156B24AB3A6000B0D22D /* NumericUtils.swift */; };
+		57CB156F24AB4D7D00B0D22D /* WaterHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB156D24AB4D7D00B0D22D /* WaterHistoryTableViewController.swift */; };
+		57CB157324AB4F2D00B0D22D /* WaterManagerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB157224AB4F2D00B0D22D /* WaterManagerRouter.swift */; };
 		57CDF75224A8C2680053300A /* UIUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57CDF74B24A8C2680053300A /* UIUtils.framework */; };
 		57CDF75324A8C2680053300A /* UIUtils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 57CDF74B24A8C2680053300A /* UIUtils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		57CDF76324A8C2750053300A /* NetworkCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57CDF75C24A8C2750053300A /* NetworkCore.framework */; };
@@ -288,6 +290,8 @@
 		57CB156624AB236F00B0D22D /* WaterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterCollectionViewCell.swift; sourceTree = "<group>"; };
 		57CB156924AB33ED00B0D22D /* GraphicHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicHelper.swift; sourceTree = "<group>"; };
 		57CB156B24AB3A6000B0D22D /* NumericUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericUtils.swift; sourceTree = "<group>"; };
+		57CB156D24AB4D7D00B0D22D /* WaterHistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterHistoryTableViewController.swift; sourceTree = "<group>"; };
+		57CB157224AB4F2D00B0D22D /* WaterManagerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterManagerRouter.swift; sourceTree = "<group>"; };
 		57CDF72924A8C2030053300A /* DataManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DataManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57CDF72C24A8C2030053300A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57CDF73A24A8C2330053300A /* Storage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Storage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -500,6 +504,7 @@
 		57201F9724AAB3720098BA97 /* WaterManager */ = {
 			isa = PBXGroup;
 			children = (
+				57CB157124AB4D8000B0D22D /* WaterHistory */,
 				57CB156424AB236F00B0D22D /* WaterCollectionViewCell */,
 				57201FAF24AAB4300098BA97 /* WaterManagerViewController.swift */,
 				57201FB024AAB4300098BA97 /* WaterManagerViewController.xib */,
@@ -531,6 +536,7 @@
 				57201F8C24AAAB5B0098BA97 /* LoginRouter.swift */,
 				57201F8E24AAAB720098BA97 /* RegisterInfoFillRouter.swift */,
 				57201FB324AABAE10098BA97 /* ProfileRouter.swift */,
+				57CB157224AB4F2D00B0D22D /* WaterManagerRouter.swift */,
 			);
 			path = Routers;
 			sourceTree = "<group>";
@@ -727,6 +733,14 @@
 				57CB156624AB236F00B0D22D /* WaterCollectionViewCell.swift */,
 			);
 			path = WaterCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		57CB157124AB4D8000B0D22D /* WaterHistory */ = {
+			isa = PBXGroup;
+			children = (
+				57CB156D24AB4D7D00B0D22D /* WaterHistoryTableViewController.swift */,
+			);
+			path = WaterHistory;
 			sourceTree = "<group>";
 		};
 		57CDF72A24A8C2030053300A /* DataManager */ = {
@@ -1433,6 +1447,7 @@
 			files = (
 				57201FB424AABAE10098BA97 /* ProfileRouter.swift in Sources */,
 				57201F8F24AAAB720098BA97 /* RegisterInfoFillRouter.swift in Sources */,
+				57CB157324AB4F2D00B0D22D /* WaterManagerRouter.swift in Sources */,
 				57201FAD24AAB4240098BA97 /* ArticlesViewController.swift in Sources */,
 				57201F8424AAA7B30098BA97 /* LoginViewController.swift in Sources */,
 				57201FB724AABFD30098BA97 /* KeyboardHelper.swift in Sources */,
@@ -1449,6 +1464,7 @@
 				57201F6E24AA72D50098BA97 /* R.generated.swift in Sources */,
 				573FAC0024AA4A6700D7BECA /* InfoPlaceholderView.swift in Sources */,
 				57201FA924AAB4150098BA97 /* SleepManagerViewController.swift in Sources */,
+				57CB156F24AB4D7D00B0D22D /* WaterHistoryTableViewController.swift in Sources */,
 				57CB156824AB236F00B0D22D /* WaterCollectionViewCell.swift in Sources */,
 				57201F8D24AAAB5B0098BA97 /* LoginRouter.swift in Sources */,
 				573FABF824AA42FD00D7BECA /* RegisterRouter.swift in Sources */,

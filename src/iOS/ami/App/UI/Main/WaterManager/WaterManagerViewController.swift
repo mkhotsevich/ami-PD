@@ -17,8 +17,18 @@ class WaterManagerViewController: UIViewController {
     @IBOutlet weak var drinkWaterButton: UIButton!
     @IBOutlet weak var waterEnoughLabel: UILabel!
     
-    var waterHistory: [WaterInfo] = []
-    var weight: WeightInfo? {
+    private var router: WaterManagerRouter!
+    
+    private var waterHistory: [WaterInfo] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.lastFilledGlassIndex = self.waterHistory.count - 1
+                self.checkIsWaterEnough()
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    private var weight: WeightInfo? {
         didSet {
             DispatchQueue.main.async {
                 if let weight = self.weight {
@@ -27,23 +37,51 @@ class WaterManagerViewController: UIViewController {
                 } else {
                     self.waterAmountLabel.text = "Не удалось расчитать вес"
                 }
+                self.checkIsWaterEnough()
                 self.collectionView.reloadData()
             }
         }
     }
-    var glassCount: Int {
+    private var glassCount: Int {
         let weight = self.weight?.amount ?? 0
         return Int(weight * 30 / 200)
     }
-    var waterManager: WaterManager!
-    var weightManager: WeightManager!
+    
+    private var waterManager: WaterManager!
+    private var weightManager: WeightManager!
+    private var lastFilledGlassIndex: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
         waterManager = WaterManager()
         weightManager = WeightManager()
+        router = WaterManagerRouter(controller: self)
+        configureNavBar()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         loadData()
+    }
+    
+    private func configureNavBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks,
+                                                            target: self,
+                                                            action: #selector(openHistory))
+        navigationItem.rightBarButtonItem?.tintColor = R.color.ba2()
+    }
+    
+    private func configureCollectionView() {
+        collectionView.register(UINib(nibName: "WaterCollectionViewCell", bundle: nil),
+                                forCellWithReuseIdentifier: "WaterCellReusable")
+        collectionView.delegate = self
+        collectionView.dataSource = self
+    }
+    
+    @objc
+    private func openHistory() {
+        router.toHistory()
     }
     
     private func loadData() {
@@ -59,44 +97,50 @@ class WaterManagerViewController: UIViewController {
             switch result {
             case .success(let history):
                 let calendar = Calendar.current
-                self.waterHistory = history.filter { calendar.isDateInToday($0.drinkedAt) }
+                self.waterHistory = history
+                    .sorted { $0.drinkedAt > $1.drinkedAt }
+                    .filter { calendar.isDateInToday($0.drinkedAt) }
             case .failure(let error):
                 self.showAlert(alertText: "Ошибка", alertMessage: error.localizedDescription)
             }
         }
-    }
-    
-    private func configureCollectionView() {
-        collectionView.register(UINib(nibName: "WaterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "WaterCellReusable")
-        collectionView.delegate = self
-        collectionView.dataSource = self
     }
 
     @IBAction func drinkWater(_ sender: Any) {
+        lastFilledGlassIndex += 1
+        fillGlass(for: lastFilledGlassIndex)
+        checkIsWaterEnough()
+        saveWater(for: lastFilledGlassIndex)
+    }
+    
+    private func saveWater(for index: Int) {
         waterManager.save(amount: 200, drinkedAt: Date()) { (result) in
             switch result {
             case .success(let info):
-                self.addWaterInfoToCollection(info)
+                self.waterHistory.append(info)
             case .failure(let error):
+                self.fillGlass(for: index)
                 self.showAlert(alertText: "Ошибка", alertMessage: error.localizedDescription)
             }
         }
     }
     
-    private func addWaterInfoToCollection(_ waterInfo: WaterInfo) {
-        waterHistory.append(waterInfo)
-        DispatchQueue.main.async {
-            if self.waterHistory.count == self.glassCount {
-                self.drinkWaterButton.isHidden = true
-            }
-            self.collectionView.reloadData()
-        }
+    private func fillGlass(for number: Int) {
+        let index = IndexPath(row: number, section: 0)
+        collectionView.reloadItems(at: [index])
     }
     
     private func checkIsWaterEnough() {
-        let isWaterEnough = waterHistory.count == glassCount
+        let isWaterEnough = lastFilledGlassIndex + 1 == glassCount
         drinkWaterButton.isHidden = isWaterEnough
         waterEnoughLabel.isHidden = !isWaterEnough
+    }
+    
+    private func fillGlass(_ cell: WaterCollectionViewCell, for indexPath: IndexPath) {
+        let color = indexPath.row > lastFilledGlassIndex ?
+            R.color.ffb547() :
+            R.color.ba2()
+        cell.setColor(color)
     }
     
 }
@@ -133,7 +177,6 @@ extension WaterManagerViewController: UICollectionViewDelegateFlowLayout {
 extension WaterManagerViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        checkIsWaterEnough()
         return glassCount
     }
     
@@ -141,11 +184,7 @@ extension WaterManagerViewController: UICollectionViewDataSource {
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WaterCellReusable",
                                                             for: indexPath) as? WaterCollectionViewCell else { fatalError() }
-        if indexPath.row >= waterHistory.count {
-            cell.glassIcon.tintColor = R.color.ffb547()
-        } else {
-            cell.glassIcon.tintColor = R.color.ba2()
-        }
+        fillGlass(cell, for: indexPath)
         return cell
     }
     

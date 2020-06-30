@@ -94,15 +94,6 @@ public class GraphicHelper {
             saveToCache(rectangleSize: rectangleSize,
                         squareCount: N,
                         squareSize: size)
-            
-            let wc = Int(A / x)
-            let hc = Int(B / x)
-            if N / wc != hc {
-                print(size)
-                print("\(A)x\(B)")
-                print("Пиздец")
-            }
-            
             return size
         }
     }

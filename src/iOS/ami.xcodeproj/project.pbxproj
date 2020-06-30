@@ -81,6 +81,8 @@
 		57CB158124AB7F2800B0D22D /* ArticleContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57CB157F24AB7F2800B0D22D /* ArticleContentViewController.xib */; };
 		57CB158224AB7F2800B0D22D /* ArticleContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB158024AB7F2800B0D22D /* ArticleContentViewController.swift */; };
 		57CB158424AB81B300B0D22D /* ArticleRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB158324AB81B300B0D22D /* ArticleRouter.swift */; };
+		57CB158724AB89CB00B0D22D /* WeightHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB158624AB89CB00B0D22D /* WeightHistoryViewController.swift */; };
+		57CB158924AB8AE600B0D22D /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB158824AB8AE600B0D22D /* DateHelper.swift */; };
 		57CDF75224A8C2680053300A /* UIUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57CDF74B24A8C2680053300A /* UIUtils.framework */; };
 		57CDF75324A8C2680053300A /* UIUtils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 57CDF74B24A8C2680053300A /* UIUtils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		57CDF76324A8C2750053300A /* NetworkCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57CDF75C24A8C2750053300A /* NetworkCore.framework */; };
@@ -300,6 +302,8 @@
 		57CB157F24AB7F2800B0D22D /* ArticleContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleContentViewController.xib; sourceTree = "<group>"; };
 		57CB158024AB7F2800B0D22D /* ArticleContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleContentViewController.swift; sourceTree = "<group>"; };
 		57CB158324AB81B300B0D22D /* ArticleRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRouter.swift; sourceTree = "<group>"; };
+		57CB158624AB89CB00B0D22D /* WeightHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightHistoryViewController.swift; sourceTree = "<group>"; };
+		57CB158824AB8AE600B0D22D /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		57CDF72924A8C2030053300A /* DataManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DataManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57CDF72C24A8C2030053300A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57CDF73A24A8C2330053300A /* Storage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Storage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -454,6 +458,7 @@
 			children = (
 				57201F8724AAA8190098BA97 /* MainViewController.swift */,
 				57201F9724AAB3720098BA97 /* WaterManager */,
+				57CB158524AB891800B0D22D /* WeightManager */,
 				57201F9324AAB3570098BA97 /* Articles */,
 				57201F9624AAB36C0098BA97 /* SleepManager */,
 				57201F9524AAB3630098BA97 /* TaskManager */,
@@ -535,6 +540,7 @@
 				57201FB524AABD570098BA97 /* KeyboardHelper.swift */,
 				573FABF424AA42DF00D7BECA /* BaseRouter.swift */,
 				57CB156B24AB3A6000B0D22D /* NumericUtils.swift */,
+				57CB158824AB8AE600B0D22D /* DateHelper.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -761,6 +767,14 @@
 				57CB157F24AB7F2800B0D22D /* ArticleContentViewController.xib */,
 			);
 			path = ArticleContent;
+			sourceTree = "<group>";
+		};
+		57CB158524AB891800B0D22D /* WeightManager */ = {
+			isa = PBXGroup;
+			children = (
+				57CB158624AB89CB00B0D22D /* WeightHistoryViewController.swift */,
+			);
+			path = WeightManager;
 			sourceTree = "<group>";
 		};
 		57CDF72A24A8C2030053300A /* DataManager */ = {
@@ -1469,10 +1483,12 @@
 				57201FB424AABAE10098BA97 /* ProfileRouter.swift in Sources */,
 				57201F8F24AAAB720098BA97 /* RegisterInfoFillRouter.swift in Sources */,
 				57CB158424AB81B300B0D22D /* ArticleRouter.swift in Sources */,
+				57CB158924AB8AE600B0D22D /* DateHelper.swift in Sources */,
 				57CB157324AB4F2D00B0D22D /* WaterManagerRouter.swift in Sources */,
 				57201F8424AAA7B30098BA97 /* LoginViewController.swift in Sources */,
 				57201FB724AABFD30098BA97 /* KeyboardHelper.swift in Sources */,
 				573FABE124AA35BB00D7BECA /* RegisterViewController.swift in Sources */,
+				57CB158724AB89CB00B0D22D /* WeightHistoryViewController.swift in Sources */,
 				57201F9124AAAE8A0098BA97 /* AuthValidator.swift in Sources */,
 				57CB157824AB6C5A00B0D22D /* ArticleCollectionViewCell.swift in Sources */,
 				57201FA124AAB4010098BA97 /* ProfileViewController.swift in Sources */,

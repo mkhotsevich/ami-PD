@@ -51,16 +51,8 @@ class WaterHistoryTableViewController: UITableViewController {
         let cell = UITableViewCell()
         let waterInfo = waterHistory[indexPath.row]
         
-        let dateFormatter = DateFormatter()
-        let calendar = Calendar.current
-        if calendar.isDateInToday(waterInfo.drinkedAt) {
-            dateFormatter.dateFormat = "в h:mm"
-        } else if calendar.isDateInYesterday(waterInfo.drinkedAt) {
-            dateFormatter.dateFormat = "вчера в h:mm"
-        } else {
-            dateFormatter.dateFormat = "MMM d, yyyy в h:mm"
-        }
-        cell.textLabel?.text = "\(waterInfo.amount)мл \(dateFormatter.string(from: waterInfo.drinkedAt))"
+        let date = DateHelper.prettyDate(from: waterInfo.drinkedAt)
+        cell.textLabel?.text = "\(waterInfo.amount)мл \(date)"
         
         return cell
     }

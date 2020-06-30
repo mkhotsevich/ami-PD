@@ -94,7 +94,11 @@ class ProfileViewController: UIViewController {
     }
     
     private func configureLogoutBtn() {
-        let rightNavBtn = UIBarButtonItem(title: "logout", style: .done, target: self, action: #selector(logout))
+        let rightNavBtn = UIBarButtonItem(image: R.image.logout(),
+                                          style: .plain,
+                                          target: self,
+                                          action: #selector(logout))
+        rightNavBtn.tintColor = R.color.ba2()
         navigationItem.setRightBarButton(rightNavBtn, animated: true)
     }
     

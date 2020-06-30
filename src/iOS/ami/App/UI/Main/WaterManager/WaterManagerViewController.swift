@@ -52,7 +52,10 @@ class WaterManagerViewController: UIViewController {
     private var waterHistory: [WaterInfo] = [] {
         didSet {
             DispatchQueue.main.async {
-                self.lastFilledGlassIndex = self.waterHistory.count - 1
+                let waterInfoCount = self.waterHistory.count
+                self.lastFilledGlassIndex = waterInfoCount >= self.glassCount ?
+                    self.glassCount - 1 :
+                    waterInfoCount - 1
                 self.checkIsWaterEnough()
                 self.collectionView.reloadData()
             }

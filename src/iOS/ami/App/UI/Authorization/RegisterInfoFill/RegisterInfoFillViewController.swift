@@ -108,7 +108,9 @@ extension RegisterInfoFillViewController: NetworkErrorParserDelegate {
     
     func showMessage(_ message: String) {
         showAlert(alertText: "Ошибка", alertMessage: message)
-        router.pop(animated: true)
+        DispatchQueue.main.async {
+            self.router.pop(animated: true)
+        }
     }
     
     func goToAuth() { }

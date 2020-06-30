@@ -8,74 +8,92 @@
 
 import UIKit
 
+private let divilerMargin: CGFloat = 80
+
 class MainViewController: UITabBarController {
     
-    private lazy var controllers: [UIViewController] = {
-        let sleepManagerVC = SleepManagerViewController()
-        sleepManagerVC.tabBarItem = UITabBarItem(title: nil, image: R.image.sleepIcon(), tag: 2)
-        sleepManagerVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
-        
-        let profileVC = UINavigationController(rootViewController: ProfileViewController())
-        profileVC.tabBarItem = UITabBarItem(title: nil, image: R.image.profileIcon(), tag: 4)
-        profileVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
-        
-        return [
-            waterManagerVC,
-            articlesVC,
-            sleepManagerVC,
-            weightManagerVC,
-            profileVC]
-    }()
+    // MARK: - Properties
+    
+    private var tabBarItemInsets: UIEdgeInsets {
+        UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
+    }
+    
+    // MARK: - Controllers
     
     private lazy var waterManagerVC: UIViewController = {
-        let waterManagerVC = WaterManagerViewController()
-        waterManagerVC.navigationItem.title = "Трекер водички"
-        let waterManagerNavC = UINavigationController(rootViewController: waterManagerVC)
-        waterManagerNavC.tabBarItem = UITabBarItem(title: nil, image: R.image.waterIcon(), tag: 0)
-        waterManagerNavC.tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
-        return waterManagerNavC
+        return buildNavigationController(WaterManagerViewControllerBuilder.build(),
+                                         title: "Трекер водички",
+                                         icon: R.image.waterIcon(),
+                                         tag: 0)
     }()
     
     private lazy var articlesVC: UIViewController = {
-        let articlesVC = ArticlesViewController()
-        articlesVC.navigationItem.title = "Полезные статьи"
-        let articlesNaVC = UINavigationController(rootViewController: articlesVC)
-        articlesNaVC.tabBarItem = UITabBarItem(title: nil, image: R.image.articleIcon(), tag: 1)
-        articlesNaVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
-        return articlesNaVC
+        return buildNavigationController(ArticlesViewControllerBuilder.build(),
+                                         title: "Полезные статьи",
+                                         icon: R.image.articleIcon(),
+                                         tag: 1)
     }()
     
+//    private lazy var sleepManagerVC: UIViewController = {
+//        let controller = SleepManagerViewControllerBuilder.build()
+//        controller.tabBarItem = UITabBarItem(title: nil, image: R.image.sleepIcon(), tag: 2)
+//        controller.tabBarItem.imageInsets = tabBarItemInsets
+//        return controller
+//    }()
+    
     private lazy var weightManagerVC: UIViewController = {
-        let weightManagerVC = WeightHistoryViewController()
-        weightManagerVC.navigationItem.title = "Трекер веса"
-        let weightManagerNaVC = UINavigationController(rootViewController: weightManagerVC)
-        weightManagerNaVC.tabBarItem = UITabBarItem(title: nil, image: R.image.weightIcon(), tag: 3)
-        weightManagerNaVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
-        return weightManagerNaVC
+        return buildNavigationController(WeightHistoryViewControllerBuilder.build(),
+                                         title: "Трекер веса",
+                                         icon: R.image.weightIcon(),
+                                         tag: 3)
     }()
+    
+    private lazy var profileVC: UIViewController = {
+        return buildNavigationController(ProfileViewController(),
+                                         title: "Профиль",
+                                         icon: R.image.profileIcon(),
+                                         tag: 4)
+    }()
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
+        configureTabBar()
+        setViewControllers([
+            waterManagerVC,
+            articlesVC,
+            weightManagerVC,
+            profileVC], animated: true)
     }
     
-    private func configureUI() {
-        tabBar.borderWidth = 0.5
-        tabBar.borderColor = .clear
-        tabBar.clipsToBounds = true
-        let margin: CGFloat = 80
-        let divider = UIView(frame: CGRect(x: margin,
+    // MARK: - TabBar configure
+    
+    private func configureTabBar() {
+        tabBar.addSubview(divider)
+        tabBar.backgroundColor = .clear
+    }
+    
+    private lazy var divider: UIView = {
+        let divider = UIView(frame: CGRect(x: divilerMargin,
                                            y: 0,
-                                           width: tabBar.frame.width - margin * 2,
+                                           width: tabBar.frame.width - divilerMargin * 2,
                                            height: 1))
         divider.backgroundColor = UIColor.lightGray
-        tabBar.addSubview(divider)
-        tabBar.backgroundColor = .white
-        tabBar.isTranslucent = false
-        tabBar.unselectedItemTintColor = R.color.e9765B()
-        tabBar.tintColor = R.color.bcb4()
-        tabBar.backgroundColor = .clear
-        setViewControllers(controllers, animated: true)
+        return divider
+    }()
+    
+    // MARK: - Private
+    
+    private func buildNavigationController(_ controller: UIViewController,
+                                           title: String,
+                                           icon: UIImage?,
+                                           tag: Int) -> UINavigationController {
+        controller.title = title
+        let navigationController = UINavigationController(rootViewController: controller)
+        navigationController.tabBarItem = UITabBarItem(title: nil, image: icon, tag: tag)
+        navigationController.tabBarItem.imageInsets = tabBarItemInsets
+        return navigationController
     }
 
 }

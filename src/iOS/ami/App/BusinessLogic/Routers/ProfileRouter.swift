@@ -10,11 +10,4 @@ import UIKit
 
 class ProfileRouter: BaseRouter {
     
-    func toRegister() {
-        let registerVC = RegisterViewController()
-        var transitionOptions = UIWindow.TransitionOptions.init(direction: .fade, style: .easeOut)
-        transitionOptions.duration = 1
-        setRoot(registerVC, transitionOptions: transitionOptions)
-    }
-    
 }

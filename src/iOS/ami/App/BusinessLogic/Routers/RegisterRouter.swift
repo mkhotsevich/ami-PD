@@ -14,15 +14,14 @@ class RegisterRouter: BaseRouter {
     
     func toInfoPlaceholder(email: String, password: String) {
         if infoFillVC == nil {
-            infoFillVC = RegisterInfoFillViewController()
+            infoFillVC = RegisterInfoFillViewControllerBuilder.build(email: email, password: password)
         }
-        infoFillVC?.registerData = (email, password)
         push(infoFillVC!, animated: true)
     }
     
     func toLogin() {
-        let loginVC = LoginViewController()
-        var transitionOptions = UIWindow.TransitionOptions.init(direction: .toRight, style: .easeOut)
+        let loginVC = LoginViewControllerBuilder.build()
+        var transitionOptions = UIWindow.TransitionOptions(direction: .toRight, style: .easeOut)
         transitionOptions.duration = 0.4
         setRoot(loginVC, transitionOptions: transitionOptions)
     }

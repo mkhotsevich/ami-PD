@@ -11,7 +11,7 @@ import UIKit
 class WaterManagerRouter: BaseRouter {
     
     func toHistory() {
-        let registerVC = WaterHistoryTableViewController()
+        let registerVC = WaterHistoryViewControllerBuilder.build()
         push(registerVC, animated: true)
     }
     

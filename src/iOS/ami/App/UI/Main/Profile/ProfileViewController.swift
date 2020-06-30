@@ -30,7 +30,7 @@ class ProfileViewController: UIViewController {
         showQuestion(title: "Вы уверены?", message: nil, completion: { (isLogout) in
             guard isLogout else { return }
             TokenManager.accessToken = nil
-            self.router.toRegister()
+            self.toAuth()
         })
     }
 

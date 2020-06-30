@@ -11,39 +11,55 @@ import UIUtils
 import Validator
 import DesignKit
 
+// MARK: - Builder
+
+class RegisterViewControllerBuilder {
+    
+    static func build() -> RegisterViewController {
+        let controller = RegisterViewController()
+        controller.authValidator = AuthValidator()
+        controller.router = RegisterRouter(controller: controller)
+        return controller
+    }
+    
+}
+
 class RegisterViewController: UIViewController {
     
-    @IBOutlet weak var scrollView: UIScrollView!
+    // MARK: - Outlets
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var emailField: TextField!
     @IBOutlet weak var passwordField: TextField!
     @IBOutlet weak var confirmPasswordField: TextField!
-    
     @IBOutlet weak var continueButton: Button!
+    
+    // MARK: - Properties
+    
+    private weak var selectedField: TextField?
+    
+    // MARK: Dependences
     
     var router: RegisterRouter!
     var authValidator: AuthValidator!
     var keyboardHelper: KeyboardHelper!
     
-    private weak var selectedField: TextField?
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        emailField.delegate = self
-        passwordField.delegate = self
-        confirmPasswordField.delegate = self
-        
-        router = RegisterRouter(controller: self)
-        keyboardHelper = KeyboardHelper(view: view, scrollView: scrollView)
+        configureTextFields()
+        keyboardHelper = KeyboardHelper(view: view,
+                                        scrollView: scrollView)
         keyboardHelper.startObserve()
-        authValidator = AuthValidator()
         view.hideKeyboardWhenTapped()
         validateForm()
     }
     
-    deinit {
-        keyboardHelper.stopObserve()
+    private func configureTextFields() {
+        emailField.delegate = self
+        passwordField.delegate = self
+        confirmPasswordField.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,6 +71,12 @@ class RegisterViewController: UIViewController {
         super.viewWillDisappear(animated)
         navigationController?.navigationBar.isHidden = false
     }
+    
+    deinit {
+        keyboardHelper.stopObserve()
+    }
+    
+    // MARK: - Actions
 
     @IBAction func toLogin(_ sender: Any) {
         router.toLogin()
@@ -66,58 +88,46 @@ class RegisterViewController: UIViewController {
         router.toInfoPlaceholder(email: email, password: password)
     }
     
+    // MARK: - Private
+    
     private func validateForm() {
         let isValidEmail = authValidator.validateEmail(emailField)
         let isValidPassword = authValidator.validatePassword(passwordField)
         let isValidConfirmPassword = authValidator.validateConfirmPassword(password: passwordField,
                                                              confirmPassword: confirmPasswordField)
-        
         continueButton.setEnabled(isValidEmail && isValidPassword && isValidConfirmPassword)
     }
     
 }
 
+// MARK: - TextFieldDelegate
+
 extension RegisterViewController: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        guard let textField = textField as? TextField else { return }
-        
-        let isValidEmail = authValidator.validateEmail(emailField)
-        let isValidPassword = authValidator.validatePassword(passwordField)
-        let isValidConfirmPassword = authValidator.validateConfirmPassword(password: passwordField,
-                                                             confirmPassword: confirmPasswordField)
-        switch textField {
-        case emailField:
-            guard emailField.isValid != nil else { break }
-            emailField.isValid = isValidEmail
-        case passwordField:
-            guard passwordField.isValid != nil else { break }
-            passwordField.isValid = isValidPassword
-        case confirmPasswordField:
-            guard confirmPasswordField.isValid != nil else { break }
-            confirmPasswordField.isValid = isValidConfirmPassword
-        default: fatalError()
-        }
-        
-        continueButton.setEnabled(isValidEmail && isValidPassword && isValidConfirmPassword)
+        validateTextField(textField, isStrictly: true)
+        validateForm()
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        let isValidEmail = authValidator.validateEmail(emailField)
-        let isValidPassword = authValidator.validatePassword(passwordField)
-        let isValidConfirmPassword = authValidator.validateConfirmPassword(password: passwordField,
-                                                             confirmPassword: confirmPasswordField)
+        validateTextField(textField, isStrictly: false)
+        validateForm()
+    }
+    
+    private func validateTextField(_ textField: UITextField, isStrictly: Bool) {
         switch textField {
         case emailField:
-            emailField.isValid = isValidEmail
+            guard emailField.isValid != nil, isStrictly else { break }
+            emailField.isValid = authValidator.validateEmail(emailField)
         case passwordField:
-            passwordField.isValid = isValidPassword
+            guard passwordField.isValid != nil, isStrictly else { break }
+            passwordField.isValid = authValidator.validatePassword(passwordField)
         case confirmPasswordField:
-            confirmPasswordField.isValid = isValidConfirmPassword
+            guard confirmPasswordField.isValid != nil, isStrictly else { break }
+            confirmPasswordField.isValid = authValidator.validateConfirmPassword(password: passwordField,
+                                                                                 confirmPassword: confirmPasswordField)
         default: fatalError()
         }
-        
-        continueButton.setEnabled(isValidEmail && isValidPassword && isValidConfirmPassword)
     }
     
 }

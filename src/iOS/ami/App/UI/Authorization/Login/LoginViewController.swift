@@ -11,24 +11,41 @@ import DesignKit
 import DataManager
 import UIUtils
 
+// MARK: - Builder
+
+class LoginViewControllerBuilder {
+    
+    static func build() -> LoginViewController {
+        let controller = LoginViewController()
+        controller.router = LoginRouter(controller: controller)
+        controller.authManager = AuthManager()
+        controller.authValidator = AuthValidator()
+        return controller
+    }
+    
+}
+
 class LoginViewController: UIViewController {
+    
+    // MARK: - Outlets
     
     @IBOutlet weak var emailField: TextField!
     @IBOutlet weak var passwordField: TextField!
     @IBOutlet weak var continueButton: Button!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    var router: LoginRouter!
-    var authManager: AuthManager!
-    var authValidator: AuthValidator!
-    var keyboardHelper: KeyboardHelper!
+    // MARK: - Properties
+    // MARK: Dependences
+    
+    fileprivate var router: LoginRouter!
+    fileprivate var authManager: AuthManager!
+    fileprivate var authValidator: AuthValidator!
+    fileprivate var keyboardHelper: KeyboardHelper!
+    
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        router = LoginRouter(controller: self)
-        authValidator = AuthValidator()
-        authManager = AuthManager()
         validateForm()
         
         keyboardHelper = KeyboardHelper(view: view, scrollView: scrollView)
@@ -43,14 +60,9 @@ class LoginViewController: UIViewController {
     deinit {
         keyboardHelper.stopObserve()
     }
-    
-    private func validateForm() {
-        let isValidEmail = authValidator.validateEmail(emailField)
-        let isValidPassword = authValidator.validatePassword(passwordField)
-        
-        continueButton.setEnabled(isValidEmail && isValidPassword)
-    }
 
+    // MARK: - Actions
+    
     @IBAction func login(_ sender: Any) {
         guard let email = emailField.text,
             let password = passwordField.text else { return }
@@ -58,7 +70,7 @@ class LoginViewController: UIViewController {
             switch result {
             case .success(let authData):
                 self.showAlert(alertText: "Успешно!", alertMessage: "Ваш ID в системе: \(authData.user.id)\nТокен доступа: \(authData.accessToken)") {
-                    self.router.toMain()
+                    self.toMain()
                 }
             case .failure(let error):
                 switch error {
@@ -71,46 +83,45 @@ class LoginViewController: UIViewController {
         }
     }
     
+    // MARK: - Actions
+    
     @IBAction func toRegister(_ sender: Any) {
         router.toRegister()
+    }
+    
+    // MARK: - Private
+    
+    private func validateForm() {
+        let isValidEmail = authValidator.validateEmail(emailField)
+        let isValidPassword = authValidator.validatePassword(passwordField)
+        
+        continueButton.setEnabled(isValidEmail && isValidPassword)
     }
 
 }
 
+// MARK: - UITextFieldDelegate
+
 extension LoginViewController: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        guard let textField = textField as? TextField else { return }
-        
-        let isValidEmail = authValidator.validateEmail(emailField)
-        let isValidPassword = authValidator.validatePassword(passwordField)
-        
-        switch textField {
-        case emailField:
-            guard emailField.isValid != nil else { break }
-            emailField.isValid = isValidEmail
-        case passwordField:
-            guard passwordField.isValid != nil else { break }
-            passwordField.isValid = isValidPassword
-        default: fatalError()
-        }
-        
-        continueButton.setEnabled(isValidEmail && isValidPassword)
+        validateTextField(textField, isStrictly: true)
+        validateForm()
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        let isValidEmail = authValidator.validateEmail(emailField)
-        let isValidPassword = authValidator.validatePassword(passwordField)
-        
+        validateTextField(textField, isStrictly: false)
+        validateForm()
+    }
+    
+    private func validateTextField(_ textField: UITextField, isStrictly: Bool) {
         switch textField {
         case emailField:
-            emailField.isValid = isValidEmail
+            emailField.isValid = authValidator.validateEmail(emailField)
         case passwordField:
-            passwordField.isValid = isValidPassword
+            passwordField.isValid = authValidator.validatePassword(passwordField)
         default: fatalError()
         }
-        
-        continueButton.setEnabled(isValidEmail && isValidPassword)
     }
     
 }

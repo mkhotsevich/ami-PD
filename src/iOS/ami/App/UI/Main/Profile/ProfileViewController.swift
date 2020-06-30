@@ -32,8 +32,12 @@ class ProfileViewController: UIViewController {
     private var weight: WeightInfo! {
         didSet {
             DispatchQueue.main.async {
-                let weight = self.weight.amount.rounded(toPlaces: 2)
-                self.weightLabel.text = "Вес: \(weight) кг"
+                if let weight = self.weight {
+                        let weight = weight.amount.rounded(toPlaces: 2)
+                        self.weightLabel.text = "Вес: \(weight) кг"
+                } else {
+                    self.weightLabel.text = "Вес: NaN"
+                }
             }
         }
     }

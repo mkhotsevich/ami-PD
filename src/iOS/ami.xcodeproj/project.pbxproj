@@ -32,6 +32,7 @@
 		57201FAE24AAB4240098BA97 /* ArticlesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57201FAC24AAB4240098BA97 /* ArticlesViewController.xib */; };
 		57201FB124AAB4300098BA97 /* WaterManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57201FAF24AAB4300098BA97 /* WaterManagerViewController.swift */; };
 		57201FB224AAB4300098BA97 /* WaterManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57201FB024AAB4300098BA97 /* WaterManagerViewController.xib */; };
+		57201FB424AABAE10098BA97 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57201FB324AABAE10098BA97 /* ProfileRouter.swift */; };
 		573FABE124AA35BB00D7BECA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573FABDF24AA35BB00D7BECA /* RegisterViewController.swift */; };
 		573FABE224AA35BB00D7BECA /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 573FABE024AA35BB00D7BECA /* RegisterViewController.xib */; };
 		573FABE424AA382800D7BECA /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 573FABE324AA382800D7BECA /* Montserrat-Regular.ttf */; };
@@ -232,6 +233,7 @@
 		57201FAC24AAB4240098BA97 /* ArticlesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticlesViewController.xib; sourceTree = "<group>"; };
 		57201FAF24AAB4300098BA97 /* WaterManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterManagerViewController.swift; sourceTree = "<group>"; };
 		57201FB024AAB4300098BA97 /* WaterManagerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaterManagerViewController.xib; sourceTree = "<group>"; };
+		57201FB324AABAE10098BA97 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
 		573FABDF24AA35BB00D7BECA /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		573FABE024AA35BB00D7BECA /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		573FABE324AA382800D7BECA /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
@@ -515,6 +517,7 @@
 				573FABF724AA42FD00D7BECA /* RegisterRouter.swift */,
 				57201F8C24AAAB5B0098BA97 /* LoginRouter.swift */,
 				57201F8E24AAAB720098BA97 /* RegisterInfoFillRouter.swift */,
+				57201FB324AABAE10098BA97 /* ProfileRouter.swift */,
 			);
 			path = Routers;
 			sourceTree = "<group>";
@@ -1404,6 +1407,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57201FB424AABAE10098BA97 /* ProfileRouter.swift in Sources */,
 				57201F8F24AAAB720098BA97 /* RegisterInfoFillRouter.swift in Sources */,
 				57201FAD24AAB4240098BA97 /* ArticlesViewController.swift in Sources */,
 				57201F8424AAA7B30098BA97 /* LoginViewController.swift in Sources */,

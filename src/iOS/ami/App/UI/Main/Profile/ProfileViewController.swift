@@ -7,24 +7,31 @@
 //
 
 import UIKit
+import DataManager
 
 class ProfileViewController: UIViewController {
+    
+    private var router: ProfileRouter!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        router = ProfileRouter(controller: self)
+        configureLogoutBtn()
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    private func configureLogoutBtn() {
+        let rightNavBtn = UIBarButtonItem(title: "logout", style: .done, target: self, action: #selector(logout))
+        navigationItem.setRightBarButton(rightNavBtn, animated: true)
     }
-    */
+    
+    @objc
+    private func logout() {
+        showQuestion(title: "Вы уверены?", message: nil, completion: { (isLogout) in
+            guard isLogout else { return }
+            TokenManager.accessToken = nil
+            self.router.toRegister()
+        })
+    }
 
 }

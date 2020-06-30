@@ -71,6 +71,9 @@
 		57802B5924AA224F00CF9C93 /* KeyboardHeightPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57802B5624AA224F00CF9C93 /* KeyboardHeightPublisher.swift */; };
 		57802B5A24AA224F00CF9C93 /* KeyboardAdaptive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57802B5724AA224F00CF9C93 /* KeyboardAdaptive.swift */; };
 		57802B5C24AA22F800CF9C93 /* KeyboardHide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57802B5B24AA22F800CF9C93 /* KeyboardHide.swift */; };
+		57CB156724AB236F00B0D22D /* WaterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57CB156524AB236F00B0D22D /* WaterCollectionViewCell.xib */; };
+		57CB156824AB236F00B0D22D /* WaterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB156624AB236F00B0D22D /* WaterCollectionViewCell.swift */; };
+		57CB156A24AB33ED00B0D22D /* GraphicHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB156924AB33ED00B0D22D /* GraphicHelper.swift */; };
 		57CDF75224A8C2680053300A /* UIUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57CDF74B24A8C2680053300A /* UIUtils.framework */; };
 		57CDF75324A8C2680053300A /* UIUtils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 57CDF74B24A8C2680053300A /* UIUtils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		57CDF76324A8C2750053300A /* NetworkCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57CDF75C24A8C2750053300A /* NetworkCore.framework */; };
@@ -280,6 +283,9 @@
 		57802B5624AA224F00CF9C93 /* KeyboardHeightPublisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardHeightPublisher.swift; sourceTree = "<group>"; };
 		57802B5724AA224F00CF9C93 /* KeyboardAdaptive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAdaptive.swift; sourceTree = "<group>"; };
 		57802B5B24AA22F800CF9C93 /* KeyboardHide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHide.swift; sourceTree = "<group>"; };
+		57CB156524AB236F00B0D22D /* WaterCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterCollectionViewCell.xib; sourceTree = "<group>"; };
+		57CB156624AB236F00B0D22D /* WaterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterCollectionViewCell.swift; sourceTree = "<group>"; };
+		57CB156924AB33ED00B0D22D /* GraphicHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicHelper.swift; sourceTree = "<group>"; };
 		57CDF72924A8C2030053300A /* DataManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DataManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57CDF72C24A8C2030053300A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57CDF73A24A8C2330053300A /* Storage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Storage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -492,6 +498,7 @@
 		57201F9724AAB3720098BA97 /* WaterManager */ = {
 			isa = PBXGroup;
 			children = (
+				57CB156424AB236F00B0D22D /* WaterCollectionViewCell */,
 				57201FAF24AAB4300098BA97 /* WaterManagerViewController.swift */,
 				57201FB024AAB4300098BA97 /* WaterManagerViewController.xib */,
 			);
@@ -710,6 +717,15 @@
 			path = "SwiftUI+Keyboard";
 			sourceTree = "<group>";
 		};
+		57CB156424AB236F00B0D22D /* WaterCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				57CB156524AB236F00B0D22D /* WaterCollectionViewCell.xib */,
+				57CB156624AB236F00B0D22D /* WaterCollectionViewCell.swift */,
+			);
+			path = WaterCollectionViewCell;
+			sourceTree = "<group>";
+		};
 		57CDF72A24A8C2030053300A /* DataManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -747,6 +763,7 @@
 				573FAC0624AA59C000D7BECA /* UIView+KeyboardClosure.swift */,
 				57201F7624AA86390098BA97 /* UIViewController+Alert.swift */,
 				57201F8924AAA8FC0098BA97 /* UIWindowTransitions.swift */,
+				57CB156924AB33ED00B0D22D /* GraphicHelper.swift */,
 			);
 			path = UIUtils;
 			sourceTree = "<group>";
@@ -1239,6 +1256,7 @@
 				573FABE424AA382800D7BECA /* Montserrat-Regular.ttf in Resources */,
 				5779BF7724A3F182005113D4 /* LaunchScreen.storyboard in Resources */,
 				573FABE624AA38C800D7BECA /* Montserrat-Bold.ttf in Resources */,
+				57CB156724AB236F00B0D22D /* WaterCollectionViewCell.xib in Resources */,
 				57802B4F24AA169B00CF9C93 /* Blogger Sans.otf in Resources */,
 				57201FA624AAB40A0098BA97 /* TaskManagerViewController.xib in Resources */,
 				57201F8524AAA7B30098BA97 /* LoginViewController.xib in Resources */,
@@ -1427,6 +1445,7 @@
 				57201F6E24AA72D50098BA97 /* R.generated.swift in Sources */,
 				573FAC0024AA4A6700D7BECA /* InfoPlaceholderView.swift in Sources */,
 				57201FA924AAB4150098BA97 /* SleepManagerViewController.swift in Sources */,
+				57CB156824AB236F00B0D22D /* WaterCollectionViewCell.swift in Sources */,
 				57201F8D24AAAB5B0098BA97 /* LoginRouter.swift in Sources */,
 				573FABF824AA42FD00D7BECA /* RegisterRouter.swift in Sources */,
 				57201F8824AAA8190098BA97 /* MainViewController.swift in Sources */,
@@ -1508,6 +1527,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57CB156A24AB33ED00B0D22D /* GraphicHelper.swift in Sources */,
 				57802B5A24AA224F00CF9C93 /* KeyboardAdaptive.swift in Sources */,
 				57802B5824AA224F00CF9C93 /* UIResponder+Current.swift in Sources */,
 				57201F7224AA80F20098BA97 /* TextField+DatePicker.swift in Sources */,

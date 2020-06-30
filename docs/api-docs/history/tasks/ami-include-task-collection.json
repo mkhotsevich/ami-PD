@@ -1,12 +1,12 @@
 [
   {
-    "id": "2jtuspuxv09q3uvhskjvhafq",
+    "_id": "2jtuspuxv09q3uvhskjvhafq",
     "title": "Совещание в Zoom",
     "notifyAt": 1593493200,
     "createdAt": 1591790850
   },
   {
-    "id": "30u2iosshbvwoehr2124qwf2",
+    "_id": "30u2iosshbvwoehr2124qwf2",
     "title": "Экзамен по аналитике",
     "createdAt": 1591790661
   }

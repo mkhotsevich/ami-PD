@@ -85,6 +85,22 @@ extension WeightHistoryViewController {
 
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView,
+                            commit editingStyle: UITableViewCell.EditingStyle,
+                            forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            weightManager.delete(id: weightHistory[indexPath.row].id) { (result) in
+                switch result {
+                case .failure(let error):
+                    self.errorParser.parse(error)
+                default: break
+                }
+            }
+            weightHistory.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
 
 }
 

@@ -8,6 +8,7 @@
 
 import UIKit
 import DesignKit
+import DataManager
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let font = R.font.bloggerSansMedium(size: 24) else { fatalError() }
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: color,
                                                             .font: font]
+        print(TokenManager.accessToken)
     }
 
     // MARK: UISceneSession Lifecycle

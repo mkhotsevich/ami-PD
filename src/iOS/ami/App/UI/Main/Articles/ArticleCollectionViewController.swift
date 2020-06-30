@@ -9,15 +9,36 @@
 import UIKit
 import DataManager
 
+// MARK: - Builder
+
+class ArticlesViewControllerBuilder {
+    
+    static func build() -> ArticlesViewController {
+        let controller = ArticlesViewController()
+        controller.articleManager = ArticleManager()
+        controller.router = ArticleRouter(controller: controller)
+        controller.errorParser = NetworkErrorParser()
+        controller.errorParser.delegate = controller
+        return controller
+    }
+    
+}
+
 private let reuseIdentifier = "Cell"
 private let cellNibName = "ArticleCollectionViewCell"
 private let padding: CGFloat = 20
 
 class ArticlesViewController: UIViewController {
     
-    private var collectionView: UICollectionView!
+    // MARK: - Dependenses
     
-    private var articleManager: ArticleManager!
+    fileprivate var articleManager: ArticleManager!
+    fileprivate var router: ArticleRouter!
+    fileprivate var errorParser: NetworkErrorParser!
+    
+    // MARK: - Properties
+    
+    private var collectionView: UICollectionView!
     private var articles: [Article] = [] {
         didSet {
             DispatchQueue.main.async {
@@ -26,35 +47,41 @@ class ArticlesViewController: UIViewController {
         }
     }
     
-    private var router: ArticleRouter!
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupCollectionView()
+        configureCollectionView()
+        loadData()
+    }
+    
+    // MARK: - Configure
+    
+    private func setupCollectionView() {
         let view = UIView()
         view.backgroundColor = .white
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 50, left: 50, bottom: 50, right: 50)
         collectionView = UICollectionView(frame: self.view.frame,
                                           collectionViewLayout: layout)
-        collectionView.register(UICollectionViewCell.self,
-                                forCellWithReuseIdentifier: "MyCell")
-        collectionView.backgroundColor = UIColor.white
         view.addSubview(collectionView)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        router = ArticleRouter(controller: self)
-        
         self.view = view
         
-        articleManager = ArticleManager()
         collectionView.register(UINib(nibName: cellNibName,
                                       bundle: nil),
                                 forCellWithReuseIdentifier: reuseIdentifier)
         
-        loadData()
     }
+    
+    private func configureCollectionView() {
+        collectionView.backgroundColor = .systemBackground
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+    }
+    
+    // MARK: - Private
     
     private func loadData() {
         articleManager.get { (result) in
@@ -62,12 +89,14 @@ class ArticlesViewController: UIViewController {
             case .success(let articles):
                 self.articles = articles
             case .failure(let error):
-                self.showAlert(alertText: "Ошибка!", alertMessage: error.localizedDescription)
+                self.errorParser.parse(error)
             }
         }
     }
     
 }
+
+// MARK: - Collection Flow Layout
 
 extension ArticlesViewController: UICollectionViewDelegateFlowLayout {
     
@@ -99,7 +128,7 @@ extension ArticlesViewController: UICollectionViewDelegateFlowLayout {
     
 }
 
-// MARK: UICollectionViewDataSource
+// MARK: Collection Data Source
 
 extension ArticlesViewController: UICollectionViewDataSource {
     
@@ -131,4 +160,16 @@ extension ArticlesViewController: UICollectionViewDataSource {
         router.toContentViewer(article: article)
     }
 
+}
+
+extension ArticlesViewController: NetworkErrorParserDelegate {
+    
+    func showMessage(_ message: String) {
+        showAlert(alertText: "Ошибка", alertMessage: message)
+    }
+    
+    func goToAuth() {
+        toMain()
+    }
+    
 }

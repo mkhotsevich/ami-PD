@@ -10,13 +10,6 @@ import UIKit
 
 class RegisterInfoFillRouter: BaseRouter {
     
-    func toMain() {
-        let mainVC = MainViewController()
-        var transitionOptions = UIWindow.TransitionOptions.init(direction: .fade, style: .easeInOut)
-        transitionOptions.duration = 1
-        setRoot(mainVC, transitionOptions: transitionOptions)
-    }
-    
     func goBack() {
         pop(animated: true)
     }

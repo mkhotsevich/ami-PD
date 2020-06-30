@@ -10,17 +10,41 @@ import UIKit
 import UIUtils
 import DataManager
 
+// MARK: - Builder
+
+class WaterManagerViewControllerBuilder {
+    
+    static func build() -> WaterManagerViewController {
+        let controller = WaterManagerViewController()
+        controller.router = WaterManagerRouter(controller: controller)
+        controller.waterManager = WaterManager()
+        controller.weightManager = WeightManager()
+        return controller
+    }
+    
+}
+
+// MARK: - Constants
+
 private let cellNibName = "WaterCollectionViewCell"
 private let reuseId = "WaterCellReusable"
 
 class WaterManagerViewController: UIViewController {
+    
+    // MARK: - Outlets
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var waterAmountLabel: UILabel!
     @IBOutlet weak var drinkWaterButton: UIButton!
     @IBOutlet weak var waterEnoughLabel: UILabel!
     
-    private var router: WaterManagerRouter!
+    // MARK: - Dependenses
+    
+    fileprivate var router: WaterManagerRouter!
+    fileprivate var waterManager: WaterManager!
+    fileprivate var weightManager: WeightManager!
+    
+    // MARK: - Properties
     
     private var waterHistory: [WaterInfo] = [] {
         didSet {
@@ -31,6 +55,7 @@ class WaterManagerViewController: UIViewController {
             }
         }
     }
+    
     private var weight: WeightInfo? {
         didSet {
             DispatchQueue.main.async {
@@ -45,21 +70,19 @@ class WaterManagerViewController: UIViewController {
             }
         }
     }
+    
     private var glassCount: Int {
         let weight = self.weight?.amount ?? 0
         return Int(weight * 30 / 200)
     }
     
-    private var waterManager: WaterManager!
-    private var weightManager: WeightManager!
     private var lastFilledGlassIndex: Int = 0
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
-        waterManager = WaterManager()
-        weightManager = WeightManager()
-        router = WaterManagerRouter(controller: self)
         configureNavBar()
     }
     
@@ -67,6 +90,8 @@ class WaterManagerViewController: UIViewController {
         super.viewWillAppear(animated)
         loadData()
     }
+    
+    // MARK: - Configure
     
     private func configureNavBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks,
@@ -81,6 +106,17 @@ class WaterManagerViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
     }
+    
+    // MARK: - Actions
+
+    @IBAction func drinkWater(_ sender: Any) {
+        lastFilledGlassIndex += 1
+        fillGlass(for: lastFilledGlassIndex)
+        checkIsWaterEnough()
+        saveWater(for: lastFilledGlassIndex)
+    }
+    
+    // MARK: - Private
     
     @objc
     private func openHistory() {
@@ -107,13 +143,6 @@ class WaterManagerViewController: UIViewController {
                 self.showAlert(alertText: "Ошибка", alertMessage: error.localizedDescription)
             }
         }
-    }
-
-    @IBAction func drinkWater(_ sender: Any) {
-        lastFilledGlassIndex += 1
-        fillGlass(for: lastFilledGlassIndex)
-        checkIsWaterEnough()
-        saveWater(for: lastFilledGlassIndex)
     }
     
     private func saveWater(for index: Int) {
@@ -148,6 +177,8 @@ class WaterManagerViewController: UIViewController {
     
 }
 
+// MARK: - Collection Flow Layout
+
 extension WaterManagerViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView,
@@ -176,6 +207,8 @@ extension WaterManagerViewController: UICollectionViewDelegateFlowLayout {
     }
     
 }
+
+// MARK: - Collection Data Source
 
 extension WaterManagerViewController: UICollectionViewDataSource {
     

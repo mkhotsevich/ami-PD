@@ -11,6 +11,7 @@ import UIKit
 public class TableViewAdapter<Cell: UITableViewCell & ConfigurableCell>:
     NSObject,
     UITableViewDataSource {
+    
     public typealias Model = Cell.ViewModel
 
     private(set) weak var tableView: UITableView!

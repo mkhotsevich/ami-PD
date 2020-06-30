@@ -14,6 +14,7 @@ public extension UIWindow {
     /// Transition Options
     struct TransitionOptions {
         
+        // swiftlint:disable nesting
         /// Curve of animation
         ///
         /// - linear: linear

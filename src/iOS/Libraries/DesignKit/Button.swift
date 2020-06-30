@@ -11,6 +11,8 @@ import UIKit
 @IBDesignable
 public class Button: UIButton {
     
+    // MARK: - Inspectable
+    
     @IBInspectable
     public var normalBackgroundColor: UIColor? {
         didSet {
@@ -24,6 +26,8 @@ public class Button: UIButton {
             updateBackgroundColor()
         }
     }
+    
+    // MARK: - Init
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,14 +44,20 @@ public class Button: UIButton {
         configureUI()
     }
     
+    // MARK: - Configure
+    
     private func configureUI() {
         cornerRadius = 5.0
     }
+    
+    // MARK: - Public
     
     public func setEnabled(_ isEnabled: Bool) {
         self.isEnabled = isEnabled
         updateBackgroundColor()
     }
+    
+    // MARK: - Private
     
     private func updateBackgroundColor() {
         backgroundColor = isEnabled ? normalBackgroundColor : disabledBackgroundColor

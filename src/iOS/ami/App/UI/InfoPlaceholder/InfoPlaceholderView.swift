@@ -20,14 +20,6 @@ class InfoPlaceholderView: UIView {
     @IBOutlet weak var heightField: TextField!
     @IBOutlet weak var weightField: TextField!
     
-//    static func loadViewFromNib() -> InfoPlaceholderView {
-//        let bundle = Bundle(for: self)
-//        let nib = UINib(nibName: "InfoPlaceholderView", bundle: bundle)
-//        return nib.instantiate(withOwner: nil, options: nil).first {
-//            ($0 as? UIView)?.restorationIdentifier == "InfoPlaceholderView"
-//        }! as! InfoPlaceholderView
-//    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         xibInit()

@@ -17,7 +17,7 @@ open class TextField: UITextField, UITextFieldDelegate {
         case wrote
     }
     
-    let padding = UIEdgeInsets(top: 15, left: 20, bottom: 15, right: 20)
+    // MARK: - Inspectable
     
     @IBInspectable
     var defaultColor: UIColor? {
@@ -42,17 +42,19 @@ open class TextField: UITextField, UITextFieldDelegate {
        }
     }
     
+    public var isValid: Bool? {
+        didSet {
+            configStyle()
+        }
+    }
+    
     private var style: Style = .active {
         didSet {
             configStyle()
         }
     }
     
-    public var isValid: Bool? {
-        didSet {
-            configStyle()
-        }
-    }
+    // MARK: - Init
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -68,6 +70,8 @@ open class TextField: UITextField, UITextFieldDelegate {
         super.prepareForInterfaceBuilder()
         configureUI()
     }
+    
+    // MARK: - Configure
     
     private func configureUI() {
         configStyle()
@@ -85,6 +89,12 @@ open class TextField: UITextField, UITextFieldDelegate {
         attributedPlaceholder = NSAttributedString(string: placeholder ?? "",
                                                    attributes: [NSAttributedString.Key.foregroundColor: color])
     }
+    
+}
+
+// MARK: - Events
+
+extension TextField {
     
     @objc
     private func onFocus() {
@@ -116,6 +126,14 @@ open class TextField: UITextField, UITextFieldDelegate {
             borderColor = defaultColor
         }
     }
+    
+}
+
+// MARK: - Paddings
+
+private let padding = UIEdgeInsets(top: 15, left: 20, bottom: 15, right: 20)
+
+extension TextField {
     
     override open func textRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)

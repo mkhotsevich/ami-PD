@@ -9,8 +9,12 @@
 import UIKit
 import DesignKit
 
+private let toolbarHeight: CGFloat = 35
+
 @IBDesignable
 public class DatePickerField: TextField {
+    
+    // MARK: - Properties
     
     public var date: Date {
         datePicker.date
@@ -23,6 +27,8 @@ public class DatePickerField: TextField {
     }
     
     var dateFormatter: DateFormatter!
+    
+    // MARK: - Init
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,6 +47,8 @@ public class DatePickerField: TextField {
         configureDateFormatter()
     }
     
+    // MARK: - Configure
+    
     private func configureDatePicker() {
         datePicker = UIDatePicker()
         datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
@@ -48,11 +56,14 @@ public class DatePickerField: TextField {
     }
     
     private func configureToolbar() {
-        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 35))
+        let toolBar = UIToolbar(frame: CGRect(x: 0,
+                                              y: 0,
+                                              width: UIScreen.main.bounds.width,
+                                              height: toolbarHeight))
 
-        toolBar.barStyle = UIBarStyle.default
+        toolBar.barStyle = .default
         toolBar.isTranslucent = true
-        toolBar.tintColor = UIColor.black
+        toolBar.tintColor = .black
         toolBar.sizeToFit()
 
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donePressed))
@@ -69,9 +80,7 @@ public class DatePickerField: TextField {
         dateFormatter.timeStyle = .none
     }
     
-    private func setText() {
-        text = dateFormatter.string(from: datePicker.date)
-    }
+    // MARK: - Events
     
     @objc
     func dateChanged() {
@@ -82,6 +91,12 @@ public class DatePickerField: TextField {
     func donePressed() {
         setText()
         endEditing(true)
+    }
+    
+    // MARK: - Private
+    
+    private func setText() {
+        text = dateFormatter.string(from: datePicker.date)
     }
     
 }

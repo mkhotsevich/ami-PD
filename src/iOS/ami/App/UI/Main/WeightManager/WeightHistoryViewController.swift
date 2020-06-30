@@ -9,12 +9,32 @@
 import UIKit
 import DataManager
 
+// MARK: - Builder
+
+class WeightHistoryViewControllerBuilder {
+    
+    static func build() -> WeightHistoryViewController {
+        let controller = WeightHistoryViewController()
+        controller.weightManager = WeightManager()
+        controller.errorParser = NetworkErrorParser()
+        controller.errorParser.delegate = controller
+        return controller
+    }
+    
+}
+
 private let reuseIdentifier = "reuseIdentifier"
 
 class WeightHistoryViewController: UITableViewController {
     
-    var weightManager: WeightManager!
-    var weightHistory: [WeightInfo] = [] {
+    // MARK: - Dependences
+    
+    fileprivate var weightManager: WeightManager!
+    fileprivate var errorParser: NetworkErrorParser!
+    
+    // MARK: - Properties
+    
+    private(set) var weightHistory: [WeightInfo] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -22,15 +42,15 @@ class WeightHistoryViewController: UITableViewController {
         }
     }
 
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        weightManager = WeightManager()
-        
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
-        
         loadData()
     }
+    
+    // MARK: - Private
     
     private func loadData() {
         weightManager.get { (result) in
@@ -38,12 +58,16 @@ class WeightHistoryViewController: UITableViewController {
             case .success(let history):
                 self.weightHistory = history
             case .failure(let error):
-                self.showAlert(alertText: "Ошибка", alertMessage: error.localizedDescription)
+                self.errorParser.parse(error)
             }
         }
     }
+    
+}
 
-    // MARK: - Table view data source
+// MARK: - Table Data Source
+
+extension WeightHistoryViewController {
 
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
@@ -62,4 +86,16 @@ class WeightHistoryViewController: UITableViewController {
         return cell
     }
 
+}
+
+extension WeightHistoryViewController: NetworkErrorParserDelegate {
+    
+    func showMessage(_ message: String) {
+        showAlert(alertText: "Ошибка", alertMessage: message)
+    }
+    
+    func goToAuth() {
+        toMain()
+    }
+    
 }

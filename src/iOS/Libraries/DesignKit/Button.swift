@@ -47,7 +47,7 @@ public class Button: UIButton {
     // MARK: - Configure
     
     private func configureUI() {
-        cornerRadius = 5.0
+        cornerRadius = 10.0
     }
     
     // MARK: - Public

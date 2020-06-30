@@ -18,6 +18,7 @@ class WeightHistoryViewControllerBuilder {
         controller.weightManager = WeightManager()
         controller.errorParser = NetworkErrorParser()
         controller.errorParser.delegate = controller
+        controller.router = WeightHistoryRouter(controller: controller)
         return controller
     }
     
@@ -31,6 +32,7 @@ class WeightHistoryViewController: UITableViewController {
     
     fileprivate var weightManager: WeightManager!
     fileprivate var errorParser: NetworkErrorParser!
+    fileprivate var router: WeightHistoryRouter!
     
     // MARK: - Properties
     
@@ -47,20 +49,48 @@ class WeightHistoryViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        configureAddButton()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         loadData()
     }
     
+    // MARK: - Configure
+    
+    private func configureAddButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                                            target: self,
+                                                            action: #selector(addWeightInfo))
+    }
+    
     // MARK: - Private
+    
+    @objc
+    private func addWeightInfo() {
+        router.toEditor(with: .creating)
+    }
     
     private func loadData() {
         weightManager.get { (result) in
             switch result {
             case .success(let history):
                 self.weightHistory = history
+                    .sorted { $0.weighedAt > $1.weighedAt }
             case .failure(let error):
                 self.errorParser.parse(error)
             }
         }
+    }
+    
+}
+
+extension WeightHistoryViewController {
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let info = weightHistory[indexPath.row]
+        router.toEditor(with: .editing(info))
     }
     
 }
@@ -85,6 +115,22 @@ extension WeightHistoryViewController {
 
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView,
+                            commit editingStyle: UITableViewCell.EditingStyle,
+                            forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            weightManager.delete(id: weightHistory[indexPath.row].id) { (result) in
+                switch result {
+                case .failure(let error):
+                    self.errorParser.parse(error)
+                default: break
+                }
+            }
+            weightHistory.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
 
 }
 
@@ -96,6 +142,14 @@ extension WeightHistoryViewController: NetworkErrorParserDelegate {
     
     func goToAuth() {
         toMain()
+    }
+    
+}
+
+extension WeightHistoryViewController: EditInfoCompleteDeligate {
+    
+    func completed() {
+        loadData()
     }
     
 }

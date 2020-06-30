@@ -17,16 +17,22 @@ public class DatePickerField: TextField {
     // MARK: - Properties
     
     public var date: Date {
-        datePicker.date
+        get {
+            datePicker.date
+        }
+        set {
+            datePicker.date = newValue
+            text = dateFormatter.string(from: newValue)
+        }
     }
     
-    var datePicker: UIDatePicker! {
+    public var datePicker: UIDatePicker! {
         didSet {
             inputView = datePicker
         }
     }
     
-    var dateFormatter: DateFormatter!
+    public var dateFormatter: DateFormatter!
     
     // MARK: - Init
     

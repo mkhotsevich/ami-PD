@@ -31,7 +31,7 @@ class AuthValidator {
     }
     
     public func validateConfirmPassword(password: UITextField,
-                                         confirmPassword: UITextField) -> Bool {
+                                        confirmPassword: UITextField) -> Bool {
         let rule = ValidationRuleEquality<String>(dynamicTarget: {
             return password.text ?? ""
         }, error: ValidationErrors.passwordNotConfirm)

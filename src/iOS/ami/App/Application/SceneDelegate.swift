@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SwiftUI
+import DataManager
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -22,7 +22,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.windowScene = scene
-        window?.rootViewController = UINavigationController(rootViewController: RegisterViewController())
+        if TokenManager.accessToken == nil {
+            window?.rootViewController = UINavigationController(rootViewController: RegisterViewController())
+        } else {
+            window?.rootViewController = MainViewController()
+        }
         window?.makeKeyAndVisible()
     }
 

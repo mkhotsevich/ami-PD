@@ -1,4 +1,0 @@
-{
-	"PORT": 5000,
-	"mongoURI": "mongodb+srv://MaximKhotsevich:yFwyHA4dcjVDrV3g@cluster0-yyaxs.mongodb.net/<dbname>?retryWrites=true&w=majority"
-}

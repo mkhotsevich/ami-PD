@@ -20,7 +20,6 @@
 		57201F8824AAA8190098BA97 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57201F8724AAA8190098BA97 /* MainViewController.swift */; };
 		57201F8B24AAA90C0098BA97 /* UIWindowTransitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57201F8924AAA8FC0098BA97 /* UIWindowTransitions.swift */; };
 		57201F8D24AAAB5B0098BA97 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57201F8C24AAAB5B0098BA97 /* LoginRouter.swift */; };
-		57201F8F24AAAB720098BA97 /* RegisterInfoFillRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57201F8E24AAAB720098BA97 /* RegisterInfoFillRouter.swift */; };
 		57201F9124AAAE8A0098BA97 /* AuthValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57201F9024AAAE8A0098BA97 /* AuthValidator.swift */; };
 		57201FA124AAB4010098BA97 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57201F9F24AAB4010098BA97 /* ProfileViewController.swift */; };
 		57201FA224AAB4010098BA97 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57201FA024AAB4010098BA97 /* ProfileViewController.xib */; };
@@ -82,6 +81,9 @@
 		57CB158B24ABA2A400B0D22D /* AppStartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB158A24ABA2A400B0D22D /* AppStartManager.swift */; };
 		57CB158E24ABA65000B0D22D /* NetworkErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB158D24ABA65000B0D22D /* NetworkErrorParser.swift */; };
 		57CB159024ABB42500B0D22D /* UIViewController+BaseRouters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB158F24ABB42500B0D22D /* UIViewController+BaseRouters.swift */; };
+		57CB159224ABC8C200B0D22D /* WeightHistoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB159124ABC8C200B0D22D /* WeightHistoryRouter.swift */; };
+		57CB159524ABCA3600B0D22D /* EditInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB159324ABCA3600B0D22D /* EditInfoViewController.swift */; };
+		57CB159624ABCA3600B0D22D /* EditInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57CB159424ABCA3600B0D22D /* EditInfoViewController.xib */; };
 		57CDF75224A8C2680053300A /* UIUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57CDF74B24A8C2680053300A /* UIUtils.framework */; };
 		57CDF75324A8C2680053300A /* UIUtils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 57CDF74B24A8C2680053300A /* UIUtils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		57CDF76324A8C2750053300A /* NetworkCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57CDF75C24A8C2750053300A /* NetworkCore.framework */; };
@@ -233,7 +235,6 @@
 		57201F8724AAA8190098BA97 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		57201F8924AAA8FC0098BA97 /* UIWindowTransitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindowTransitions.swift; sourceTree = "<group>"; };
 		57201F8C24AAAB5B0098BA97 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
-		57201F8E24AAAB720098BA97 /* RegisterInfoFillRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInfoFillRouter.swift; sourceTree = "<group>"; };
 		57201F9024AAAE8A0098BA97 /* AuthValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthValidator.swift; sourceTree = "<group>"; };
 		57201F9F24AAB4010098BA97 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		57201FA024AAB4010098BA97 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
@@ -302,6 +303,9 @@
 		57CB158A24ABA2A400B0D22D /* AppStartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStartManager.swift; sourceTree = "<group>"; };
 		57CB158D24ABA65000B0D22D /* NetworkErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorParser.swift; sourceTree = "<group>"; };
 		57CB158F24ABB42500B0D22D /* UIViewController+BaseRouters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+BaseRouters.swift"; sourceTree = "<group>"; };
+		57CB159124ABC8C200B0D22D /* WeightHistoryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightHistoryRouter.swift; sourceTree = "<group>"; };
+		57CB159324ABCA3600B0D22D /* EditInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInfoViewController.swift; sourceTree = "<group>"; };
+		57CB159424ABCA3600B0D22D /* EditInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditInfoViewController.xib; sourceTree = "<group>"; };
 		57CDF72924A8C2030053300A /* DataManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DataManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57CDF72C24A8C2030053300A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57CDF73A24A8C2330053300A /* Storage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Storage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -528,10 +532,10 @@
 				57CB158F24ABB42500B0D22D /* UIViewController+BaseRouters.swift */,
 				573FABF724AA42FD00D7BECA /* RegisterRouter.swift */,
 				57201F8C24AAAB5B0098BA97 /* LoginRouter.swift */,
-				57201F8E24AAAB720098BA97 /* RegisterInfoFillRouter.swift */,
 				57201FB324AABAE10098BA97 /* ProfileRouter.swift */,
 				57CB157224AB4F2D00B0D22D /* WaterManagerRouter.swift */,
 				57CB158324AB81B300B0D22D /* ArticleRouter.swift */,
+				57CB159124ABC8C200B0D22D /* WeightHistoryRouter.swift */,
 			);
 			path = Routers;
 			sourceTree = "<group>";
@@ -672,6 +676,7 @@
 		57802B2F24AA073100CF9C93 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				57CB159924ABD9B500B0D22D /* EditInfoViewController */,
 				57201F9824AAB3A50098BA97 /* Welcome */,
 				573FABFA24AA439800D7BECA /* InfoPlaceholder */,
 				57201F9224AAB34C0098BA97 /* Authorization */,
@@ -764,6 +769,15 @@
 				57201F9024AAAE8A0098BA97 /* AuthValidator.swift */,
 			);
 			path = Validation;
+			sourceTree = "<group>";
+		};
+		57CB159924ABD9B500B0D22D /* EditInfoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				57CB159324ABCA3600B0D22D /* EditInfoViewController.swift */,
+				57CB159424ABCA3600B0D22D /* EditInfoViewController.xib */,
+			);
+			path = EditInfoViewController;
 			sourceTree = "<group>";
 		};
 		57CDF72A24A8C2030053300A /* DataManager */ = {
@@ -1300,6 +1314,7 @@
 				57802B4F24AA169B00CF9C93 /* Blogger Sans.otf in Resources */,
 				57201F8524AAA7B30098BA97 /* LoginViewController.xib in Resources */,
 				57CB158124AB7F2800B0D22D /* ArticleContentViewController.xib in Resources */,
+				57CB159624ABCA3600B0D22D /* EditInfoViewController.xib in Resources */,
 				5779BF7424A3F182005113D4 /* Assets.xcassets in Resources */,
 				573FABF224AA3FE300D7BECA /* Montserrat-Medium.ttf in Resources */,
 				573FABE224AA35BB00D7BECA /* RegisterViewController.xib in Resources */,
@@ -1468,18 +1483,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				57201FB424AABAE10098BA97 /* ProfileRouter.swift in Sources */,
-				57201F8F24AAAB720098BA97 /* RegisterInfoFillRouter.swift in Sources */,
 				57CB158424AB81B300B0D22D /* ArticleRouter.swift in Sources */,
 				57CB158924AB8AE600B0D22D /* DateHelper.swift in Sources */,
 				57CB159024ABB42500B0D22D /* UIViewController+BaseRouters.swift in Sources */,
 				57CB157324AB4F2D00B0D22D /* WaterManagerRouter.swift in Sources */,
 				57201F8424AAA7B30098BA97 /* LoginViewController.swift in Sources */,
 				57201FB724AABFD30098BA97 /* KeyboardHelper.swift in Sources */,
+				57CB159524ABCA3600B0D22D /* EditInfoViewController.swift in Sources */,
 				573FABE124AA35BB00D7BECA /* RegisterViewController.swift in Sources */,
 				57CB158724AB89CB00B0D22D /* WeightHistoryViewController.swift in Sources */,
 				57201F9124AAAE8A0098BA97 /* AuthValidator.swift in Sources */,
 				57CB157824AB6C5A00B0D22D /* ArticleCollectionViewCell.swift in Sources */,
 				57201FA124AAB4010098BA97 /* ProfileViewController.swift in Sources */,
+				57CB159224ABC8C200B0D22D /* WeightHistoryRouter.swift in Sources */,
 				5779BF6B24A3F181005113D4 /* AppDelegate.swift in Sources */,
 				573FABF524AA42DF00D7BECA /* BaseRouter.swift in Sources */,
 				57201FB124AAB4300098BA97 /* WaterManagerViewController.swift in Sources */,

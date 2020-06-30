@@ -37,4 +37,8 @@ class InfoPlaceholderView: UIView {
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
+    private func configure() {
+        birthdateField.datePicker.maximumDate = Date()
+    }
+    
 }

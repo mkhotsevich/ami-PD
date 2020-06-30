@@ -19,6 +19,8 @@ class WaterManagerViewControllerBuilder {
         controller.router = WaterManagerRouter(controller: controller)
         controller.waterManager = WaterManager()
         controller.weightManager = WeightManager()
+        controller.errorParser = NetworkErrorParser()
+        controller.errorParser.delegate = controller
         return controller
     }
     
@@ -43,6 +45,7 @@ class WaterManagerViewController: UIViewController {
     fileprivate var router: WaterManagerRouter!
     fileprivate var waterManager: WaterManager!
     fileprivate var weightManager: WeightManager!
+    fileprivate var errorParser: NetworkErrorParser!
     
     // MARK: - Properties
     
@@ -129,7 +132,9 @@ class WaterManagerViewController: UIViewController {
         weightManager.get { (result) in
             switch result {
             case .success(let history):
-                self.weight = history.first
+                self.weight = history
+                    .sorted { $0.weighedAt > $1.weighedAt }
+                    .first
             case .failure(let error):
                 self.showAlert(alertText: "Ошибка", alertMessage: error.localizedDescription)
             }
@@ -187,8 +192,9 @@ extension WaterManagerViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return GraphicHelper.calculateSizeOfSquaresInRectangle(rectangleSize: collectionView.bounds.size,
-                                                               squareCount: glassCount)
+        let size = GraphicHelper.calculateSizeOfSquaresInRectangle(rectangleSize: collectionView.bounds.size,
+                                                                   squareCount: glassCount)
+        return size.width >= 70 ? CGSize(width: 70, height: 70) : size
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -225,6 +231,20 @@ extension WaterManagerViewController: UICollectionViewDataSource {
                                                             for: indexPath) as? WaterCollectionViewCell else { fatalError() }
         fillGlass(cell, for: indexPath)
         return cell
+    }
+    
+}
+
+// MARK: - NetworkErrorParserDelegate
+
+extension WaterManagerViewController: NetworkErrorParserDelegate {
+    
+    func showMessage(_ message: String) {
+        showAlert(alertText: "Ошибка", alertMessage: message)
+    }
+    
+    func goToAuth() {
+        toMain()
     }
     
 }

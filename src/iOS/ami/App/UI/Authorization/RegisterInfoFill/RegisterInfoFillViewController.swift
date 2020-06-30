@@ -20,7 +20,7 @@ class RegisterInfoFillViewControllerBuilder {
         controller.registerData = (email, password)
         controller.authManager = AuthManager()
         controller.errorParser = NetworkErrorParser()
-        controller.router = RegisterInfoFillRouter(controller: controller)
+        controller.router = BaseRouter(controller: controller)
         return controller
     }
     
@@ -40,7 +40,7 @@ class RegisterInfoFillViewController: UIViewController {
     // MARK: Dependences
     
     var authManager: AuthManager!
-    var router: RegisterInfoFillRouter!
+    var router: BaseRouter!
     var keyboardHelper: KeyboardHelper!
     var errorParser: NetworkErrorParser!
     
@@ -66,9 +66,9 @@ class RegisterInfoFillViewController: UIViewController {
             let password = registerData?.password,
             let name = infoPlaceholderView.nameField.text,
             let surname = infoPlaceholderView.surnameField.text,
-            let heightStr = infoPlaceholderView.heightField.text,
+            let heightStr = infoPlaceholderView.heightField.text?.replacingOccurrences(of: ",", with: "."),
             let height = Double(heightStr),
-            let weightStr = infoPlaceholderView.weightField.text,
+            let weightStr = infoPlaceholderView.weightField.text?.replacingOccurrences(of: ",", with: "."),
             let weight = Double(weightStr) else {
                 return
         }
@@ -108,7 +108,7 @@ extension RegisterInfoFillViewController: NetworkErrorParserDelegate {
     
     func showMessage(_ message: String) {
         showAlert(alertText: "Ошибка", alertMessage: message)
-        router.goBack()
+        router.pop(animated: true)
     }
     
     func goToAuth() { }

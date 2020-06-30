@@ -24,6 +24,7 @@
                 <outlet property="continueButton" destination="7m4-Vc-7N4" id="fyU-FN-EFQ"/>
                 <outlet property="emailField" destination="rM1-eg-FW7" id="0f1-Vw-LlE"/>
                 <outlet property="passwordField" destination="TMk-ER-fcr" id="cxM-AC-EyG"/>
+                <outlet property="scrollView" destination="R7X-sm-8hj" id="MAI-Ha-WyC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

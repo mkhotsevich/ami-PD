@@ -33,6 +33,7 @@
 		57201FB124AAB4300098BA97 /* WaterManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57201FAF24AAB4300098BA97 /* WaterManagerViewController.swift */; };
 		57201FB224AAB4300098BA97 /* WaterManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57201FB024AAB4300098BA97 /* WaterManagerViewController.xib */; };
 		57201FB424AABAE10098BA97 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57201FB324AABAE10098BA97 /* ProfileRouter.swift */; };
+		57201FB724AABFD30098BA97 /* KeyboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57201FB524AABD570098BA97 /* KeyboardHelper.swift */; };
 		573FABE124AA35BB00D7BECA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573FABDF24AA35BB00D7BECA /* RegisterViewController.swift */; };
 		573FABE224AA35BB00D7BECA /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 573FABE024AA35BB00D7BECA /* RegisterViewController.xib */; };
 		573FABE424AA382800D7BECA /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 573FABE324AA382800D7BECA /* Montserrat-Regular.ttf */; };
@@ -234,6 +235,7 @@
 		57201FAF24AAB4300098BA97 /* WaterManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterManagerViewController.swift; sourceTree = "<group>"; };
 		57201FB024AAB4300098BA97 /* WaterManagerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaterManagerViewController.xib; sourceTree = "<group>"; };
 		57201FB324AABAE10098BA97 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
+		57201FB524AABD570098BA97 /* KeyboardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHelper.swift; sourceTree = "<group>"; };
 		573FABDF24AA35BB00D7BECA /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		573FABE024AA35BB00D7BECA /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		573FABE324AA382800D7BECA /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
@@ -506,6 +508,7 @@
 		573FABF324AA428D00D7BECA /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				57201FB524AABD570098BA97 /* KeyboardHelper.swift */,
 				573FABF424AA42DF00D7BECA /* BaseRouter.swift */,
 			);
 			path = Core;
@@ -534,8 +537,8 @@
 		573FABFA24AA439800D7BECA /* InfoPlaceholder */ = {
 			isa = PBXGroup;
 			children = (
-				573FABFB24AA43D700D7BECA /* InfoPlaceholderView.xib */,
 				573FABFF24AA4A6700D7BECA /* InfoPlaceholderView.swift */,
+				573FABFB24AA43D700D7BECA /* InfoPlaceholderView.xib */,
 			);
 			path = InfoPlaceholder;
 			sourceTree = "<group>";
@@ -1051,11 +1054,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				57CDF75124A8C2680053300A /* PBXTargetDependency */,
 				57CDF76224A8C2750053300A /* PBXTargetDependency */,
-				57CDF9EB24A8C3560053300A /* PBXTargetDependency */,
 				57CDF9EF24A8C3560053300A /* PBXTargetDependency */,
+				57CDF75124A8C2680053300A /* PBXTargetDependency */,
 				57802B4324AA13AF00CF9C93 /* PBXTargetDependency */,
+				57CDF9EB24A8C3560053300A /* PBXTargetDependency */,
 			);
 			name = ami;
 			productName = ami;
@@ -1411,6 +1414,7 @@
 				57201F8F24AAAB720098BA97 /* RegisterInfoFillRouter.swift in Sources */,
 				57201FAD24AAB4240098BA97 /* ArticlesViewController.swift in Sources */,
 				57201F8424AAA7B30098BA97 /* LoginViewController.swift in Sources */,
+				57201FB724AABFD30098BA97 /* KeyboardHelper.swift in Sources */,
 				573FABE124AA35BB00D7BECA /* RegisterViewController.swift in Sources */,
 				57201F9124AAAE8A0098BA97 /* AuthValidator.swift in Sources */,
 				57201FA124AAB4010098BA97 /* ProfileViewController.swift in Sources */,

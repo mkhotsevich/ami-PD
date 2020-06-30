@@ -9,16 +9,19 @@
 import UIKit
 import DesignKit
 import DataManager
+import UIUtils
 
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailField: TextField!
     @IBOutlet weak var passwordField: TextField!
     @IBOutlet weak var continueButton: Button!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var router: LoginRouter!
     var authManager: AuthManager!
     var authValidator: AuthValidator!
+    var keyboardHelper: KeyboardHelper!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,10 +31,17 @@ class LoginViewController: UIViewController {
         authManager = AuthManager()
         validateForm()
         
+        keyboardHelper = KeyboardHelper(view: view, scrollView: scrollView)
+        keyboardHelper.startObserve()
+        
         emailField.delegate = self
         passwordField.delegate = self
         
         view.hideKeyboardWhenTapped()
+    }
+    
+    deinit {
+        keyboardHelper.stopObserve()
     }
     
     private func validateForm() {
@@ -77,10 +87,10 @@ extension LoginViewController: UITextFieldDelegate {
         
         switch textField {
         case emailField:
-            guard emailField.isValid != nil else { return }
+            guard emailField.isValid != nil else { break }
             emailField.isValid = isValidEmail
         case passwordField:
-            guard passwordField.isValid != nil else { return }
+            guard passwordField.isValid != nil else { break }
             passwordField.isValid = isValidPassword
         default: fatalError()
         }

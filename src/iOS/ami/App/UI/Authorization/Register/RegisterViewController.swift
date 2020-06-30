@@ -23,6 +23,7 @@ class RegisterViewController: UIViewController {
     
     var router: RegisterRouter!
     var authValidator: AuthValidator!
+    var keyboardHelper: KeyboardHelper!
     
     private weak var selectedField: TextField?
 
@@ -34,45 +35,15 @@ class RegisterViewController: UIViewController {
         confirmPasswordField.delegate = self
         
         router = RegisterRouter(controller: self)
+        keyboardHelper = KeyboardHelper(view: view, scrollView: scrollView)
+        keyboardHelper.startObserve()
         authValidator = AuthValidator()
         view.hideKeyboardWhenTapped()
         validateForm()
-        registerForKeyboardNotifications()
-    }
-    
-    func registerForKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(adjustForKeyboard),
-                                               name: UIResponder.keyboardWillShowNotification,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(adjustForKeyboard),
-                                               name: UIResponder.keyboardWillHideNotification,
-                                               object: nil)
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    @objc
-    private func adjustForKeyboard(_ notification: Notification) {
-        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
-
-        let keyboardScreenEndFrame = keyboardValue.cgRectValue
-        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
-        let keyboardHeight = keyboardViewEndFrame.height - view.safeAreaInsets.bottom
-        
-        if notification.name == UIResponder.keyboardWillHideNotification {
-            scrollView.contentInset = .zero
-            scrollView.contentOffset = .zero
-        } else {
-            scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
-            scrollView.contentOffset = CGPoint(x: 0, y: keyboardHeight)
-        }
-        
-        scrollView.scrollIndicatorInsets = scrollView.contentInset
+        keyboardHelper.stopObserve()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -117,13 +88,13 @@ extension RegisterViewController: UITextFieldDelegate {
                                                              confirmPassword: confirmPasswordField)
         switch textField {
         case emailField:
-            guard emailField.isValid != nil else { return }
+            guard emailField.isValid != nil else { break }
             emailField.isValid = isValidEmail
         case passwordField:
-            guard passwordField.isValid != nil else { return }
+            guard passwordField.isValid != nil else { break }
             passwordField.isValid = isValidPassword
         case confirmPasswordField:
-            guard confirmPasswordField.isValid != nil else { return }
+            guard confirmPasswordField.isValid != nil else { break }
             confirmPasswordField.isValid = isValidConfirmPassword
         default: fatalError()
         }

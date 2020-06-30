@@ -28,8 +28,7 @@ final class AppStartManager {
             print(accessToken)
             window.rootViewController = MainViewController()
         } else {
-            let rootViewController = RegisterViewControllerBuilder.build()
-            window.rootViewController = UINavigationController(rootViewController: rootViewController)
+            window.rootViewController = RegisterViewControllerBuilder.build()
         }
         window.makeKeyAndVisible()
         return window

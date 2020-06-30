@@ -15,11 +15,11 @@ import DesignKit
 
 class RegisterViewControllerBuilder {
     
-    static func build() -> RegisterViewController {
+    static func build() -> UINavigationController {
         let controller = RegisterViewController()
         controller.authValidator = AuthValidator()
         controller.router = RegisterRouter(controller: controller)
-        return controller
+        return UINavigationController(rootViewController: controller)
     }
     
 }

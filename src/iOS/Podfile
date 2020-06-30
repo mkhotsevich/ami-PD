@@ -6,6 +6,7 @@ target 'ami' do
   # Official pods
   pod 'SwiftLint'
   pod 'R.swift'
+  pod 'Validator'
 
 end
 
@@ -15,4 +16,4 @@ target 'DataManager' do
   pod 'CryptoSwift'
   pod 'Keychain'
 
-end 
+end

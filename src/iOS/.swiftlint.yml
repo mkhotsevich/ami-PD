@@ -2,7 +2,7 @@ warning_threshold: 15
 
 excluded:
   - Pods
-  - R.generated.swift
+  - ami/Resources/R.generated.swift
 
 disabled_rules:
   - trailing_whitespace

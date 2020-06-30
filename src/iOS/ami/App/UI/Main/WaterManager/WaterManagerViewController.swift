@@ -10,6 +10,9 @@ import UIKit
 import UIUtils
 import DataManager
 
+private let cellNibName = "WaterCollectionViewCell"
+private let reuseId = "WaterCellReusable"
+
 class WaterManagerViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
@@ -73,8 +76,8 @@ class WaterManagerViewController: UIViewController {
     }
     
     private func configureCollectionView() {
-        collectionView.register(UINib(nibName: "WaterCollectionViewCell", bundle: nil),
-                                forCellWithReuseIdentifier: "WaterCellReusable")
+        collectionView.register(UINib(nibName: cellNibName, bundle: nil),
+                                forCellWithReuseIdentifier: reuseId)
         collectionView.delegate = self
         collectionView.dataSource = self
     }
@@ -182,7 +185,7 @@ extension WaterManagerViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WaterCellReusable",
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseId,
                                                             for: indexPath) as? WaterCollectionViewCell else { fatalError() }
         fillGlass(cell, for: indexPath)
         return cell

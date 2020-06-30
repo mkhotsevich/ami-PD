@@ -11,9 +11,6 @@ import UIKit
 class MainViewController: UITabBarController {
     
     private lazy var controllers: [UIViewController] = {
-        let articlesVC = ArticlesViewController()
-        articlesVC.tabBarItem = UITabBarItem(title: nil, image: R.image.articleIcon(), tag: 1)
-        
         let sleepManagerVC = SleepManagerViewController()
         sleepManagerVC.tabBarItem = UITabBarItem(title: nil, image: R.image.sleepIcon(), tag: 2)
         
@@ -37,6 +34,14 @@ class MainViewController: UITabBarController {
         let waterManagerNavC = UINavigationController(rootViewController: waterManagerVC)
         waterManagerNavC.tabBarItem = UITabBarItem(title: nil, image: R.image.waterIcon(), tag: 0)
         return waterManagerNavC
+    }()
+    
+    private lazy var articlesVC: UIViewController = {
+        let articlesVC = ArticlesViewController()
+        articlesVC.navigationItem.title = "Полезные статьи"
+        let articlesNaVC = UINavigationController(rootViewController: articlesVC)
+        articlesNaVC.tabBarItem = UITabBarItem(title: nil, image: R.image.articleIcon(), tag: 1)
+        return articlesNaVC
     }()
     
     override func viewDidLoad() {

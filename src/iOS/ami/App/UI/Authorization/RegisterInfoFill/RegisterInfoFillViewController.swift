@@ -107,7 +107,8 @@ class RegisterInfoFillViewController: UIViewController {
 extension RegisterInfoFillViewController: NetworkErrorParserDelegate {
     
     func showMessage(_ message: String) {
-        self.showAlert(alertText: "Ошибка", alertMessage: message)
+        showAlert(alertText: "Ошибка", alertMessage: message)
+        router.goBack()
     }
     
     func goToAuth() { }

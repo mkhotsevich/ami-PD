@@ -10,8 +10,31 @@ import CoreGraphics
 
 public class GraphicHelper {
     
+    private static var cache: [String: CGSize] = [:]
+    
+    private static func createHash(rectangleSize: CGSize,
+                                   squareCount: Int) -> String {
+        return "\(rectangleSize)\(squareCount)"
+    }
+    
+    private static func saveToCache(rectangleSize: CGSize,
+                                    squareCount: Int,
+                                    squareSize: CGSize) {
+        let hash = createHash(rectangleSize: rectangleSize, squareCount: squareCount)
+        cache[hash] = squareSize
+    }
+    
+    private static func getFromCache(rectangleSize: CGSize,
+                                     squareCount: Int) -> CGSize? {
+        let hash = createHash(rectangleSize: rectangleSize, squareCount: squareCount)
+        return cache[hash]
+    }
+    
     public static func calculateSizeOfSquaresInRectangle(rectangleSize: CGSize,
                                                          squareCount N: Int) -> CGSize {
+        if let size = getFromCache(rectangleSize: rectangleSize, squareCount: N) {
+            return size
+        }
         // 1. Посчитать площадь прямоугольника S = A*B, где A,B - стороны прямоугольника.
         let A = rectangleSize.width
         let B = rectangleSize.height
@@ -27,7 +50,11 @@ public class GraphicHelper {
         let remA = A.truncatingRemainder(dividingBy: a)
         let remB = B.truncatingRemainder(dividingBy: a)
         if remA == remB, remB == 0 {
-            return CGSize(width: a, height: a)
+            let size = CGSize(width: a, height: a)
+            saveToCache(rectangleSize: rectangleSize,
+                        squareCount: N,
+                        squareSize: size)
+            return size
         } else {
             // 5. Поделить стороны прямоугольника на результат a и вычесть остаток от деления из a: ra = a-rem(A/a), rb = a-rem(B/a).
             let ra = a - remA
@@ -62,7 +89,12 @@ public class GraphicHelper {
             }
             // 12. Искомый x = max(x1, x2).
             let x = max(x1, x2)
-            return CGSize(width: x, height: x)
+            
+            let size = CGSize(width: x, height: x)
+            saveToCache(rectangleSize: rectangleSize,
+                        squareCount: N,
+                        squareSize: size)
+            return size
         }
     }
     

@@ -11,9 +11,6 @@ import UIKit
 class MainViewController: UITabBarController {
     
     private lazy var controllers: [UIViewController] = {
-        let waterManagerVC = WaterManagerViewController()
-        waterManagerVC.tabBarItem = UITabBarItem(title: nil, image: R.image.waterIcon(), tag: 0)
-        
         let articlesVC = ArticlesViewController()
         articlesVC.tabBarItem = UITabBarItem(title: nil, image: R.image.articleIcon(), tag: 1)
         
@@ -23,14 +20,23 @@ class MainViewController: UITabBarController {
         let taskManagerVC = TaskManagerViewController()
         taskManagerVC.tabBarItem = UITabBarItem(title: nil, image: R.image.taskManagerIcon(), tag: 3)
         
-        let profileVC = ProfileViewController()
+        let profileVC = UINavigationController(rootViewController: ProfileViewController())
         profileVC.tabBarItem = UITabBarItem(title: nil, image: R.image.profileIcon(), tag: 4)
         
-        return [waterManagerVC,
-                articlesVC,
-                sleepManagerVC,
-                taskManagerVC,
-                UINavigationController(rootViewController: profileVC)]
+        return [
+            waterManagerVC,
+            articlesVC,
+            sleepManagerVC,
+            taskManagerVC,
+            profileVC]
+    }()
+    
+    private lazy var waterManagerVC: UIViewController = {
+        let waterManagerVC = WaterManagerViewController()
+        waterManagerVC.navigationItem.title = "Трекер водички"
+        let waterManagerNavC = UINavigationController(rootViewController: waterManagerVC)
+        waterManagerNavC.tabBarItem = UITabBarItem(title: nil, image: R.image.waterIcon(), tag: 0)
+        return waterManagerNavC
     }()
     
     override func viewDidLoad() {
@@ -43,6 +49,7 @@ class MainViewController: UITabBarController {
         tabBar.isTranslucent = false
         tabBar.unselectedItemTintColor = R.color.e9765B()
         tabBar.tintColor = R.color.bcb4()
+        tabBar.backgroundColor = .clear
         setViewControllers(controllers, animated: true)
     }
 

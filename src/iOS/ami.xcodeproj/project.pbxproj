@@ -74,6 +74,7 @@
 		57CB156724AB236F00B0D22D /* WaterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57CB156524AB236F00B0D22D /* WaterCollectionViewCell.xib */; };
 		57CB156824AB236F00B0D22D /* WaterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB156624AB236F00B0D22D /* WaterCollectionViewCell.swift */; };
 		57CB156A24AB33ED00B0D22D /* GraphicHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB156924AB33ED00B0D22D /* GraphicHelper.swift */; };
+		57CB156C24AB3A6000B0D22D /* NumericUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB156B24AB3A6000B0D22D /* NumericUtils.swift */; };
 		57CDF75224A8C2680053300A /* UIUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57CDF74B24A8C2680053300A /* UIUtils.framework */; };
 		57CDF75324A8C2680053300A /* UIUtils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 57CDF74B24A8C2680053300A /* UIUtils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		57CDF76324A8C2750053300A /* NetworkCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57CDF75C24A8C2750053300A /* NetworkCore.framework */; };
@@ -286,6 +287,7 @@
 		57CB156524AB236F00B0D22D /* WaterCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterCollectionViewCell.xib; sourceTree = "<group>"; };
 		57CB156624AB236F00B0D22D /* WaterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterCollectionViewCell.swift; sourceTree = "<group>"; };
 		57CB156924AB33ED00B0D22D /* GraphicHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicHelper.swift; sourceTree = "<group>"; };
+		57CB156B24AB3A6000B0D22D /* NumericUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericUtils.swift; sourceTree = "<group>"; };
 		57CDF72924A8C2030053300A /* DataManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DataManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57CDF72C24A8C2030053300A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57CDF73A24A8C2330053300A /* Storage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Storage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -517,6 +519,7 @@
 			children = (
 				57201FB524AABD570098BA97 /* KeyboardHelper.swift */,
 				573FABF424AA42DF00D7BECA /* BaseRouter.swift */,
+				57CB156B24AB3A6000B0D22D /* NumericUtils.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1441,6 +1444,7 @@
 				57201FB124AAB4300098BA97 /* WaterManagerViewController.swift in Sources */,
 				57201FA524AAB40A0098BA97 /* TaskManagerViewController.swift in Sources */,
 				5779BF6D24A3F181005113D4 /* SceneDelegate.swift in Sources */,
+				57CB156C24AB3A6000B0D22D /* NumericUtils.swift in Sources */,
 				573FAC0424AA4B3900D7BECA /* RegisterInfoFillViewController.swift in Sources */,
 				57201F6E24AA72D50098BA97 /* R.generated.swift in Sources */,
 				573FAC0024AA4A6700D7BECA /* InfoPlaceholderView.swift in Sources */,

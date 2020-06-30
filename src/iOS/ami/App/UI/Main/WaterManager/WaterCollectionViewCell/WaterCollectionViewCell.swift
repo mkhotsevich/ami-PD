@@ -14,7 +14,8 @@ class WaterCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        let tintableImage = glassIcon.image?.withRenderingMode(.alwaysTemplate)
+        glassIcon.image = tintableImage
     }
 
 }

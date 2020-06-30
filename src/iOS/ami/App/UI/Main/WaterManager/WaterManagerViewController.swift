@@ -14,11 +14,19 @@ class WaterManagerViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var waterAmountLabel: UILabel!
+    @IBOutlet weak var drinkWaterButton: UIButton!
+    @IBOutlet weak var waterEnoughLabel: UILabel!
     
     var waterHistory: [WaterInfo] = []
     var weight: WeightInfo? {
         didSet {
             DispatchQueue.main.async {
+                if let weight = self.weight {
+                    let weight = weight.amount.rounded(toPlaces: 2)
+                    self.waterAmountLabel.text = "Количество воды расчитано на \(weight)кг"
+                } else {
+                    self.waterAmountLabel.text = "Не удалось расчитать вес"
+                }
                 self.collectionView.reloadData()
             }
         }
@@ -44,7 +52,7 @@ class WaterManagerViewController: UIViewController {
             case .success(let history):
                 self.weight = history.first
             case .failure(let error):
-                fatalError(error.localizedDescription)
+                self.showAlert(alertText: "Ошибка", alertMessage: error.localizedDescription)
             }
         }
         waterManager.get { (result) in
@@ -53,7 +61,7 @@ class WaterManagerViewController: UIViewController {
                 let calendar = Calendar.current
                 self.waterHistory = history.filter { calendar.isDateInToday($0.drinkedAt) }
             case .failure(let error):
-                fatalError(error.localizedDescription)
+                self.showAlert(alertText: "Ошибка", alertMessage: error.localizedDescription)
             }
         }
     }
@@ -64,6 +72,33 @@ class WaterManagerViewController: UIViewController {
         collectionView.dataSource = self
     }
 
+    @IBAction func drinkWater(_ sender: Any) {
+        waterManager.save(amount: 200, drinkedAt: Date()) { (result) in
+            switch result {
+            case .success(let info):
+                self.addWaterInfoToCollection(info)
+            case .failure(let error):
+                self.showAlert(alertText: "Ошибка", alertMessage: error.localizedDescription)
+            }
+        }
+    }
+    
+    private func addWaterInfoToCollection(_ waterInfo: WaterInfo) {
+        waterHistory.append(waterInfo)
+        DispatchQueue.main.async {
+            if self.waterHistory.count == self.glassCount {
+                self.drinkWaterButton.isHidden = true
+            }
+            self.collectionView.reloadData()
+        }
+    }
+    
+    private func checkIsWaterEnough() {
+        let isWaterEnough = waterHistory.count == glassCount
+        drinkWaterButton.isHidden = isWaterEnough
+        waterEnoughLabel.isHidden = !isWaterEnough
+    }
+    
 }
 
 extension WaterManagerViewController: UICollectionViewDelegateFlowLayout {
@@ -71,12 +106,14 @@ extension WaterManagerViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return GraphicHelper.calculateSizeOfSquaresInRectangle(rectangleSize: collectionView.frame.size, squareCount: glassCount)
+        return GraphicHelper.calculateSizeOfSquaresInRectangle(rectangleSize: collectionView.bounds.size,
+                                                               squareCount: glassCount)
     }
     
     func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return .zero
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -85,11 +122,18 @@ extension WaterManagerViewController: UICollectionViewDelegateFlowLayout {
         return 0
     }
     
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
 }
 
 extension WaterManagerViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        checkIsWaterEnough()
         return glassCount
     }
     
@@ -97,10 +141,10 @@ extension WaterManagerViewController: UICollectionViewDataSource {
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WaterCellReusable",
                                                             for: indexPath) as? WaterCollectionViewCell else { fatalError() }
-        if indexPath.row >= waterHistory.count,
-            let myImage = R.image.glassIcon() {
-            let tintableImage = myImage.withRenderingMode(.alwaysTemplate)
-            cell.glassIcon.image = tintableImage
+        if indexPath.row >= waterHistory.count {
+            cell.glassIcon.tintColor = R.color.ffb547()
+        } else {
+            cell.glassIcon.tintColor = R.color.ba2()
         }
         return cell
     }

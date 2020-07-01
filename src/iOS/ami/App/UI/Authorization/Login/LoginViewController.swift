@@ -21,12 +21,13 @@ class LoginViewControllerBuilder {
         controller.router = LoginRouter(controller: controller)
         controller.authManager = AuthManager()
         controller.authValidator = AuthValidator()
+        controller.errorParser = NetworkErrorParser()
         return controller
     }
     
 }
 
-class LoginViewController: UIViewController, Loading {
+class LoginViewController: UIViewController {
     
     // MARK: - Outlets
     
@@ -42,6 +43,7 @@ class LoginViewController: UIViewController, Loading {
     fileprivate var authManager: AuthManager!
     fileprivate var authValidator: AuthValidator!
     fileprivate var keyboardHelper: KeyboardHelper!
+    fileprivate var errorParser: NetworkErrorParser!
     
     // MARK: - Lifecycle
 
@@ -67,9 +69,9 @@ class LoginViewController: UIViewController, Loading {
     @IBAction func login(_ sender: Any) {
         guard let email = emailField.text,
             let password = passwordField.text else { return }
-        showSpinner()
+        LoaderView.instance.show()
         authManager.loginWithEmail(email, password: password) { (result) in
-            self.hideSpinner()
+            LoaderView.instance.hide()
             self.processResponse(result)
         }
     }
@@ -89,12 +91,7 @@ class LoginViewController: UIViewController, Loading {
                 self.toMain()
             }
         case .failure(let error):
-            switch error {
-            case .serverFailed(let code, let msg):
-                self.showAlert(alertText: "Ошибка сервера \(code)", alertMessage: msg) { }
-            default:
-                self.showAlert(alertText: "Сетевая ошибка", alertMessage: error.localizedDescription) { }
-            }
+            errorParser.parse(error)
         }
     }
     
@@ -130,5 +127,17 @@ extension LoginViewController: UITextFieldDelegate {
         default: fatalError()
         }
     }
+    
+}
+
+// MARK: - NetworkErrorParserDelegate
+
+extension LoginViewController: NetworkErrorParserDelegate {
+    
+    func showMessage(_ message: String) {
+        showAlert(alertText: "Ошибка", alertMessage: message)
+    }
+    
+    func goToAuth() { }
     
 }

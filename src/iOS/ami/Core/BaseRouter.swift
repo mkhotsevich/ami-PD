@@ -37,7 +37,7 @@ class BaseRouter: NSObject {
     }
     
     func setRoot(_ controller: UIViewController, transitionOptions: UIWindow.TransitionOptions? = nil) {
-        guard let window = UIApplication.shared.keyWindow else { return }
+        guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
 
         if let transitionOptions = transitionOptions {
             window.setRootViewController(controller,

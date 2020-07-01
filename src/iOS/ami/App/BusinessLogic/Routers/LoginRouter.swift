@@ -13,7 +13,7 @@ class LoginRouter: BaseRouter {
     func toRegister() {
         let registerVC = RegisterViewControllerBuilder.build()
         var transitionOptions = UIWindow.TransitionOptions(direction: .toLeft, style: .easeOut)
-        transitionOptions.duration = 0.4
+        transitionOptions.duration = 0.3
         setRoot(registerVC, transitionOptions: transitionOptions)
     }
     

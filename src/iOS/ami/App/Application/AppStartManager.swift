@@ -8,6 +8,7 @@
 
 import UIKit
 import DataManager
+import DesignKit
 
 final class AppStartManager {
     
@@ -37,6 +38,7 @@ final class AppStartManager {
     static func setupAppereance() {
         configureNavBar()
         configureTabBar()
+        configureLoaderView()
     }
         
     private static func configureNavBar() {
@@ -52,6 +54,11 @@ final class AppStartManager {
             let font = R.font.bloggerSansMedium(size: 24) else { fatalError() }
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: color,
                                                             .font: font]
+    }
+    
+    private static func configureLoaderView() {
+        LoaderView.instance.frameSize = 75
+        LoaderView.instance.cornerRadius = 15
     }
     
     private static func configureTabBar() {

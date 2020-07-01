@@ -31,7 +31,7 @@ class RegisterInfoFillViewControllerBuilder {
     
 }
 
-class RegisterInfoFillViewController: UIViewController, Loading {
+class RegisterInfoFillViewController: UIViewController {
     
     enum State {
         case register(email: String, password: String), edition
@@ -122,7 +122,7 @@ class RegisterInfoFillViewController: UIViewController, Loading {
         case .register(let email, let password):
             guard let weightStr = infoPlaceholderView.weightField.text?.replacingOccurrences(of: ",", with: "."),
                 let weight = Double(weightStr) else { return }
-            showSpinner()
+            LoaderView.instance.show()
             authManager.register(email: email,
                                  password: password,
                                  name: name,
@@ -132,11 +132,11 @@ class RegisterInfoFillViewController: UIViewController, Loading {
                                  height: height,
                                  appleId: nil,
                                  vkId: nil) {
-                                    self.hideSpinner()
+                                    LoaderView.instance.hide()
                                     self.proccessRegisterResponse($0)
             }
         case .edition:
-            showSpinner()
+            LoaderView.instance.show()
             userManager.update(email: nil,
                                password: nil,
                                name: name,
@@ -145,7 +145,7 @@ class RegisterInfoFillViewController: UIViewController, Loading {
                                height: height,
                                appleId: nil,
                                vkId: nil) { (result) in
-                                self.hideSpinner()
+                                LoaderView.instance.hide()
                                 self.proccessUpdateResponse(result)
             }
         default: fatalError()

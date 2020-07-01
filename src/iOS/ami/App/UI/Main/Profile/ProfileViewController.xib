@@ -35,31 +35,31 @@
                     <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yG8-9c-ziS">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="541"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="568.66666666666663"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vnk-4d-D8x">
-                                    <rect key="frame" x="35" y="25" width="305" height="188"/>
+                                    <rect key="frame" x="35" y="25" width="305" height="202.66666666666666"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Артем Куфаев" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CLn-Zo-qMW">
-                                            <rect key="frame" x="25" y="20" width="255" height="28"/>
+                                            <rect key="frame" x="25" y="19.999999999999996" width="255" height="32.666666666666657"/>
                                             <fontDescription key="fontDescription" name="BloggerSans-Medium" family="Blogger Sans" pointSize="28"/>
                                             <color key="textColor" name="478BA2"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата рождения: 12.01.1999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJ6-j9-yvr">
-                                            <rect key="frame" x="25" y="68" width="255" height="20"/>
+                                            <rect key="frame" x="25" y="72.666666666666657" width="255" height="23.333333333333329"/>
                                             <fontDescription key="fontDescription" name="BloggerSans-Medium" family="Blogger Sans" pointSize="20"/>
                                             <color key="textColor" name="478BA2"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Рост: 181.5 см" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RvS-jS-WpR">
-                                            <rect key="frame" x="25" y="108" width="255" height="20"/>
+                                            <rect key="frame" x="25" y="116" width="255" height="23.333333333333343"/>
                                             <fontDescription key="fontDescription" name="BloggerSans-Medium" family="Blogger Sans" pointSize="20"/>
                                             <color key="textColor" name="478BA2"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вес: 82.7 кг" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IIL-iw-lUF">
-                                            <rect key="frame" x="25" y="148" width="255" height="20"/>
+                                            <rect key="frame" x="25" y="159.33333333333334" width="255" height="23.333333333333343"/>
                                             <fontDescription key="fontDescription" name="BloggerSans-Medium" family="Blogger Sans" pointSize="20"/>
                                             <color key="textColor" name="478BA2"/>
                                             <nil key="highlightedColor"/>
@@ -94,16 +94,16 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I8v-e5-Hjm">
-                                    <rect key="frame" x="35" y="308" width="305" height="138"/>
+                                    <rect key="frame" x="35" y="322.66666666666669" width="305" height="151"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Почта: some-email@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aoX-61-042">
-                                            <rect key="frame" x="25" y="20" width="255" height="52"/>
+                                            <rect key="frame" x="25" y="19.999999999999996" width="255" height="60.666666666666657"/>
                                             <fontDescription key="fontDescription" name="BloggerSans-Medium" family="Blogger Sans" pointSize="26"/>
                                             <color key="textColor" name="478BA2"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пароль: ********" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZa-Xa-qlY">
-                                            <rect key="frame" x="25" y="92" width="255" height="26"/>
+                                            <rect key="frame" x="25" y="100.66666666666663" width="255" height="30.333333333333343"/>
                                             <fontDescription key="fontDescription" name="BloggerSans-Medium" family="Blogger Sans" pointSize="26"/>
                                             <color key="textColor" name="478BA2"/>
                                             <nil key="highlightedColor"/>
@@ -132,7 +132,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJR-lS-SlT" customClass="Button" customModule="DesignKit">
-                                    <rect key="frame" x="20" y="233" width="335" height="50"/>
+                                    <rect key="frame" x="20" y="247.66666666666669" width="335" height="50"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="BBf-XY-i7v"/>
                                     </constraints>
@@ -150,7 +150,7 @@
                                     </connections>
                                 </button>
                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GAo-uH-OgO" customClass="Button" customModule="DesignKit">
-                                    <rect key="frame" x="20" y="471" width="335" height="50"/>
+                                    <rect key="frame" x="20" y="498.66666666666663" width="335" height="50"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="LOj-X2-WVl"/>
                                     </constraints>

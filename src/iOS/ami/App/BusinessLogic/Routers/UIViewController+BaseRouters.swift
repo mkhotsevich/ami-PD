@@ -14,7 +14,7 @@ extension UIViewController {
         let baseRouter = BaseRouter(controller: self)
         let registerVC = RegisterViewControllerBuilder.build()
         var transitionOptions = UIWindow.TransitionOptions(direction: .fade, style: .easeOut)
-        transitionOptions.duration = 1
+        transitionOptions.duration = 0.5
         baseRouter.setRoot(registerVC, transitionOptions: transitionOptions)
     }
     
@@ -22,7 +22,7 @@ extension UIViewController {
         let baseRouter = BaseRouter(controller: self)
         let mainVC = MainViewController()
         var transitionOptions = UIWindow.TransitionOptions(direction: .fade, style: .easeOut)
-        transitionOptions.duration = 1
+        transitionOptions.duration = 0.5
         baseRouter.setRoot(mainVC, transitionOptions: transitionOptions)
     }
     

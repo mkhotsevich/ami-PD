@@ -15,7 +15,7 @@ protocol EditInfoCompleteDeligate: class {
     func completed()
 }
 
-class EditInfoViewController: UIViewController, Loading {
+class EditInfoViewController: UIViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var weightField: TextField!
@@ -68,7 +68,7 @@ class EditInfoViewController: UIViewController, Loading {
     @IBAction func processing(_ sender: Any) {
         guard let weightStr = weightField.text?.replacingOccurrences(of: ",", with: "."),
             let weight = Double(weightStr) else { return }
-        showSpinner()
+        LoaderView.instance.show()
         let weighedAt = dateTimeField.date
         switch state {
         case .creating:
@@ -80,7 +80,7 @@ class EditInfoViewController: UIViewController, Loading {
     
     private func createInfo(weight: Double, weighedAt: Date) {
         weightManager.save(amount: weight, weighedAt: weighedAt) { (result) in
-            self.hideSpinner()
+            LoaderView.instance.hide()
             switch result {
             case .success:
                 self.delegate?.completed()
@@ -95,7 +95,7 @@ class EditInfoViewController: UIViewController, Loading {
     
     private func editInfo(_ info: WeightInfo, weight: Double, weighedAt: Date) {
         weightManager.update(id: info.id, amount: weight, weighedAt: weighedAt) { (result) in
-            self.hideSpinner()
+            LoaderView.instance.hide()
             switch result {
             case .success:
                 self.delegate?.completed()

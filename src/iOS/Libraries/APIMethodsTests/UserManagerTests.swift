@@ -43,7 +43,7 @@ class UserManagerTests: XCTestCase {
                        password: TestUtils.correctPassword + "1234",
                        name: "Максим",
                        surname: "Хоцевич",
-                       birthdate: 959446290,
+                       birthdate: Date(timeIntervalSince1970: 959446290),
                        height: 160,
                        appleId: nil,
                        vkId: nil) { (result) in

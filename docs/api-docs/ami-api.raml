@@ -1,0 +1,224 @@
+#%RAML 1.0
+title: ami
+version: v1
+baseUri: https://amihp.ru/api/{version}/
+mediaType: [ application/json ]
+protocols: [ HTTPS ]
+
+uses:
+  lib: ami-library.raml
+  auth-lib: auth/ami-library-auth.raml
+  articles-lib: articles/ami-library-articles.raml
+  token-lib: token/ami-library-token.raml
+  users-lib: users/ami-library-users.raml
+  water-lib: history/water/ami-library-history-water.raml
+  weight-lib: history/weight/ami-library-history-weight.raml
+  sleep-lib: history/sleep/ami-library-history-sleep.raml
+  tasks-lib: history/tasks/ami-library-history-tasks.raml
+
+traits:
+  hasHeaders:
+    headers:
+      Authorization:
+        description: "Токен доступа, полученный через авторизацию"
+        type: string
+        example: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZWY0YmJjMmQxZGE0MmQ1Y2I0M2RiNzYiLCJpYXQiOjE1OTMxMTg5NjQsImV4cCI6MTU5NTcxMDk2NH0.mdeN9m-F24cYHHV3To0RLjHFN8tBwQf4TPY0Z_WCi3Y"
+
+resourceTypes:
+  history:
+    description: "История <<collectionNameR>>"
+    get:
+      is: ["hasHeaders"]
+      description: "Получение истории <<collectionNameR>>"
+      responses:
+        200:
+          body:
+            type: <<getHistoryExample>>
+    post:
+      description: "Добавление информации о <<collectionNameP>> в историю"
+      is: ["hasHeaders"]
+      body:
+        application/x-www-form-urlencoded:
+          type: <<postHistoryItemRequestBody>>
+      responses:
+        201:
+          body:
+            type: <<postHistoryItem201Example>>
+  history-item:
+    put:
+      description: "Обновление информации о <<collectionNameP>>"
+      is: ["hasHeaders"]
+      body:
+        application/x-www-form-urlencoded:
+          type: <<putHistoryItemRequestBody>>
+      responses:
+        200:
+          body: <<putHistoryItem200Example>>
+        404:
+          body: lib.NotFoundMessage
+    delete:
+      description: "Удаление информации о <<collectionNameP>>"
+      is: ["hasHeaders"]
+      responses:
+        200:
+          body: lib.SuccessMessage
+        404:
+          body: lib.NotFoundMessage
+
+# Authorization Methods
+/auth:
+  description: "Методы авторизации"
+  /register:
+    post:
+      description: "Регистрация нового пользователя"
+      body:
+        application/x-www-form-urlencoded:
+          type: users-lib.UserRequestRequired
+      responses:
+        201:
+          body:
+            type: auth-lib.RegisterOK
+        400:
+          body:
+            type: auth-lib.Register400
+  /login:
+    post:
+      description: "Авторизация пользователя"
+      body:
+        application/x-www-form-urlencoded:
+          type: auth-lib.LoginRequest
+      responses:
+        200:
+          body:
+            type: auth-lib.LoginOK
+        400:
+          body:
+            type: auth-lib.Login400
+
+  /restore:
+    post:
+      description: "Восстановление пароля пользователя"
+      body:
+        application/x-www-form-urlencoded:
+          type: auth-lib.RestoreRequest
+      responses:
+        200:
+          body:
+            type: auth-lib.RestoreOK
+
+# # Token Methods
+# /token:
+#   description: "Работа с токеном доступа"
+#   /refresh:
+#     post:
+#       description: "Обновление времени действия токена доступа"
+#       body:
+#         application/x-www-form-urlencoded:
+#           type: token-lib.Token
+#       responses:
+#         200:
+#           body:
+#             type: token-lib.RefreshSuccess
+
+# Users Methods
+/user:
+  description: "Модель пользователя"
+  get:
+    description: "Получение подробной информации о пользователе"
+    is: ["hasHeaders"]
+    responses:
+      200:
+        body:
+          type: users-lib.User
+      404:
+        body:
+          type: users-lib.UserNotFound
+  put:
+    description: "Обновление данных пользователя"
+    is: ["hasHeaders"]
+    body:
+      application/x-www-form-urlencoded:
+        type: users-lib.UserRequest
+    responses:
+      200:
+        body:
+          type: users-lib.User
+      404:
+        body:
+          type: users-lib.UserNotFound
+
+# History Methods
+/history:
+  /water:
+    type:
+      history:
+        postHistoryItemRequestBody: water-lib.WaterRequestRequired
+        postHistoryItem201Example: water-lib.WaterItem
+        collectionNameR: "выпитой воды"
+        collectionNameP: "выпитой воде"
+        getHistoryExample: water-lib.WaterCollection
+    /{id}:
+      type:
+        history-item:
+          putHistoryItemRequestBody: water-lib.WaterRequest
+          collectionNameR: "выпитой воды"
+          collectionNameP: "выпитой воде"
+          putHistoryItem200Example: water-lib.WaterItem
+
+  /weight:
+    type:
+      history:
+        postHistoryItemRequestBody: weight-lib.WeightRequestRequired
+        postHistoryItem201Example: weight-lib.WeightItem
+        collectionNameR: "взвешивания"
+        collectionNameP: "взвешивании"
+        getHistoryExample: weight-lib.WeightCollection
+    /{id}:
+      type:
+        history-item:
+          putHistoryItemRequestBody: weight-lib.WeightRequest
+          collectionNameR: "взвешивания"
+          collectionNameP: "взвешивании"
+          putHistoryItem200Example: weight-lib.WeightItem
+
+  /sleep:
+    type:
+      history:
+        postHistoryItemRequestBody: sleep-lib.SleepRequestRequired
+        postHistoryItem201Example: sleep-lib.SleepItem
+        collectionNameR: "сна"
+        collectionNameP: "сне"
+        getHistoryExample: sleep-lib.SleepCollection
+    /{id}:
+      type:
+        history-item:
+          putHistoryItemRequestBody: sleep-lib.SleepRequest
+          collectionNameR: "сна"
+          collectionNameP: "сне"
+          putHistoryItem200Example: sleep-lib.SleepItem
+
+  /tasks:
+    type:
+      history:
+        postHistoryItemRequestBody: tasks-lib.TaskRequestRequired
+        postHistoryItem201Example: tasks-lib.TaskItem
+        collectionNameR: "задач"
+        collectionNameP: "задачах"
+        getHistoryExample: tasks-lib.TaskCollection
+    /{id}:
+      type:
+        history-item:
+          putHistoryItemRequestBody: tasks-lib.TaskRequest
+          collectionNameR: "задач"
+          collectionNameP: "задачах"
+          putHistoryItem200Example: tasks-lib.TaskItem
+
+# Articles Methods
+/articles:
+  description: "Коллекция статей"
+  get:
+    description: "Получение списка статей"
+    responses:
+      200:
+        body:
+          type: articles-lib.ArticleCollection

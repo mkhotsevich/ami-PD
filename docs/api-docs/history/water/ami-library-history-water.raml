@@ -1,0 +1,49 @@
+#%RAML 1.0 Library
+types:
+
+  WaterCollection:
+    type: array
+    items:
+      type: object
+      properties:
+        _id:
+          required: true
+          type: string
+        amount:
+          required: true
+          type: number
+        drinkedAt:
+          required: true
+          type: number
+    example: !include ami-include-water-collection.json
+
+  WaterRequestRequired:
+    properties:
+      amount:
+        required: true
+        type: number
+      drinkedAt:
+        required: true
+        type: number
+
+  WaterRequest:
+    properties:
+      amount:
+        required: false
+        type: number
+      drinkedAt:
+        required: false
+        type: number
+
+  WaterItem:
+    properties:
+      _id:
+        required: true
+        type: string
+      amount:
+        required: true
+        type: number
+      drinkedAt:
+        required: true
+        type: number
+    example: !include ami-include-water-item.json

@@ -1,0 +1,141 @@
+#%RAML 1.0 Library
+types:
+
+  # Register
+
+  RegisterOK:
+    properties:
+      user:
+        type: object
+        properties:
+          _id:
+            type: string
+            required: true
+          email:
+            type: string
+            required: true
+          password:
+            description: Хэш пароля алгоритма MD5
+            type: string
+            required: true
+          name:
+            type: string
+            required: true
+          surname:
+            type: string
+            required: true
+          birthdate:
+            description: Дата рождения (timestamp)
+            type: number
+            required: true
+          height:
+            description: Рост пользователя
+            type: number
+            required: true
+          appleId:
+            description: ID пользователя авторизации через Apple ID
+            type: string
+            required: false
+          vkId:
+            description: ID пользователя авторизации через VK
+            type: number
+            required: false
+      accessToken:
+        type: string
+        required: true
+    example: !include ami-include-auth-data.json
+
+  Register400:
+    properties:
+      message:
+        type: string
+        required: true
+    example: |
+      {
+        message: "Пользователь с таким Email уже существует"
+      }
+
+  # Login
+
+  LoginRequest:
+    properties:
+      email:
+        required: false
+        type: string
+      password:
+        description: "Хэш пароля алгоритма MD5"
+        required: false
+        type: string
+      appleId:
+        required: false
+        type: string
+      vkId:
+        required: false
+        type: number
+
+  LoginOK:
+    properties:
+      user:
+        type: object
+        properties:
+          id:
+            type: string
+            required: true
+          email:
+            type: string
+            required: true
+          password:
+            description: Хэш пароля алгоритма MD5
+            type: string
+            required: true
+          name:
+            type: string
+            required: true
+          surname:
+            type: string
+            required: true
+          birthdate:
+            description: Дата рождения (timestamp)
+            type: number
+            required: true
+          height:
+            description: Рост пользователя
+            type: number
+            required: true
+          appleId:
+            description: ID пользователя авторизации через Apple ID
+            type: string
+            required: false
+          vkId:
+            description: ID пользователя авторизации через VK
+            type: number
+            required: false
+      accessToken:
+        type: string
+        required: true
+    example: !include ami-include-auth-data.json
+
+  Login400:
+    properties:
+      message:
+        type: string
+        required: true
+    example: |
+      {
+        message: "Пользователь с таким Email не найден"
+      }
+
+  # Restore
+
+  RestoreRequest:
+    properties:
+      email:
+        required: true
+        type: string
+
+  RestoreOK:
+    properties:
+      message:
+        type: string
+        required: true
+    example: !include ami-include-auth-restore-success.json

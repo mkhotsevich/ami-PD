@@ -1,0 +1,15 @@
+#%RAML 1.0 Library
+types:
+
+  Token:
+    properties:
+      accessToken:
+        required: true
+        type: string
+
+  RefreshSuccess:
+    properties:
+      accessToken:
+        required: true
+        type: string
+    example: !include ami-include-token.json

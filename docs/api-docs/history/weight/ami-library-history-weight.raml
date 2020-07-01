@@ -1,0 +1,49 @@
+#%RAML 1.0 Library
+types:
+
+  WeightCollection:
+    type: array
+    items:
+      type: object
+      properties:
+        _id:
+          required: true
+          type: string
+        amount:
+          required: true
+          type: number
+        weighedAt:
+          required: true
+          type: number
+    example: !include ami-include-weight-collection.json
+
+  WeightRequestRequired:
+    properties:
+      amount:
+        required: true
+        type: number
+      weighedAt:
+        required: true
+        type: number
+
+  WeightRequest:
+    properties:
+      amount:
+        required: false
+        type: number
+      weighedAt:
+        required: false
+        type: number
+
+  WeightItem:
+    properties:
+      _id:
+        required: true
+        type: string
+      amount:
+        required: true
+        type: number
+      weighedAt:
+        required: true
+        type: number
+    example: !include ami-include-weight-item.json

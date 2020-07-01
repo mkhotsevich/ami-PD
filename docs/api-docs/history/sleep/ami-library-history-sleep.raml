@@ -1,0 +1,49 @@
+#%RAML 1.0 Library
+types:
+
+  SleepCollection:
+    type: array
+    items:
+      type: object
+      properties:
+        _id:
+          required: true
+          type: string
+        endAt:
+          required: true
+          type: number
+        riseAt:
+          required: true
+          type: number
+    example: !include ami-include-sleep-collection.json
+
+  SleepRequestRequired:
+    properties:
+      endAt:
+        required: true
+        type: number
+      riseAt:
+        required: true
+        type: number
+
+  SleepRequest:
+    properties:
+      endAt:
+        required: false
+        type: number
+      riseAt:
+        required: false
+        type: number
+
+  SleepItem:
+    properties:
+      _id:
+        required: true
+        type: string
+      endAt:
+        required: true
+        type: number
+      riseAt:
+        required: true
+        type: number
+    example: !include ami-include-sleep-item.json

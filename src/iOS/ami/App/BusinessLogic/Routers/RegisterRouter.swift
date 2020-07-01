@@ -17,6 +17,8 @@ class RegisterRouter: BaseRouter {
             infoFillVC = RegisterInfoFillViewControllerBuilder.build(state: .register(email: email,
                                                                                       password: password))
             infoFillVC?.router = InputRegisterInfoFillRouter(controller: infoFillVC!)
+        } else {
+            infoFillVC?.state = .register(email: email, password: password)
         }
         push(infoFillVC!, animated: true)
     }

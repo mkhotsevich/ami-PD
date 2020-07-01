@@ -69,9 +69,11 @@ class WaterManagerViewController: UIViewController {
                     let weight = weight.amount.rounded(toPlaces: 2)
                     self.waterAmountLabel.text = "Количество воды расчитано на \(weight)кг"
                     self.drinkWaterButton.isHidden = false
+                    self.drinkWaterButton.isEnabled = true
                 } else {
                     self.waterAmountLabel.text = "Отсутствуют данные вашего веса"
                     self.drinkWaterButton.isHidden = true
+                    self.drinkWaterButton.isEnabled = false
                 }
                 self.checkIsWaterEnough()
                 self.collectionView.reloadData()
@@ -119,8 +121,8 @@ class WaterManagerViewController: UIViewController {
 
     @IBAction func drinkWater(_ sender: Any) {
         lastFilledGlassIndex += 1
-        fillGlass(for: lastFilledGlassIndex)
         checkIsWaterEnough()
+        fillGlass(for: lastFilledGlassIndex)
         saveWater(for: lastFilledGlassIndex)
     }
     
@@ -169,12 +171,15 @@ class WaterManagerViewController: UIViewController {
     
     private func fillGlass(for number: Int) {
         let index = IndexPath(row: number, section: 0)
-        collectionView.reloadItems(at: [index])
+        DispatchQueue.main.async {
+            self.collectionView.reloadItems(at: [index])
+        }
     }
     
     private func checkIsWaterEnough() {
         guard weight != nil else { return }
         let isWaterEnough = lastFilledGlassIndex + 1 == glassCount
+        drinkWaterButton.isEnabled = !isWaterEnough
         drinkWaterButton.isHidden = isWaterEnough
         waterEnoughLabel.isHidden = !isWaterEnough
     }

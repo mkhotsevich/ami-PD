@@ -10,6 +10,7 @@ import UIKit
 import DesignKit
 import DataManager
 import UIUtils
+import NetworkCore
 
 // MARK: - Builder
 
@@ -25,7 +26,7 @@ class LoginViewControllerBuilder {
     
 }
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, Loading {
     
     // MARK: - Outlets
     
@@ -66,20 +67,10 @@ class LoginViewController: UIViewController {
     @IBAction func login(_ sender: Any) {
         guard let email = emailField.text,
             let password = passwordField.text else { return }
+        showSpinner()
         authManager.loginWithEmail(email, password: password) { (result) in
-            switch result {
-            case .success(let authData):
-                self.showAlert(alertText: "Успешно!", alertMessage: "Ваш ID в системе: \(authData.user.id)\nТокен доступа: \(authData.accessToken)") {
-                    self.toMain()
-                }
-            case .failure(let error):
-                switch error {
-                case .serverFailed(let code, let msg):
-                    self.showAlert(alertText: "Ошибка сервера \(code)", alertMessage: msg) { }
-                default:
-                    self.showAlert(alertText: "Сетевая ошибка", alertMessage: error.localizedDescription) { }
-                }
-            }
+            self.hideSpinner()
+            self.processResponse(result)
         }
     }
     
@@ -90,6 +81,22 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - Private
+    
+    private func processResponse(_ result: NetworkResultWithModel<AuthData>) {
+        switch result {
+        case .success(let authData):
+            self.showAlert(alertText: "Успешно!", alertMessage: "Ваш ID в системе: \(authData.user.id)\nТокен доступа: \(authData.accessToken)") {
+                self.toMain()
+            }
+        case .failure(let error):
+            switch error {
+            case .serverFailed(let code, let msg):
+                self.showAlert(alertText: "Ошибка сервера \(code)", alertMessage: msg) { }
+            default:
+                self.showAlert(alertText: "Сетевая ошибка", alertMessage: error.localizedDescription) { }
+            }
+        }
+    }
     
     private func validateForm() {
         let isValidEmail = authValidator.validateEmail(emailField)

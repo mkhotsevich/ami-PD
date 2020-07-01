@@ -65,6 +65,8 @@
 		57802B5C24AA22F800CF9C93 /* KeyboardHide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57802B5B24AA22F800CF9C93 /* KeyboardHide.swift */; };
 		57A19ACC24ACABD300E04076 /* DatePickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573FABFD24AA463600D7BECA /* DatePickerField.swift */; };
 		57A19ACE24ACAF8900E04076 /* RegisterInfoFillRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A19ACD24ACAF8900E04076 /* RegisterInfoFillRouter.swift */; };
+		57A19AD624ACBA6400E04076 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A19AD524ACBA6400E04076 /* SpinnerView.swift */; };
+		57A19AD824ACBAAD00E04076 /* UIViewController+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A19AD724ACBAAD00E04076 /* UIViewController+Loading.swift */; };
 		57CB156724AB236F00B0D22D /* WaterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57CB156524AB236F00B0D22D /* WaterCollectionViewCell.xib */; };
 		57CB156824AB236F00B0D22D /* WaterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB156624AB236F00B0D22D /* WaterCollectionViewCell.swift */; };
 		57CB156A24AB33ED00B0D22D /* GraphicHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB156924AB33ED00B0D22D /* GraphicHelper.swift */; };
@@ -288,6 +290,8 @@
 		57802B5724AA224F00CF9C93 /* KeyboardAdaptive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAdaptive.swift; sourceTree = "<group>"; };
 		57802B5B24AA22F800CF9C93 /* KeyboardHide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHide.swift; sourceTree = "<group>"; };
 		57A19ACD24ACAF8900E04076 /* RegisterInfoFillRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterInfoFillRouter.swift; sourceTree = "<group>"; };
+		57A19AD524ACBA6400E04076 /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
+		57A19AD724ACBAAD00E04076 /* UIViewController+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Loading.swift"; sourceTree = "<group>"; };
 		57CB156524AB236F00B0D22D /* WaterCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterCollectionViewCell.xib; sourceTree = "<group>"; };
 		57CB156624AB236F00B0D22D /* WaterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterCollectionViewCell.swift; sourceTree = "<group>"; };
 		57CB156924AB33ED00B0D22D /* GraphicHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicHelper.swift; sourceTree = "<group>"; };
@@ -822,6 +826,8 @@
 				57201F7624AA86390098BA97 /* UIViewController+Alert.swift */,
 				57201F8924AAA8FC0098BA97 /* UIWindowTransitions.swift */,
 				57CB156924AB33ED00B0D22D /* GraphicHelper.swift */,
+				57A19AD524ACBA6400E04076 /* SpinnerView.swift */,
+				57A19AD724ACBAAD00E04076 /* UIViewController+Loading.swift */,
 			);
 			path = UIUtils;
 			sourceTree = "<group>";
@@ -1603,12 +1609,14 @@
 				57201F7824AA86430098BA97 /* UIViewController+Alert.swift in Sources */,
 				57CDF9D024A8C3030053300A /* ReusableCell.swift in Sources */,
 				57201F7024AA80700098BA97 /* UIView+KeyboardClosure.swift in Sources */,
+				57A19AD624ACBA6400E04076 /* SpinnerView.swift in Sources */,
 				57201F8B24AAA90C0098BA97 /* UIWindowTransitions.swift in Sources */,
 				57802B5C24AA22F800CF9C93 /* KeyboardHide.swift in Sources */,
 				57802B5924AA224F00CF9C93 /* KeyboardHeightPublisher.swift in Sources */,
 				57CDF9CF24A8C3030053300A /* ConfigurableCell.swift in Sources */,
 				57802B3724AA113000CF9C93 /* UIColor+Hex.swift in Sources */,
 				57CDF9CE24A8C3030053300A /* UITableView+ReusableCell.swift in Sources */,
+				57A19AD824ACBAAD00E04076 /* UIViewController+Loading.swift in Sources */,
 				57CDF9CD24A8C3030053300A /* TableViewAdapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

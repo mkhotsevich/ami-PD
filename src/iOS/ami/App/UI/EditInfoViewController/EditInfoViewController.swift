@@ -15,7 +15,7 @@ protocol EditInfoCompleteDeligate: class {
     func completed()
 }
 
-class EditInfoViewController: UIViewController {
+class EditInfoViewController: UIViewController, Loading {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var weightField: TextField!
@@ -51,8 +51,6 @@ class EditInfoViewController: UIViewController {
         dateTimeField.datePicker.maximumDate = Date()
         dateTimeField.dateFormatter.dateFormat = "HH:mm dd.MM.yyyy"
         
-        validateForm()
-        
         switch state {
         case .editing(let info):
             titleLabel.text = "Изменение информации"
@@ -63,11 +61,14 @@ class EditInfoViewController: UIViewController {
             titleLabel.text = "Добавление информации"
             button.setTitle("Добавить", for: .normal)
         }
+        
+        validateForm()
     }
 
     @IBAction func processing(_ sender: Any) {
         guard let weightStr = weightField.text?.replacingOccurrences(of: ",", with: "."),
             let weight = Double(weightStr) else { return }
+        showSpinner()
         let weighedAt = dateTimeField.date
         switch state {
         case .creating:
@@ -79,6 +80,7 @@ class EditInfoViewController: UIViewController {
     
     private func createInfo(weight: Double, weighedAt: Date) {
         weightManager.save(amount: weight, weighedAt: weighedAt) { (result) in
+            self.hideSpinner()
             switch result {
             case .success:
                 self.delegate?.completed()
@@ -93,6 +95,7 @@ class EditInfoViewController: UIViewController {
     
     private func editInfo(_ info: WeightInfo, weight: Double, weighedAt: Date) {
         weightManager.update(id: info.id, amount: weight, weighedAt: weighedAt) { (result) in
+            self.hideSpinner()
             switch result {
             case .success:
                 self.delegate?.completed()

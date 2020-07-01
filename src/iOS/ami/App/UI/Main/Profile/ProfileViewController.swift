@@ -12,16 +12,22 @@ import Storage
 
 class ProfileViewController: UIViewController {
     
+    // MARK: - Outlets
+    
     @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var birthdateLabel: UILabel!
     @IBOutlet weak var heightLabel: UILabel!
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
+    // MARK: - Dependenses
+    
     private var router: ProfileRouter!
     private var userManager: UserManager!
     private var weightManager: WeightManager!
     private var errorParser: NetworkErrorParser!
+    
+    // MARK: - Properties
     
     private var user: User! {
         didSet {
@@ -42,6 +48,8 @@ class ProfileViewController: UIViewController {
             }
         }
     }
+    
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +66,8 @@ class ProfileViewController: UIViewController {
         super.viewWillAppear(animated)
         loadData()
     }
+    
+    // MARK: - Private
     
     private func clearData() {
         fullNameLabel.text = "******* *******"

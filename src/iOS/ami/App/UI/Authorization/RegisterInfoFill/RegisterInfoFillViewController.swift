@@ -185,9 +185,10 @@ class RegisterInfoFillViewController: UIViewController {
 extension RegisterInfoFillViewController: NetworkErrorParserDelegate {
     
     func showMessage(_ message: String) {
-        showAlert(alertText: "Ошибка", alertMessage: message)
-        DispatchQueue.main.async {
-            self.router.goBack()
+        showAlert(alertText: "Ошибка", alertMessage: message) {
+            DispatchQueue.main.async {
+                self.router.goBack()
+            }
         }
     }
     

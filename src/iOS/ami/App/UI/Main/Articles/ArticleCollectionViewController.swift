@@ -53,7 +53,16 @@ class ArticlesViewController: UIViewController {
         super.viewDidLoad()
         setupCollectionView()
         configureCollectionView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         loadData()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        collectionView.frame = self.view.bounds
     }
     
     // MARK: - Configure
@@ -63,7 +72,7 @@ class ArticlesViewController: UIViewController {
         view.backgroundColor = .white
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        collectionView = UICollectionView(frame: self.view.frame,
+        collectionView = UICollectionView(frame: self.view.bounds,
                                           collectionViewLayout: layout)
         view.addSubview(collectionView)
         self.view = view

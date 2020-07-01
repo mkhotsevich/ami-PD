@@ -54,6 +54,8 @@ class LoginViewController: UIViewController {
         keyboardHelper = KeyboardHelper(view: view, scrollView: scrollView)
         keyboardHelper.startObserve()
         
+        errorParser.delegate = self
+        
         emailField.delegate = self
         passwordField.delegate = self
         

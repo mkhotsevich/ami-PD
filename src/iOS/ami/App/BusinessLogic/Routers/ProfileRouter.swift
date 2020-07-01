@@ -10,4 +10,13 @@ import UIKit
 
 class ProfileRouter: BaseRouter {
     
+    func toEdit() {
+        guard let selfController = controller as? ProfileViewController else { fatalError() }
+        let controller = RegisterInfoFillViewControllerBuilder.build(state: .edition)
+        controller.modalPresentationStyle = .formSheet
+        controller.router = UpdateRegisterInfoFillRouter(controller: selfController)
+        controller.delegate = selfController
+        present(controller, animated: true)
+    }
+    
 }

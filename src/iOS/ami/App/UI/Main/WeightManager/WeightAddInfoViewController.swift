@@ -25,7 +25,7 @@ class EditInfoViewController: UIViewController {
     fileprivate var errorParser: NetworkErrorParser!
     fileprivate var router: BaseRouter!
     
-    var delegate: EditInfoCompleteDeligate?
+    weak var delegate: EditInfoCompleteDeligate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

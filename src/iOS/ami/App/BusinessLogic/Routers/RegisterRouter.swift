@@ -14,7 +14,9 @@ class RegisterRouter: BaseRouter {
     
     func toInfoPlaceholder(email: String, password: String) {
         if infoFillVC == nil {
-            infoFillVC = RegisterInfoFillViewControllerBuilder.build(email: email, password: password)
+            infoFillVC = RegisterInfoFillViewControllerBuilder.build(state: .register(email: email,
+                                                                                      password: password))
+            infoFillVC?.router = InputRegisterInfoFillRouter(controller: infoFillVC!)
         }
         push(infoFillVC!, animated: true)
     }

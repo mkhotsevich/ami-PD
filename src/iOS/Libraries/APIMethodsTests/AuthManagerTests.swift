@@ -25,7 +25,7 @@ class AuthManagerTests: XCTestCase {
                       password: randomer(15),
                       name: randomer(5),
                       surname: randomer(8),
-                      birthdate: Int.random(in: 10...10),
+                      birthdate: Date(timeIntervalSince1970: TimeInterval(Int.random(in: 10...10))),
                       weight: Double.random(in: 10...300),
                       height: Double.random(in: 30...240),
                       appleId: randomer(10),

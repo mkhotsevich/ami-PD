@@ -8,6 +8,7 @@
 
 import UIKit
 import DataManager
+import Storage
 
 class ProfileViewController: UIViewController {
     
@@ -51,6 +52,10 @@ class ProfileViewController: UIViewController {
         errorParser = NetworkErrorParser()
         errorParser.delegate = self
         configureLogoutBtn()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         loadData()
     }
     
@@ -111,6 +116,18 @@ class ProfileViewController: UIViewController {
         })
     }
 
+    @IBAction func editData(_ sender: Any) {
+        router.toEdit()
+    }
+    
+}
+
+extension ProfileViewController: RegisterInfoFillViewControllerDelegate {
+    
+    func completed() {
+        loadData()
+    }
+    
 }
 
 extension ProfileViewController: NetworkErrorParserDelegate {

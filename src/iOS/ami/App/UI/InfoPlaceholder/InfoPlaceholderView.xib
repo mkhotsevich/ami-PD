@@ -84,7 +84,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="День рождения" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nli-8z-nYf" customClass="DatePickerField" customModule="UIUtils">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="День рождения" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nli-8z-nYf" customClass="DatePickerField" customModule="DesignKit">
                     <rect key="frame" x="0.0" y="70" width="434" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="MPe-kW-UrG"/>

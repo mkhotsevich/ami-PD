@@ -35,6 +35,7 @@ class InfoPlaceholderView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        configure()
     }
     
     private func configure() {

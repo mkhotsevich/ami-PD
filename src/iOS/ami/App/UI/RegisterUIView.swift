@@ -123,10 +123,8 @@ struct KeyboardTypeView: View {
                 Text("Full Name :" + self.firstName + " " + self.lastName)
             }
         }
+    }
 }
-}
-
-
 
 struct TextFieldTyped: UIViewRepresentable {
     let keyboardType: UIKeyboardType

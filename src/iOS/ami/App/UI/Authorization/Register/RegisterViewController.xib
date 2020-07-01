@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -31,17 +31,17 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GKc-fh-XKc">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2jp-Zm-gCi" customClass="Button" customModule="DesignKit">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="250" text="Введите все данные, чтобы продолжить" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7Y-56-Vyb">
-                                    <rect key="frame" x="20" y="220" width="374" height="40"/>
+                                    <rect key="frame" x="20" y="186" width="335" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="y2u-t4-A0Y"/>
                                     </constraints>
@@ -50,7 +50,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xcj-Pi-Qgj" customClass="TextField" customModule="DesignKit">
-                                    <rect key="frame" x="20" y="300" width="374" height="50"/>
+                                    <rect key="frame" x="20" y="266" width="335" height="50"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="x3p-Bq-OcY"/>
                                     </constraints>
@@ -69,7 +69,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </textField>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xsq-yE-vxL" customClass="TextField" customModule="DesignKit">
-                                    <rect key="frame" x="20" y="385" width="374" height="50"/>
+                                    <rect key="frame" x="20" y="351" width="335" height="50"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="kDi-kT-xVb"/>
                                     </constraints>
@@ -88,7 +88,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </textField>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Повторите пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aWW-q9-vcL" customClass="TextField" customModule="DesignKit">
-                                    <rect key="frame" x="20" y="470" width="374" height="50"/>
+                                    <rect key="frame" x="20" y="436" width="335" height="50"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="tSa-cp-qrh"/>
                                     </constraints>
@@ -107,7 +107,8 @@
                                     </userDefinedRuntimeAttributes>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HaS-oP-pBF" customClass="Button" customModule="DesignKit">
-                                    <rect key="frame" x="20" y="657" width="374" height="50"/>
+                                    <rect key="frame" x="20" y="506" width="335" height="50"/>
+                                    <color key="backgroundColor" name="00BCB4"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="jTu-ds-mzd"/>
                                     </constraints>
@@ -134,7 +135,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SbS-HE-tcp">
-                                    <rect key="frame" x="20" y="748" width="374" height="50"/>
+                                    <rect key="frame" x="20" y="597" width="335" height="50"/>
                                     <color key="backgroundColor" name="86A845"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="kAe-Gy-xkp"/>
@@ -153,7 +154,7 @@
                                     </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hQf-hP-xGw">
-                                    <rect key="frame" x="99.5" y="727" width="215" height="1"/>
+                                    <rect key="frame" x="80" y="576" width="215" height="1"/>
                                     <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="215" id="hEh-o9-02Z"/>
@@ -161,7 +162,7 @@
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="250" text="Регистрация" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aL1-cP-2X5">
-                                    <rect key="frame" x="70" y="150" width="274" height="25"/>
+                                    <rect key="frame" x="70" y="116" width="235" height="25"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="25" id="HtK-Ur-vfC"/>
                                     </constraints>

@@ -12,12 +12,12 @@ import NetworkCore
 public enum UserAPI {
     case get
     case update(
-        email: String,
-        password: String,
-        name: String,
-        surname: String,
-        birthdate: Int,
-        height: Double,
+        email: String?,
+        password: String?,
+        name: String?,
+        surname: String?,
+        birthdate: Int?,
+        height: Double?,
         appleId: String?,
         vkId: Int?
     )
@@ -50,14 +50,25 @@ extension UserAPI: INetworkAPI {
                          let height,
                          let appleId,
                          let vkId):
-            var parameters: Parameters = [
-                "email": email,
-                "password": password,
-                "name": name,
-                "surname": surname,
-                "birthdate": birthdate,
-                "height": height
-            ]
+            var parameters: Parameters = [:]
+            if let email = email {
+                parameters["email"] = email
+            }
+            if let password = password {
+                parameters["password"] = password
+            }
+            if let name = name {
+                parameters["name"] = name
+            }
+            if let surname = surname {
+                parameters["surname"] = surname
+            }
+            if let birthdate = birthdate {
+                parameters["birthdate"] = birthdate
+            }
+            if let height = height {
+                parameters["height"] = height
+            }
             if let appleId = appleId {
                 parameters["appleId"] = appleId
             }

@@ -12,7 +12,6 @@
 		57201F6C24AA70280098BA97 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57201F6A24AA6F320098BA97 /* TextField.swift */; };
 		57201F6E24AA72D50098BA97 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573FABED24AA3DA100D7BECA /* R.generated.swift */; };
 		57201F7024AA80700098BA97 /* UIView+KeyboardClosure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573FAC0624AA59C000D7BECA /* UIView+KeyboardClosure.swift */; };
-		57201F7224AA80F20098BA97 /* TextField+DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573FABFD24AA463600D7BECA /* TextField+DatePicker.swift */; };
 		57201F7824AA86430098BA97 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57201F7624AA86390098BA97 /* UIViewController+Alert.swift */; };
 		57201F7B24AA940A0098BA97 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57201F7924AA94040098BA97 /* Button.swift */; };
 		57201F8424AAA7B30098BA97 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57201F8224AAA7B30098BA97 /* LoginViewController.swift */; };
@@ -64,6 +63,8 @@
 		57802B5924AA224F00CF9C93 /* KeyboardHeightPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57802B5624AA224F00CF9C93 /* KeyboardHeightPublisher.swift */; };
 		57802B5A24AA224F00CF9C93 /* KeyboardAdaptive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57802B5724AA224F00CF9C93 /* KeyboardAdaptive.swift */; };
 		57802B5C24AA22F800CF9C93 /* KeyboardHide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57802B5B24AA22F800CF9C93 /* KeyboardHide.swift */; };
+		57A19ACC24ACABD300E04076 /* DatePickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573FABFD24AA463600D7BECA /* DatePickerField.swift */; };
+		57A19ACE24ACAF8900E04076 /* RegisterInfoFillRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A19ACD24ACAF8900E04076 /* RegisterInfoFillRouter.swift */; };
 		57CB156724AB236F00B0D22D /* WaterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57CB156524AB236F00B0D22D /* WaterCollectionViewCell.xib */; };
 		57CB156824AB236F00B0D22D /* WaterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB156624AB236F00B0D22D /* WaterCollectionViewCell.swift */; };
 		57CB156A24AB33ED00B0D22D /* GraphicHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB156924AB33ED00B0D22D /* GraphicHelper.swift */; };
@@ -252,7 +253,7 @@
 		573FABF424AA42DF00D7BECA /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		573FABF724AA42FD00D7BECA /* RegisterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRouter.swift; sourceTree = "<group>"; };
 		573FABFB24AA43D700D7BECA /* InfoPlaceholderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoPlaceholderView.xib; sourceTree = "<group>"; };
-		573FABFD24AA463600D7BECA /* TextField+DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+DatePicker.swift"; sourceTree = "<group>"; };
+		573FABFD24AA463600D7BECA /* DatePickerField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerField.swift; sourceTree = "<group>"; };
 		573FABFF24AA4A6700D7BECA /* InfoPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPlaceholderView.swift; sourceTree = "<group>"; };
 		573FAC0224AA4B3900D7BECA /* RegisterInfoFillViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInfoFillViewController.swift; sourceTree = "<group>"; };
 		573FAC0324AA4B3900D7BECA /* RegisterInfoFillViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterInfoFillViewController.xib; sourceTree = "<group>"; };
@@ -286,6 +287,7 @@
 		57802B5624AA224F00CF9C93 /* KeyboardHeightPublisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardHeightPublisher.swift; sourceTree = "<group>"; };
 		57802B5724AA224F00CF9C93 /* KeyboardAdaptive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAdaptive.swift; sourceTree = "<group>"; };
 		57802B5B24AA22F800CF9C93 /* KeyboardHide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHide.swift; sourceTree = "<group>"; };
+		57A19ACD24ACAF8900E04076 /* RegisterInfoFillRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterInfoFillRouter.swift; sourceTree = "<group>"; };
 		57CB156524AB236F00B0D22D /* WaterCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaterCollectionViewCell.xib; sourceTree = "<group>"; };
 		57CB156624AB236F00B0D22D /* WaterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterCollectionViewCell.swift; sourceTree = "<group>"; };
 		57CB156924AB33ED00B0D22D /* GraphicHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicHelper.swift; sourceTree = "<group>"; };
@@ -470,7 +472,6 @@
 		57201F9224AAB34C0098BA97 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
-				573FAC0124AA4B0100D7BECA /* RegisterInfoFill */,
 				573FABF924AA439200D7BECA /* Register */,
 				57201F8124AAA79C0098BA97 /* Login */,
 			);
@@ -529,6 +530,7 @@
 		573FABF624AA42EE00D7BECA /* Routers */ = {
 			isa = PBXGroup;
 			children = (
+				57A19ACD24ACAF8900E04076 /* RegisterInfoFillRouter.swift */,
 				57CB158F24ABB42500B0D22D /* UIViewController+BaseRouters.swift */,
 				573FABF724AA42FD00D7BECA /* RegisterRouter.swift */,
 				57201F8C24AAAB5B0098BA97 /* LoginRouter.swift */,
@@ -564,7 +566,8 @@
 				573FAC0224AA4B3900D7BECA /* RegisterInfoFillViewController.swift */,
 				573FAC0324AA4B3900D7BECA /* RegisterInfoFillViewController.xib */,
 			);
-			path = RegisterInfoFill;
+			name = RegisterInfoFill;
+			path = Authorization/RegisterInfoFill;
 			sourceTree = "<group>";
 		};
 		5779BF5E24A3F181005113D4 = {
@@ -679,6 +682,7 @@
 				57CB159924ABD9B500B0D22D /* EditInfoViewController */,
 				57201F9824AAB3A50098BA97 /* Welcome */,
 				573FABFA24AA439800D7BECA /* InfoPlaceholder */,
+				573FAC0124AA4B0100D7BECA /* RegisterInfoFill */,
 				57201F9224AAB34C0098BA97 /* Authorization */,
 				57201F8624AAA8030098BA97 /* Main */,
 			);
@@ -698,6 +702,7 @@
 		57802B3E24AA13AF00CF9C93 /* DesignKit */ = {
 			isa = PBXGroup;
 			children = (
+				573FABFD24AA463600D7BECA /* DatePickerField.swift */,
 				57802B4024AA13AF00CF9C93 /* Info.plist */,
 				573FABEA24AA3CF700D7BECA /* UIView+ExtraProperties.swift */,
 				57201F6A24AA6F320098BA97 /* TextField.swift */,
@@ -813,7 +818,6 @@
 				57CDF9C824A8C3030053300A /* TableViewAdapter */,
 				57CDF74E24A8C2680053300A /* Info.plist */,
 				57802B3324AA0F2A00CF9C93 /* UIColor+Hex.swift */,
-				573FABFD24AA463600D7BECA /* TextField+DatePicker.swift */,
 				573FAC0624AA59C000D7BECA /* UIView+KeyboardClosure.swift */,
 				57201F7624AA86390098BA97 /* UIViewController+Alert.swift */,
 				57201F8924AAA8FC0098BA97 /* UIWindowTransitions.swift */,
@@ -1498,6 +1502,7 @@
 				57CB159224ABC8C200B0D22D /* WeightHistoryRouter.swift in Sources */,
 				5779BF6B24A3F181005113D4 /* AppDelegate.swift in Sources */,
 				573FABF524AA42DF00D7BECA /* BaseRouter.swift in Sources */,
+				57A19ACE24ACAF8900E04076 /* RegisterInfoFillRouter.swift in Sources */,
 				57201FB124AAB4300098BA97 /* WaterManagerViewController.swift in Sources */,
 				57CB158E24ABA65000B0D22D /* NetworkErrorParser.swift in Sources */,
 				5779BF6D24A3F181005113D4 /* SceneDelegate.swift in Sources */,
@@ -1521,6 +1526,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				573FABEC24AA3D1100D7BECA /* UIView+ExtraProperties.swift in Sources */,
+				57A19ACC24ACABD300E04076 /* DatePickerField.swift in Sources */,
 				57201F7B24AA940A0098BA97 /* Button.swift in Sources */,
 				57201F6C24AA70280098BA97 /* TextField.swift in Sources */,
 			);
@@ -1594,7 +1600,6 @@
 				57CB156A24AB33ED00B0D22D /* GraphicHelper.swift in Sources */,
 				57802B5A24AA224F00CF9C93 /* KeyboardAdaptive.swift in Sources */,
 				57802B5824AA224F00CF9C93 /* UIResponder+Current.swift in Sources */,
-				57201F7224AA80F20098BA97 /* TextField+DatePicker.swift in Sources */,
 				57201F7824AA86430098BA97 /* UIViewController+Alert.swift in Sources */,
 				57CDF9D024A8C3030053300A /* ReusableCell.swift in Sources */,
 				57201F7024AA80700098BA97 /* UIView+KeyboardClosure.swift in Sources */,

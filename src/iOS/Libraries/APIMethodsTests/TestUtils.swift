@@ -38,7 +38,7 @@ class TestUtils {
                       password: correctPassword,
                       name: "Артем",
                       surname: "Куфаев",
-                      birthdate: 916126137,
+                      birthdate: Date(timeIntervalSince1970: 916126137),
                       weight: 81.7,
                       height: 181.5,
                       appleId: "",

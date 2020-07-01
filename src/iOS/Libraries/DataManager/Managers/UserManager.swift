@@ -31,20 +31,24 @@ public class UserManager: IDataManager<UserAPI, User> {
         }
     }
     
-    public func update(email: String,
-                       password: String,
-                       name: String,
-                       surname: String,
-                       birthdate: Int,
-                       height: Double,
+    public func update(email: String?,
+                       password: String?,
+                       name: String?,
+                       surname: String?,
+                       birthdate: Date?,
+                       height: Double?,
                        appleId: String?,
                        vkId: Int?,
                        completion: @escaping (NetworkResultWithModel<User>) -> Void) {
+        var birthdateInt: Int?
+        if let bdate = birthdate?.timeIntervalSince1970 {
+            birthdateInt = Int(bdate)
+        }
         let api: UserAPI = .update(email: email,
-                                   password: password.md5(),
+                                   password: password?.md5(),
                                    name: name,
                                    surname: surname,
-                                   birthdate: birthdate,
+                                   birthdate: birthdateInt,
                                    height: height,
                                    appleId: appleId,
                                    vkId: vkId)

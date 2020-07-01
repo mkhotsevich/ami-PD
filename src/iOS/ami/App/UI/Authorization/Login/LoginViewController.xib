@@ -88,6 +88,7 @@
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7m4-Vc-7N4" customClass="Button" customModule="DesignKit">
                                     <rect key="frame" x="20" y="657" width="374" height="50"/>
+                                    <color key="backgroundColor" name="00BCB4"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="HXf-61-tct"/>
                                     </constraints>

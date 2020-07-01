@@ -8,10 +8,31 @@
 
 import UIKit
 
-class RegisterInfoFillRouter: BaseRouter {
+protocol IRegisterInfoFillRouter: BaseRouter {
+    func toNext()
+    func goBack()
+}
+
+class InputRegisterInfoFillRouter: BaseRouter, IRegisterInfoFillRouter {
+    
+    func toNext() {
+        controller.toMain()
+    }
     
     func goBack() {
         pop(animated: true)
+    }
+    
+}
+
+class UpdateRegisterInfoFillRouter: BaseRouter, IRegisterInfoFillRouter {
+    
+    func toNext() {
+        dismiss(aminated: true, completion: nil)
+    }
+    
+    func goBack() {
+        dismiss(aminated: true, completion: nil)
     }
     
 }

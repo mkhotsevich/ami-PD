@@ -145,6 +145,9 @@
                                             <color key="value" name="FFB547"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="editData:" destination="-1" eventType="touchUpInside" id="Zed-jH-aPx"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GAo-uH-OgO" customClass="Button" customModule="DesignKit">
                                     <rect key="frame" x="20" y="498.66666666666663" width="335" height="50"/>

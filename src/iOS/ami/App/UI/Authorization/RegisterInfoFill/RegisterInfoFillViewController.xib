@@ -18,8 +18,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterInfoFillViewController" customModule="ami" customModuleProvider="target">
             <connections>
+                <outlet property="button" destination="Eg7-ig-eci" id="bnA-XA-P23"/>
                 <outlet property="infoPlaceholderView" destination="n52-Je-5HJ" id="ObZ-2P-cq2"/>
                 <outlet property="scrollView" destination="ZuL-B7-XdF" id="Rta-Cg-Pgj"/>
+                <outlet property="titleLabel" destination="7pO-Z9-Pi9" id="xD9-NV-2Ag"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -65,7 +67,7 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                     <connections>
-                                        <action selector="startRegisterProccess:" destination="-1" eventType="touchUpInside" id="ZGl-XE-FfG"/>
+                                        <action selector="processing:" destination="-1" eventType="touchUpInside" id="ZGl-XE-FfG"/>
                                     </connections>
                                 </button>
                                 <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="n52-Je-5HJ" customClass="InfoPlaceholderView" customModule="ami" customModuleProvider="target">
